@@ -8,17 +8,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `cd-theme2`; the legacy `cd-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('cd-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('cd-theme2');}else{localStorage.setItem('cd-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('cd-theme');}catch(e){}
+window.__cdSysTheme=sys;
+window.__cdTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+</script>
 <style>
 :root{
   --bg:#F6F4EF;--surface:#FFFFFF;--surface2:#EFEBE3;
   --text:#1D1B16;--muted:#6B665A;--border:#E4DFD3;
   --ai:#6E56CF;--ai-soft:rgba(110,86,207,.10);
+  --surface-hover:#E6E1D6;--border-light:rgba(0,0,0,0.10);
   --radius:16px;
 }
 [data-theme="dark"]{
   --bg:#191813;--surface:#211F19;--surface2:#2A2821;
   --text:#ECE8DD;--muted:#A39C8D;--border:#3A372E;
   --ai:#9B85F5;--ai-soft:rgba(155,133,245,.12);
+  --surface-hover:#322F27;--border-light:rgba(255,255,255,0.10);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s;}
@@ -30,7 +65,17 @@ body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);
 nav{display:flex;gap:20px;font-size:14px;}
 nav a{color:var(--muted);text-decoration:none;}
 nav a:hover{color:var(--text);}
-.theme-toggle{cursor:pointer;border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--muted);background:var(--surface);}
+/* appearance toggle — three states (auto / light / dark), same behaviour as the
+   Cyber Digest. The icon shown is driven by data-theme-mode, which the head
+   script sets before first paint; with no script the dark icon is the fallback. */
+.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:34px;height:34px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);transition:all .25s;user-select:none;flex-shrink:0;font-size:16px}
+.theme-toggle:hover{background:var(--surface-hover);border-color:var(--border-light)}
+.theme-toggle .tt-auto,.theme-toggle .tt-light{display:none}
+.theme-toggle .tt-dark{display:inline}
+html[data-theme-mode="auto"] .theme-toggle .tt-dark{display:none}
+html[data-theme-mode="auto"] .theme-toggle .tt-auto{display:inline}
+html[data-theme-mode="light"] .theme-toggle .tt-dark{display:none}
+html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
 
 .hero{padding:72px 0 32px;}
 .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);margin-bottom:16px;}
@@ -62,7 +107,7 @@ footer a:hover{text-decoration:underline;}
     <a href="https://cyber.peterjaycox.com">Cyber&nbsp;Digest</a>
     <a href="https://intel.peterjaycox.com">Intel</a>
   </nav>
-  <span class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</span>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__cdTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__cdTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
 </div></div>
 
 <div class="wrap">
@@ -107,17 +152,5 @@ footer a:hover{text-decoration:underline;}
   © 2026 Peter Cox · Sydney &nbsp;·&nbsp; <a href="https://peterjaycox.com">Back to the hub</a>
 </div></footer>
 
-<script>
-function toggleTheme(){
-  var h=document.documentElement;
-  h.setAttribute('data-theme', h.getAttribute('data-theme')==='light'?'dark':'light');
-  try{localStorage.setItem('ai-theme',h.getAttribute('data-theme'));}catch(e){}
-  document.getElementById('themeBtn').textContent = h.getAttribute('data-theme')==='light'?'☀️':'🌙';
-}
-(function(){
-  try{var s=localStorage.getItem('ai-theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}
-  document.getElementById('themeBtn').textContent = document.documentElement.getAttribute('data-theme')==='light'?'☀️':'🌙';
-})();
-</script>
 </body>
 </html>
