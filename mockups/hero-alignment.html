@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>AI hero — alignment comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--surface:#FFFFFF;--border:#E4DFD3;--ai:#6E56CF;--text:#1D1B16;--muted:#6B665A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:#EFECE5;color:#1D1B16;line-height:1.55;padding:30px 20px 60px}
+.wrap{max-width:900px;margin:0 auto}
+h1.pg{font-family:'Source Serif 4',serif;font-size:28px;font-weight:600;margin-bottom:6px}
+p.lede{color:#6B665A;font-size:15px;margin-bottom:22px;max-width:760px}
+.lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#1D1B16;color:#EFECE5;border-radius:999px;padding:3px 10px;display:inline-block;margin:22px 0 8px}
+.lbl.now{background:#6E56CF}
+.lbl.alt{background:#C9A227}
+.note{font-size:13.5px;color:#4a463c;background:#fff;border:1px solid #E4DFD3;border-left:4px solid #C9A227;border-radius:10px;padding:13px 17px;margin-top:10px}
+.note b{color:#1D1B16}
+
+/* the real hero, exactly as shipped */
+.hero{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:20px;
+  background-color:#fff;background-image:url(../docs/assets/hero-bg-light.svg);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  padding:56px 40px 44px;max-width:764px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);margin-bottom:16px}
+.hero h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:44px;line-height:1.12;margin-bottom:16px}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:620px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.chip{font-size:12px;letter-spacing:.02em;border:1px solid var(--border);background:#fff;color:var(--muted);border-radius:999px;padding:5px 12px}
+.chip.acc{color:var(--ai);border-color:color-mix(in srgb,var(--ai) 40%,transparent);background:rgba(110,86,207,.10)}
+
+/* the centred variant — only these three lines differ */
+.hero.centred{text-align:center}
+.hero.centred p.sub{max-width:560px;margin:0 auto}
+.hero.centred .chips{justify-content:center}
+.hero.centred h1{max-width:600px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1 class="pg">AI hero — the alignment question</h1>
+<p class="lede">Same hero, same graphic, same words. The only difference is where the text sits. Both are rendered below at the exact size you see on the live site.</p>
+
+<div class="lbl now">As shipped — left-aligned</div>
+<div class="hero">
+  <div class="kicker">In development</div>
+  <h1>A daily read on artificial intelligence.</h1>
+  <p class="sub">What moved at each layer of the stack — capability, obligation, evidence — and what it obliges an Australian or New Zealand organisation to do about it.</p>
+  <div class="chips"><span class="chip acc">48-hour window</span><span class="chip">Six themes</span><span class="chip">AU/NZ lens</span><span class="chip">Daily</span></div>
+</div>
+<div class="note"><b>Why this one is shipped:</b> it is the layout the AI page already had. The graphic was composed around it — the network is deliberately confined to the top strip, the bottom strip and the right band, which are the areas a left-aligned text block leaves empty. Nothing needed to move.</div>
+
+<div class="lbl alt">Alternative — centred</div>
+<div class="hero centred">
+  <div class="kicker">In development</div>
+  <h1>A daily read on artificial intelligence.</h1>
+  <p class="sub">What moved at each layer of the stack — capability, obligation, evidence — and what it obliges an Australian or New Zealand organisation to do about it.</p>
+  <div class="chips"><span class="chip acc">48-hour window</span><span class="chip">Six themes</span><span class="chip">AU/NZ lens</span><span class="chip">Daily</span></div>
+</div>
+<div class="note"><b>Why this is the cyber site's look — and a correction.</b> The Cyber Digest's hero is centred, and this is the alignment my mockup showed you. I originally wrote here that centring would <i>walk into the network, with the hub node inside the paragraph</i>. <b>Rendering it shows that was overstated.</b> Zoomed in, the headline ends roughly a word's width short of the hub and the paragraph passes beneath it at a lower line — close, but not overlapping. So switching is cheaper than I implied: the right band would want nudging about 40px further right, but the artwork does <b>not</b> need re-composing.</div>
+
+</div></body></html>
