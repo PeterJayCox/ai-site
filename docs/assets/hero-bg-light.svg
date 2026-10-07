@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" width="1100" height="560" preserveAspectRatio="xMidYMid slice">
+  <!-- AI Digest hero — "node field". Light theme.
+       viewBox ratio 1.96 matches the measured hero box (764x395), so `cover` crops
+       almost nothing. The text fills x 40-700 in the band y 79-498, so the network is
+       confined to three clear zones — a dusting along the top edge, a dusting along the
+       bottom edge, and the right band — and NO edge crosses the text. A gentle scrim is
+       kept only as insurance. -->
+  <defs>
+    <radialGradient id="glow" cx="83%" cy="24%" r="55%">
+      <stop offset="0%" stop-color="#6E56CF" stop-opacity=".15"/>
+      <stop offset="58%" stop-color="#6E56CF" stop-opacity=".04"/>
+      <stop offset="100%" stop-color="#6E56CF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="scrim" cx="32%" cy="52%" r="58%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".48"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity=".20"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1100" height="560" fill="url(#glow)"/>
+
+  <!-- edges — top strip, right band, bottom strip only -->
+  <g stroke="#6E56CF" stroke-width="1" fill="none" opacity=".34">
+    <path d="M220 42L480 30M480 30L700 48M700 48L840 70M840 70L930 150M930 150L1040 70M930 150L1010 260M1010 260L1060 390M1060 390L950 470M300 525L560 535M560 535L760 528M760 528L950 470"/>
+  </g>
+  <g stroke="#6E56CF" stroke-width="1" fill="none" opacity=".16">
+    <path d="M930 150L950 470M1040 70L1060 390"/>
+  </g>
+
+  <!-- halos on the two hubs -->
+  <g fill="none" stroke="#6E56CF">
+    <circle cx="930"  cy="150" r="28" stroke-opacity=".22"/>
+    <circle cx="1010" cy="260" r="20" stroke-opacity=".17"/>
+  </g>
+
+  <!-- nodes -->
+  <g fill="#6E56CF">
+    <circle cx="930"  cy="150" r="8.5" opacity=".80"/>
+    <circle cx="1040" cy="70"  r="4.2" opacity=".46"/>
+    <circle cx="1010" cy="260" r="5.0" opacity=".50"/>
+    <circle cx="1060" cy="390" r="4.2" opacity=".44"/>
+    <circle cx="950"  cy="470" r="5.4" opacity=".50"/>
+    <circle cx="840"  cy="70"  r="3.8" opacity=".38"/>
+    <circle cx="700"  cy="48"  r="3.4" opacity=".32"/>
+    <circle cx="480"  cy="30"  r="3.4" opacity=".32"/>
+    <circle cx="220"  cy="42"  r="3.6" opacity=".34"/>
+    <circle cx="300"  cy="525" r="3.4" opacity=".32"/>
+    <circle cx="560"  cy="535" r="3.4" opacity=".32"/>
+    <circle cx="760"  cy="528" r="3.2" opacity=".30"/>
+  </g>
+
+  <rect width="1100" height="560" fill="url(#scrim)"/>
+</svg>
