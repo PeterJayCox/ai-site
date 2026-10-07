@@ -11,12 +11,12 @@
 <script>
 /* Appearance: three states, default = auto (follows the OS). Click cycles
    auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
-   choice lives in `cd-theme2`; the legacy `cd-theme` key is discarded. */
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
 (function(){var d=document.documentElement;
 function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
-function saved(){try{var s=localStorage.getItem('cd-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
 function mode(){return saved()||'auto';}
-function save(m){try{if(m==='auto'){localStorage.removeItem('cd-theme2');}else{localStorage.setItem('cd-theme2',m);}}catch(e){}}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
 function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
 var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
 light:'Appearance: light (pinned). Shift-click to follow your system again.',
@@ -32,9 +32,9 @@ else if(m===sys()){save('auto');}
 else{save(m==='light'?'dark':'light');}
 apply();}
 function followSystem(){if(!saved()){apply();}}
-try{localStorage.removeItem('cd-theme');}catch(e){}
-window.__cdSysTheme=sys;
-window.__cdTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
 apply();
 try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
 if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
@@ -107,7 +107,7 @@ footer a:hover{text-decoration:underline;}
     <a href="https://cyber.peterjaycox.com">Cyber&nbsp;Digest</a>
     <a href="https://intel.peterjaycox.com">Intel</a>
   </nav>
-  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__cdTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__cdTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
 </div></div>
 
 <div class="wrap">
