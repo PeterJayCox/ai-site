@@ -266,7 +266,7 @@ def main():
                      f'<span class="edar">&#8594;</span></a>')
     newest = built[0][0]
     idx = (INDEX_TPL.replace("@@ROWS@@", "\n".join(items))
-                    .replace("@@N@@", str(len(built)))
+                    .replace("@@N@@", f"{len(built)} edition" + ("" if len(built) == 1 else "s"))
                     .replace("@@NEWEST@@", f"{newest.day} {MONTHS[newest.month-1]} {newest.year}"))
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(idx)
     print(f"  index.html  {len(built)} edition(s)  {os.path.getsize(os.path.join(OUT,'index.html')):,} bytes")
@@ -341,7 +341,7 @@ footer a{color:var(--ai);text-decoration:none}
 </div></div>
 <div class="wrap">
 <header>
-  <div class="kick">@@N@@ edition(s)</div>
+  <div class="kick">@@N@@</div>
   <h1>AI Digest — editions</h1>
   <p class="sub">Newest first. A daily read on artificial intelligence, with an Australian and New Zealand lens. Latest edition: @@NEWEST@@.</p>
 </header>
