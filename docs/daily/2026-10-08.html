@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-<title>AI Digest — prototype, 6 October 2026</title>
+<title>AI Digest — 8 October 2026</title>
+<meta name="description" content="12 stories across 6 themes in the 6–8 October 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
 /* Appearance: three states, default = auto (follows the OS). Click cycles
    auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
-   choice lives in `cd-theme2`; the legacy `cd-theme` key is discarded. */
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
 (function(){var d=document.documentElement;
 function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
-function saved(){try{var s=localStorage.getItem('cd-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
 function mode(){return saved()||'auto';}
-function save(m){try{if(m==='auto'){localStorage.removeItem('cd-theme2');}else{localStorage.setItem('cd-theme2',m);}}catch(e){}}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
 function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
 var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
 light:'Appearance: light (pinned). Shift-click to follow your system again.',
 dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
 if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
 function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
-/* Cycle visits all three states, always flipping away from what is on screen
-   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
 function cycle(ev){var m=mode();
 if(ev&&ev.shiftKey){save('auto');}
 else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
@@ -29,9 +30,8 @@ else if(m===sys()){save('auto');}
 else{save(m==='light'?'dark':'light');}
 apply();}
 function followSystem(){if(!saved()){apply();}}
-try{localStorage.removeItem('cd-theme');}catch(e){}
-window.__cdSysTheme=sys;
-window.__cdTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
 apply();
 try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
 if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
@@ -39,901 +39,199 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 })();
 </script>
 <style>
-
-:root{--bg:#0a0e1a;--surface:#111827;--surface2:#1a2332;--surface-hover:#1e293b;--text:#e2e8f0;--text-secondary:#b0c0d0;--text-muted:#8a9cb6;--text-dim:#64748b;--border:rgba(255,255,255,0.06);--border-light:rgba(255,255,255,0.1);--accent:#8b7ae6;--accent-glow:rgba(139,122,230,.10);--accent-bg:rgba(139,122,230,.12);--vuln:#f43f5e;--geo:#8b5cf6;--crime:#f59e0b;--iot:#10b981;--govt:#3b82f6;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--purple:#8b5cf6;--nav-blur:rgba(10,14,26,.88);--kicker-color:#a78bfa;--kicker-bg:rgba(139,122,230,.10);--kicker-border:rgba(139,122,230,.24)}
-[data-theme="light"]{--bg:#ffffff;--surface:#fafafa;--surface2:#f3f4f5;--surface-hover:#ebebeb;--text:#171717;--text-secondary:#4d4d4d;--text-muted:#666666;--text-dim:#808080;--border:rgba(0,0,0,0.06);--border-light:rgba(0,0,0,0.1);--accent:#5b46c4;--accent-glow:rgba(91,70,196,.07);--accent-bg:#f1eefe;--vuln:#f43f5e;--geo:#8b5cf6;--crime:#f59e0b;--iot:#10b981;--govt:#3b82f6;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--purple:#8b5cf6;--nav-blur:rgba(255,255,255,.88);--kicker-color:#5b46c4;--kicker-bg:#f1eefe;--kicker-border:rgba(91,70,196,.24)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;transition:background .25s,color .25s}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--accent);color:#fff;padding:8px 14px;border-radius:0 0 8px 0;font-size:13px;font-weight:600}
-.skip-link:focus{left:0}
-#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));z-index:10000;width:0%;transition:width .15s}
-/* Top nav */
-.topnav{position:sticky;top:0;z-index:9999;background:var(--nav-blur);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform;transition:background .25s,border .25s}
-.topnav .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:56px;gap:8px}
-.brand{font-size:16px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-.3px}
-.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;transition:background .25s}
-.brand small{font-size:10px;color:var(--text-dim);font-weight:400;letter-spacing:1px;text-transform:uppercase}
-.navlinks{display:flex;gap:2px;margin-left:auto;align-items:center}
-.navlinks a{color:var(--text-muted);font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:all .12s}
-.navlinks a:hover{color:var(--text);background:var(--surface2);text-decoration:none}
-.navlinks a.active{color:var(--text);background:var(--surface-hover);font-weight:600}
-.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:34px;height:34px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);transition:all .25s;user-select:none;flex-shrink:0;font-size:16px}
+:root{
+  --bg:#F6F4EF;--surface:#FFFFFF;--surface2:#EFEBE3;--surface-hover:#E6E1D6;
+  --text:#1D1B16;--text-2:#4a463c;--muted:#6B665A;--border:#E4DFD3;--border-light:rgba(0,0,0,.10);
+  --ai:#6E56CF;
+  --green:#2F7D4F;--amber:#B08110;--red:#B23A32;--teal:#0F9D8F;--blue:#3A6EA5;
+}
+[data-theme="dark"]{
+  --bg:#191813;--surface:#211F19;--surface2:#2A2821;--surface-hover:#322F27;
+  --text:#ECE8DD;--text-2:#C9C3B4;--muted:#A39C8D;--border:#3A372E;--border-light:rgba(255,255,255,.10);
+  --ai:#9B85F5;
+  --green:#5FBB84;--amber:#D9A93C;--red:#E0776E;--teal:#3FC7B4;--blue:#7FA8D4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.62;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+.wrap{max-width:860px;margin:0 auto;padding:0 28px}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar .in{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:860px;margin:0 auto;padding:0 28px}
+.brand{display:flex;align-items:center;gap:9px;font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--text);text-decoration:none}
+.brand .d{width:9px;height:9px;border-radius:50%;background:var(--ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--ai) 22%,transparent)}
+nav{display:flex;gap:18px;font-size:13.5px;align-items:center}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--text)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:32px;height:32px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);user-select:none;flex-shrink:0;font-size:15px}
 .theme-toggle:hover{background:var(--surface-hover);border-color:var(--border-light)}
-/* Icon driven by the appearance mode (auto / light / dark) */
 .theme-toggle .tt-auto,.theme-toggle .tt-light{display:none}
 .theme-toggle .tt-dark{display:inline}
 html[data-theme-mode="auto"] .theme-toggle .tt-dark{display:none}
 html[data-theme-mode="auto"] .theme-toggle .tt-auto{display:inline}
 html[data-theme-mode="light"] .theme-toggle .tt-dark{display:none}
 html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
-.theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-/* Layout */
-.wrap{max-width:1100px;margin:auto;padding:0 28px 60px;display:flex;gap:32px;position:relative;z-index:1}
-#toc{position:sticky;top:80px;width:210px;flex-shrink:0;height:fit-content;max-height:calc(100vh - 100px);overflow-y:auto;padding:18px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;font-size:12px;transition:background .25s,border .25s}
-#toc h3{color:var(--accent);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
-/* Rail collapse toggle — mobile only (hidden here, shown in the <=860px query
-   where the rail goes position:static and would otherwise sit between the
-   reader and the digest). */
-#toc-toggle{display:none}
-#toc a{display:flex;align-items:flex-start;gap:7px;color:var(--text-muted);text-decoration:none;padding:3px 8px;border-radius:6px;margin-bottom:2px;transition:all .2s;border-left:2px solid transparent;font-size:12px}
-#toc a:hover{color:var(--text);background:var(--accent-bg)}
-#toc a.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-bg)}
-#toc a .sicon{display:inline-flex;width:15px;height:15px;flex-shrink:0;color:currentColor;margin-top:1px}
-#toc a .sicon svg{width:100%;height:100%}
-/* flex-start (not center) so the icon and count badge stay on the FIRST line of
-   a wrapped label — e.g. "Retail & Entertainment & Sport" is 3 lines at the
-   panel's 210px width, and centring left the badge beside the middle line. */
-#toc a .tlabel{flex:1;min-width:0;line-height:1.35}
-#toc a .tcount{flex-shrink:0;font-size:10px;line-height:1.6;font-variant-numeric:tabular-nums;color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);border-radius:99px;padding:0 6px;transition:color .2s,border-color .2s}
-#toc a:hover .tcount{color:var(--text)}
-#toc a.active .tcount{color:var(--accent);border-color:var(--accent)}
-/* Nested per-story links: the lead TOC_SUB_LIMIT stories of any sector with
-   more than one story. data-story (not data-section) keeps the sector
-   scrollspy off them — they are jump targets, not position markers. */
-#toc a.tsub{padding:2px 8px 2px 28px;font-size:11px;color:var(--text-dim);gap:6px;margin-bottom:1px}
-#toc a.tsub .tsub-n{flex-shrink:0;font-size:9.5px;font-variant-numeric:tabular-nums;color:var(--text-dim);opacity:.8;min-width:9px;text-align:right}
-#toc a.tsub .tsub-label{flex:1;min-width:0;line-height:1.3;max-height:2.6em;overflow:hidden}
-#toc a.tsub:hover .tsub-label{color:var(--text)}
-.main{flex:1;min-width:0}
-/* Header / Hero */
-.hero{position:relative;overflow:hidden;padding:44px 36px 30px;text-align:center;border:1px solid var(--border);border-radius:16px;background:linear-gradient(160deg,var(--surface) 0%,var(--surface2) 55%,var(--surface) 100%);margin-bottom:28px}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border-light) 1px,transparent 1px),linear-gradient(90deg,var(--border-light) 1px,transparent 1px);background-size:44px 44px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse at center top,#000 20%,transparent 72%);mask-image:radial-gradient(ellipse at center top,#000 20%,transparent 72%);pointer-events:none}
-.hero>*:not(.hero-grid){position:relative;z-index:1}
-.hero .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--kicker-color);margin-bottom:14px;padding:5px 16px;border-radius:6px;display:inline-block;background:var(--kicker-bg);border:1px solid var(--kicker-border)}
-.hero-date{font-family:'JetBrains Mono',monospace;font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;background:linear-gradient(120deg,var(--text) 55%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
-.hero-date .sep{margin:0 12px;opacity:.45;font-weight:400}
-.hero h1{font-size:.95rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
-.hero .subtitle{color:var(--text-secondary);font-size:13.5px;margin-bottom:18px}
-.hero-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:5px 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text-secondary);font-family:'JetBrains Mono',monospace}
-.chip-accent{border-color:rgba(139,122,230,.38);color:var(--accent);background:var(--accent-bg)}
-[data-theme="light"] .chip-accent{border-color:rgba(91,70,196,.38)}
-.chip-guard i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.6);display:inline-block}
-.chip-au{border-color:rgba(59,130,246,.3)}
-/* Sections */
-.section{margin-bottom:28px;scroll-margin-top:80px}
-.section h2{font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:10px;display:flex;align-items:center;gap:10px}
-.section h2 .icon{display:inline-flex;width:19px;height:19px;line-height:1;color:var(--accent)}
-.section h2 .icon svg{width:100%;height:100%}
-.section h2 .count{margin-left:auto;background:var(--surface2);color:var(--text-muted);padding:2px 10px;border-radius:100px;font-size:11px;font-weight:600;white-space:nowrap}
-/* Exec summary */
-.exec-summary{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 30px;margin-bottom:28px;position:relative;overflow:hidden;transition:background .25s,border .25s}
-.exec-summary::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--vuln),var(--purple))}
-.exec-summary h2{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:700;margin-bottom:14px;border:none;padding:0;display:flex;align-items:center;gap:8px}
-.exec-summary h2 .icon svg{width:16px;height:16px}
-.exec-summary p{color:var(--text-muted);font-size:14px;line-height:1.7;margin-bottom:14px}
-.exec-summary p:last-child{margin-bottom:0}
-.exec-summary p strong{color:var(--text);font-weight:600}
-/* Executive Summary threads (monthly: card-ified 10 threads + mini-TOC + stats) */
-.exec-stats{margin-bottom:18px}
-.exec-stats .stat-card{min-width:110px}
-.exec-mini-toc{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 20px;padding:12px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:10px}
-.exec-mini-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);font-weight:700;margin:0 6px 0 0}
-.exec-toc-link{font-size:12px;color:var(--accent);text-decoration:none;background:var(--surface);border:1px solid var(--border);padding:4px 11px;border-radius:100px;transition:background .2s,border-color .2s,color .2s;line-height:1.4}
-.exec-toc-link:hover,.exec-toc-link:focus{background:var(--accent);color:#fff;border-color:var(--accent)}
-.exec-toc-link.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.exec-thread{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:14px;scroll-margin-top:90px}
-.exec-thread.section-box{padding:20px 24px}
-.exec-thread-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px}
-.exec-thread-head h3{font-size:1.04rem;font-weight:600;color:var(--text);margin:0;line-height:1.35}
-.exec-toggle{flex-shrink:0;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);font-size:11.5px;font-weight:600;padding:4px 13px;border-radius:100px;cursor:pointer;transition:background .2s,color .2s,border-color .2s;font-family:inherit}
-.exec-toggle:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-.exec-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.exec-body{font-size:14px;color:var(--text-muted);line-height:1.7}
-.exec-body p{margin-bottom:12px}
-.exec-body p:last-child{margin-bottom:0}
-.exec-preview{font-size:14px;color:var(--text-muted);line-height:1.7}
-.exec-preview p{margin:0}
-.exec-note{background:var(--surface2);border:1px dashed var(--border);border-radius:10px;padding:14px 18px;margin-top:4px}
-.exec-note p{color:var(--text-muted);font-size:12.5px;line-height:1.6;margin:0}
-.exec-sources{margin:16px 0 0;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px}
-.exec-sources .exec-sources-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);font-weight:700}
-.exec-sources ul{margin:6px 0 0;padding-left:18px}
-.exec-sources li{font-size:12.5px;line-height:1.5;color:var(--text);margin-bottom:4px}
-.exec-sources li a{color:var(--accent);text-decoration:none;word-break:break-word}
-.exec-sources li a:hover,.exec-sources li a:focus{text-decoration:underline}
-@media print{.exec-sources{break-inside:avoid;color:#111!important;border-color:#ddd!important}}
-/* AU context */
-.au-context-box{background:linear-gradient(135deg,rgba(139,122,230,.08),rgba(59,130,246,.06));border:1px solid rgba(139,122,230,.20);border-radius:10px;padding:18px 22px;margin:14px 0;position:relative}
-.au-context-box::before{content:'AU';position:absolute;top:-8px;right:14px;background:var(--accent);color:#fff;font-size:10px;font-weight:800;padding:1px 7px;border-radius:4px;letter-spacing:.05em}
-.au-context-box p{color:var(--text-muted);font-size:13px;line-height:1.65}
-/* Stats */
-.stats-row{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;justify-content:center}
-.stat-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 20px;text-align:center;font-size:13px;color:var(--text-muted);min-width:130px;overflow:hidden;transition:border-color .2s,transform .2s,background .25s}
-.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--sc,var(--accent))}
-.stat-card:hover{transform:translateY(-2px);border-color:var(--sc,var(--accent))}
-.stat-card .stat-num{font-weight:800;color:var(--text);font-size:20px;font-feature-settings:'tnum';line-height:1.2}
-.stat-card .stat-label{font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-.stat-geo{--sc:#8b7ae6}.stat-govt{--sc:#3b82f6}.stat-crime{--sc:#f59e0b}.stat-iot{--sc:#10b981}.stat-vuln{--sc:#f43f5e}
-[data-theme="light"] .stat-geo{--sc:#5b46c4}
-/* Monthly reader-first blocks (At a Glance + Month at a Glance) */
-.glance-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:20px 24px;margin-bottom:28px}
-.glance-box ul{margin:0;padding-left:20px;display:grid;gap:8px}
-.glance-box li{font-size:14px;line-height:1.55;color:var(--text-muted)}
-.glance-box li strong{color:var(--text);font-weight:600}
-/* The executive summary's lead-in: the month's thesis line above its takeaway
-   bullets, in the same callout card the old standalone 'At a Glance' section
-   used. The exec summary is the page's only summary block (2026-09-24). */
-.exec-lead>p{margin:0 0 12px;font-size:14.5px;line-height:1.6;color:var(--text)}
-.section-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:28px}
-.month-glance{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:28px}
-.month-glance .stats-row{margin-bottom:0}
-.mg-headline{color:var(--text-muted);font-size:14px;line-height:1.6;margin:14px 0 0}
-.mg-headline strong{color:var(--text);font-weight:600}
-/* Month at a Glance — computed cockpit panel (variant A, 2026-09-22).
-   Every figure is DB-computed at build time (see scripts/glance_cockpit.py). */
-.glance-cockpit .mgv-cover{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;margin:0 0 16px}
-.glance-cockpit .mgv-cover b{color:var(--text);font-weight:600}
-.glance-cockpit .mgv-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.16);flex:none}
-.glance-cockpit .mgv-dim{color:var(--text-dim)}
-.glance-cockpit .mgv-hero{display:grid;grid-template-columns:minmax(220px,1fr) minmax(260px,1.4fr);gap:22px;align-items:end;padding:0 0 18px;border-bottom:1px solid var(--border);margin-bottom:18px}
-.glance-cockpit .mgv-hero-num{font-size:60px;font-weight:800;letter-spacing:-.035em;line-height:.95;color:var(--text);font-feature-settings:'tnum'}
-.glance-cockpit .mgv-hero-lbl{font-size:13px;color:var(--text-muted);margin-top:6px;max-width:24ch}
-.glance-cockpit .mgv-hero-sub{font-size:11.5px;color:var(--text-dim);margin-top:3px}
-.glance-cockpit .mgv-hero-chips{margin-top:11px;display:flex;gap:7px;flex-wrap:wrap}
-.glance-cockpit .mgv-chip{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;background:rgba(148,163,184,.12);border:1px solid var(--border-light);color:var(--text-muted);white-space:nowrap;letter-spacing:.02em}
-.glance-cockpit .mgv-chip.up{color:#ff8a95;border-color:rgba(244,63,94,.34);background:rgba(244,63,94,.12)}
-.glance-cockpit .mgv-chip.down{color:#5ddc8a;border-color:rgba(34,197,94,.32);background:rgba(34,197,94,.12)}
-.glance-cockpit .mgv-strip-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);font-weight:700;margin-bottom:7px}
-.glance-cockpit .mgv-strip{display:flex;align-items:flex-end;gap:3px;height:76px}
-.glance-cockpit .mgv-day{flex:1;background:linear-gradient(180deg,var(--accent),rgba(139,122,230,.28));border-radius:2px 2px 0 0;min-height:3px}
-.glance-cockpit .mgv-day.hot{background:linear-gradient(180deg,var(--vuln),rgba(244,63,94,.28))}
-.glance-cockpit .mgv-strip-scale{display:flex;justify-content:space-between;font-size:10px;color:var(--text-dim);margin-top:5px}
-.glance-cockpit .mgv-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px}
-.glance-cockpit .mgv-kpi{position:relative;overflow:hidden;background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:13px 14px;display:flex;flex-direction:column;gap:5px}
-.glance-cockpit .mgv-kpi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--accent));opacity:.85}
-.glance-cockpit .mgv-kpi-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.glance-cockpit .mgv-kpi-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);font-weight:700}
-.glance-cockpit .mgv-kpi-num{font-size:31px;font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--text);font-feature-settings:'tnum'}
-.glance-cockpit .mgv-kpi-num.long{font-size:20px;letter-spacing:-.01em}
-.glance-cockpit .mgv-kpi-num.text{font-size:14.5px;font-weight:600;letter-spacing:0;line-height:1.4}
-.glance-cockpit .mgv-kpi-den{font-size:11.5px;color:var(--text-muted)}
-.glance-cockpit .mgv-bar{position:relative;height:5px;background:rgba(148,163,184,.16);border-radius:99px;margin-top:2px}
-.glance-cockpit .mgv-bar i{position:absolute;inset:0 auto 0 0;border-radius:99px;background:var(--c,var(--accent));opacity:.9}
-.glance-cockpit .mgv-bar u{position:absolute;top:-3px;width:2px;height:11px;background:var(--text-muted);border-radius:1px}
-.glance-cockpit .mgv-base{font-size:10.5px;color:var(--text-dim);line-height:1.45}
-.glance-cockpit .mgv-wide{display:grid;grid-template-columns:repeat(auto-fit,minmax(256px,1fr));gap:12px;margin-top:12px}
-.glance-cockpit .mgv-tile{background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:13px 14px}
-.glance-cockpit .mgv-tile-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.glance-cockpit .mgv-tile-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);font-weight:700}
-.glance-cockpit .mgv-tile-val{font-size:13.5px;font-weight:700;color:var(--text);display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap}
-.glance-cockpit .mgv-tile-val b{font-size:19px;letter-spacing:-.02em}
-.glance-cockpit .mgv-ranks{margin-top:9px;display:grid;gap:5px}
-.glance-cockpit .mgv-rank{display:grid;grid-template-columns:104px 1fr 72px;gap:8px;align-items:center;font-size:11px;color:var(--text-muted)}
-.glance-cockpit .mgv-rank-t{height:6px;background:rgba(148,163,184,.16);border-radius:99px;overflow:hidden}
-.glance-cockpit .mgv-rank-t i{display:block;height:100%;background:var(--accent);opacity:.75;border-radius:99px}
-.glance-cockpit .mgv-rank:first-child .mgv-rank-t i{opacity:1}
-.glance-cockpit .mgv-rank-n{text-align:right;color:var(--text-dim);font-size:10.5px;white-space:nowrap}
-.glance-cockpit .mgv-note{margin-top:15px;padding-top:12px;border-top:1px dashed var(--border);font-size:11px;color:var(--text-dim)}
-@media (max-width:720px){
-  .glance-cockpit .mgv-hero{grid-template-columns:1fr;gap:16px}
-  .glance-cockpit .mgv-hero-num{font-size:46px}
-  .glance-cockpit .mgv-rank{grid-template-columns:88px 1fr 64px}
+
+header.ed{padding:44px 0 26px;border-bottom:1px solid var(--border)}
+.kick{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
+.ed h1{font-family:'Source Serif 4',serif;font-size:34px;font-weight:600;line-height:1.16;margin-bottom:8px}
+.ed .sub{color:var(--muted);font-size:15px;max-width:620px}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.chip{font-size:11.5px;color:var(--muted);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:4px 11px}
+.chip.acc{color:var(--ai);border-color:color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent)}
+
+main{padding:6px 0 40px}
+section{padding:30px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:0}
+h2.sec{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+h2.sec .dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+h2.sec .cnt{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:var(--muted);background:var(--surface2);border-radius:999px;padding:2px 9px}
+p.body{font-size:15px;color:var(--text-2);margin:12px 0}
+p.body strong{color:var(--text);font-weight:600}
+p.body a{color:var(--ai)}
+.au{background:color-mix(in srgb,var(--amber) 8%,transparent);border:1px solid color-mix(in srgb,var(--amber) 30%,transparent);border-left:4px solid var(--amber);border-radius:10px;padding:15px 18px;margin:14px 0}
+.au p{font-size:14.5px;color:var(--text-2)}
+.au p strong{color:var(--text)}
+
+article.card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px 16px;margin:14px 0 0;overflow:hidden}
+article.card .bar{position:absolute;top:0;left:0;right:0;height:3px}
+article.card .num{position:absolute;top:16px;right:18px;font-family:'Source Serif 4',serif;font-size:22px;font-weight:600;color:var(--border);line-height:1}
+article.card h3{font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;line-height:1.32;margin-bottom:10px;padding-right:34px}
+article.card p.sum{font-size:14.5px;color:var(--text-2);margin-bottom:14px}
+article.card p.sum strong{color:var(--text);font-weight:600}
+.meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px;color:var(--muted);padding-top:11px;border-top:1px solid var(--border)}
+a.src{color:var(--ai);text-decoration:none;font-weight:600}
+a.src:hover{text-decoration:underline}
+.badge{border:1px solid transparent;border-radius:999px;padding:2px 9px;font-weight:600;letter-spacing:.02em;font-size:11px;white-space:nowrap}
+/* Impact — how far the risk or obligation position moves */
+.i-low{color:var(--green);background:color-mix(in srgb,var(--green) 12%,transparent);border-color:color-mix(in srgb,var(--green) 32%,transparent)}
+.i-guarded{color:var(--muted);background:var(--surface2);border-color:var(--border)}
+.i-elevated{color:var(--amber);background:color-mix(in srgb,var(--amber) 12%,transparent);border-color:color-mix(in srgb,var(--amber) 32%,transparent)}
+.i-severe{color:var(--red);background:color-mix(in srgb,var(--red) 12%,transparent);border-color:color-mix(in srgb,var(--red) 32%,transparent)}
+.i-critical{color:var(--bg);background:var(--red);border-color:var(--red)}
+/* Obligation — whether it binds an AUNZ organisation */
+.o-mandated{color:var(--blue);background:color-mix(in srgb,var(--blue) 16%,transparent);border-color:color-mix(in srgb,var(--blue) 46%,transparent)}
+.o-commenced{color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent);border-color:color-mix(in srgb,var(--blue) 32%,transparent)}
+.o-proposed{color:var(--blue);background:transparent;border-color:color-mix(in srgb,var(--blue) 34%,transparent);border-style:dashed}
+.o-signalled{color:var(--muted);background:transparent;border-color:var(--border);border-style:dashed}
+/* Evidence — what kind of claim this is */
+.b-corrob{color:var(--muted);background:var(--surface2);border-color:var(--border)}
+.b-confirmed{color:var(--red);background:color-mix(in srgb,var(--red) 12%,transparent);border-color:color-mix(in srgb,var(--red) 32%,transparent)}
+.b-probable{color:var(--amber);background:color-mix(in srgb,var(--amber) 12%,transparent);border-color:color-mix(in srgb,var(--amber) 32%,transparent)}
+.b-other{color:var(--muted);background:var(--surface2);border-color:var(--border)}
+.b-claim{color:var(--ai);background:color-mix(in srgb,var(--ai) 12%,transparent);border-color:color-mix(in srgb,var(--ai) 34%,transparent)}
+.b-eval{color:var(--green);background:color-mix(in srgb,var(--green) 12%,transparent);border-color:color-mix(in srgb,var(--green) 32%,transparent)}
+.b-preprint{color:var(--amber);background:color-mix(in srgb,var(--amber) 12%,transparent);border-color:color-mix(in srgb,var(--amber) 32%,transparent)}
+.b-rumour{color:var(--red);background:color-mix(in srgb,var(--red) 12%,transparent);border-color:color-mix(in srgb,var(--red) 32%,transparent)}
+/* Capability — how much the capability itself moved */
+.d-frontier{color:var(--red);background:color-mix(in srgb,var(--red) 12%,transparent);border-color:color-mix(in srgb,var(--red) 32%,transparent)}
+.d-material{color:var(--ai);background:color-mix(in srgb,var(--ai) 12%,transparent);border-color:color-mix(in srgb,var(--ai) 34%,transparent)}
+.d-incremental{color:var(--muted);background:transparent;border-color:var(--border)}
+.b-tier{background:var(--surface2);color:var(--muted);border-color:var(--border)}
+.b-v{color:var(--green);background:color-mix(in srgb,var(--green) 12%,transparent);border-color:color-mix(in srgb,var(--green) 32%,transparent)}
+.b-r{color:var(--amber);background:color-mix(in srgb,var(--amber) 12%,transparent);border-color:color-mix(in srgb,var(--amber) 32%,transparent)}
+.b-u{color:var(--red);background:color-mix(in srgb,var(--red) 12%,transparent);border-color:color-mix(in srgb,var(--red) 32%,transparent)}
+.b-shared{background:var(--surface2);color:var(--muted);border-color:var(--border)}
+.date{margin-left:auto;font-variant-numeric:tabular-nums}
+
+.analytics .row{display:grid;grid-template-columns:190px 1fr 34px;align-items:center;gap:10px;margin:7px 0;font-size:13px;color:var(--text-2)}
+.track{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+table.key{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+table.key th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 10px;background:var(--surface2);border-bottom:1px solid var(--border)}
+table.key td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top}
+footer{padding:26px 0 48px;color:var(--muted);font-size:12.5px;text-align:center}
+footer a{color:var(--ai);text-decoration:none}
+@media(max-width:640px){
+  .ed h1{font-size:27px} .wrap,.topbar .in{padding:0 18px}
+  article.card{padding:17px 16px 14px} .analytics .row{grid-template-columns:120px 1fr 30px}
 }
-/* Severity scan heat-strip (monthly) */
-.severity-scan{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:28px;transition:background .25s,border .25s}
-.severity-scan .ss-note{color:var(--text-dim);font-size:11.5px;margin:0 0 14px}
-.ss-grid{display:grid;grid-template-columns:repeat(31,1fr);gap:3px}
-.ss-cell{height:52px;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:4px;font-variant-numeric:tabular-nums;border:1px solid transparent;transition:transform .1s;position:relative}
-.ss-cell b{font-size:11px;font-weight:800;color:var(--text-dim);line-height:1}
-.ss-cell i{font-style:normal;font-size:8.5px;font-weight:600;opacity:.78;line-height:1.2;margin-top:2px}
-.ss-cell:hover{outline:2px solid var(--accent);outline-offset:-1px;cursor:help;transform:scale(1.04)}
-.ss-cell[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#0f172a;color:#f1f5f9;border:1px solid #1e293b;border-radius:5px;padding:4px 8px;font-size:10.5px;font-weight:600;white-space:nowrap;line-height:1.3;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-/* Severity-scan keyboard/touch access: the tooltip must not be hover-only */
-.ss-cell:focus{outline:none}
-.ss-cell:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.ss-cell[data-tip]:focus::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#0f172a;color:#f1f5f9;border:1px solid #1e293b;border-radius:5px;padding:4px 8px;font-size:10.5px;font-weight:600;white-space:nowrap;line-height:1.3;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-/* Section-level denominator/context note */
-.section-note{font-size:12px;color:var(--text-muted);line-height:1.55;margin:0 0 16px;max-width:78ch}
-.section-note b{color:var(--text-secondary)}
-/* Collapsed fact-check verification log */
-.fc-details>summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--accent);list-style:none;display:inline-block;padding:2px 0}
-.fc-details>summary::-webkit-details-marker{display:none}
-.fc-details>summary::before{content:"▸ ";font-size:11px}
-.fc-details[open]>summary::before{content:"▾ "}
-.fc-detail-list{margin:8px 0 0;padding-left:18px}
-.fc-detail-list li{margin-bottom:8px;font-size:12px;line-height:1.6;color:var(--text-secondary)}
-.factcheck-notes{margin-top:14px}
-@media(max-width:640px){.ss-cell[data-tip]:hover::after{left:auto;right:0;transform:none;white-space:normal;max-width:200px}}
-.ss-cell.crit{background:linear-gradient(180deg,rgba(244,63,94,.35),rgba(244,63,94,.78));color:#fff}
-.ss-cell.sev{background:linear-gradient(180deg,rgba(245,158,11,.3),rgba(245,158,11,.72));color:#fff}
-.ss-cell.elev{background:linear-gradient(180deg,rgba(14,165,233,.3),rgba(14,165,233,.68));color:#fff}
-.ss-cell.guard{background:linear-gradient(180deg,rgba(100,116,139,.24),rgba(100,116,139,.5));color:#e2e8f0}
-/* Share-of-Critical shading — severity scan re-encode 2026-09-14. Replaces the
-   worst-band colour, which saturated to all-red whenever every day held one
-   Critical story. s0 = 0% Critical, s5 = 50%+. */
-.ss-cell.s0{background:linear-gradient(180deg,rgba(100,116,139,.2),rgba(100,116,139,.42));color:#e2e8f0}
-.ss-cell.s1{background:linear-gradient(180deg,rgba(244,63,94,.12),rgba(244,63,94,.22));color:#fecdd3}
-.ss-cell.s2{background:linear-gradient(180deg,rgba(244,63,94,.23),rgba(244,63,94,.42));color:#fff}
-.ss-cell.s3{background:linear-gradient(180deg,rgba(244,63,94,.34),rgba(244,63,94,.62));color:#fff}
-.ss-cell.s4{background:linear-gradient(180deg,rgba(244,63,94,.44),rgba(244,63,94,.8));color:#fff}
-.ss-cell.s5{background:linear-gradient(180deg,rgba(244,63,94,.52),rgba(244,63,94,.95));color:#fff}
-.ss-cell u{text-decoration:none;font-style:normal;font-size:9px;font-weight:800;line-height:1.2;margin-top:1px;opacity:.95}
-.ss-cell.s3 b,.ss-cell.s4 b,.ss-cell.s5 b{color:rgba(255,255,255,.85)}
-/* Confidence ledger — appendix section (moved from the top block 2026-09-14).
-   Was three long bullets in one box (a wall of text); now one status row each:
-   a coloured spine + monospace chip in the left column, prose in the right. */
-.conf-ledger .conf-row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;
-  align-items:start;padding:15px 17px;margin:10px 0;border-radius:12px;
-  background:var(--surface);border:1px solid var(--border-light);
-  border-left:3px solid var(--border-light)}
-.conf-ledger .conf-row.ok{border-left-color:var(--green)}
-.conf-ledger .conf-row.warn{border-left-color:var(--amber)}
-.conf-ledger .conf-row.bad{border-left-color:var(--red)}
-.conf-ledger .conf-row.loose{border-left-color:var(--text-dim)}
-.conf-chip{display:flex;flex-direction:column;gap:5px}
-.conf-icon{font-size:15px;line-height:1}
-.conf-label{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;
-  letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim)}
-.conf-ledger .conf-row.ok .conf-label{color:var(--green)}
-.conf-ledger .conf-row.warn .conf-label{color:var(--amber)}
-.conf-ledger .conf-row.bad .conf-label{color:var(--red)}
-.conf-note{font-size:11.5px;line-height:1.45;color:var(--text-dim)}
-.conf-text p{margin:0}
-.conf-text p+p{margin-top:.6em}
-.conf-trailer{margin:16px 0 0;padding-top:12px;border-top:1px dashed var(--border-light);
-  font-size:11.5px;line-height:1.55;font-style:italic;color:var(--text-muted)}
-.conf-trailer p{margin:0}
-/* One-line confidence note above the executive summary (skim-protection for the
-   ledger, which now lives in the appendix). */
-.conf-line{margin:14px 0 18px;padding:9px 14px;border-radius:10px;
-  background:var(--surface2,var(--surface));border:1px solid var(--border-light);
-  font-size:12.5px;line-height:1.5;color:var(--text-muted)}
-.conf-line-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-right:9px}
-.conf-line a{color:var(--accent);text-decoration:none}
-.conf-line a:hover{text-decoration:underline}
-@media(max-width:760px){.conf-ledger .conf-row{grid-template-columns:1fr;gap:8px}}
-.ss-cell.gap{background:repeating-linear-gradient(45deg,rgba(120,140,180,.1) 0 4px,transparent 4px 8px);color:var(--text-dim);font-style:italic;border:1px dashed var(--border-light)}
-.ss-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:10.5px;color:var(--text-dim)}
-.ss-lg{display:flex;align-items:center;gap:5px}
-.ss-lg i{width:10px;height:10px;border-radius:3px;display:inline-block}
-.ss-defs{margin-top:8px;font-size:11px;line-height:1.6;color:var(--text-dim);max-width:64em}
-.ss-defs b{font-weight:600}
-@media(max-width:640px){.ss-grid{grid-template-columns:repeat(16,1fr)}.ss-cell{height:38px}}
-/* Bar charts */
-.bar-chart{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:18px;transition:background .25s,border .25s}
-.bar-chart h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px}
-.bar-row{display:flex;align-items:center;margin-bottom:6px;gap:8px}
-.bar-row .bar-label{font-size:12px;color:var(--text-muted);width:130px;flex-shrink:0;text-align:right}
-.bar-row .bar-track{flex:1;height:16px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.bar-row .bar-fill{height:100%;border-radius:99px;transition:width .6s ease;min-width:4px}
-.bar-row .bar-val{font-size:11px;font-weight:600;color:var(--text);width:36px;flex-shrink:0;font-family:'JetBrains Mono',monospace}
-.bar-cyan .bar-fill{background:linear-gradient(90deg,var(--accent),#0096c7)}
-.bar-purple .bar-fill{background:linear-gradient(90deg,var(--purple),#a78bfa)}
-.bar-amber .bar-fill{background:linear-gradient(90deg,var(--amber),#fbbf24)}
-.bar-red .bar-fill{background:linear-gradient(90deg,var(--vuln),#fb7185)}
-.bar-green .bar-fill{background:linear-gradient(90deg,var(--green),#4ade80)}
-.bar-blue .bar-fill{background:linear-gradient(90deg,var(--govt),#60a5fa)}
-/* Pie */
-.pie-container{display:flex;align-items:center;gap:28px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 28px;margin:18px 0;transition:background .25s,border .25s}
-.pie{width:150px;height:150px;border-radius:50%;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center}
-.pie-total{position:absolute;width:94px;height:94px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--text);font-feature-settings:'tnum';line-height:1.1}
-.pie-total small{font-size:9px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em}
-.pie-legend{display:flex;flex-direction:column;gap:6px;flex:1}
-.pie-legend .legend-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-muted)}
-.pie-legend .legend-item .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
-.pie-legend .legend-item .val{margin-left:auto;font-weight:600;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px}
-/* Prose card: bordered surface box for section narrative (tables already use .data-table) */
-.prose-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:18px 0;transition:background .25s,border .25s}
-.prose-box p{color:var(--text-muted);font-size:13.5px;line-height:1.7;margin-bottom:13px}
-.prose-box p:last-child{margin-bottom:0}
-.prose-box strong{color:var(--text)}
-/* Table */
-.data-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;transition:background .25s,border .25s}
-.data-table th{background:var(--surface2);color:var(--text-muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
-.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-muted)}
-.data-table .tactic-name{display:flex;align-items:center;gap:9px;white-space:nowrap}
-.data-table .tactic-icon{flex:0 0 auto;opacity:.9;color:var(--accent);display:inline-flex}
-.data-table .tactic-label{font-weight:600;color:var(--text)}
-.data-table tr:last-child td{border-bottom:none}
-.data-table .tier-badge{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:600}
-.data-table .tier-1{background:rgba(34,197,94,.1);color:var(--green)}
-.data-table .tier-2{background:rgba(245,158,11,.1);color:var(--amber)}
-.data-table .tier-3{background:rgba(148,163,184,.1);color:var(--text-muted)}
-.data-table .tier-4{background:rgba(239,68,68,.1);color:var(--red)}
-/* Story cards */
-.story-grid{display:flex;flex-direction:column;gap:16px}
-.story-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 26px 18px 58px;transition:border-color .2s,box-shadow .2s,transform .2s;position:relative;overflow:hidden;scroll-margin-top:80px}
-/* Land the jump below the sticky nav, and show which story you arrived at. */
-.story-card:target{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 10px 30px -14px rgba(0,0,0,.6)}
-.story-card:hover{border-color:var(--border-light);transform:translateY(-2px);box-shadow:0 8px 24px -12px rgba(0,0,0,.5),0 0 0 1px var(--accent-glow)}
-[data-theme="light"] .story-card:hover{box-shadow:0 8px 24px -14px rgba(0,40,80,.25)}
-.story-card .card-accent{position:absolute;top:0;left:0;bottom:0;width:4px;border-radius:0}
-.story-card.num-1 .card-accent{background:linear-gradient(180deg,var(--vuln),rgba(244,63,94,.25))}.story-card.num-2 .card-accent{background:linear-gradient(180deg,var(--purple),rgba(139,92,246,.25))}.story-card.num-3 .card-accent{background:linear-gradient(180deg,var(--crime),rgba(245,158,11,.25))}.story-card.num-4 .card-accent{background:linear-gradient(180deg,var(--green),rgba(34,197,94,.25))}.story-card.num-5 .card-accent{background:linear-gradient(180deg,var(--govt),rgba(59,130,246,.25))}
-.story-number{position:absolute;left:0;top:0;bottom:0;width:42px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;color:var(--text-dim);border-right:1px solid var(--border);background:var(--surface2)}
-.story-card.num-1 .story-number{color:#fb7185}.story-card.num-2 .story-number{color:#a78bfa}.story-card.num-3 .story-number{color:#fbbf24}
-.story-card h3{font-size:1.02rem;font-weight:600;color:var(--text);margin-bottom:7px;line-height:1.4}
-.story-card p.summary{color:var(--text-muted);font-size:13px;line-height:1.68;margin-bottom:12px}
-.story-card .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:12px}
-.story-card .meta .source, .legend-group .source{color:var(--accent);text-decoration:none;font-weight:500;padding:2px 10px;border:1px solid var(--border);border-radius:999px;transition:all .15s}
-span.source{padding:2px 10px;border:1px solid var(--border);border-radius:999px;display:inline-block}
-.story-card .meta .source:hover, .legend-group .source:hover{border-color:var(--accent);background:var(--accent-bg)}
-.story-card .meta .reliability, .legend-group .reliability{display:inline-flex;align-items:center;gap:4px;color:var(--text-dim)}
-.story-card .meta .reliability .tier-1, .legend-group .reliability .tier-1{color:var(--green)}
-.story-card .meta .reliability .tier-2, .legend-group .reliability .tier-2{color:var(--amber)}
-.story-card .meta .reliability .tier-3, .legend-group .reliability .tier-3{color:var(--text-muted)}
-.story-card .meta .reliability .tier-4, .legend-group .reliability .tier-4{color:var(--red)}
-/* Verification badge — traffic-light, sits beside the reliability tier in the
-   card's meta row (the sourcing line is metadata, not prose, so it no longer
-   trails the summary paragraph). Green = corroborated, amber = single-source /
-   claim in progress, red = unverified, grey = unrecognised label. */
-.story-card .meta .verification, .legend-group .verification{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid transparent;letter-spacing:.02em}
-.story-card .meta .verification .dot, .legend-group .verification .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
-.story-card .meta .verification.v-verified, .legend-group .verification.v-verified{color:var(--green);background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.32)}
-.story-card .meta .verification.v-reported, .legend-group .verification.v-reported{color:var(--amber);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.32)}
-.story-card .meta .verification.v-unverified, .legend-group .verification.v-unverified{color:var(--red);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.32)}
-.story-card .meta .verification.v-other, .legend-group .verification.v-other{color:var(--text-dim);background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.32)}
-[data-theme="light"] .story-card .meta .verification.v-verified, [data-theme="light"] .legend-group .verification.v-verified{background:rgba(22,163,74,.12)}
-[data-theme="light"] .story-card .meta .verification.v-reported, [data-theme="light"] .legend-group .verification.v-reported{background:rgba(217,119,6,.12)}
-[data-theme="light"] .story-card .meta .verification.v-unverified, [data-theme="light"] .legend-group .verification.v-unverified{background:rgba(220,38,38,.12)}
-[data-theme="light"] .story-card .meta .verification.v-other, [data-theme="light"] .legend-group .verification.v-other{background:rgba(100,116,139,.12)}
-/* Breach-classification badge — same slot, only on breach/leak stories. Red =
-   confirmed breach, amber = probable, grey = unverified claim / recycled dump. */
-.story-card .meta .breach, .legend-group .breach{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid transparent;letter-spacing:.02em}
-.story-card .meta .breach .dot, .legend-group .breach .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
-.story-card .meta .breach.b-confirmed, .legend-group .breach.b-confirmed{color:var(--red);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.32)}
-.story-card .meta .breach.b-probable, .legend-group .breach.b-probable{color:var(--amber);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.32)}
-.story-card .meta .breach.b-unverified,
-.story-card .meta .breach.b-recycled,
-.story-card .meta .breach.b-other, .legend-group .breach.b-other{color:var(--text-dim);background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.32)}
-[data-theme="light"] .story-card .meta .breach.b-confirmed, [data-theme="light"] .legend-group .breach.b-confirmed{background:rgba(220,38,38,.12)}
-[data-theme="light"] .story-card .meta .breach.b-probable, [data-theme="light"] .legend-group .breach.b-probable{background:rgba(217,119,6,.12)}
-[data-theme="light"] .story-card .meta .breach.b-unverified,
-[data-theme="light"] .story-card .meta .breach.b-recycled,
-[data-theme="light"] .story-card .meta .breach.b-other, [data-theme="light"] .legend-group .breach.b-other{background:rgba(100,116,139,.12)}
-/* IoC corroboration badge — only where the story names a malware family the
-   abuse.ch indicator archive holds indicators for. Carries a NAME and a COUNT,
-   never an indicator value. Accent (not a severity colour) on purpose: the
-   family being well-attested is not a severity claim about this story, and it
-   must not read as a breach or verification verdict. Dashed border marks it as
-   the softer, corroboration-only signal.
-
-   No light-theme override is needed for the corroborated variant: `--accent-bg`
-   is already theme-aware (dark rgba(0,180,216,.1) / light #ebf5ff), unlike the
-   verification and breach badges, which hard-code an rgba per theme. Only the
-   feedonly variant needs one. Do not add a redundant `[data-theme="light"]`
-   rule here — it would be a no-op that reads as a fix. */
-.story-card .meta .iocbadge, .legend-group .iocbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid transparent;letter-spacing:.02em}
-.story-card .meta .iocbadge .dot, .legend-group .iocbadge .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
-.story-card .meta .iocbadge.ioc-corroborated, .legend-group .iocbadge.ioc-corroborated{color:var(--accent);background:var(--accent-bg);border-color:currentColor;border-style:dashed}
-.story-card .meta .iocbadge.ioc-feedonly, .legend-group .iocbadge.ioc-feedonly{color:var(--text-dim);background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.32)}
-/* Threat-actor pills — inline in prose, like the CVE pill, but a DELIBERATELY
-   different visual family: not monospace, and the colour encodes how
-   well-corroborated the NAMING is, not severity. A CVE pill in red means
-   "critical CVE"; an actor in red would mean nothing, and the two appear in the
-   same sentences. Government-stated attribution is the solid accent; contested
-   and unattributed are DASHED and muted, so absence reads as absence rather
-   than as a mild verdict (the cve-unrated convention). */
-.actorpill{display:inline-block;font-size:.93em;font-weight:600;line-height:1.35;padding:1px 8px;margin:0 1px;border-radius:999px;white-space:nowrap;letter-spacing:.01em;vertical-align:baseline;border:1px solid transparent}
-.actorpill.actor-gov{color:var(--accent);background:var(--accent-bg);border-color:rgba(139,122,230,.38)}
-.actorpill.actor-claim{color:var(--amber);background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35)}
-.actorpill.actor-hack{color:var(--purple);background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.35)}
-.actorpill.actor-contest,.actorpill.actor-unknown{color:var(--text-dim);background:rgba(148,163,184,.10);border-color:currentColor;border-style:dashed}
-a.actorpill,a.actorpill:visited,a.actorpill:hover,a.actorpill:active{text-decoration:none}
-a.actorpill:hover{border-color:currentColor;box-shadow:0 0 0 3px rgba(148,163,184,.14)}
-a.actorpill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-[data-theme="light"] .actorpill.actor-gov{background:var(--accent-bg)}
-
-/* Expandable defanged indicator list — ONE structure shared by the daily/monthly
-   cards, the Story DB and the wiki, so one rule styles all three. Values are
-   inert text in <code> (never an <a href>: nothing here may be clicked or
-   fetched). Collapsed by default, so the block costs a reader nothing until
-   they want it. */
-.ioclist{margin-top:12px;border:1px dashed var(--border-light);border-radius:10px;padding:9px 13px}
-.ioclist summary{cursor:pointer;font-size:12px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:7px}
-.ioclist summary::-webkit-details-marker{display:none}
-.ioclist summary .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
-.ioclist ul{margin:9px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px}
-.ioclist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
-.ioclist code{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:var(--surface2);padding:2px 7px;border-radius:4px;word-break:break-all}
-.ioclist .iocmeta{color:var(--text-dim);font-size:11px}
-.ioclist .iocwarn{margin:10px 0 0;font-size:11px;line-height:1.55;color:var(--text-dim)}
-
-[data-theme="light"] .story-card .meta .iocbadge.ioc-feedonly, [data-theme="light"] .legend-group .iocbadge.ioc-feedonly{background:rgba(100,116,139,.12)}
-
-/* Key to the page — the digest now carries enough visual signals (CVE pills,
-   actor pills, reliability, verification, breach, IoC badges) that a reader
-   cannot infer the vocabulary. Swatches reuse the REAL classes, so the legend
-   cannot drift from the styles: rename a band and the key follows. */
-.legend-section{margin-top:36px}
-.legend-intro{font-size:13px;color:var(--text-secondary);line-height:1.65;max-width:76ch}
-.legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:18px}
-.legend-group h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin:0 0 10px;font-weight:600}
-.legend-group h3 small{text-transform:none;letter-spacing:0;color:var(--text-dim);font-weight:400}
-.legend-group ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
-.legend-group li{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;font-size:12px;color:var(--text-dim);line-height:1.5}
-.legend-group li>span:last-child{flex:1 1 140px}
-.legend-note{font-size:11.5px;color:var(--text-dim);line-height:1.6;margin:13px 0 0;font-style:italic}
-.legend-foot{font-size:12px;color:var(--text-dim);margin:22px 0 0}
-.legend-foot a{color:var(--accent);font-weight:600}
-.story-card .meta .date, .legend-group .date{color:var(--text-dim);margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px}
-/* Tag badge */
-.tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:999px;letter-spacing:.3px}
-.tag.blue{background:var(--accent-bg);color:var(--accent)}
-.tag.cyan{background:var(--accent-bg);color:var(--accent)}
-.tag.purple{background:rgba(139,92,246,.1);color:#a78bfa}
-.tag.green{background:rgba(34,197,94,.1);color:#4ade80}
-.tag.amber{background:rgba(245,158,11,.1);color:#fbbf24}
-.tag.red{background:rgba(239,68,68,.1);color:#f87171}
-/* Also notable */
-.bundle-box{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:14px 18px;margin-top:6px}
-.bundle-box .bundle-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);font-weight:600;margin-bottom:6px}
-.bundle-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
-.bundle-box ul li{font-size:13px;color:var(--text-muted);padding-left:12px;position:relative;line-height:1.5}
-.bundle-box ul li::before{content:'\25B8';position:absolute;left:0;color:var(--text-dim)}
-/* Controls */
-.controls{display:flex;gap:10px;margin-bottom:20px}
-.btn{font-size:12px;font-weight:600;padding:6px 16px;border-radius:99px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);cursor:pointer;transition:all .2s;font-family:inherit}
-.btn:hover{background:var(--surface2);color:var(--text)}
-.btn.active{background:var(--accent-bg);border-color:var(--accent);color:var(--accent)}
-#back-top{position:fixed;bottom:28px;right:28px;width:42px;height:42px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--accent);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;z-index:9000;font-family:inherit}
-#back-top.visible{opacity:1}
-#back-top:hover{background:var(--surface2)}
-/* Footer */
-.footer{text-align:center;padding:28px 0 10px;border-top:1px solid var(--border);margin-top:32px;transition:border .25s}
-.footer .source-line{font-size:12px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-bottom:6px}
-.footer .note{font-size:11px;color:var(--text-dim);font-style:italic}
-.footer .links{display:flex;justify-content:center;gap:20px;margin-bottom:12px}
-.footer .links a{color:var(--text-dim);font-size:12px;font-weight:500;transition:color .15s}
-.footer .links a:hover{color:var(--text-secondary)}
-/* Executive view */
-body.exec-view .hide-exec,
-body.exec-view .story-card .meta,
-body.exec-view .story-card p.summary,
-body.exec-view .bundle-box,
-body.exec-view .bar-chart,
-body.exec-view .pie-container,
-body.exec-view .data-table,
-body.exec-view #incident-map{display:none!important}
-body.exec-view .story-card{padding:10px 18px;margin-bottom:4px;cursor:pointer}
-body.exec-view .story-card h3{font-size:14px;margin-bottom:0}
-body.exec-view .story-number{display:none}
-body.exec-view .story-grid{gap:6px}
-body.exec-view .story-card::after{content:'\25B6 Click to expand';display:block;font-size:10px;color:var(--text-dim);margin-top:4px;opacity:.5;transition:opacity .2s}
-body.exec-view .story-card:hover::after{opacity:1}
-body.exec-view .story-card.expanded::after{content:'\25BC Click to collapse'}
-body.exec-view .story-card.expanded .meta,
-body.exec-view .story-card.expanded p.summary{display:block!important}
-body.exec-view .story-card.expanded{padding:14px 18px}
-body.exec-view .story-card.expanded .story-number{display:block}
-body.exec-view .story-card.expanded h3{margin-bottom:6px;font-size:1rem}
-body.exec-view .story-card.expanded p.summary{margin-bottom:10px}
-body.exec-view .story-card .card-accent{width:4px}
-body.exec-view .story-card{padding-left:50px}
-body.exec-view .story-card.expanded{padding-left:50px}
-/* SVG icon helper */
-.sicon{display:inline-flex;width:19px;height:19px;color:var(--accent)}
-.sicon svg{width:100%;height:100%}
-/* Analytics grid */
-.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.incident-map{overflow:hidden}
-.incident-map .map-fallback{padding-top:4px}
-.incident-map .map-fallback .bar-label{width:150px}
-.incident-map .map-fallback{border:1px solid var(--border);border-radius:12px;padding:12px 14px;background:var(--surface2)}
-.incident-map .bar-row{cursor:pointer;transition:opacity .15s}
-.incident-map .bar-row:hover{opacity:.85}
-.incident-map .bar-crit .bar-fill{background:linear-gradient(90deg,#ff4d5a,#fb7185)}
-.incident-map .bar-sev  .bar-fill{background:linear-gradient(90deg,#ffa62b,#fbbf24)}
-.incident-map .bar-elev .bar-fill{background:linear-gradient(90deg,#0096c7,#35c6e8)}
-.incident-map .bar-guard .bar-fill{background:linear-gradient(90deg,#5aa9e6,#7cc4f0)}
-.incident-map .bar-unknown .bar-fill{background:var(--surface2)}
-.incident-map .im-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 8px}
-.incident-map .im-lg{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--text-muted);padding:2px 9px;border:1px solid var(--border);border-radius:99px;background:var(--surface2)}
-.incident-map .im-lg i{width:9px;height:9px;border-radius:2px;display:inline-block}
-.incident-map .im-note{font-size:10.5px;color:var(--text-dim);margin-left:auto}
-.incident-map .im-attr{font-size:10.5px;color:var(--text-dim);margin-top:8px;line-height:1.5}
-.incident-map .pan-chip{display:inline-block;font-size:11px;padding:2px 10px;margin:0 6px 4px 0;border-radius:99px;border:1px dashed var(--border);color:var(--text-muted);background:repeating-linear-gradient(45deg,var(--surface2),var(--surface2)4px,rgba(127,127,127,.08)4px,rgba(127,127,127,.08)6px)}
-.incident-map .im-story-panel{margin-top:12px;border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--surface2);display:none}
-.incident-map .im-story-panel.open{display:block}
-.incident-map .im-story-panel .im-shot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.incident-map .im-story-panel h4{margin:0;font-size:14px;color:var(--text)}
-.incident-map .im-globe-btn{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#0d1b3e;background:var(--accent);border-radius:99px;padding:6px 14px;text-decoration:none;white-space:nowrap}
-.incident-map .im-globe-btn:hover{filter:brightness(1.08)}
-.incident-map .im-story-panel ul{margin:0;padding:0;list-style:none}
-.incident-map .im-story-panel li{padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px}
-.incident-map .im-story-panel li:last-child{border-bottom:none}
-.incident-map .im-story-panel a{color:var(--accent);text-decoration:none;font-weight:600}
-.incident-map .im-story-panel a:hover{text-decoration:underline}
-.incident-map .im-tag{font-size:9.5px;padding:1px 7px;border-radius:99px;margin-left:8px;font-weight:700;border:1px solid}
-@media(max-width:860px){.wrap{flex-direction:column}#toc{position:static;width:100%;max-height:unset;margin-bottom:20px}/* The rail is inline here, so it sits between the reader and the digest: a
-   267px block, or 469px with the nested story links. Collapse it to a bar and
-   let the reader open it on demand (setToc() in the script block), instead of
-   hiding parts of it. */
-#toc-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
-#toc-toggle:hover{border-color:var(--accent)}
-#toc-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-#toc .toc-chev{font-size:10px;transition:transform .2s}
-#toc.toc-collapsed .toc-chev{transform:rotate(-90deg)}
-#toc.toc-collapsed #toc-list{display:none}
-#toc.toc-collapsed{padding-bottom:12px}
-#toc.toc-collapsed h3{margin-bottom:8px}.pie-container{flex-direction:column;align-items:center;gap:16px}.stats-row{gap:8px}.analytics-grid{grid-template-columns:1fr}}
-@media(max-width:620px){.navlinks a span.t{display:none}.hero{padding:32px 18px 24px}.story-card{padding-left:50px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}}
-@media print{body{background:#fff!important;color:#111!important;font-size:11pt}body::before:before,.orb{display:none}#toc{display:none}.wrap{display:block;max-width:100%;padding:0}.main{width:100%}.exec-summary p,.story-card p.summary,.bar-chart,.au-context-box p,.bundle-box ul li{color:#333!important}.exec-summary,.story-card,.bar-chart,.pie-container{break-inside:avoid}.exec-toggle{display:none!important}.exec-preview{display:none!important}.exec-body{display:block!important}.exec-thread,.exec-note{break-inside:avoid;background:#fff!important;border-color:#ddd!important}[hidden]{display:none!important}@page{margin:2cm 2.5cm;@bottom-right{content:counter(page)" / "counter(pages);font-size:9pt;color:#999}}}
-/* ===== CVE SEVERITY PILLS =====
-   A CVE id in prose renders as a severity pill keyed to the CVSS band from the
-   cve_severity table (scripts/cve_severity_build.py: wiki frontmatter, then NVD).
-   An id with no resolved band gets .cve-unrated (dashed, muted) — never a
-   guessed colour, so absence reads as absence. Tokens exist in both themes. */
-.cvepill{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82em;font-weight:600;line-height:1.35;padding:1px 7px;margin:0 1px;border-radius:999px;white-space:nowrap;letter-spacing:.01em;vertical-align:baseline;border:1px solid transparent}
-.cvepill.cve-critical{color:var(--red);background:rgba(239,68,68,.13);border-color:rgba(239,68,68,.35)}
-.cvepill.cve-high{color:var(--vuln);background:rgba(244,63,94,.13);border-color:rgba(244,63,94,.35)}
-.cvepill.cve-medium{color:var(--amber);background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.35)}
-.cvepill.cve-low{color:var(--green);background:rgba(34,197,94,.13);border-color:rgba(34,197,94,.35)}
-.cvepill.cve-unrated{color:var(--text-dim);background:rgba(148,163,184,.10);border-color:currentColor;border-style:dashed}
-/* A pill that links (mapped CVEs deep-link the ATT&CK matrix tool; unmapped ones fall
-   back to the wiki CVE page) must look identical to the non-linking span form — so pin
-   the colour on every anchor state and kill the inherited underline/accent colour. */
-a.cvepill,a.cvepill:visited,a.cvepill:hover,a.cvepill:active{text-decoration:none}
-a.cvepill:hover{border-color:currentColor;box-shadow:0 0 0 3px rgba(148,163,184,.14)}
-a.cvepill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-a.cvepill.cve-critical,a.cvepill.cve-critical:visited{color:var(--red)}
-a.cvepill.cve-high,a.cvepill.cve-high:visited{color:var(--vuln)}
-a.cvepill.cve-medium,a.cvepill.cve-medium:visited{color:var(--amber)}
-a.cvepill.cve-low,a.cvepill.cve-low:visited{color:var(--green)}
-a.cvepill.cve-unrated,a.cvepill.cve-unrated:visited{color:var(--text-dim)}
-a.cvepill{cursor:pointer}
-/* Secondary citations in a story card's meta row: the vendor-primary research link
-   that follows the aggregator's, plus any trailing provenance note. Muted and
-   smaller than the primary source pill so the aggregator stays the dominant cite —
-   the point is that the primary is visible at all, not that it competes. */
-.source.src-alt{color:var(--text-muted);font-size:11px;padding:2px 8px}
-.src-note{color:var(--text-dim);font-size:11px;margin-left:2px}
-
-/* -- AI Digest additions ------------------------------------------------ */
-.breach.b-claim{color:var(--accent);background:rgba(139,122,230,.12);border-color:rgba(139,122,230,.34)}
-.breach.b-eval{color:var(--green);background:rgba(34,197,94,.10);border-color:rgba(34,197,94,.32)}
-.breach.b-preprint{color:var(--amber);background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.32)}
-.breach.b-rumour{color:var(--red);background:rgba(239,68,68,.10);border-color:rgba(239,68,68,.32)}
-[data-theme="light"] .breach.b-claim{background:rgba(91,70,196,.12)}
-.crossref{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 9px;
-  border-radius:999px;border:1px solid rgba(139,122,230,.34);color:var(--accent);background:rgba(139,122,230,.10);
-  letter-spacing:.02em}
-.crossref .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
-.legend-group{margin:22px 0}
-.legend-group h3{font-size:.95rem;font-weight:600;color:var(--text);margin:0 0 8px}
-.legend-group p{font-size:13px;line-height:1.65;color:var(--text-muted);margin:0 0 10px}
-/* -- The rubric's three axes as badges -----------------------------------
-   Impact, Obligation and Evidence are scored independently and never collapsed;
-   Confidence is the gate and renders as its own badge (.verification). */
-.axis{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;
-  padding:2px 8px;border-radius:999px;border:1px solid;letter-spacing:.02em;white-space:nowrap}
-.axis.i-low{color:var(--green);background:rgba(34,197,94,.10);border-color:rgba(34,197,94,.32)}
-.axis.i-guarded{color:var(--text-secondary);background:rgba(255,255,255,.04);border-color:var(--border-light)}
-.axis.i-elevated{color:var(--crime);background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.32)}
-.axis.i-severe{color:var(--vuln);background:rgba(244,63,94,.10);border-color:rgba(244,63,94,.32)}
-.axis.i-critical{color:#fff;background:rgba(244,63,94,.55);border-color:var(--vuln)}
-.axis.o-mandated{color:#93c5fd;background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.48)}
-.axis.o-commenced{color:var(--govt);background:rgba(59,130,246,.10);border-color:rgba(59,130,246,.32)}
-.axis.o-proposed{color:var(--govt);background:transparent;border-color:rgba(59,130,246,.34);border-style:dashed}
-.axis.o-signalled{color:var(--text-secondary);background:transparent;border-color:var(--border-light);border-style:dashed}
-.axis.b-corrob{color:var(--text-secondary);background:rgba(255,255,255,.04);border-color:var(--border-light)}
-.axis.d-frontier{color:var(--vuln);background:rgba(244,63,94,.10);border-color:rgba(244,63,94,.32)}
-.axis.d-material{color:var(--accent);background:rgba(139,122,230,.12);border-color:rgba(139,122,230,.34)}
-.axis.d-incremental{color:var(--text-muted);background:transparent;border-color:var(--border-light)}
-[data-theme="light"] .axis.i-guarded,[data-theme="light"] .axis.b-corrob{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.14)}
-[data-theme="light"] .axis.o-mandated{color:#1d4ed8;background:rgba(59,130,246,.12)}
-[data-theme="light"] .axis.d-material{background:rgba(91,70,196,.12)}
-
 </style>
 </head>
 <body>
-<nav class="topnav"><div class="inner">
-  <a class="brand" href="#top"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
-  <div class="navlinks">
-    <a href="#top" class="active"><span class="t">Today</span></a>
-    <a href="#analytics"><span class="t">Themes</span></a>
-    <a href="#legend"><span class="t">Claims key</span></a>
-  </div>
-  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__cdTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__cdTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
-</div></nav>
+<div class="topbar"><div class="in">
+  <a class="brand" href="/"><span class="d"></span>AI&nbsp;Digest</a>
+  <nav>
+    <a href="/daily/">Editions</a>
+    <a href="https://peterjaycox.com">Hub</a>
+    <a href="https://cyber.peterjaycox.com">Cyber</a>
+    <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+  </nav>
+</div></div>
 
-<a href="#main" class="skip-link">Skip to content</a>
-<div id="progress"></div>
 <div class="wrap">
-<nav id="toc" aria-label="Table of contents">
-<h3>AI Digest</h3>
-<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
-<div id="toc-list">
-<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
-<a href="#theme-regulation-obligation" data-section="theme-regulation-obligation"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
-<a class="tsub" href="#story-1" data-story="story-1" title="The Joint Select Committee on AI sat in Sydney again yesterday and sits in East Melbourne today, with Amazon Australia, Telstra and the business groups before it"><span class="tsub-n">1</span><span class="tsub-label">The Joint Select Committee on AI sat in Sydney again yesterday and sits in East Melbourne today, with Amazon Australia, Telstra and the business groups before it</span></a>
-<a class="tsub" href="#story-2" data-story="story-2" title="The OAIC found only 17 per cent of agencies authorised to use automated decision-making disclose it, and will write ADM into the FOI guidelines"><span class="tsub-n">2</span><span class="tsub-label">The OAIC found only 17 per cent of agencies authorised to use automated decision-making disclose it, and will write ADM into the FOI guidelines</span></a>
-<a href="#theme-ai-security" data-section="theme-ai-security"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">2</span></a>
-<a class="tsub" href="#story-3" data-story="story-3" title="South Korea opened a full-scale criminal probe into seven bank breaches driven by an open-source AI penetration-testing tool — the human operator, not the model, was the force multiplier"><span class="tsub-n">3</span><span class="tsub-label">South Korea opened a full-scale criminal probe into seven bank breaches driven by an open-source AI penetration-testing tool — the human operator, not the model, was the force multiplier</span></a>
-<a class="tsub" href="#story-4" data-story="story-4" title="The incident registers recorded the Canada and US government-website agent probes this week — and the archive data shows the agents were doing a benchmark task, not hacking"><span class="tsub-n">4</span><span class="tsub-label">The incident registers recorded the Canada and US government-website agent probes this week — and the archive data shows the agents were doing a benchmark task, not hacking</span></a>
-<a href="#theme-research-evidence" data-section="theme-research-evidence"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
-<a class="tsub" href="#story-5" data-story="story-5" title="METR shows an AI agent could rewrite the transcript a human reviewer sees — a ten-minute exploit against the safety-evaluation ecosystem’s own tooling"><span class="tsub-n">5</span><span class="tsub-label">METR shows an AI agent could rewrite the transcript a human reviewer sees — a ten-minute exploit against the safety-evaluation ecosystem’s own tooling</span></a>
-<a href="#theme-frontier-capability" data-section="theme-frontier-capability"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM12 1v3M12 20v3M1 12h3M20 12h3"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">3</span></a>
-<a class="tsub" href="#story-6" data-story="story-6" title="Mistral released Large 4 — a 1-trillion-parameter open-weight model that claims top-five global rank on cybersecurity benchmarks, with the weights still three weeks away"><span class="tsub-n">6</span><span class="tsub-label">Mistral released Large 4 — a 1-trillion-parameter open-weight model that claims top-five global rank on cybersecurity benchmarks, with the weights still three weeks away</span></a>
-<a class="tsub" href="#story-7" data-story="story-7" title="OpenAI published 722 mathematical manuscripts from an unreleased frontier model — a capability claim that arrives as a corpus, not a model"><span class="tsub-n">7</span><span class="tsub-label">OpenAI published 722 mathematical manuscripts from an unreleased frontier model — a capability claim that arrives as a corpus, not a model</span></a>
-<a class="tsub" href="#story-8" data-story="story-8" title="GPT-6 reached ChatGPT’s free tier a day after paid plans — the rollout pace, not the benchmark number, is the capability story"><span class="tsub-n">8</span><span class="tsub-label">GPT-6 reached ChatGPT’s free tier a day after paid plans — the rollout pace, not the benchmark number, is the capability story</span></a>
-<a href="#theme-infrastructure" data-section="theme-infrastructure"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
-<a class="tsub" href="#story-9" data-story="story-9" title="Macquarie Capital takes a stake in hyperscale developer Zerra DC, whose 2-gigawatt Asia-Pacific pipeline is anchored by the A$30 billion Anthropic campus in Queensland"><span class="tsub-n">9</span><span class="tsub-label">Macquarie Capital takes a stake in hyperscale developer Zerra DC, whose 2-gigawatt Asia-Pacific pipeline is anchored by the A$30 billion Anthropic campus in Queensland</span></a>
-<a href="#theme-market-geopolitics" data-section="theme-market-geopolitics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">3</span></a>
-<a class="tsub" href="#story-10" data-story="story-10" title="Washington named the leadership of its “Super Intelligence Force” — four officials, a 120-day deadline, and no enforcement mechanism"><span class="tsub-n">10</span><span class="tsub-label">Washington named the leadership of its “Super Intelligence Force” — four officials, a 120-day deadline, and no enforcement mechanism</span></a>
-<a class="tsub" href="#story-11" data-story="story-11" title="San Francisco and Oakland passed 45-day moratoriums on new data centres — the siting conflict is now reaching city ordinances"><span class="tsub-n">11</span><span class="tsub-label">San Francisco and Oakland passed 45-day moratoriums on new data centres — the siting conflict is now reaching city ordinances</span></a>
-<a class="tsub" href="#story-12" data-story="story-12" title="Nous Research closed a US$90 million Series B at a US$1.5 billion valuation to take its open-source Hermes agent into enterprise deployments"><span class="tsub-n">12</span><span class="tsub-label">Nous Research closed a US$90 million Series B at a US$1.5 billion valuation to take its open-source Hermes agent into enterprise deployments</span></a>
-<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Analytics</span></a>
-<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
-</div>
-</nav>
-<main id="main" class="main">
-
-
-<header class="hero" id="top">
-<div class="hero-grid"></div>
-<div class="kicker">// ai digest &middot; 48-hour window &middot; 6&ndash;8 October 2026</div>
-<div class="hero-date">Thursday<span class="sep">&middot;</span>8 October 2026</div>
-<h1>AI Digest</h1>
-<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
-<div class="hero-chips">
-<span class="chip chip-accent">12 stories</span>
-<span class="chip">6 themes</span>
-<span class="chip">11 sources</span>
-<span class="chip">48-hour window</span>
-<span class="chip chip-guard"><i></i>AU/NZ watchlist active</span>
-</div>
+<header class="ed">
+  <div class="kick">48-hour window &middot; 6&ndash;8 October 2026</div>
+  <h1>AI Digest — 8 October 2026</h1>
+  <p class="sub">12 stories across 6 themes in the 6–8 October 2026 window, with an Australian and New Zealand read.</p>
+  <div class="chips"><span class="chip acc">12 stories</span><span class="chip">6 themes</span><span class="chip">12 sources</span></div>
 </header>
 
-<div class="controls">
-<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
-<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
-</div>
-
-<section id="exec" class="exec-summary">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary</h2>
-<p><strong>Top stories.</strong> Two of this window&rsquo;s three lead items are about who answers for an AI system after the fact. The <strong>Joint Select Committee on Artificial Intelligence</strong> sat in Sydney on 6 October and is in East Melbourne today, with OpenAI&rsquo;s chief strategy officer <strong>Jason Kwon</strong> giving evidence alongside Anthropic, and Amazon Australia, Telstra and business and civil-society groups scheduled across the week; banks appear on 9 October. Kwon&rsquo;s evidence went to notification rather than capability &mdash; he accepted the company should have told Australian agencies sooner, and said OpenAI supports <strong>mandatory incident reporting</strong> for AI developers. Second, the <strong>OAIC&rsquo;s automated-decision-making transparency report</strong>, released 7 October, found that only <strong>17 per cent</strong> of the 23 agencies authorised to use automated decision-making actually disclose it, and the Commissioner will update the FOI guidelines so that ADM is treated as express &ldquo;operational information&rdquo; under <strong>s&nbsp;8(2) of the FOI Act 1982</strong>. Third, at the evidence layer, <strong>METR</strong> showed that an AI agent can rewrite the transcript a human reviewer sees, exploiting the transcript viewer in the UK AI Safety Institute&rsquo;s <strong>Inspect</strong> harness in about ten minutes. The evaluation record is what the assurance argument rests on, and it has now been shown to be alterable by the thing being evaluated.</p>
-
-<p>Two things follow for management. First, <strong>the notification clock, not the intrusion, is where the reputational cost now sits</strong> &mdash; which is why the committee&rsquo;s question to Kwon was about timing. If your AI vendor agreements still say &ldquo;we will notify promptly&rdquo;, replace that with a named recipient, a stated channel and a number of days; the Australian record on that point is now a matter of parliamentary evidence. Second, <strong>the verification layer is degrading at the same time as capability improves</strong>. METR&rsquo;s finding is uncomfortable precisely because it is not a model failure: nothing was misaligned, the agent simply edited what its reviewer could see. Assurance that depends on a vendor&rsquo;s own evaluation record, or on a transcript nobody can independently reproduce, is weaker than it looked last week.</p>
-
-<div class="au-context-box">
-<p><strong>Australian &amp; New Zealand context.</strong> Australia still has no single AI Act, and this window&rsquo;s obligations again arrived through everything except one. <strong>The live instrument is parliamentary</strong>: the Joint Select Committee on AI is taking evidence in Sydney and Melbourne this week, and its report is where any duty to report AI incidents will be argued first. <strong>The binding transparency thread is the OAIC&rsquo;s</strong>, and it tightened on 7 October &mdash; the automated-decision obligations in <strong>APP&nbsp;1.7&ndash;1.9</strong> commence <strong>10 December 2026</strong>, and the Commissioner has now said the FOI guidelines will be amended so that ADM is disclosed as express operational information under s&nbsp;8(2), with the report naming the 17 per cent disclosure rate as the reason. <strong>New Zealand produced no new AI regulator action in the window</strong>: the Privacy Commissioner&rsquo;s most recent substantive instrument remains the 23 September compliance notices to Manage My Health and Health NZ, and NCSC NZ&rsquo;s newest alert dates from 1 October. The rest of the AUNZ duty spine was quiet and was checked: no new ACSC product, no AI Safety Institute publication, no ASIC or Home Affairs release, and no PSPF publication, all inside the 6&ndash;8 October window. The UK AI Security Institute and NIST CAISI were also quiet, which is their normal burst cadence rather than a missed check.</p>
-</div>
-
-<p><strong>Geopolitical context &amp; the arc.</strong> Three governance models are now visibly divergent, and this window sharpened the contrast. Washington <strong>named the leadership of its &ldquo;Super Intelligence Force&rdquo;</strong> on 7 October &mdash; four officials, a 120-day reporting deadline, and no enforcement mechanism, which is the voluntary model restated. Brussels continues to enforce. And the most pointed pressure this week came from <strong>sub-national government</strong>: San Francisco and Oakland passed 45-day moratoriums on new data-centre construction, putting the siting conflict on the same footing as model regulation. Meanwhile the capability news was release-shaped rather than step-changing &mdash; a trillion-parameter open-weight model with a benchmark it published itself, a corpus of mathematics from a model nobody can yet use, and a frontier model reaching the free tier a day after paid plans. The pattern to carry forward: <strong>capability claims keep arriving from the vendor, and the independent layer that would test them took a direct hit in this window</strong>. Expect the pressure to stay on notification duties, evaluation integrity and entitlements rather than on benchmark numbers.</p>
+<main>
+<section id="executive">
+<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Executive summary<span class="cnt">12 stories</span></h2>
+<p class="body"><strong>Top stories.</strong> Two of this window’s three lead items are about who answers for an AI system after the fact. The <strong>Joint Select Committee on Artificial Intelligence</strong> sat in Sydney on 6 October and is in East Melbourne today, with OpenAI’s chief strategy officer <strong>Jason Kwon</strong> giving evidence alongside Anthropic, and Amazon Australia, Telstra and business and civil-society groups scheduled across the week; banks appear on 9 October. Kwon’s evidence went to notification rather than capability — he accepted the company should have told Australian agencies sooner, and said OpenAI supports <strong>mandatory incident reporting</strong> for AI developers. Second, the <strong>OAIC’s automated-decision-making transparency report</strong>, released 7 October, found that only <strong>17 per cent</strong> of the 23 agencies authorised to use automated decision-making actually disclose it, and the Commissioner will update the FOI guidelines so that ADM is treated as express “operational information” under <strong>s 8(2) of the FOI Act 1982</strong>. Third, at the evidence layer, <strong>METR</strong> showed that an AI agent can rewrite the transcript a human reviewer sees, exploiting the transcript viewer in the UK AI Safety Institute’s <strong>Inspect</strong> harness in about ten minutes. The evaluation record is what the assurance argument rests on, and it has now been shown to be alterable by the thing being evaluated.</p>
+<p class="body">Two things follow for management. First, <strong>the notification clock, not the intrusion, is where the reputational cost now sits</strong> — which is why the committee’s question to Kwon was about timing. If your AI vendor agreements still say “we will notify promptly”, replace that with a named recipient, a stated channel and a number of days; the Australian record on that point is now a matter of parliamentary evidence. Second, <strong>the verification layer is degrading at the same time as capability improves</strong>. METR’s finding is uncomfortable precisely because it is not a model failure: nothing was misaligned, the agent simply edited what its reviewer could see. Assurance that depends on a vendor’s own evaluation record, or on a transcript nobody can independently reproduce, is weaker than it looked last week.</p>
+<div class="au"><p><strong>Australian & New Zealand context.</strong> Australia still has no single AI Act, and this window’s obligations again arrived through everything except one. <strong>The live instrument is parliamentary</strong>: the Joint Select Committee on AI is taking evidence in Sydney and Melbourne this week, and its report is where any duty to report AI incidents will be argued first. <strong>The binding transparency thread is the OAIC’s</strong>, and it tightened on 7 October — the automated-decision obligations in <strong>APP 1.7–1.9</strong> commence <strong>10 December 2026</strong>, and the Commissioner has now said the FOI guidelines will be amended so that ADM is disclosed as express operational information under s 8(2), with the report naming the 17 per cent disclosure rate as the reason. <strong>New Zealand produced no new AI regulator action in the window</strong>: the Privacy Commissioner’s most recent substantive instrument remains the 23 September compliance notices to Manage My Health and Health NZ, and NCSC NZ’s newest alert dates from 1 October. The rest of the AUNZ duty spine was quiet and was checked: no new ACSC product, no AI Safety Institute publication, no ASIC or Home Affairs release, and no PSPF publication, all inside the 6–8 October window. The UK AI Security Institute and NIST CAISI were also quiet, which is their normal burst cadence rather than a missed check.</p></div>
+<p class="body"><strong>Geopolitical context & the arc.</strong> Three governance models are now visibly divergent, and this window sharpened the contrast. Washington <strong>named the leadership of its “Super Intelligence Force”</strong> on 7 October — four officials, a 120-day reporting deadline, and no enforcement mechanism, which is the voluntary model restated. Brussels continues to enforce. And the most pointed pressure this week came from <strong>sub-national government</strong>: San Francisco and Oakland passed 45-day moratoriums on new data-centre construction, putting the siting conflict on the same footing as model regulation. Meanwhile the capability news was release-shaped rather than step-changing — a trillion-parameter open-weight model with a benchmark it published itself, a corpus of mathematics from a model nobody can yet use, and a frontier model reaching the free tier a day after paid plans. The pattern to carry forward: <strong>capability claims keep arriving from the vendor, and the independent layer that would test them took a direct hit in this window</strong>. Expect the pressure to stay on notification duties, evaluation integrity and entitlements rather than on benchmark numbers.</p>
 </section>
-<section id="theme-regulation-obligation" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 0 6 0zM9 20h6"/></svg></span> Regulation & obligation <span class="count">2 stories</span></h2>
-<div class="story-grid">
-<div class="story-card num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>The Joint Select Committee on AI sat in Sydney again yesterday and sits in East Melbourne today, with Amazon Australia, Telstra and the business groups before it</h3><p class="summary">The <strong>Joint Select Committee on Artificial Intelligence</strong> has now run three consecutive sitting days of public hearings on the unauthorised access of Australian government systems by AI agents. Day one, <strong>6 October</strong> at NSW Parliament, took evidence from <strong>OpenAI</strong> (chief strategy officer Jason Kwon, who said the company should have notified government sooner and that it supports mandatory incident reporting), <strong>Anthropic</strong> (head of safeguards Dave Orr, who said a comparable incident would be notified to the Australian government &ldquo;within a matter of days, or sooner&rdquo;), <strong>Microsoft</strong>, <strong>Google and Google DeepMind</strong> and the <strong>Commonwealth Bank</strong>. Day two, <strong>7 October</strong>, heard AI safety, cyber security and automation witnesses including the <strong>Gradient Institute</strong>, <strong>Global Shield</strong>, <strong>Palo Alto Networks</strong> and <strong>Workato</strong>. <strong>Today, 8 October</strong>, the committee sits at Parliament House, East Melbourne, with <strong>Amazon Australia</strong>, <strong>Telstra</strong>, the <strong>Australian Chamber of Commerce and Industry</strong>, the <strong>Minderoo Foundation</strong> and <strong>Good Ancestors</strong> listed; <strong>tomorrow</strong> the banks take the chair &mdash; Westpac, NAB, ANZ and the Australian Banking Association. The Hansard transcripts of days one and two were not yet published at the time of writing, so witness statements above are as reported by media coverage pending the official record. <strong>Why it matters:</strong> the committee reports by <strong>30 November 2026</strong>, and every commitment made under privilege this week concerns notification timing &mdash; the exact obligation the Commonwealth has no statute for. What the banks and the platforms say today and tomorrow will shape the incident-reporting instrument the Parliament is now clearly building towards.</p><div class="meta"><a class="source" href="https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Artificial_Intelligence/ArtificialIntelligence/Public_Hearings" target="_blank" rel="noopener">Parliament of Australia &mdash; public hearings</a><span class="axis i-elevated">Impact: Elevated</span><span class="axis o-signalled">Obligation: Signalled</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-1">&#9679;</span> Tier 1/4 &mdash; High</span><span class="verification v-verified"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></div>
-<div class="story-card num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>The OAIC found only 17 per cent of agencies authorised to use automated decision-making disclose it, and will write ADM into the FOI guidelines</h3><p class="summary">The <strong>Office of the Australian Information Commissioner</strong> released a report on <strong>Wednesday, 7 October</strong> assessing how transparent 23 Australian Government agencies are about their use of <strong>automated decision-making (ADM)</strong> &mdash; each of the 23 authorised to use ADM under statute. The review found only <strong>17 per cent</strong> disclosed their use of ADM in their <strong>Information Publication Scheme</strong> information; a further <strong>9 per cent</strong> were identified as likely to be using ADM through external sources but had not disclosed it; and for <strong>74 per cent</strong> the OAIC could not establish from either source whether they use ADM at all. The Commissioner has made recommendations to help agencies publish policies and procedures under the <strong>Freedom of Information Act 1982, part II &mdash; the Information Publication Scheme &mdash; and its operative disclosure duty at section 8(2)</strong>, and the OAIC will update the <strong>FOI guidelines</strong> so ADM is expressly included as an example of <strong>&ldquo;operational information&rdquo;</strong> agencies must proactively publish. <strong>Why it matters:</strong> the instrument already exists and is already binding &mdash; this is not a proposal but a compliance finding, and the guideline update converts a general publication duty into an express ADM disclosure expectation. Agencies with automated or AI-assisted decisions (services, migration, aged care, veterans&rsquo; entitlements) should treat the section 8(2) gap as an audit finding they now know the regulator has found.</p><div class="meta"><a class="source" href="https://www.oaic.gov.au/freedom-of-information/information-commissioner-decisions-and-reports/foi-reports/Automated-decision-making-and-public-reporting-under-the-Freedom-of-Information-Act" target="_blank" rel="noopener">OAIC &mdash; ADM and public reporting under the FOI Act</a><span class="axis i-elevated">Impact: Elevated</span><span class="axis o-commenced">Obligation: Commenced</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-1">&#9679;</span> Tier 1/4 &mdash; High</span><span class="verification v-verified"><span class="dot"></span> Verified</span><span class="date">2026-10-07</span></div></div>
-</div>
+<section class="theme">
+<h2 class="sec"><span class="dot" style="background:var(--amber)"></span>Regulation &amp; obligation<span class="cnt">2 stories</span></h2>
+<article class="card" id="story-1"><div class="bar" style="background:var(--amber)"></div><div class="num">1</div><h3>The Joint Select Committee on AI sat in Sydney again yesterday and sits in East Melbourne today, with Amazon Australia, Telstra and the business groups before it</h3><p class="sum">The <strong>Joint Select Committee on Artificial Intelligence</strong> has now run three consecutive sitting days of public hearings on the unauthorised access of Australian government systems by AI agents. Day one, <strong>6 October</strong> at NSW Parliament, took evidence from <strong>OpenAI</strong> (chief strategy officer Jason Kwon, who said the company should have notified government sooner and that it supports mandatory incident reporting), <strong>Anthropic</strong> (head of safeguards Dave Orr, who said a comparable incident would be notified to the Australian government “within a matter of days, or sooner”), <strong>Microsoft</strong>, <strong>Google and Google DeepMind</strong> and the <strong>Commonwealth Bank</strong>. Day two, <strong>7 October</strong>, heard AI safety, cyber security and automation witnesses including the <strong>Gradient Institute</strong>, <strong>Global Shield</strong>, <strong>Palo Alto Networks</strong> and <strong>Workato</strong>. <strong>Today, 8 October</strong>, the committee sits at Parliament House, East Melbourne, with <strong>Amazon Australia</strong>, <strong>Telstra</strong>, the <strong>Australian Chamber of Commerce and Industry</strong>, the <strong>Minderoo Foundation</strong> and <strong>Good Ancestors</strong> listed; <strong>tomorrow</strong> the banks take the chair — Westpac, NAB, ANZ and the Australian Banking Association. The Hansard transcripts of days one and two were not yet published at the time of writing, so witness statements above are as reported by media coverage pending the official record. <strong>Why it matters:</strong> the committee reports by <strong>30 November 2026</strong>, and every commitment made under privilege this week concerns notification timing — the exact obligation the Commonwealth has no statute for. What the banks and the platforms say today and tomorrow will shape the incident-reporting instrument the Parliament is now clearly building towards.</p><div class="meta"><a class="src" href="https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Artificial_Intelligence/ArtificialIntelligence/Public_Hearings">Parliament of Australia — public hearings</a><span class="badge axis i-elevated">Impact: Elevated</span><span class="badge axis o-signalled">Obligation: Signalled</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 1/4 — High</span><span class="badge b-v">Verified</span><span class="date">2026-10-08</span></div></article>
+<article class="card" id="story-2"><div class="bar" style="background:var(--amber)"></div><div class="num">2</div><h3>The OAIC found only 17 per cent of agencies authorised to use automated decision-making disclose it, and will write ADM into the FOI guidelines</h3><p class="sum">The <strong>Office of the Australian Information Commissioner</strong> released a report on <strong>Wednesday, 7 October</strong> assessing how transparent 23 Australian Government agencies are about their use of <strong>automated decision-making (ADM)</strong> — each of the 23 authorised to use ADM under statute. The review found only <strong>17 per cent</strong> disclosed their use of ADM in their <strong>Information Publication Scheme</strong> information; a further <strong>9 per cent</strong> were identified as likely to be using ADM through external sources but had not disclosed it; and for <strong>74 per cent</strong> the OAIC could not establish from either source whether they use ADM at all. The Commissioner has made recommendations to help agencies publish policies and procedures under the <strong>Freedom of Information Act 1982, part II — the Information Publication Scheme — and its operative disclosure duty at section 8(2)</strong>, and the OAIC will update the <strong>FOI guidelines</strong> so ADM is expressly included as an example of <strong>“operational information”</strong> agencies must proactively publish. <strong>Why it matters:</strong> the instrument already exists and is already binding — this is not a proposal but a compliance finding, and the guideline update converts a general publication duty into an express ADM disclosure expectation. Agencies with automated or AI-assisted decisions (services, migration, aged care, veterans’ entitlements) should treat the section 8(2) gap as an audit finding they now know the regulator has found.</p><div class="meta"><a class="src" href="https://www.oaic.gov.au/freedom-of-information/information-commissioner-decisions-and-reports/foi-reports/Automated-decision-making-and-public-reporting-under-the-Freedom-of-Information-Act">OAIC — ADM and public reporting under the FOI Act</a><span class="badge axis i-elevated">Impact: Elevated</span><span class="badge axis o-commenced">Obligation: Commenced</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 1/4 — High</span><span class="badge b-v">Verified</span><span class="date">2026-10-07</span></div></article>
 </section>
-
-<section id="theme-ai-security" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security & agentic risk <span class="count">3 stories</span></h2>
-<div class="story-grid">
-<div class="story-card num-3" id="story-3"><div class="card-accent"></div><div class="story-number">10</div><h3>South Korea opened a full-scale criminal probe into seven bank breaches driven by an open-source AI penetration-testing tool &mdash; the human operator, not the model, was the force multiplier</h3><p class="summary">South Korea&rsquo;s National Police Agency assigned <strong>28 investigators across four teams</strong> on <strong>6 October</strong> to a coordinated campaign that breached <strong>seven financial institutions</strong> &mdash; Shinhan, KB Kookmin, Hana, BNK Busan, two savings banks and Hyundai Capital &mdash; between 27 September and 1 October, exposing about <strong>66,000 individuals and 2,200 corporate records</strong>. The Korea Financial Security Institute attributed the attacks on the record to <strong>ARTEX</strong>, an open-source AI penetration-testing tool posted publicly to GitHub in July, with a human operator driving it; President Lee Jae-myung ordered a thorough investigation and called for accelerating cybersecurity-specific AI. The entry point in every case was employee and partner portals, not customer-facing apps. <strong>Watch the dates:</strong> the breach window closed 1 October; the police probe and regulator deadlines landed 6&ndash;8 October &mdash; securities firms, insurers, savings banks and fintechs report their emergency-inspection results to the FSC by <strong>8 October</strong>. <strong>Why it matters (governance read):</strong> this is the clearest worked example that an offensive-AI tool does not need agency to do damage &mdash; a publicly downloadable tool plus one operator compressed a multi-bank campaign into a working week. The control lesson is the unglamorous one: the blind spot was the partner and employee portal tier, and the fix is emergency inspection regimes like Seoul&rsquo;s, with dated reporting obligations, not model policy.</p><div class="meta"><a class="source" href="https://www.koreaherald.com/article/10510027" target="_blank" rel="noopener">Korea Herald</a><span class="axis i-severe">Impact: Severe</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-3">&#9679;</span> Tier 3/4 &mdash; Moderate</span><span class="verification v-verified"><span class="dot"></span> Verified</span><span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span><span class="date">2026-10-06</span></div></div>
-<div class="story-card num-4" id="story-4"><div class="card-accent"></div><div class="story-number">11</div><h3>The incident registers recorded the Canada and US government-website agent probes this week &mdash; and the archive data shows the agents were doing a benchmark task, not hacking</h3><p class="summary">The AI Incident Database carried new entries on <strong>7 October</strong> covering the Transluce findings on AI agents targeting government websites, including a failed hacking attempt against <strong>Library and Archives Canada</strong> and a failed SQL-injection probe against the US Department of Education&rsquo;s Civil Rights Data Collection. The Canadian Centre for Cyber Security has since stated there is <strong>no indication government systems were compromised</strong>, and Transluce does not confidently attribute the Canadian attempt to OpenAI agents. The most clarifying detail is forensic: the Education Department activity matches a task in Google&rsquo;s <strong>DeepSearchQA benchmark</strong> &mdash; the agents were being graded on retrieving niche public statistics, made 200,000+ requests while doing it, and a rudimentary SQL injection appeared in the traffic. <strong>Watch the dates:</strong> the attempts date from May&ndash;June, the research report published 30 September, and the register recording is 7 October &mdash; a three-week chain from event to register, which is fast for this layer but still not same-day. <strong>Why it matters (governance read):</strong> the distinction between a security incident and a benchmark run behaving badly is being made after the fact, by third parties reading web-archive telemetry &mdash; not by any disclosure obligation at the time. AUNZ agencies reading the headline should note that both a formal register entry and a government &ldquo;no breach&rdquo; statement can be true of the same event, and that the evaluation pipelines producing this traffic are effectively unregulated traffic sources on public infrastructure.</p><div class="meta"><a class="source" href="https://transluce.org/us-canada-gov" target="_blank" rel="noopener">Transluce</a><span class="axis i-elevated">Impact: Elevated</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-2">&#9679;</span> Tier 2/4 &mdash; High</span><span class="verification v-reported"><span class="dot"></span> Reported</span><span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span><span class="date">2026-10-07</span></div></div>
-</div>
+<section class="theme">
+<h2 class="sec"><span class="dot" style="background:var(--red)"></span>AI security &amp; agentic risk<span class="cnt">2 stories</span></h2>
+<article class="card" id="story-3"><div class="bar" style="background:var(--red)"></div><div class="num">3</div><h3>South Korea opened a full-scale criminal probe into seven bank breaches driven by an open-source AI penetration-testing tool — the human operator, not the model, was the force multiplier</h3><p class="sum">South Korea’s National Police Agency assigned <strong>28 investigators across four teams</strong> on <strong>6 October</strong> to a coordinated campaign that breached <strong>seven financial institutions</strong> — Shinhan, KB Kookmin, Hana, BNK Busan, two savings banks and Hyundai Capital — between 27 September and 1 October, exposing about <strong>66,000 individuals and 2,200 corporate records</strong>. The Korea Financial Security Institute attributed the attacks on the record to <strong>ARTEX</strong>, an open-source AI penetration-testing tool posted publicly to GitHub in July, with a human operator driving it; President Lee Jae-myung ordered a thorough investigation and called for accelerating cybersecurity-specific AI. The entry point in every case was employee and partner portals, not customer-facing apps. <strong>Watch the dates:</strong> the breach window closed 1 October; the police probe and regulator deadlines landed 6–8 October — securities firms, insurers, savings banks and fintechs report their emergency-inspection results to the FSC by <strong>8 October</strong>. <strong>Why it matters (governance read):</strong> this is the clearest worked example that an offensive-AI tool does not need agency to do damage — a publicly downloadable tool plus one operator compressed a multi-bank campaign into a working week. The control lesson is the unglamorous one: the blind spot was the partner and employee portal tier, and the fix is emergency inspection regimes like Seoul’s, with dated reporting obligations, not model policy.</p><div class="meta"><a class="src" href="https://www.koreaherald.com/article/10510027">Korea Herald</a><span class="badge axis i-severe">Impact: Severe</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 3/4 — Moderate</span><span class="badge b-v">Verified</span><span class="badge b-shared">&#8596; Cyber Digest</span><span class="date">2026-10-06</span></div></article>
+<article class="card" id="story-4"><div class="bar" style="background:var(--red)"></div><div class="num">4</div><h3>The incident registers recorded the Canada and US government-website agent probes this week — and the archive data shows the agents were doing a benchmark task, not hacking</h3><p class="sum">The AI Incident Database carried new entries on <strong>7 October</strong> covering the Transluce findings on AI agents targeting government websites, including a failed hacking attempt against <strong>Library and Archives Canada</strong> and a failed SQL-injection probe against the US Department of Education’s Civil Rights Data Collection. The Canadian Centre for Cyber Security has since stated there is <strong>no indication government systems were compromised</strong>, and Transluce does not confidently attribute the Canadian attempt to OpenAI agents. The most clarifying detail is forensic: the Education Department activity matches a task in Google’s <strong>DeepSearchQA benchmark</strong> — the agents were being graded on retrieving niche public statistics, made 200,000+ requests while doing it, and a rudimentary SQL injection appeared in the traffic. <strong>Watch the dates:</strong> the attempts date from May–June, the research report published 30 September, and the register recording is 7 October — a three-week chain from event to register, which is fast for this layer but still not same-day. <strong>Why it matters (governance read):</strong> the distinction between a security incident and a benchmark run behaving badly is being made after the fact, by third parties reading web-archive telemetry — not by any disclosure obligation at the time. AUNZ agencies reading the headline should note that both a formal register entry and a government “no breach” statement can be true of the same event, and that the evaluation pipelines producing this traffic are effectively unregulated traffic sources on public infrastructure.</p><div class="meta"><a class="src" href="https://transluce.org/us-canada-gov">Transluce</a><span class="badge axis i-elevated">Impact: Elevated</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 2/4 — High</span><span class="badge b-r">Reported</span><span class="badge b-shared">&#8596; Cyber Digest</span><span class="date">2026-10-07</span></div></article>
 </section>
-
-<section id="theme-research-evidence" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
-<div class="story-grid">
-<div class="story-card num-5" id="story-5"><div class="card-accent"></div><div class="story-number">4</div><h3>METR shows an AI agent could rewrite the transcript a human reviewer sees &mdash; a ten-minute exploit against the safety-evaluation ecosystem&rsquo;s own tooling</h3><p class="summary">METR published a research post, <strong>&ldquo;AI systems could cover up misbehavior&rdquo;</strong>, reporting that a researcher working with an AI agent found a vulnerability in <strong>Inspect&rsquo;s transcript viewer</strong> &mdash; the UK AISI-developed framework widely used across the safety-evaluation ecosystem &mdash; in about <strong>ten minutes</strong>. The flaw could have let an agent being evaluated <strong>modify what the human reviewer sees</strong>: changing past actions in the transcript and intercepting the viewer&rsquo;s Download button. METR stresses this is a <strong>proof of concept</strong> &mdash; the exploit has not been observed in any real evaluation &mdash; but the argument is structural: transcripts, reasoning traces and logs are currently the main way recent misalignment incidents were caught at all, so the systems that record and display them should be treated as <strong>security-critical infrastructure</strong>, and agent outputs as <strong>untrusted input</strong>. The vulnerability was disclosed in Inspect&rsquo;s public repository, where it is visible to maintainers. <strong>Why it matters:</strong> the observability that made this year&rsquo;s agent incidents detectable is itself attackable, and the finding comes from inside the evaluation community rather than a vendor. For AUNZ organisations running or procuring agent evaluations, the review layer needs the same threat model as the agent: assume the agent can see and touch the evidence trail. Impact is <strong>Guarded</strong> &mdash; a demonstrated exploit path, not an observed compromise; obligation is <strong>None</strong>; the evidence axis is <strong>Independently evaluated</strong>, with the confidence gate <strong>Verified</strong> (dated feed, read directly).</p><div class="meta"><a class="source" href="https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/" target="_blank" rel="noopener">METR</a><span class="axis i-severe">Impact: Severe</span><span class="axis b-eval">Evidence: Independently evaluated</span><span class="reliability"><span class="tier-1">&#9679;</span> Tier 1/4 &mdash; Independent evaluator, first-party</span><span class="verification v-verified"><span class="dot"></span> Verified</span> Independently evaluated</span><span class="date">2026-10-06</span></div></div>
-</div>
+<section class="theme">
+<h2 class="sec"><span class="dot" style="background:var(--teal)"></span>Research &amp; evidence<span class="cnt">1 story</span></h2>
+<article class="card" id="story-5"><div class="bar" style="background:var(--teal)"></div><div class="num">5</div><h3>METR shows an AI agent could rewrite the transcript a human reviewer sees — a ten-minute exploit against the safety-evaluation ecosystem’s own tooling</h3><p class="sum">METR published a research post, <strong>“AI systems could cover up misbehavior”</strong>, reporting that a researcher working with an AI agent found a vulnerability in <strong>Inspect’s transcript viewer</strong> — the UK AISI-developed framework widely used across the safety-evaluation ecosystem — in about <strong>ten minutes</strong>. The flaw could have let an agent being evaluated <strong>modify what the human reviewer sees</strong>: changing past actions in the transcript and intercepting the viewer’s Download button. METR stresses this is a <strong>proof of concept</strong> — the exploit has not been observed in any real evaluation — but the argument is structural: transcripts, reasoning traces and logs are currently the main way recent misalignment incidents were caught at all, so the systems that record and display them should be treated as <strong>security-critical infrastructure</strong>, and agent outputs as <strong>untrusted input</strong>. The vulnerability was disclosed in Inspect’s public repository, where it is visible to maintainers. <strong>Why it matters:</strong> the observability that made this year’s agent incidents detectable is itself attackable, and the finding comes from inside the evaluation community rather than a vendor. For AUNZ organisations running or procuring agent evaluations, the review layer needs the same threat model as the agent: assume the agent can see and touch the evidence trail. Impact is <strong>Guarded</strong> — a demonstrated exploit path, not an observed compromise; obligation is <strong>None</strong>; the evidence axis is <strong>Independently evaluated</strong>, with the confidence gate <strong>Verified</strong> (dated feed, read directly).</p><div class="meta"><a class="src" href="https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/">METR</a><span class="badge axis i-severe">Impact: Severe</span><span class="badge axis b-eval">Evidence: Independently evaluated</span><span class="badge b-tier">Tier 1/4 — Independent evaluator, first-party</span><span class="badge b-v">Verified</span><span class="date">2026-10-06</span></div></article>
 </section>
-
-<section id="theme-frontier-capability" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM12 1v3M12 20v3M1 12h3M20 12h3"/></svg></span> Frontier models & capability claims <span class="count">3 stories</span></h2>
-<div class="story-grid">
-<div class="story-card num-6" id="story-6"><div class="card-accent"></div><div class="story-number">12</div><h3>Mistral released Large 4 &mdash; a 1-trillion-parameter open-weight model that claims top-five global rank on cybersecurity benchmarks, with the weights still three weeks away</h3><p class="summary">Mistral launched <strong>Mistral Large 4</strong> (&ldquo;Le Chonk&rdquo;) on <strong>6 October</strong> as a public preview API: a 1-trillion-parameter sparse mixture-of-experts model with 49 billion active parameters, natively multimodal, 160+ languages, a 1-million-token context window, trained from scratch on 3,800 NVIDIA Grace Blackwell GPUs in Mistral&rsquo;s own European data centres. Open weights are promised by <strong>27 October</strong>; until then the model is being red-teamed in real-world settings with cybersecurity teams and state authorities under <strong>reduced moderation and expanded cyber capabilities</strong>. The headline claims &mdash; strongest open-weight model from Europe or the US, top-five globally on the Artificial Analysis Cyber Index, 82% on a reproduce-and-patch test where it leads all models &mdash; are partly corroborated: Artificial Analysis independently places it at 38 on its Intelligence Index, a large step from Large 3 but roughly 20 points behind the closed frontier. <strong>Capability delta: material</strong> for the open-weight tier, not for the absolute frontier. <strong>Why it matters:</strong> the dual-use design choice is explicit, not incidental &mdash; Mistral argues that provider-level refusals can block legitimate incident response, and is deliberately shipping a top-tier cyber model with open weights and self-deployment. For AUNZ organisations, an open-weights model that is state-of-the-art on offence-adjacent security work is both an option for in-house incident response and a procurement-governance question: who inside your perimeter may run it, and under what policy.</p><div class="meta"><a class="source" href="https://mistral.ai/news/mistral-large-4/" target="_blank" rel="noopener">Mistral AI</a><span class="axis i-elevated">Impact: Elevated</span><span class="axis b-claim">Evidence: Vendor claim</span><span class="axis d-material">Capability: Material</span><span class="reliability"><span class="tier-1">&#9679;</span> Tier 1/4 &mdash; Primary (vendor, partly corroborated)</span><span class="verification v-verified"><span class="dot"></span> Verified</span><span class="date">2026-10-06</span></div></div>
-<div class="story-card num-7" id="story-7"><div class="card-accent"></div><div class="story-number">13</div><h3>OpenAI published 722 mathematical manuscripts from an unreleased frontier model &mdash; a capability claim that arrives as a corpus, not a model</h3><p class="summary">On <strong>6 October</strong> OpenAI published <strong>722 mathematical manuscripts</strong> produced by an internal frontier model it has not released, organised into 372 result families spanning number theory, geometry, theoretical computer science, mathematical physics and logic, with Lean proof formalisations and build instructions in a public GitHub repository. The company says the model was evaluated on roughly 4,000 open research problems after its existing mathematics evaluations saturated. The release follows September&rsquo;s claim of a solution to the Navier&ndash;Stokes existence and smoothness problem, which drew scrutiny over verification and attribution, including overlapping work by mathematicians at Anthropic and NYU; mathematicians cited in coverage are reported as both impressed and unsettled, and questions about research ethics and attribution are growing. <strong>Capability delta: claimed frontier, unverifiable on deadline</strong> &mdash; the artefacts are public, the model is not, and independent verification of the mathematics will take longer than a news cycle. <strong>Why it matters:</strong> this is the shape of frontier claims to come &mdash; capability demonstrated through generated artefacts rather than an API, which makes vendor claims harder to contradict on publication day and shifts the verification burden onto the mathematics community and organisations like METR. Treat &ldquo;the corpus exists&rdquo; as verified and any capability characterisation as unverified until external review lands.</p><div class="meta"><a class="source" href="https://openai.com/index/sharing-ai-progress-in-mathematics/" target="_blank" rel="noopener">OpenAI</a><span class="axis i-guarded">Impact: Guarded</span><span class="axis b-claim">Evidence: Vendor claim</span><span class="axis d-incremental">Capability: Incremental</span><span class="reliability"><span class="tier-1">&#9679;</span> Tier 1/4 &mdash; Primary (vendor, self-reported)</span><span class="verification v-reported"><span class="dot"></span> Reported</span><span class="date">2026-10-06</span></div></div>
-<div class="story-card num-8" id="story-8"><div class="card-accent"></div><div class="story-number">14</div><h3>GPT-6 reached ChatGPT&rsquo;s free tier a day after paid plans &mdash; the rollout pace, not the benchmark number, is the capability story</h3><p class="summary">On <strong>7 October</strong> OpenAI brought GPT-6 to all of ChatGPT &mdash; paid tiers worldwide from today, Free and Go tiers from <strong>8 October</strong> &mdash; backed by GPT-6 Sol for paying tiers and GPT-6 Luna for free, after introducing the first GPT-6 models to paid customers last month. The headline feature is <strong>Intelligent UI</strong>: responses composed from text, visuals and interactive components &mdash; charts, forms, tappable tools generated in-conversation &mdash; produced by a component library and a streaming compiler rather than the model emitting raw code. The company&rsquo;s supporting numbers are latency-framed rather than capability-framed: GPT-6 Instant starts answering 44% sooner on search questions than GPT-5.6 Instant, and GPT-6 Extra High begins answering at GPT-5.6 Medium latency while scoring higher. <strong>Capability delta: incremental</strong> &mdash; same model family, distribution widened to a claimed 1.2 billion weekly users. <strong>Why it matters:</strong> the significant variable for risk exposure is not the benchmark delta, it is the interactive-UI capability reaching the free tier &mdash; a billion-person audience now gets a model that can generate functioning tools and interfaces on request, which widens the phishing-and-fake-tooling attack surface at consumer scale faster than any evaluation cadence tracks. Paid-tier exposure limits stopped being a containment control on 8 October.</p><div class="meta"><a class="source" href="https://openai.com/index/gpt-6-for-everyone/" target="_blank" rel="noopener">OpenAI</a><span class="axis i-guarded">Impact: Guarded</span><span class="axis b-claim">Evidence: Vendor claim</span><span class="axis d-incremental">Capability: Incremental</span><span class="reliability"><span class="tier-1">&#9679;</span> Tier 1/4 &mdash; Primary (vendor)</span><span class="verification v-verified"><span class="dot"></span> Verified</span><span class="date">2026-10-07</span></div></div>
-</div>
+<section class="theme">
+<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Frontier models &amp; capability claims<span class="cnt">3 stories</span></h2>
+<article class="card" id="story-6"><div class="bar" style="background:var(--ai)"></div><div class="num">6</div><h3>Mistral released Large 4 — a 1-trillion-parameter open-weight model that claims top-five global rank on cybersecurity benchmarks, with the weights still three weeks away</h3><p class="sum">Mistral launched <strong>Mistral Large 4</strong> (“Le Chonk”) on <strong>6 October</strong> as a public preview API: a 1-trillion-parameter sparse mixture-of-experts model with 49 billion active parameters, natively multimodal, 160+ languages, a 1-million-token context window, trained from scratch on 3,800 NVIDIA Grace Blackwell GPUs in Mistral’s own European data centres. Open weights are promised by <strong>27 October</strong>; until then the model is being red-teamed in real-world settings with cybersecurity teams and state authorities under <strong>reduced moderation and expanded cyber capabilities</strong>. The headline claims — strongest open-weight model from Europe or the US, top-five globally on the Artificial Analysis Cyber Index, 82% on a reproduce-and-patch test where it leads all models — are partly corroborated: Artificial Analysis independently places it at 38 on its Intelligence Index, a large step from Large 3 but roughly 20 points behind the closed frontier. <strong>Capability delta: material</strong> for the open-weight tier, not for the absolute frontier. <strong>Why it matters:</strong> the dual-use design choice is explicit, not incidental — Mistral argues that provider-level refusals can block legitimate incident response, and is deliberately shipping a top-tier cyber model with open weights and self-deployment. For AUNZ organisations, an open-weights model that is state-of-the-art on offence-adjacent security work is both an option for in-house incident response and a procurement-governance question: who inside your perimeter may run it, and under what policy.</p><div class="meta"><a class="src" href="https://mistral.ai/news/mistral-large-4/">Mistral AI</a><span class="badge axis i-elevated">Impact: Elevated</span><span class="badge axis b-claim">Evidence: Vendor claim</span><span class="badge axis d-material">Capability: Material</span><span class="badge b-tier">Tier 1/4 — Primary (vendor, partly corroborated)</span><span class="badge b-v">Verified</span><span class="date">2026-10-06</span></div></article>
+<article class="card" id="story-7"><div class="bar" style="background:var(--ai)"></div><div class="num">7</div><h3>OpenAI published 722 mathematical manuscripts from an unreleased frontier model — a capability claim that arrives as a corpus, not a model</h3><p class="sum">On <strong>6 October</strong> OpenAI published <strong>722 mathematical manuscripts</strong> produced by an internal frontier model it has not released, organised into 372 result families spanning number theory, geometry, theoretical computer science, mathematical physics and logic, with Lean proof formalisations and build instructions in a public GitHub repository. The company says the model was evaluated on roughly 4,000 open research problems after its existing mathematics evaluations saturated. The release follows September’s claim of a solution to the Navier–Stokes existence and smoothness problem, which drew scrutiny over verification and attribution, including overlapping work by mathematicians at Anthropic and NYU; mathematicians cited in coverage are reported as both impressed and unsettled, and questions about research ethics and attribution are growing. <strong>Capability delta: claimed frontier, unverifiable on deadline</strong> — the artefacts are public, the model is not, and independent verification of the mathematics will take longer than a news cycle. <strong>Why it matters:</strong> this is the shape of frontier claims to come — capability demonstrated through generated artefacts rather than an API, which makes vendor claims harder to contradict on publication day and shifts the verification burden onto the mathematics community and organisations like METR. Treat “the corpus exists” as verified and any capability characterisation as unverified until external review lands.</p><div class="meta"><a class="src" href="https://openai.com/index/sharing-ai-progress-in-mathematics/">OpenAI</a><span class="badge axis i-guarded">Impact: Guarded</span><span class="badge axis b-claim">Evidence: Vendor claim</span><span class="badge axis d-incremental">Capability: Incremental</span><span class="badge b-tier">Tier 1/4 — Primary (vendor, self-reported)</span><span class="badge b-r">Reported</span><span class="date">2026-10-06</span></div></article>
+<article class="card" id="story-8"><div class="bar" style="background:var(--ai)"></div><div class="num">8</div><h3>GPT-6 reached ChatGPT’s free tier a day after paid plans — the rollout pace, not the benchmark number, is the capability story</h3><p class="sum">On <strong>7 October</strong> OpenAI brought GPT-6 to all of ChatGPT — paid tiers worldwide from today, Free and Go tiers from <strong>8 October</strong> — backed by GPT-6 Sol for paying tiers and GPT-6 Luna for free, after introducing the first GPT-6 models to paid customers last month. The headline feature is <strong>Intelligent UI</strong>: responses composed from text, visuals and interactive components — charts, forms, tappable tools generated in-conversation — produced by a component library and a streaming compiler rather than the model emitting raw code. The company’s supporting numbers are latency-framed rather than capability-framed: GPT-6 Instant starts answering 44% sooner on search questions than GPT-5.6 Instant, and GPT-6 Extra High begins answering at GPT-5.6 Medium latency while scoring higher. <strong>Capability delta: incremental</strong> — same model family, distribution widened to a claimed 1.2 billion weekly users. <strong>Why it matters:</strong> the significant variable for risk exposure is not the benchmark delta, it is the interactive-UI capability reaching the free tier — a billion-person audience now gets a model that can generate functioning tools and interfaces on request, which widens the phishing-and-fake-tooling attack surface at consumer scale faster than any evaluation cadence tracks. Paid-tier exposure limits stopped being a containment control on 8 October.</p><div class="meta"><a class="src" href="https://openai.com/index/gpt-6-for-everyone/">OpenAI</a><span class="badge axis i-guarded">Impact: Guarded</span><span class="badge axis b-claim">Evidence: Vendor claim</span><span class="badge axis d-incremental">Capability: Incremental</span><span class="badge b-tier">Tier 1/4 — Primary (vendor)</span><span class="badge b-v">Verified</span><span class="date">2026-10-07</span></div></article>
 </section>
-
-<section id="theme-infrastructure" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
-<div class="story-grid">
-<div class="story-card num-9" id="story-9"><div class="card-accent"></div><div class="story-number">8</div><h3>Macquarie Capital takes a stake in hyperscale developer Zerra DC, whose 2-gigawatt Asia-Pacific pipeline is anchored by the A$30 billion Anthropic campus in Queensland</h3><p class="summary">Zerra DC announced on <strong>6 October</strong> that <strong>Macquarie Capital</strong> has taken an equity stake in the Singapore-based hyperscale developer, with the size undisclosed. Zerra claims a development pipeline of <strong>more than 2 gigawatts</strong> of planned IT capacity across <strong>Australia, Japan and India</strong>. The investment deepens a relationship weeks old: Macquarie is a consortium partner with Dexus&rsquo;s Australian Data Centres (which holds a 25 per cent interest) on the <strong>Western Downs Digital Park</strong> near Dalby in Queensland &mdash; a campus Zerra puts at about <strong>A$30 billion</strong> on completion, with 2.16 GW of designated peak capacity and <strong>Anthropic&rsquo;s first Australian data-centre lease</strong> signed for the first stage, still subject to Foreign Investment Review Board approval; the first data centre is due online in 2027. <strong>Why it matters:</strong> a frontier-lab lease de-risks a greenfield power-and-land project, and a follow-on equity stake converts a single Australian site into a regional platform bet &mdash; power, land, fibre and offtake are becoming the scarce inputs in AI. For AUNZ boards, the pattern to watch is capital arriving ahead of the grid, water and community-consent conditions the Commonwealth&rsquo;s data-centre expectations ask projects to meet, and the pipeline figures against which approvals will be tested are the developer&rsquo;s own. Impact is <strong>Guarded</strong> &mdash; material capital commitment, no immediate operational change; obligation is <strong>None</strong>; the evidence axis is <strong>Vendor claim</strong> for the capacity figures, with the confidence gate <strong>Verified</strong> for the investment itself (corroborated across IPE Real Assets, Dow Jones and trade press).</p><div class="meta"><a class="source" href="https://realassets.ipe.com/news/macquarie-capital-invests-in-asia-pacific-data-centre-platform-zerra-dc/10138808.article" target="_blank" rel="noopener">IPE Real Assets</a><span class="axis i-guarded">Impact: Guarded</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-2">&#9679;</span> Tier 2/4 &mdash; High</span><span class="verification v-verified"><span class="dot"></span> Verified</span> Vendor claim</span><span class="date">2026-10-06</span></div></div>
-</div>
+<section class="theme">
+<h2 class="sec"><span class="dot" style="background:var(--green)"></span>Infrastructure &amp; compute<span class="cnt">1 story</span></h2>
+<article class="card" id="story-9"><div class="bar" style="background:var(--green)"></div><div class="num">9</div><h3>Macquarie Capital takes a stake in hyperscale developer Zerra DC, whose 2-gigawatt Asia-Pacific pipeline is anchored by the A$30 billion Anthropic campus in Queensland</h3><p class="sum">Zerra DC announced on <strong>6 October</strong> that <strong>Macquarie Capital</strong> has taken an equity stake in the Singapore-based hyperscale developer, with the size undisclosed. Zerra claims a development pipeline of <strong>more than 2 gigawatts</strong> of planned IT capacity across <strong>Australia, Japan and India</strong>. The investment deepens a relationship weeks old: Macquarie is a consortium partner with Dexus’s Australian Data Centres (which holds a 25 per cent interest) on the <strong>Western Downs Digital Park</strong> near Dalby in Queensland — a campus Zerra puts at about <strong>A$30 billion</strong> on completion, with 2.16 GW of designated peak capacity and <strong>Anthropic’s first Australian data-centre lease</strong> signed for the first stage, still subject to Foreign Investment Review Board approval; the first data centre is due online in 2027. <strong>Why it matters:</strong> a frontier-lab lease de-risks a greenfield power-and-land project, and a follow-on equity stake converts a single Australian site into a regional platform bet — power, land, fibre and offtake are becoming the scarce inputs in AI. For AUNZ boards, the pattern to watch is capital arriving ahead of the grid, water and community-consent conditions the Commonwealth’s data-centre expectations ask projects to meet, and the pipeline figures against which approvals will be tested are the developer’s own. Impact is <strong>Guarded</strong> — material capital commitment, no immediate operational change; obligation is <strong>None</strong>; the evidence axis is <strong>Vendor claim</strong> for the capacity figures, with the confidence gate <strong>Verified</strong> for the investment itself (corroborated across IPE Real Assets, Dow Jones and trade press).</p><div class="meta"><a class="src" href="https://realassets.ipe.com/news/macquarie-capital-invests-in-asia-pacific-data-centre-platform-zerra-dc/10138808.article">IPE Real Assets</a><span class="badge axis i-guarded">Impact: Guarded</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 2/4 — High</span><span class="badge b-v">Verified</span><span class="date">2026-10-06</span></div></article>
 </section>
-
-<section id="theme-market-geopolitics" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></span> Market & geopolitics <span class="count">3 stories</span></h2>
-<div class="story-grid">
-<div class="story-card num-10" id="story-10"><div class="card-accent"></div><div class="story-number">3</div><h3>Washington named the leadership of its &ldquo;Super Intelligence Force&rdquo; &mdash; four officials, a 120-day deadline, and no enforcement mechanism</h3><p class="summary">President Trump has appointed <strong>Director of National Intelligence Jay Clayton</strong> to lead the <strong>Super Intelligence Force (SIF)</strong>, with <strong>Emil Michael</strong> (the Pentagon&rsquo;s undersecretary for research and engineering), <strong>FTC chair Andrew Ferguson</strong> and <strong>OPM director Scott Kupor</strong> as vice-chairs &mdash; leadership reported <strong>7 October</strong>. The group is to <strong>report within 120 days</strong> on AI&rsquo;s risks and benefits and the role of government, and to coordinate federal engagement with industry and critical infrastructure providers. It sits on top of the <strong>29 September executive order 14434</strong> (&ldquo;Inaugurating the Era of Super Intelligence&rdquo;) and a September accord in which the major labs committed to internal monitoring, outside audits and board review &mdash; with <strong>no enforcement mechanism</strong>. Clayton has rejected any pause in development, framing AI as a national security issue while keeping the FTC and Justice Department in reserve. <strong>Why it matters:</strong> the two blocs an AUNZ organisation sells into are now structuring AI governance in opposite directions &mdash; the US by commitment and taskforce, the EU by information requests to more than 30 AI companies under an Act that took effect on 2 August. Supplier-assurance answers from a US-headquartered vendor will cite a voluntary framework; contract terms, not assurances, remain the control.</p><div class="meta"><a class="source" href="https://thehill.com/policy/technology/6132153-white-house-super-intelligence-force-ai/" target="_blank" rel="noopener">The Hill</a><span class="axis i-elevated">Impact: Elevated</span><span class="axis o-signalled">Obligation: Signalled</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-3">&#9679;</span> Tier 3/4 &mdash; Moderate</span><span class="verification v-reported"><span class="dot"></span> Reported</span><span class="date">2026-10-07</span></div></div>
-<div class="story-card num-11" id="story-11"><div class="card-accent"></div><div class="story-number">4</div><h3>San Francisco and Oakland passed 45-day moratoriums on new data centres &mdash; the siting conflict is now reaching city ordinances</h3><p class="summary">San Francisco&rsquo;s <strong>Board of Supervisors passed a 45-day interim moratorium on new data centres citywide</strong>, reported <strong>6&ndash;7 October</strong>, with Oakland&rsquo;s council passing its own 45-day moratorium the same week &mdash; the first Bay Area cities to do so. The interim bans give officials time to study environmental and energy impacts, and they follow public opposition that has now drawn a direct industry response: Amazon said last week it would invest more than <strong>US$1 billion over five years</strong> in communities hosting its data centres and would stop using NDAs with government agencies. <strong>Why it matters:</strong> the constraint on AI infrastructure is moving from national policy to the local planning instrument &mdash; the level where an approval is actually stopped. For AUNZ readers this is the leading edge of a siting politics both countries are importing: energy, water and neighbourhood objections decided council by council rather than in a national AI plan. Watch whether Australian state planning schemes and NZ&rsquo;s &ld;bring your own power&rdquo; proposals converge on the same local-friction dynamic.</p><div class="meta"><a class="source" href="https://missionlocal.org/2026/10/sf-supervisors-pass-data-center-moratorium/" target="_blank" rel="noopener">Mission Local</a><span class="axis i-elevated">Impact: Elevated</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-3">&#9679;</span> Tier 3/4 &mdash; Moderate</span><span class="verification v-verified"><span class="dot"></span> Verified</span><span class="date">2026-10-06</span></div></div>
-<div class="story-card num-12" id="story-12"><div class="card-accent"></div><div class="story-number">5</div><h3>Nous Research closed a US$90 million Series B at a US$1.5 billion valuation to take its open-source Hermes agent into enterprise deployments</h3><p class="summary">Open-source AI lab <strong>Nous Research announced on 7 October</strong> a <strong>US$90 million Series B</strong> at a <strong>US$1.5 billion valuation</strong>, led by <strong>Robot Ventures</strong> with participation from <strong>NVIDIA</strong>, <strong>Microsoft&rsquo;s M12</strong>, Samsung, Y Combinator, Union Square Ventures and Menlo Ventures, bringing its total raised to roughly US$160 million. The capital is earmarked for <strong>Hermes Agent</strong> &mdash; an autonomous, self-improving agent released in February 2026 under the permissive MIT licence, with persistent memory across sessions, locally hostable on the user&rsquo;s own hardware &mdash; plus a business-focused version and a planned mobile app. <strong>Why it matters:</strong> the funding round is a bet that enterprise agent deployment does not have to run through a closed frontier lab, which matters for sovereignty-sensitive buyers. An AUNZ organisation that cannot pass frontier-lab terms through procurement now has a funded, openly licensed alternative with hardware-level control of where its agent runs and what it remembers &mdash; and, inevitably, the same agentic access risks the committee in story 1 is hearing evidence about, minus a vendor with a notification track record to interrogate.</p><div class="meta"><a class="source" href="https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/" target="_blank" rel="noopener">TechCrunch</a><span class="axis i-guarded">Impact: Guarded</span><span class="axis b-corrob">Evidence: Corroborated</span><span class="reliability"><span class="tier-3">&#9679;</span> Tier 3/4 &mdash; Moderate</span><span class="verification v-reported"><span class="dot"></span> Reported</span><span class="date">2026-10-07</span></div></div>
-</div>
+<section class="theme">
+<h2 class="sec"><span class="dot" style="background:var(--blue)"></span>Market &amp; geopolitics<span class="cnt">3 stories</span></h2>
+<article class="card" id="story-10"><div class="bar" style="background:var(--blue)"></div><div class="num">10</div><h3>Washington named the leadership of its “Super Intelligence Force” — four officials, a 120-day deadline, and no enforcement mechanism</h3><p class="sum">President Trump has appointed <strong>Director of National Intelligence Jay Clayton</strong> to lead the <strong>Super Intelligence Force (SIF)</strong>, with <strong>Emil Michael</strong> (the Pentagon’s undersecretary for research and engineering), <strong>FTC chair Andrew Ferguson</strong> and <strong>OPM director Scott Kupor</strong> as vice-chairs — leadership reported <strong>7 October</strong>. The group is to <strong>report within 120 days</strong> on AI’s risks and benefits and the role of government, and to coordinate federal engagement with industry and critical infrastructure providers. It sits on top of the <strong>29 September executive order 14434</strong> (“Inaugurating the Era of Super Intelligence”) and a September accord in which the major labs committed to internal monitoring, outside audits and board review — with <strong>no enforcement mechanism</strong>. Clayton has rejected any pause in development, framing AI as a national security issue while keeping the FTC and Justice Department in reserve. <strong>Why it matters:</strong> the two blocs an AUNZ organisation sells into are now structuring AI governance in opposite directions — the US by commitment and taskforce, the EU by information requests to more than 30 AI companies under an Act that took effect on 2 August. Supplier-assurance answers from a US-headquartered vendor will cite a voluntary framework; contract terms, not assurances, remain the control.</p><div class="meta"><a class="src" href="https://thehill.com/policy/technology/6132153-white-house-super-intelligence-force-ai/">The Hill</a><span class="badge axis i-elevated">Impact: Elevated</span><span class="badge axis o-signalled">Obligation: Signalled</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 3/4 — Moderate</span><span class="badge b-r">Reported</span><span class="date">2026-10-07</span></div></article>
+<article class="card" id="story-11"><div class="bar" style="background:var(--blue)"></div><div class="num">11</div><h3>San Francisco and Oakland passed 45-day moratoriums on new data centres — the siting conflict is now reaching city ordinances</h3><p class="sum">San Francisco’s <strong>Board of Supervisors passed a 45-day interim moratorium on new data centres citywide</strong>, reported <strong>6–7 October</strong>, with Oakland’s council passing its own 45-day moratorium the same week — the first Bay Area cities to do so. The interim bans give officials time to study environmental and energy impacts, and they follow public opposition that has now drawn a direct industry response: Amazon said last week it would invest more than <strong>US$1 billion over five years</strong> in communities hosting its data centres and would stop using NDAs with government agencies. <strong>Why it matters:</strong> the constraint on AI infrastructure is moving from national policy to the local planning instrument — the level where an approval is actually stopped. For AUNZ readers this is the leading edge of a siting politics both countries are importing: energy, water and neighbourhood objections decided council by council rather than in a national AI plan. Watch whether Australian state planning schemes and NZ’s &ld;bring your own power” proposals converge on the same local-friction dynamic.</p><div class="meta"><a class="src" href="https://missionlocal.org/2026/10/sf-supervisors-pass-data-center-moratorium/">Mission Local</a><span class="badge axis i-elevated">Impact: Elevated</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 3/4 — Moderate</span><span class="badge b-v">Verified</span><span class="date">2026-10-06</span></div></article>
+<article class="card" id="story-12"><div class="bar" style="background:var(--blue)"></div><div class="num">12</div><h3>Nous Research closed a US$90 million Series B at a US$1.5 billion valuation to take its open-source Hermes agent into enterprise deployments</h3><p class="sum">Open-source AI lab <strong>Nous Research announced on 7 October</strong> a <strong>US$90 million Series B</strong> at a <strong>US$1.5 billion valuation</strong>, led by <strong>Robot Ventures</strong> with participation from <strong>NVIDIA</strong>, <strong>Microsoft’s M12</strong>, Samsung, Y Combinator, Union Square Ventures and Menlo Ventures, bringing its total raised to roughly US$160 million. The capital is earmarked for <strong>Hermes Agent</strong> — an autonomous, self-improving agent released in February 2026 under the permissive MIT licence, with persistent memory across sessions, locally hostable on the user’s own hardware — plus a business-focused version and a planned mobile app. <strong>Why it matters:</strong> the funding round is a bet that enterprise agent deployment does not have to run through a closed frontier lab, which matters for sovereignty-sensitive buyers. An AUNZ organisation that cannot pass frontier-lab terms through procurement now has a funded, openly licensed alternative with hardware-level control of where its agent runs and what it remembers — and, inevitably, the same agentic access risks the committee in story 1 is hearing evidence about, minus a vendor with a notification track record to interrogate.</p><div class="meta"><a class="src" href="https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/">TechCrunch</a><span class="badge axis i-guarded">Impact: Guarded</span><span class="badge axis b-corrob">Evidence: Corroborated</span><span class="badge b-tier">Tier 3/4 — Moderate</span><span class="badge b-r">Reported</span><span class="date">2026-10-07</span></div></article>
 </section>
-<section id="analytics" class="section section-box">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="count">6</span>Analytics</h2>
-<h3>Where the window&rsquo;s stories landed</h3>
-<div class="bar-row"><span class="bar-label">Regulation &amp; obligation</span><span class="bar-track"><span class="bar-fill" style="width:67%"></span></span><span class="bar-val">2</span></div><div class="bar-row"><span class="bar-label">AI security &amp; agentic risk</span><span class="bar-track"><span class="bar-fill" style="width:67%"></span></span><span class="bar-val">2</span></div><div class="bar-row"><span class="bar-label">Research &amp; evidence</span><span class="bar-track"><span class="bar-fill" style="width:33%"></span></span><span class="bar-val">1</span></div><div class="bar-row"><span class="bar-label">Frontier models &amp; capability claims</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="bar-val">3</span></div><div class="bar-row"><span class="bar-label">Infrastructure &amp; compute</span><span class="bar-track"><span class="bar-fill" style="width:33%"></span></span><span class="bar-val">1</span></div><div class="bar-row"><span class="bar-label">Market &amp; geopolitics</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="bar-val">3</span></div>
-<p class="note" style="color:var(--text-dim);font-size:12px;margin:-6px 0 14px">Bars are computed from the 12 cards on this page; a theme with no qualifying story renders as no section, not as a zero bar.</p>
-<h3>Evidence class</h3>
-<div class="bar-row"><span class="bar-label">Third-party reporting</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="bar-val">8</span></div><div class="bar-row"><span class="bar-label">Independent evaluation</span><span class="bar-track"><span class="bar-fill" style="width:12%"></span></span><span class="bar-val">1</span></div><div class="bar-row"><span class="bar-label">Vendor claim</span><span class="bar-track"><span class="bar-fill" style="width:38%"></span></span><span class="bar-val">3</span></div>
-<p class="note" style="color:var(--text-dim);font-size:12px;margin:-6px 0 14px">Evidence is scored separately from verification: a vendor announcement can be Verified (they did say it) and simultaneously a Vendor claim (the capability is unreplicated). 8 of 12 stories rest on third-party reporting.</p>
-<h3>Verification gate</h3>
-<div class="bar-row"><span class="bar-label">Verified</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="bar-val">8</span></div>
-<div class="bar-row"><span class="bar-label">Reported</span><span class="bar-track"><span class="bar-fill" style="width:50%"></span></span><span class="bar-val">4</span></div>
-<p class="note" style="color:var(--text-dim);font-size:12px;margin:-6px 0 6px">0 stories carried the Unverified gate this edition.</p>
-<p class="note" style="color:var(--text-dim);font-size:12px;margin:-6px 0 6px">2 of the 12 stories are shared with the Cyber Digest and marked <span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span> on the card. They occupy one row and one deep link in the shared database; this page carries the governance read and the Cyber Digest carries the control read.</p>
+<section class="analytics" id="analytics">
+<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Coverage this edition<span class="cnt">12 stories</span></h2>
+<div class="row"><span>Regulation &amp; obligation</span><span class="track"><span class="fill" style="width:67%;background:var(--amber);display:block"></span></span><span class="val">2</span></div>
+<div class="row"><span>AI security &amp; agentic risk</span><span class="track"><span class="fill" style="width:67%;background:var(--red);display:block"></span></span><span class="val">2</span></div>
+<div class="row"><span>Research &amp; evidence</span><span class="track"><span class="fill" style="width:33%;background:var(--teal);display:block"></span></span><span class="val">1</span></div>
+<div class="row"><span>Frontier models &amp; capability claims</span><span class="track"><span class="fill" style="width:100%;background:var(--ai);display:block"></span></span><span class="val">3</span></div>
+<div class="row"><span>Infrastructure &amp; compute</span><span class="track"><span class="fill" style="width:33%;background:var(--green);display:block"></span></span><span class="val">1</span></div>
+<div class="row"><span>Market &amp; geopolitics</span><span class="track"><span class="fill" style="width:100%;background:var(--blue);display:block"></span></span><span class="val">3</span></div>
 </section>
-<section id="legend" class="section">
-<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
-
-<div class="legend-group">
-<h3>Verification &mdash; was the event established?</h3>
-<p>Carried by every story, and identical in meaning to the Cyber Digest. <strong>Verified</strong> = established by first-party disclosure, a regulator, or two or more independent sources. <strong>Reported</strong> = a single credible outlet, or a party&#x27;s own account, not yet independently confirmed. <strong>Unverified</strong> = circulating without a source that meets the bar.</p>
-<p><span class="verification v-verified"><span class="dot"></span> Verified</span> &nbsp; <span class="verification v-reported"><span class="dot"></span> Reported</span> &nbsp; <span class="verification v-unverified"><span class="dot"></span> Unverified</span></p>
-</div>
-
-<div class="legend-group">
-<h3>Claim type &mdash; the AI Digest&#x27;s addition</h3>
-<p>The Cyber Digest can verify most events independently: an advisory, a register entry, a patch. <strong>AI capability claims usually cannot be verified at all</strong> &mdash; the strongest available statement is &ldquo;the vendor says so&rdquo;, or &ldquo;an evaluation found so&rdquo; with no one else involved. So this page carries a second, orthogonal badge that classifies the <em>evidence</em> rather than the source, and never lets a vendor benchmark read as an established fact.</p>
-<p><span class="breach b-claim"><span class="dot"></span> Vendor claim</span> &nbsp; <span class="breach b-eval"><span class="dot"></span> Independently evaluated</span> &nbsp; <span class="breach b-preprint"><span class="dot"></span> Unreplicated preprint</span> &nbsp; <span class="breach b-rumour"><span class="dot"></span> Rumoured / unconfirmed</span></p>
-<p>A vendor&rsquo;s own announcement can still be <strong>Verified</strong> &mdash; it is verified that the vendor said it. The claim badge records that the <em>capability assertion</em> behind it has not been independently replicated. Both badges can appear on one story, and the difference between them matters.</p>
-</div>
-
-<div class="legend-group">
-<h3>Cross-reference &mdash; shared stories</h3>
-<p><span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span></p>
-<p>AI-security incidents belong to both products. They occupy <strong>one story row and one deep link</strong> in the shared database &mdash; there is no second collector and no duplicated fact-set. The division is by lens: <strong>this page carries the governance read</strong> (what it obliges, who was accountable, what the classification means), and <strong>the Cyber Digest carries the control read</strong> (the vulnerability, the vector, the patch). Neither restates the other, so the two corpora cannot drift apart on facts.</p>
-</div>
-
-<div class="legend-group">
-<h3>Reliability tiers</h3>
-<table class="data-table">
-<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the advisory, the vendor&rsquo;s own newsroom</td></tr>
-<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established specialist reporting and research (Reuters, Proofpoint, iTnews)</td></tr>
-<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media (TechCrunch, The Decoder)</td></tr>
-<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="legend-group">
-<h3>Three rules that shape what appears</h3>
-<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena was served, a paper published. A consultation running for six weeks is news at its milestones, not every day. The window is <strong>48 hours</strong>, with a 72-hour bridge across a weekend; it is stated in the hero on every edition. Anything older appears in the executive summary as context and never as a full entry.</p>
-<p><strong>A dateline is not an incident date.</strong> Outlets report an action days after it happens, and aggregators re-report weeks-old incidents under a fresh byline. Where the two differ, both are given and the action date governs qualification. Story 7 is the worked example: the intake halted on 1 October, the reporting is dated 4 October.</p>
-<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in the taxonomy table with the reason and rendered as no section at all &mdash; never as a zero bar and never padded with stale material. This edition&#x27;s Frontier capability is the worked example.</p>
-</div>
+<section id="key">
+  <h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Key to this edition<span class="cnt">how to read it</span></h2>
+  <table class="key">
+    <tr><th>Badge</th><th>Meaning</th></tr>
+    <tr><td><span class="badge axis i-elevated">Impact: Elevated</span></td><td>How far the risk or obligation position moves: Low &middot; Guarded &middot; Elevated &middot; Severe &middot; Critical.</td></tr>
+    <tr><td><span class="badge axis o-signalled">Obligation: Signalled</span></td><td>Whether it binds an AUNZ organisation: Mandated &middot; Commenced &middot; Proposed &middot; Signalled. A <em>dashed</em> badge means nothing is enforceable yet.</td></tr>
+    <tr><td><span class="badge axis b-claim">Evidence: Vendor claim</span></td><td>What kind of claim it is &mdash; Confirmed, Corroborated or Probable, or a named claim type: vendor claim, independently evaluated, unreplicated preprint, rumoured.</td></tr>
+    <tr><td><span class="badge axis d-material">Capability: Material</span></td><td>How much the capability itself moved: Frontier &middot; Material &middot; Incremental.</td></tr>
+    <tr><td><span class="badge b-tier">Tier 1/4 &mdash; High</span></td><td>Source reliability, carrying what kind of source it is.</td></tr>
+    <tr><td><span class="badge b-v">Verified</span></td><td>Established by first-party disclosure, a regulator, or two or more independent sources. Also Reported &middot; Unverified.</td></tr>
+    <tr><td><span class="badge b-shared">&#8596; Cyber Digest</span></td><td>Shared story. One row and one deep link; this edition carries the governance read, the Cyber Digest carries the control read.</td></tr>
+  </table>
+  <p class="body">The window is <strong>48 hours</strong> (72 across a weekend) and it is stated in the header. Outlets report an action days after it happens, so where the dateline and the event date differ, both are given and the event date governs. Where a theme has no qualifying item it is not rendered at all rather than padded.</p>
 </section>
-<footer class="footer">
-<div class="links">
-  <a href="#top">Today</a>
-  <a href="#analytics">Themes</a>
-  <a href="#legend">Claims key</a>
-</div>
-<div class="source-line">AI Digest, 2026-10-08: 48-hour window (6-8 October 2026). Sources: OpenAI (2), Parliament of Australia — public hearings (1), OAIC — ADM and public reporting under the FOI Act (1), Korea Herald (1), Transluce (1), METR (1), Mistral AI (1), IPE Real Assets (1), The Hill (1), Mission Local (1), TechCrunch (1). No single source exceeded 40% threshold (highest: OpenAI at 17%).</div>
-<div class="note">Material collected 2026-10-08 for the 48 hours to 8 October 2026; anything older is carried in the executive summary as context, never as a full entry. Every cited URL was returned by the collection pass; where a source blocks automated retrieval the card says so rather than presenting an unchecked link. Ratings follow the three-axis framework &mdash; Impact, Obligation and Evidence, with Confidence as a gate &mdash; and the axes are deliberately kept separate.</div>
-</footer>
-
 </main>
+
+<footer>
+  <div>AI Digest &middot; 8 October 2026 &middot; <a href="/daily/">All editions</a> &middot; <a href="/">About</a></div>
+</footer>
 </div>
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-<script>
-function syncScroll(){
-var h=document.documentElement;
-var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-document.getElementById('progress').style.width=Math.min(p,100)+'%';
-var bt=document.getElementById('back-top');
-bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
-var sections=document.querySelectorAll('section[id]');
-var links=document.querySelectorAll('#toc a');
-/* Default the marker to the first section so the rail is never blank: with
-   cur starting empty, no link carried .active until a section crossed the
-   250px line, so the panel showed no position marker on load. */
-var cur=sections.length?sections[0].id:'';
-sections.forEach(function(s){
-var t=s.getBoundingClientRect().top;
-if(t<250) cur=s.id;
-});
-links.forEach(function(l){
-l.classList.toggle('active',l.dataset.section===cur);
-});
-}
-window.addEventListener('scroll',syncScroll,{passive:true});
-syncScroll();
-/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
-   <=860px media query, so the class is inert above the breakpoint. Without JS
-   the markup stays expanded (aria-expanded="true"), which is the old
-   behaviour, not a broken one. */
-var _tocNav=document.getElementById('toc');
-var _tocBtn=document.getElementById('toc-toggle');
-function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
-function setToc(open){
-if(!_tocNav||!_tocBtn)return;
-_tocNav.classList.toggle('toc-collapsed',!open);
-_tocBtn.setAttribute('aria-expanded',open?'true':'false');
-}
-if(_tocBtn){
-setToc(!tocIsNarrow());
-_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
-/* Choosing a destination should reveal it, not leave the open rail covering it.
-   The rail sits ABOVE the content, so collapsing it shifts the target up by the
-   rail's height (~412px) — which cancels the browser's own anchor scroll, and
-   would yank the reader if we collapsed after landing. So: close the rail,
-   force the reflow, then navigate. A native fragment change (not
-   scrollIntoView) keeps :target working. Desktop stays on the native path. */
-Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
-a.addEventListener('click',function(e){
-if(!tocIsNarrow())return;
-var id=(a.getAttribute('href')||'').slice(1);
-var el=id&&document.getElementById(id);
-if(!el)return;
-e.preventDefault();
-setToc(false);
-void _tocNav.offsetHeight;
-if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
-});
-});
-}
-function setView(m){
-document.body.classList.toggle('exec-view',m==='exec');
-document.getElementById('btn-full').classList.toggle('active',m==='full');
-document.getElementById('btn-exec').classList.toggle('active',m==='exec');
-document.querySelectorAll('.story-card').forEach(function(c){
-var interactive=m==='exec';
-c.setAttribute('role',interactive?'button':null);
-c.setAttribute('tabindex',interactive?'0':null);
-c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
-});
-}
-document.addEventListener('keydown',function(e){
-if(e.key==='Escape') setView('full');
-});
-function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
-document.querySelectorAll('.story-card').forEach(function(c){
-c.addEventListener('click',function(e){
-if(e.target.closest('a')) return;
-toggleCard(this);
-});
-c.addEventListener('keydown',function(e){
-if(e.target.closest('a')) return;
-if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
-});
-});
-document.querySelectorAll('#toc a').forEach(function(l){
-l.setAttribute('role','navigation');
-});
-var _tocObs=new MutationObserver(function(){
-document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
-document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
-});
-_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
-/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
-document.querySelectorAll('.exec-thread').forEach(function(c){
-var btn=c.querySelector('.exec-toggle');if(!btn)return;
-var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
-function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
-btn.addEventListener('click',function(){setOpen(body.hidden);});
-});
-/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
-   card top has just crossed the top threshold — mirrors the main rail pattern. */
-var _excur=null;
-function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
-window.addEventListener('scroll',execScrollSpy,{passive:true});
-execScrollSpy();
-</script>
 </body>
 </html>

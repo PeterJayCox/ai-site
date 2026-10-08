@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ai.peterjaycox.com/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://ai.peterjaycox.com/daily/</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://ai.peterjaycox.com/daily/2026-10-08.html</loc>
+    <lastmod>2026-10-08</lastmod>
   </url>
 </urlset>
