@@ -157,16 +157,30 @@ def fetch(url, timeout=25):
         return r.read().decode("utf-8", "replace")
 
 
-def verify_live(date, local_bytes, attempts=10, delay=30):
+def verify_live(date, local_bytes, local_cards, attempts=10, delay=30):
+    """Confirm the published page is the bytes we built.
+
+    Compare ENCODED BYTE LENGTH, not len(str): the HTML is full of em-dashes and
+    curly quotes, so a character count can never equal a file byte count and the
+    check would pass only via its fallback — training the operator to ignore a
+    live-verification warning. Card count is checked as content, so a size match
+    alone cannot pass.
+    """
     url = f"{BASE}/daily/{date}.html"
     for i in range(1, attempts + 1):
         try:
             body = fetch(f"{url}?cb={int(time.time())}")
-            if len(body) == local_bytes or f"daily/{date}.html" in fetch(f"{BASE}/daily/?cb={int(time.time())}"):
-                print(f"  gate 5 OK  live after {i} attempt(s): {url} ({len(body):,} bytes)")
+            served = len(body.encode("utf-8"))
+            cards = body.count('<article class="card"')
+            indexed = f'href="{date}.html"' in fetch(f"{BASE}/daily/?cb={int(time.time())}")
+            if served == local_bytes and cards == local_cards and indexed:
+                print(f"  gate 5 OK  live after {i} attempt(s): {url} "
+                      f"({served:,} bytes, {cards} cards, indexed)")
                 return True
+            print(f"    attempt {i}: bytes {served:,}/{local_bytes:,} "
+                  f"cards {cards}/{local_cards} indexed={indexed}")
         except Exception as e:
-            print(f"    attempt {i}: {type(e).__name__}")
+            print(f"    attempt {i}: {type(e).__name__}: {e}")
         time.sleep(delay)
     print(f"WARN: {url} not confirmed live after {attempts} attempts "
           f"(deploy may still be propagating) — the push succeeded")
@@ -198,13 +212,15 @@ def main():
         print("\nDRY RUN — gates 1-3 passed, nothing committed.")
         return
 
-    size = os.path.getsize(os.path.join(ROOT, "docs", "daily", f"{a.date}.html"))
+    local_path = os.path.join(ROOT, "docs", "daily", f"{a.date}.html")
+    size = os.path.getsize(local_path)
+    cards = open(local_path, encoding="utf-8").read().count('<article class="card"')
     sh(["git", "add", "-A"])
     r = sh(["git", "status", "--short"])
     print("  staged:\n" + (r.stdout.rstrip() or "    (nothing changed)"))
     if not r.stdout.strip():
         print("  nothing to commit — edition already published")
-        verify_live(a.date, size)
+        verify_live(a.date, size, cards)
         return
     msg = (f"Edition: AI Digest {a.date}\n\n"
            f"Produced by the scheduled daily run. Validated (front matter, window, "
@@ -217,7 +233,7 @@ def main():
     if r.returncode != 0:
         fail(f"push failed:\n{r.stdout}\n{r.stderr}", 2)
     print("  gate 4 OK  committed and pushed")
-    verify_live(a.date, size)
+    verify_live(a.date, size, cards)
     print("\nPUBLISHED.")
 
 
