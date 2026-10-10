@@ -2,11 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ai.peterjaycox.com/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://ai.peterjaycox.com/daily/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ai.peterjaycox.com/daily/2026-10-11.html</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ai.peterjaycox.com/daily/2026-10-10.html</loc>
+    <lastmod>2026-10-10</lastmod>
   </url>
   <url>
     <loc>https://ai.peterjaycox.com/daily/2026-10-09.html</loc>
