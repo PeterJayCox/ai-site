@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — restyle proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F4EF;--surface:#FFFFFF;--surface2:#EFEBE3;--surface-hover:#E6E1D6;
+  --text:#1D1B16;--text-2:#4a463c;--muted:#6B665A;--border:#E4DFD3;
+  --ai:#6E56CF;
+  /* ONE semantic scale: impact severity, low -> critical */
+  --k1:#4E8F6A;--k2:#7C8A55;--k3:#B08110;--k4:#C2612B;--k5:#B23A32;
+  --rule:#DAD4C6;
+}
+[data-theme="dark"]{
+  --bg:#191813;--surface:#211F19;--surface2:#2A2821;--surface-hover:#322F27;
+  --text:#ECE8DD;--text-2:#C9C3B4;--muted:#A39C8D;--border:#3A372E;
+  --ai:#9B85F5;
+  --k1:#6FC491;--k2:#B9C077;--k3:#D9A93C;--k4:#E29060;--k5:#E0776E;
+  --rule:#3A372E;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 28px}
+h2.prop{font-family:'Source Serif 4',serif;font-size:22px;font-weight:600;margin:52px 0 6px}
+p.why{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:640px}
+.tag{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-top:44px}
+hr{border:0;border-top:1px solid var(--border);margin:34px 0}
+
+/* ---------- hero ---------- */
+.hero{border:1px solid var(--border);border-radius:20px;background:var(--surface);padding:48px 40px 40px;text-align:center;margin-top:14px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ai);margin-bottom:14px}
+.hero h1{font-family:'Source Serif 4',serif;font-size:40px;font-weight:600;line-height:1.14;max-width:600px;margin:0 auto 14px}
+.hero p{color:var(--muted);font-size:17px;max-width:500px;margin:0 auto}
+
+/* ---------- theme tiles: emoji -> SVG line icons ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px 16px}
+.tile .ic{width:22px;height:22px;stroke:var(--ai);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:9px}
+.tile b{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.tile span{font-size:13px;color:var(--muted)}
+
+/* ---------- BEFORE: the current badge row ---------- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px 16px;margin-top:14px;position:relative;overflow:hidden}
+.card .bar{position:absolute;top:0;left:0;right:0;height:3px}
+.card h3{font-family:'Source Serif 4',serif;font-size:17px;font-weight:600;line-height:1.32;margin-bottom:8px;padding-right:30px}
+.card p.sum{font-size:14px;color:var(--text-2);margin-bottom:12px}
+.meta-old{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px;color:var(--muted);padding-top:11px;border-top:1px solid var(--border)}
+.oldpill{border:1px solid transparent;border-radius:999px;padding:2px 9px;font-weight:600;font-size:11px;white-space:nowrap}
+.o-impact{color:var(--k3);background:color-mix(in srgb,var(--k3) 12%,transparent);border-color:color-mix(in srgb,var(--k3) 32%,transparent)}
+.o-obl{color:#7FA8D4;background:transparent;border-color:rgba(58,110,165,.34);border-style:dashed}
+.o-evid{color:var(--k5);background:color-mix(in srgb,var(--k5) 12%,transparent);border-color:color-mix(in srgb,var(--k5) 32%,transparent)}
+.o-tier{background:var(--surface2);color:var(--muted);border-color:var(--border);white-space:normal;line-height:1.45;flex:0 1 auto;min-width:0;text-align:left}
+.o-ver{color:var(--k1);background:color-mix(in srgb,var(--k1) 12%,transparent);border-color:color-mix(in srgb,var(--k1) 32%,transparent)}
+.o-date{margin-left:auto;font-variant-numeric:tabular-nums}
+.verdict{font-size:12.5px;color:var(--muted);margin-top:14px;padding-left:14px;border-left:3px solid var(--border)}
+.verdict b{color:var(--text)}
+
+/* ---------- AFTER: signal strip ---------- */
+.strip{display:flex;flex-wrap:wrap;align-items:center;gap:0;font-size:12px;color:var(--text-2);padding-top:12px;border-top:1px solid var(--border);font-variant-numeric:tabular-nums}
+.rd{display:inline-flex;align-items:center;gap:6px;padding:0 12px;border-left:1px solid var(--rule);line-height:1.3}
+.strip .rd:first-child{padding-left:0;border-left:0}
+.rd .lb{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rd .gl{width:9px;height:9px;border-radius:2px;flex:0 0 auto}
+.sev-low{background:var(--k1)}.sev-guarded{background:var(--k2)}.sev-elev{background:var(--k3)}
+.sev-severe{background:var(--k4)}.sev-crit{background:var(--k5)}
+.rd b{font-weight:600;color:var(--text);font-size:12px}
+.glyph{font-size:11px;color:var(--muted)}
+.strip .end{margin-left:auto;padding-left:12px;border-left:1px solid var(--rule);color:var(--muted)}
+.srcrow{font-size:11.5px;margin-top:9px}
+.srcrow a{color:var(--ai);text-decoration:none;font-weight:600}
+
+/* impact ramp legend */
+.ramp{display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:16px}
+.ramp div{flex:1;padding:10px 12px;font-size:11px;color:var(--text-2);background:var(--surface)}
+.ramp div span{display:block;height:5px;border-radius:99px;margin-bottom:7px}
+.ramp div b{display:block;font-size:12px;color:var(--text);margin-bottom:1px}
+.ramp div i{font-style:normal;color:var(--muted);font-size:10.5px}
+footer{padding:34px 0 60px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="tag">Restyle proposal · not published</div>
+<h2 class="prop" style="margin-top:18px">1. Theme icons — emoji out, line icons in</h2>
+<p class="why">Same palette, same type. The emoji are the one element that renders differently on every OS and pulls against the restrained serif. Six SVG glyphs at the badge stroke weight, tinted with the accent.</p>
+<div class="tiles">
+  <div class="tile"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M3 12h3M18 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/><circle cx="12" cy="12" r="3.4"/></svg><b>Frontier capability</b><span>Models, agents and the claims attached to them</span></div>
+  <div class="tile"><svg class="ic" viewBox="0 0 24 24"><path d="M9 3h6M10 3v5.2L5.6 17a3 3 0 0 0 2.7 4.3h7.4a3 3 0 0 0 2.7-4.3L14 8.2V3"/><path d="M7.2 14h9.6"/></svg><b>Research &amp; evidence</b><span>Papers, evaluations, replication, pipeline integrity</span></div>
+  <div class="tile"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v18M6 7h9a3 3 0 0 1 0 6H6M6 13h7a3 3 0 0 1 0 6H6"/><path d="M3.5 7h2M3.5 19h2"/></svg><b>Regulation &amp; obligation</b><span>Instruments, regulators, enforcement, liability</span></div>
+  <div class="tile"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7.5 4v5.5c0 4.3-3 8-7.5 9.5-4.5-1.5-7.5-5.2-7.5-9.5V7z"/><path d="M9.4 12.2l1.9 1.9 3.6-3.9"/></svg><b>AI security &amp; agentic risk</b><span>Agent conduct, exploitation, AI-component vulns</span></div>
+  <div class="tile"><svg class="ic" viewBox="0 0 24 24"><path d="M3 9.5l9-5.2 9 5.2M4.8 9.5V19M19.2 9.5V19M3 19.5h18M9 12v6M15 12v6"/></svg><b>Infrastructure &amp; compute</b><span>Data centres, chips, energy and water</span></div>
+  <div class="tile"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M3.5 12h17M12 3.4c2.3 2.4 3.5 5.4 3.5 8.6S14.3 18.2 12 20.6c-2.3-2.4-3.5-5.4-3.5-8.6S9.7 5.8 12 3.4z"/></svg><b>Market &amp; geopolitics</b><span>State competition, policy divergence, funding</span></div>
+</div>
+
+<h2 class="prop">2. The badge row — the core fix</h2>
+<p class="why">Today six filled pills where red, green and violet each mean several unrelated things, and the reliability note is a sentence in a pill that outweighs the headline.</p>
+<div class="card">
+  <div class="bar" style="background:#E0776E"></div>
+  <h3>Ukraine struck a third Yandex data centre in four days, halting the compute behind Russia's AI effort</h3>
+  <p class="sum">Overnight into Sunday 11 October, Ukrainian drones struck Yandex's data centre in the Vladimir region, east of Moscow.</p>
+  <div class="meta-old">
+    <a class="srcrow" href="#" style="color:var(--ai);text-decoration:none;font-weight:600">Al Jazeera — Russia's Yandex says data centre affected by drone attack</a>
+    <span class="oldpill o-impact">Impact: Elevated</span>
+    <span class="oldpill o-obl">Obligation: Signalled</span>
+    <span class="oldpill o-evid">Evidence: Confirmed</span>
+    <span class="oldpill o-tier">Tier 2/4 — High (on-record statement from a government task force, reported as an exclusive; the State Department's account carried by a wire report the following day)</span>
+    <span class="oldpill o-ver">Verified</span>
+    <span class="o-date o-date" style="margin-left:auto">2026-10-10</span>
+  </div>
+</div>
+<p class="verdict"><b>Before.</b> Six chips, three hues, and the tier note wraps to two lines and dominates the row. Red here means "confirmed", the green "verified" — different axes, and a reader has no way to learn that from the page.</p>
+
+<div class="card">
+  <div class="bar" style="background:var(--ai)"></div>
+  <h3>Ukraine struck a third Yandex data centre in four days, halting the compute behind Russia's AI effort</h3>
+  <p class="sum">Overnight into Sunday 11 October, Ukrainian drones struck Yandex's data centre in the Vladimir region, east of Moscow.</p>
+  <div class="strip">
+    <span class="rd"><span class="lb">Impact</span><span class="gl sev-elev"></span><b>Elevated</b></span>
+    <span class="rd"><span class="lb">Obligation</span><span class="glyph">▨</span><b>Signalled</b></span>
+    <span class="rd"><span class="lb">Evidence</span><span class="glyph">◑</span><b>Confirmed</b></span>
+    <span class="rd"><span class="lb">Tier</span><b>2/4</b><span class="glyph">on-record govt statement</span></span>
+    <span class="end">10 Oct</span>
+  </div>
+  <div class="srcrow" style="margin-top:11px"><a href="#">Al Jazeera — Russia's Yandex says data centre affected by drone attack</a></div>
+</div>
+<p class="verdict"><b>After.</b> Colour now means exactly one thing — <b>severity</b> — and only the Impact segment carries it. The other axes are monochrome with a leading glyph, so they read as metadata instead of alarms. The tier rationale becomes a short qualifier, and the full sentence moves to a <code>title</code> tooltip and the key table. The card top rule is the theme's identity strip, deliberately outside the badge colour language.</p>
+
+<h2 class="prop">3. One colour scale, five steps</h2>
+<p class="why">Impact is the only semantically coloured axis. Everything categorical (theme, obligation, evidence kind, capability, tier) is grey. Nothing reuses a severity hue.</p>
+<div class="ramp">
+  <div><span style="background:var(--k1)"></span><b>Low</b><i>4.9 : 1</i></div>
+  <div><span style="background:var(--k2)"></span><b>Guarded</b><i>disclosed only</i></div>
+  <div><span style="background:var(--k3)"></span><b>Elevated</b><i>position moves</i></div>
+  <div><span style="background:var(--k4)"></span><b>Severe</b><i>material harm</i></div>
+  <div><span style="background:var(--k5)"></span><b>Critical</b><i>systemic</i></div>
+</div>
+
+<hr>
+<h2 class="prop" style="margin-top:0">4. Other fixes, no mockup needed</h2>
+<p class="why">
+<b>Landing:</b> retitle "What it will be" → "What it is"; move "Why the claim-type badge matters" and "Status" to an About page; add a live one-card preview of the latest edition so the landing shows the product rather than describing it.<br><br>
+<b>Editions:</b> a sticky section rail (six theme anchors) and prev/next edition links on the daily page; a timeline or sparkline of stories-per-day on <code>/daily/</code> so the archive shows its shape.<br><br>
+<b>Exec summary:</b> split the long "Top stories" paragraph into a one-line lead plus a tight bulleted readout of the rest, so the summary is scannable before the cards.<br><br>
+<b>Key table:</b> drop it to the About page or collapse it behind a "how to read this" toggle — once the colour language is self-evident, an always-open legend is redundant.
+</p>
+
+<footer>Mockup — local only. Nothing published. Palette and type carried over from the live site.</footer>
+</div>
+</body>
+</html>

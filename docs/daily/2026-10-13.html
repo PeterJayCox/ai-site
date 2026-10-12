@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 13 October 2026</title>
+<meta name="description" content="6 stories across 4 themes in the 11–13 October 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+</script>
+<!-- tokens + the card / signal-strip component live in assets/digest.css so the
+     daily pages, the editions index and the landing page cannot drift apart -->
+<link rel="stylesheet" href="/assets/digest.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.62;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+.wrap{max-width:860px;margin:0 auto;padding:0 28px}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar .in{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:860px;margin:0 auto;padding:0 28px}
+.brand{display:flex;align-items:center;gap:9px;font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--text);text-decoration:none}
+.brand .d{width:9px;height:9px;border-radius:50%;background:var(--ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--ai) 22%,transparent)}
+nav.top{display:flex;gap:18px;font-size:13.5px;align-items:center}
+nav.top a{color:var(--muted);text-decoration:none}
+nav.top a:hover{color:var(--text)}
+nav.top a.here{color:var(--text)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:32px;height:32px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);user-select:none;flex-shrink:0;font-size:15px}
+.theme-toggle:hover{background:var(--surface-hover);border-color:var(--border-light)}
+.theme-toggle .tt-auto,.theme-toggle .tt-light{display:none}
+.theme-toggle .tt-dark{display:inline}
+html[data-theme-mode="auto"] .theme-toggle .tt-dark{display:none}
+html[data-theme-mode="auto"] .theme-toggle .tt-auto{display:inline}
+html[data-theme-mode="light"] .theme-toggle .tt-dark{display:none}
+html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
+
+/* section rail — sticky under the topbar so a six-theme scroll stays navigable */
+.jump{position:sticky;top:56px;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.jump .in{display:flex;gap:2px;max-width:860px;margin:0 auto;padding:0 22px;overflow-x:auto;scrollbar-width:none}
+.jump .in::-webkit-scrollbar{display:none}
+.jump a{flex:0 0 auto;font-size:12px;color:var(--muted);text-decoration:none;padding:9px 10px;border-bottom:2px solid transparent;white-space:nowrap}
+.jump a:hover{color:var(--text);border-bottom-color:color-mix(in srgb,var(--ai) 45%,transparent)}
+.jump a .sw{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:6px;vertical-align:middle}
+
+header.ed{padding:40px 0 24px;border-bottom:1px solid var(--border)}
+.kick{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
+.ed h1{font-family:'Source Serif 4',serif;font-size:34px;font-weight:600;line-height:1.16;margin-bottom:8px}
+.ed .sub{color:var(--muted);font-size:15px;max-width:620px}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.chip{font-size:11.5px;color:var(--muted);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:4px 11px}
+.chip.acc{color:var(--ai);border-color:color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent)}
+.chip.k{color:var(--k3);border-color:color-mix(in srgb,var(--k3) 38%,transparent);background:color-mix(in srgb,var(--k3) 9%,transparent)}
+
+main{padding:6px 0 40px}
+section{padding:30px 0;border-bottom:1px solid var(--border);scroll-margin-top:106px}
+section:last-of-type{border-bottom:0}
+h2.sec{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+h2.sec .dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+h2.sec .cnt{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:var(--muted);background:var(--surface2);border-radius:999px;padding:2px 9px}
+p.body{font-size:15px;color:var(--text-2);margin:12px 0}
+p.body strong{color:var(--text);font-weight:600}
+p.body a{color:var(--ai)}
+/* the first exec paragraph is the read — lead treatment, no format change */
+#executive p.body:first-of-type{font-size:16.5px;color:var(--text);line-height:1.6}
+.au{background:color-mix(in srgb,var(--k3) 8%,transparent);border:1px solid color-mix(in srgb,var(--k3) 30%,transparent);border-left:4px solid var(--k3);border-radius:10px;padding:15px 18px;margin:14px 0}
+.au p{font-size:14.5px;color:var(--text-2)}
+.au p strong{color:var(--text)}
+
+/* inline code in running text (\`gpt-rosalind-discovery\`) */
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:1px 5px;color:var(--text)}
+.analytics .row{display:grid;grid-template-columns:190px 1fr 34px;align-items:center;gap:10px;margin:7px 0;font-size:13px;color:var(--text-2)}
+.track{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* legend — a disclosure, because the colour language no longer needs a standing key */
+details.key{border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+details.key summary{cursor:pointer;padding:13px 16px;font-size:13px;color:var(--text-2);font-weight:600;list-style:none}
+details.key summary::-webkit-details-marker{display:none}
+details.key summary::before{content:"\FF0B";color:var(--ai);font-weight:600;margin-right:9px}
+details.key[open] summary::before{content:"\2212"}
+details.key .kbody{padding:2px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.kcard{border:1px solid var(--border);border-radius:10px;padding:12px 13px}
+.kcard h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:9px}
+.kcard p{font-size:12.5px;color:var(--muted)}
+.kcard p em{color:var(--text-2);font-style:normal}
+
+/* prev / next edition */
+.ednav{display:flex;gap:12px;padding:26px 0 0;border-top:1px solid var(--border);margin-top:30px}
+a.edlink{flex:1 1 0;min-width:0;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;transition:border-color .18s}
+a.edlink:hover{border-color:color-mix(in srgb,var(--ai) 40%,transparent)}
+a.edlink .dl{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+a.edlink .dd{font-family:'Source Serif 4',serif;font-size:15px;font-weight:600}
+a.edlink.next{text-align:right}
+a.edlink.dis{visibility:hidden}
+footer{padding:24px 0 48px;color:var(--muted);font-size:12.5px;text-align:center}
+footer a{color:var(--ai);text-decoration:none}
+
+@media(max-width:640px){
+  .ed h1{font-size:27px}
+  .wrap,.topbar .in{padding:0 18px}
+  .jump .in{padding:0 12px}
+  .analytics .row{grid-template-columns:120px 1fr 30px}
+  .ednav{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in">
+  <a class="brand" href="/"><span class="d"></span>AI&nbsp;Digest</a>
+  <nav class="top">
+    <a href="/daily/" class="here">Editions</a>
+    <a href="/about/">About</a>
+    <a href="https://peterjaycox.com">Hub</a>
+    <a href="https://cyber.peterjaycox.com">Cyber</a>
+    <a href="https://intel.peterjaycox.com">Intel</a>
+    <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+  </nav>
+</div></div>
+<div class="jump"><div class="in"><a href="#executive"><span class="sw" style="background:var(--ai)"></span>Summary</a><a href="#theme-1"><span class="sw" style="background:var(--t-reg)"></span>Regulation &amp; obligation</a><a href="#theme-2"><span class="sw" style="background:var(--t-cap)"></span>Frontier models &amp; capability claims</a><a href="#theme-3"><span class="sw" style="background:var(--t-mkt)"></span>Market &amp; geopolitics</a><a href="#theme-4"><span class="sw" style="background:var(--t-inf)"></span>Infrastructure &amp; compute</a><a href="#analytics"><span class="sw" style="background:var(--ai)"></span>Coverage</a></div></div>
+
+<div class="wrap">
+<header class="ed">
+  <div class="kick">48-hour window &middot; 11&ndash;13 October 2026</div>
+  <h1>AI Digest — 13 October 2026</h1>
+  <p class="sub">6 stories across 4 themes in the 11–13 October 2026 window, with an Australian and New Zealand read.</p>
+  <div class="chips"><span class="chip acc">6 stories</span><span class="chip">4 themes</span><span class="chip">6 sources</span></div>
+</header>
+
+<main>
+<section id="executive">
+<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Executive summary<span class="cnt">6 stories</span></h2>
+<p class="body"><strong>Top stories.</strong> The window's sharpest statement came from London. On <strong>Monday 12 October</strong>, in his first speech since the AI brief was elevated to Cabinet level, the UK's AI minister <strong>Kanishka Narayan</strong> said Britain could not rely on technology companies to police their own models, confirmed the <strong>UK AI Security Institute</strong> is evaluating frontier systems including <strong>Google's Gemini</strong>, and named the risk in his own house: "It seems likely, if not inevitable, that our own cyber defences will be breached." His reference case was Australian — the June <strong>OpenAI</strong> agent breach of the Medicare statistics portal — which he said "should concern us". Second, <strong>Meta</strong> shipped its first frontier models, <strong>Muse Wonder</strong> and <strong>Muse Wonder Full</strong> (codenamed Watermelon), closed and priced behind subscriptions rather than released as open weights; every performance figure is Meta's own. Third, the AUNZ duty layer moved for the first time in the week: on <strong>12 October</strong> the <strong>OAIC</strong> opened a formal investigation into <strong>Shenzhen Qingcheng</strong>, maker of the <strong>HeyCyan</strong> smart-glasses app used in Kmart's Anko glasses and in low-cost devices sold through Big W Marketplace and Amazon, after the company failed to answer the regulator's preliminary inquiries.</p>
+<p class="body">Two things follow. First, <strong>accountability is still being asserted rather than legislated</strong> — the window's most assertive line came from a minister, not a statute, and Australia's own contribution to the week was a privacy investigation opened under existing powers, not a new AI instrument. Second, <strong>the control argument has moved off the model and onto the stack around it</strong>: Meta priced its frontier model behind a subscription and did not open the weights; Amazon moved to buy the company that makes AI workloads portable across chips; and the UK minister's answer to model risk was a state cyber programme rather than a model licence.</p>
+<div class="au"><p><strong>Australian & New Zealand context.</strong> The window's AUNZ action is a regulator's, and it is new: on <strong>12 October</strong> the <strong>OAIC</strong> opened a formal investigation into <strong>Shenzhen Qingcheng Future Technology</strong>, maker of the <strong>HeyCyan</strong> smart-glasses phone application used in <strong>Kmart's Anko</strong> glasses and in low-cost devices sold via <strong>Big W Marketplace</strong> and <strong>Amazon</strong>. Privacy Commissioner <strong>Carly Kind</strong> said the China-based entity did not respond to preliminary inquiries issued from <strong>12 August 2026</strong> to Meta, Kmart/BDI Technology, Google and Shenzhen Qingcheng, leaving "no assurance that it is protecting personal data of Australians as required by the Privacy Act"; the investigation can use compulsory information-gathering notices and, for serious or repeated interferences, seek civil penalties in the Federal Court. Kind also wrote to retailers and to the <strong>Australian Retailers Council</strong>. The rest of the instrument sweep was quiet and was checked: <strong>Australia's AI Safety Institute</strong> has published nothing since the <strong>8 October</strong> oversight report already carried in an earlier edition; the <strong>PSPF</strong> publications library's newest entry remains <strong>29 September</strong>; <strong>eSafety's</strong> newest media release <strong>2 October</strong>; <strong>ASIC's</strong> news centre added two items on <strong>12 October</strong> (a CFD product-intervention consultation and its Annual Forum program), neither AI-specific; <strong>Home Affairs</strong> published no AI item; and <strong>New Zealand</strong> produced no new AI regulator action, the Privacy Commissioner's most recent substantive statement still <strong>23 September</strong>. No <strong>ministerial speech</strong> landed in the window — Assistant Minister <strong>Andrew Charlton's</strong> media index still shows <strong>8 October</strong>. On the parliamentary track, the <strong>Joint Select Committee on Artificial Intelligence</strong> sits in <strong>Canberra on 14 and 16 October</strong> and reports by <strong>30 November 2026</strong>; its <strong>7 October Sydney transcript is still marked "not yet available"</strong> on the committee's public-hearings page. On the international line, Australia is a <strong>signatory to the international call for enhanced control of AI development</strong> — with Finland, France, Germany, Singapore, the UAE and Ireland — which the UK has <strong>not</strong> signed.</p></div>
+<p class="body"><strong>Geopolitical context & the arc.</strong> Three positions held. <strong>Washington</strong> kept to self-regulation — the UK minister's own account is that he lobbied successfully to <strong>overturn a White House ban</strong> on UK access to US frontier models. <strong>London</strong> moved the other way, lifting the AI brief to Cabinet and pairing a state cyber programme with evaluation of a US lab's model at its own institute. <strong>Brussels, Beijing and Seoul</strong> added nothing in the window. The new element is <strong>where the assurance spending sits</strong>: the UK is buying assurance with a state cyber programme and its own evaluators rather than by regulating model releases, and Meta answered a capability question by closing a model its predecessor had opened. The arc: <strong>capability news returned</strong> after a quiet weekend — Meta's first frontier launch — while the duty layer stayed asserted rather than legislated and capital kept consolidating the compute stack. Expect the pressure to stay on incident-disclosure timing and agent containment, and increasingly on the <strong>physical resources</strong> — water, power, chips — that compute depends on, as the Visakhapatnam dispute shows.</p>
+</section>
+<section class="theme" id="theme-1">
+<h2 class="sec"><span class="dot" style="background:var(--t-reg)"></span>Regulation &amp; obligation<span class="cnt">2 stories</span></h2>
+<article class="card" id="story-1"><div class="bar" style="background:var(--t-reg)"></div><div class="num">1</div><h3>The UK's AI minister said a breach of Britain's cyber defences is "likely, if not inevitable" — and pointed at Australia's</h3><p class="sum">On <strong>Monday 12 October</strong>, in his first speech since his role was elevated to Cabinet level (under <strong>Andy Burnham</strong>), UK AI minister <strong>Kanishka Narayan</strong> said Britain <strong>cannot rely entirely on technology companies to police their own models</strong>, announced a government programme led by security minister <strong>Dan Jarvis</strong> to strengthen UK cyber defences including against AI, and confirmed scientists at the <strong>UK AI Security Institute</strong> are evaluating advanced systems, <strong>including Google's Gemini</strong>, for "robust safeguards" — a reversal of a <strong>White House ban</strong> on UK access to US frontier models that he lobbied to overturn. He took as his reference case the June <strong>OpenAI</strong> agent breach of Australia's <strong>Medicare</strong> statistics portal: "The Australian government has said that no personal medical records are known to have been accessed, and there is no evidence of wider compromise, but the incident should concern us," he said; "It seems likely, if not inevitable, that our own cyber defences will be breached." In the same window the <strong>Guardian</strong> reported <strong>Geoffrey Irving</strong>, a former chief scientist at the UK AI Security Institute, saying "the AI companies do not have security that would prevent an adversarial country from stealing the models" and that "it is possible we [will] get superintelligence in less than 12 months, on the current path". <strong>Why it matters:</strong> the AUNZ read is direct — an Australian incident is now the reference case a Five Eyes ally uses to justify its own cyber posture, and the Australian government's own reassurance ("no personal medical records") is the sentence being quoted back. Nothing here binds: the minister asserted a direction, announced a programme and named no penalty, and the UK remains outside the <strong>international call for enhanced control of AI development</strong> that Australia, Finland, France, Germany, Singapore, the UAE and Ireland have signed. The account is read from the minister's on-record remarks as reported by the Guardian and the Press Association wire; the speech text itself was not published on a UK government page in the window.</p><div class="srcrow"><a class="src" href="https://www.theguardian.com/technology/2026/oct/12/uk-strengthen-cyber-defences-minister-ai-firms-safety">The Guardian — UK to strengthen cyber defences as minister calls for AI firms to increase safety efforts</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-confirmed"><span class="lb">Evidence</span><span class="gf">◑</span><b>Confirmed</b></span><span class="rd b-tier" title="Tier 2/4 — High (national broadsheet reporting a minister&#x27;s on-record speech; corroborated by the PA wire and the Independent)"><span class="lb">Tier</span><b>2/4 · High</b><span class="q">national broadsheet reporting a minister&#x27;s…</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-12</span></div></article>
+<article class="card" id="story-2"><div class="bar" style="background:var(--t-reg)"></div><div class="num">2</div><h3>The OAIC opened an investigation into the maker of the HeyCyan smart-glasses app</h3><p class="sum">On <strong>12 October</strong> the Australian Information Commissioner commenced a formal investigation into <strong>Shenzhen Qingcheng Future Technology Co. Ltd</strong>, the maker of the <strong>'HeyCyan'</strong> smart-glasses phone application — the software used in <strong>Kmart's Anko</strong> smart glasses and in lower-cost products sold through <strong>Big W Marketplace</strong>, <strong>Amazon</strong> and other retailers. Privacy Commissioner <strong>Carly Kind</strong> said the entity, which is based in China, <strong>did not respond</strong> to the preliminary inquiries the OAIC issued from <strong>12 August 2026</strong> to Meta, Kmart/BDI Technology, Google and Shenzhen Qingcheng, and that "in the absence of any response … I have no assurance that it is protecting personal data of Australians as required by the Privacy Act". The investigation allows her to use compulsory information-gathering notices; if serious or repeated interferences with privacy are found she can seek civil penalties in the Federal Court. In parallel she wrote to retailers of devices using the HeyCyan app — and to the <strong>Australian Retailers Council</strong> — urging them to consider whether to keep selling them, and published a blog setting out where the Privacy Act does and does not reach: the obligation sits with <strong>the entity that holds</strong> the personal information, which for these devices is the software provider, not the retailer. <strong>Why it matters:</strong> this is the first hard enforcement step in Australia's year-long surveillance-wearables debate, and it was taken under existing powers against the offshore software provider rather than against the domestic retailers — establishing, by action, who owns the obligation when hardware and app sit with different parties. It is also the clearest AUNZ answer yet to the "who is regulated" question: the Attorney-General asked for the review in August 2026, and the response was a <strong>Privacy Act</strong> investigation plus advocacy to retailers, not a new AI instrument. The <strong>Tranche 2</strong> privacy reforms would raise the bar further — a "fair and reasonable" collection test, precise geolocation treated as sensitive, and a right to erasure — but they are not yet law (see the AUNZ note).</p><div class="srcrow"><a class="src" href="https://www.oaic.gov.au/news/media-centre/oaic-opens-investigation-into-maker-of-heycyan-smart-glasses-phone-app">OAIC — OAIC opens investigation into maker of HeyCyan smart glasses phone app</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd o-commenced"><span class="lb">Oblig.</span><span class="gf">◧</span><b>Commenced</b></span><span class="rd b-confirmed"><span class="lb">Evidence</span><span class="gf">◑</span><b>Confirmed</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (the regulator&#x27;s own media release and the Privacy Commissioner&#x27;s accompanying blog)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">the regulator&#x27;s own media release and the…</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-12</span></div></article>
+</section>
+<section class="theme" id="theme-2">
+<h2 class="sec"><span class="dot" style="background:var(--t-cap)"></span>Frontier models &amp; capability claims<span class="cnt">1 story</span></h2>
+<article class="card" id="story-3"><div class="bar" style="background:var(--t-cap)"></div><div class="num">3</div><h3>Meta released its first frontier models — closed, and priced</h3><p class="sum">On <strong>Monday 12 October</strong> Meta's Superintelligence Labs released <strong>Muse Wonder</strong> and <strong>Muse Wonder Full</strong> (previously codenamed <strong>Watermelon</strong>), the company's first attempt at frontier-class models. <strong>Muse Wonder</strong> is available through the <strong>Meta Model API</strong> and <strong>Muse Code</strong>; the more capable <strong>Muse Wonder Full</strong> is restricted to Muse Code subscribers and is not served through the API. Meta says the models deliver state-of-the-art performance on personal and professional agentic tasks, memory and coding, <strong>matching or topping OpenAI's and Anthropic's latest</strong> models, and that they were trained on its gigawatt-scale <strong>Prometheus</strong> data centre. Pricing is <strong>US$4.00 per million input tokens and US$20.00 per million output</strong> through the API, with Muse subscriptions from roughly <strong>US$20 to US$200 per month</strong>. Meta's own figures place <strong>Muse Wonder Full at 56</strong> on the <strong>Artificial Analysis Intelligence Index</strong>, behind <strong>Claude Opus 5.5 at 58</strong> and ahead of <strong>Claude Fable 5.1, GPT-6 Astra and Gemini 4 Argon at 53</strong>; <strong>Muse Wonder scored 52</strong>. Two capabilities are named: <strong>"Active Memory"</strong> (retaining information about a user across conversations) and <strong>"Active Focus"</strong> (keeping an agent working toward a goal through obstacles). <strong>Why it matters:</strong> treat every performance number, and the comparison to rivals, as a <strong>vendor claim</strong> — Meta's own testing, presented in its model card, with a fuller report "forthcoming" and no independent replication. The strategic point is not the scores but the packaging: the company that built its reputation on open weights launched its most capable model <strong>closed</strong>, behind a subscription, and answered the capability question by withholding the artefact — even as its AI chief said Meta is "still committed to open source" and pointed to the recent open release of the Muse Glimmer weights. Agents that <strong>remember</strong> personal information and act on a user's behalf also carry the privacy and containment questions this daily keeps returning to, which Meta's card addresses only at the level of "strengthened safeguards". For an AUNZ organisation, the practical control is unchanged: know where the model sits, what it retains and who can pause it.</p><div class="srcrow"><a class="src" href="https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder">TechCrunch — Meta releases its first frontier model, Muse Wonder</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd b-claim"><span class="lb">Evidence</span><span class="gf">◆</span><b>Vendor claim</b></span><span class="rd d-frontier"><span class="lb">Cap.</span><span class="gf">▲</span><b>Frontier</b></span><span class="rd b-tier" title="Tier 2/4 — High (specialist tech outlet reporting the launch and quoting Meta&#x27;s own model card; all benchmark figures are unreplicated vendor numbers)"><span class="lb">Tier</span><b>2/4 · High</b><span class="q">specialist tech outlet reporting the launch…</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-12</span></div></article>
+</section>
+<section class="theme" id="theme-3">
+<h2 class="sec"><span class="dot" style="background:var(--t-mkt)"></span>Market &amp; geopolitics<span class="cnt">2 stories</span></h2>
+<article class="card" id="story-4"><div class="bar" style="background:var(--t-mkt)"></div><div class="num">4</div><h3>Amazon moved to buy the company that makes AI workloads portable across chips</h3><p class="sum">The <strong>Wall Street Journal</strong> reported on <strong>11 October</strong> that <strong>Amazon</strong> is in talks to acquire <strong>Decart</strong> — an Israeli-founded startup — for around <strong>US$7 billion</strong>, against a near-<strong>US$4 billion</strong> valuation in May. Decart's software lets developers move AI workloads between <strong>different processor types</strong>, and the company also builds real-time video and world-simulation models; Amazon gave Decart early access to its <strong>Trainium3</strong> chip in 2025. Israeli outlet <strong>Calcalist</strong> separately reported that <strong>Anthropic</strong> had earlier been in advanced talks to buy Decart at roughly US$6–7 billion before walking away in September. The report lands in the same window as the <strong>Financial Times'</strong> account that <strong>Nvidia</strong> is in talks to deepen its investment in, or acquire, open-weight developer <strong>Reflection AI</strong> — carried in the <strong>12 October</strong> edition. <strong>Why it matters:</strong> the talks are <strong>unconfirmed</strong>, sourced to people familiar with the matter, and neither party has commented, so treat the price as reported rather than settled. The direction is what matters. Amazon is a hyperscaler and a chip designer (Trainium) buying the layer that <strong>reduces dependence on a single silicon supplier</strong> — the mirror image of Nvidia, the supplier of the compute, moving to own a model developer. If the assurance argument is shifting from <em>what the model does</em> to <em>who controls the stack</em>, then this window added a second consolidation of that stack, in the opposite direction. For an AUNZ buyer weighing compute lock-in, portability is the asset being priced, which is a more useful signal than the headline number.</p><div class="srcrow"><a class="src" href="https://www.business-standard.com/world-news/amazon-in-talks-to-acquire-ai-startup-decart-for-around-7-billion-126101200138_1.html">Business Standard — Amazon in talks to acquire AI startup Decart for around $7 billion</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 3/4 — Moderate (national business daily reporting a Wall Street Journal story sourced to people familiar with the matter; corroborated by Calcalist&#x27;s separate account of the earlier Anthropic talks)"><span class="lb">Tier</span><b>3/4 · Moderate</b><span class="q">national business daily reporting a Wall…</span></span><span class="rd b-r"><span class="gf">~</span><b>Reported</b></span><span class="date">2026-10-11</span></div></article>
+<article class="card" id="story-5"><div class="bar" style="background:var(--t-mkt)"></div><div class="num">5</div><h3>The IMF put a number on AI's labour impact — roughly 40 per cent of jobs worldwide</h3><p class="sum">At the <strong>IMF–World Bank</strong> annual meetings in Bangkok on <strong>12 October</strong>, IMF Managing Director <strong>Kristalina Georgieva</strong> said artificial intelligence could affect <strong>approximately 40 per cent of jobs worldwide</strong> — augmented, downgraded or eliminated — calling the technology "<strong>a slow-moving tsunami, but tsunami none the less</strong>". The IMF estimates exposure at roughly <strong>60 per cent of jobs in advanced economies</strong> and about <strong>23–26 per cent in low-income countries</strong>, a gap Georgieva said reflects that "AI is further away", not that poorer countries are better placed. She singled out <strong>young people entering the labour market</strong>, whose entry-level routine roles are the most exposed, and warned AI could also erode government <strong>tax revenues</strong> by shifting gains from workers to capital owners. <strong>Singapore's</strong> President <strong>Tharman Shanmugaratnam</strong> urged governments to make pandemic-style labour-market support a permanent feature rather than an emergency measure. The IMF separately projects AI could add <strong>0.5 to 1 percentage point</strong> to annual output in advanced Asian economies. <strong>Why it matters:</strong> the exposure figures measure <strong>exposure, not job losses</strong>, and Georgieva said so — the "40 per cent" figure is not a forecast of 40 per cent unemployment and should not be repeated as one. The AUNZ read is an entry-level squeeze: the graduate and first-rung roles she identifies are the same segment already soft in the Australian labour market, and the question of who absorbs the training cost is exactly the one the <strong>Joint Select Committee</strong> has been asking employers, banks among them.</p><div class="srcrow"><a class="src" href="https://www.cnbc.com/2026/10/12/imf-world-bank-ai-jobs-inflation-.html">CNBC — IMF warns of AI &#x27;tsunami&#x27; for job seekers</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd b-confirmed"><span class="lb">Evidence</span><span class="gf">◑</span><b>Confirmed</b></span><span class="rd b-tier" title="Tier 2/4 — High (on-record remarks by the IMF managing director at a scheduled event, reported by CNBC and Bloomberg)"><span class="lb">Tier</span><b>2/4 · High</b><span class="q">on-record remarks by the IMF managing…</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-12</span></div></article>
+</section>
+<section class="theme" id="theme-4">
+<h2 class="sec"><span class="dot" style="background:var(--t-inf)"></span>Infrastructure &amp; compute<span class="cnt">1 story</span></h2>
+<article class="card" id="story-6"><div class="bar" style="background:var(--t-inf)"></div><div class="num">6</div><h3>Google defended its US$15 billion Indian AI hub on water grounds, as protests continued</h3><p class="sum">On <strong>12 October</strong> Google's head of infrastructure and energy for Asia-Pacific, <strong>Alexander Smith</strong>, told <strong>AFP</strong> that the company's <strong>US$15 billion</strong> data-centre project at <strong>Visakhapatnam (Vizag)</strong>, in Andhra Pradesh — described by Google as its <strong>largest AI hub outside the United States</strong> and due to become operational in <strong>2028</strong> — will use <strong>air cooling rather than water cooling</strong>, after its watershed assessment "pointed to pressure on the local watershed". Google said it assessed grid stability, power supply, water risk, ecology and acoustics <strong>12 to 24 months</strong> before starting, committed to <strong>replenishing 120 per cent</strong> of the freshwater it consumes across operations by 2030, and will fund local power-infrastructure upgrades. The project has drawn <strong>mass protests</strong> over water scarcity, land acquisition, environmental impact and employment; <strong>three petitions</strong> challenging its environmental clearances are before India's <strong>National Green Tribunal</strong>, alleging the water and environmental risk assessments were "inadequate", and activists are demanding a <strong>moratorium</strong> on new data centres across Andhra Pradesh. <strong>Why it matters:</strong> this is the same argument now running in Australia over data-centre water and grid draw — the control question this daily keeps returning to has a <strong>utilities</strong> variant, and the answers are being litigated rather than agreed. Read the cooling claim carefully: it is a <strong>company executive's statement</strong> to a wire service, and the environmental assessments it rests on are the very thing three tribunal petitions say were inadequate, so the vendor's account and the community's are not reconciled. The AUNZ lesson is procedural: an independent impact assessment published <strong>before</strong> construction is the mitigation the Vizag dispute is short of.</p><div class="srcrow"><a class="src" href="https://www.business-standard.com/economy/news/google-defends-15-billion-vizag-ai-hub-amid-water-concerns-protests-126101200341_1.html">Business Standard — Google defends $15 billion Vizag AI hub amid water concerns, protests</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 2/4 — High (AFP interview carried by a national business daily; the protests and the tribunal petitions are independently reported)"><span class="lb">Tier</span><b>2/4 · High</b><span class="q">AFP interview carried by a national business…</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-12</span></div></article>
+</section>
+<section class="analytics" id="analytics">
+<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Coverage this edition<span class="cnt">6 stories</span></h2>
+<div class="row"><span>Regulation &amp; obligation</span><span class="track"><span class="fill" style="width:100%;background:var(--t-reg);display:block"></span></span><span class="val">2</span></div>
+<div class="row"><span>Frontier models &amp; capability claims</span><span class="track"><span class="fill" style="width:50%;background:var(--t-cap);display:block"></span></span><span class="val">1</span></div>
+<div class="row"><span>Market &amp; geopolitics</span><span class="track"><span class="fill" style="width:100%;background:var(--t-mkt);display:block"></span></span><span class="val">2</span></div>
+<div class="row"><span>Infrastructure &amp; compute</span><span class="track"><span class="fill" style="width:50%;background:var(--t-inf);display:block"></span></span><span class="val">1</span></div>
+</section>
+<section id="key">
+  <details class="key">
+    <summary>How to read this edition</summary>
+    <div class="kbody">
+      <div class="kcard">
+        <h4>Impact — the only coloured axis</h4>
+        <div class="swatchrow"><span style="background:var(--k1)"></span><span style="background:var(--k2)"></span><span style="background:var(--k3)"></span><span style="background:var(--k4)"></span><span style="background:var(--k5)"></span></div>
+        <p><em>Low &middot; Guarded &middot; Elevated &middot; Severe &middot; Critical.</em> How far the risk or obligation position moves. Colour on this page means this axis and nothing else.</p>
+      </div>
+      <div class="kcard">
+        <h4>Obligation — does it bind an AUNZ organisation?</h4>
+        <div class="demo"><span class="rd"><span class="gf">&#9632;</span><b>Mandated</b></span><span class="rd"><span class="gf">&#9687;</span><b>Commenced</b></span><span class="rd"><span class="gf">&#9640;</span><b>Proposed</b></span></div>
+        <p>Monochrome, carrying a leading glyph. <em>Proposed</em> and <em>Signalled</em> both mean nothing is enforceable yet.</p>
+      </div>
+      <div class="kcard">
+        <h4>Evidence — what kind of claim is this?</h4>
+        <div class="demo"><span class="rd"><span class="gf">&#9681;</span><b>Confirmed</b></span><span class="rd"><span class="gf">&#9685;</span><b>Corroborated</b></span><span class="rd"><span class="gf">&#9670;</span><b>Vendor claim</b></span><span class="rd"><span class="gf">&#126;</span><b>Rumoured</b></span></div>
+        <p>A vendor's claim about its own model is <em>always</em> a vendor claim — price, speed and benchmark numbers are claims, not measurements.</p>
+      </div>
+      <div class="kcard">
+        <h4>Capability, tier and verification</h4>
+        <div class="demo"><span class="rd"><span class="gf">&#9650;</span><b>Frontier</b></span><span class="rd"><span class="gf">&#9632;</span><b>Material</b></span><span class="rd"><span class="gf">&#9643;</span><b>Incremental</b></span></div>
+        <p><em>Tier 1/4&ndash;4/4</em> is source reliability, with a short note on <em>what kind</em> of source it is; hover it for the full rationale. Verification reads <em>&#10003; Verified</em>, <em>&#126; Reported</em> or <em>? Unverified</em>.</p>
+      </div>
+    </div>
+  </details>
+</section>
+</main>
+
+<nav class="ednav"><a class="edlink prev" href="2026-10-12.html"><span class="dl">← Older</span><span class="dd">12 October 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav>
+
+<footer>
+  <div>AI Digest &middot; 13 October 2026 &middot; <a href="/daily/">All editions</a> &middot; <a href="/about/">About</a></div>
+</footer>
+</div>
+</body>
+</html>
