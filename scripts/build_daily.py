@@ -44,7 +44,8 @@ MONTHS = ["January", "February", "March", "April", "May", "June",
 
 
 def inline(s):
-    """Minimal markdown -> HTML for running text. Bold before italic."""
+    """Minimal markdown -> HTML for running text. Code first, then bold, then italic."""
+    s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s, flags=re.S)
     s = re.sub(r"(?<!\*)\*([^*\n]+?)\*(?!\*)", r"<em>\1</em>", s)
@@ -244,6 +245,58 @@ def build_edition(path):
     return d, page, n_stories, len(themes), desc
 
 
+HOME = os.path.join(ROOT, "docs", "index.html")
+# The landing page is hand-authored apart from two generated regions, so its
+# "Latest edition" block can't go stale while the editions move on.
+LATEST_START, LATEST_END = "<!-- LATEST:START -->", "<!-- LATEST:END -->"
+KICKER_START, KICKER_END = "<!-- KICKER:START -->", "<!-- KICKER:END -->"
+HOME_ROWS = 3
+
+
+def home_blurb(path):
+    """One editorial line for the newest edition, lifted from its own executive
+    summary — so the homepage text always tracks the edition it links to."""
+    m = re.search(r"\*\*Top stories\.\*\*\s*(.+)", open(path, encoding="utf-8").read())
+    if not m:
+        return ""
+    txt = re.sub(r"\[(.+?)\]\([^)]+\)", r"\1", m.group(1))
+    txt = txt.replace("**", "").replace("`", "")
+    sent = re.split(r"(?<=[.!?])\s+", txt.strip())[0].strip()
+    if len(sent) > 240:
+        sent = sent[:237].rsplit(" ", 1)[0] + "\u2026"
+    return sent
+
+
+def update_homepage(built):
+    if not os.path.exists(HOME):
+        print("  WARN homepage: docs/index.html missing — skipped")
+        return
+    page = open(HOME, encoding="utf-8").read()
+    rows = []
+    for i, (d, ns, nt, _) in enumerate(built[:HOME_ROWS]):
+        label = (f"{d.day} {MONTHS[d.month - 1]} {d.year} &mdash; {ns} "
+                 f"{'story' if ns == 1 else 'stories'}, {nt} "
+                 f"{'theme' if nt == 1 else 'themes'}")
+        link = f'<a href="/daily/{d.isoformat()}.html">{label}</a>'
+        if i == 0:
+            rows.append(f"      <li><b>{link}</b>"
+                        f"{home_blurb(os.path.join(SRC, d.isoformat() + '.md'))}</li>")
+        else:
+            rows.append(f"      <li>{link}</li>")
+    newest = built[0][0]
+    regions = ((LATEST_START, LATEST_END, "\n" + "\n".join(rows) + "\n"),
+               (KICKER_START, KICKER_END,
+                f"Latest edition &middot; {newest.day} {MONTHS[newest.month - 1]} {newest.year}"))
+    for start, end, body in regions:
+        pat = re.compile(re.escape(start) + r".*?" + re.escape(end), re.S)
+        if not pat.search(page):
+            print(f"  WARN homepage: {start} region not found — skipped")
+            continue
+        page = pat.sub(lambda m, b=body: start + b + end, page, count=1)
+    open(HOME, "w", encoding="utf-8").write(page)
+    print(f"  homepage  latest edition -> {newest.isoformat()}")
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     files = sorted(glob.glob(os.path.join(SRC, "*.md")), reverse=True)
@@ -270,6 +323,9 @@ def main():
                     .replace("@@NEWEST@@", f"{newest.day} {MONTHS[newest.month-1]} {newest.year}"))
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(idx)
     print(f"  index.html  {len(built)} edition(s)  {os.path.getsize(os.path.join(OUT,'index.html')):,} bytes")
+
+    # the landing page's latest-edition block and hero kicker move with the editions
+    update_homepage(built)
 
 
 INDEX_TPL = """<!DOCTYPE html>
