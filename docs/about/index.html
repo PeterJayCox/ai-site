@@ -7,8 +7,10 @@
 <meta name="description" content="How the AI Digest rating model, claim-type badge, coverage window and source tiers work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
+/* Appearance: three states, default = auto (follows the OS) — the same behaviour
+   as the daily editions and the Cyber Digest. */
 (function(){var d=document.documentElement;
 function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
 function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
@@ -22,133 +24,133 @@ else if(m===sys()){save('auto');}
 else{save(m==='light'?'dark':'light');}
 apply();}
 try{localStorage.removeItem('ai-theme');}catch(e){}
-window.__aiTheme={cycle:cycle,apply:apply};
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode};
 apply();
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
 })();
 </script>
+<link rel="stylesheet" href="/assets/chrome.css">
 <link rel="stylesheet" href="/assets/digest.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.62;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s;}
-.wrap{max-width:760px;margin:0 auto;padding:0 28px;}
-.topbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.topbar .in{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:760px;margin:0 auto;padding:0 28px;}
-.brand{display:flex;align-items:center;gap:9px;font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--text);text-decoration:none;}
-.brand .d{width:9px;height:9px;border-radius:50%;background:var(--ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--ai) 22%,transparent);}
-nav{display:flex;gap:18px;font-size:13.5px;align-items:center;}
-nav a{color:var(--muted);text-decoration:none;}
-nav a:hover,nav a.here{color:var(--text);}
-.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:32px;height:32px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);user-select:none;flex-shrink:0;font-size:15px}
-.theme-toggle .tt-auto,.theme-toggle .tt-light{display:none}.theme-toggle .tt-dark{display:inline}
-html[data-theme-mode="auto"] .theme-toggle .tt-dark{display:none}html[data-theme-mode="auto"] .theme-toggle .tt-auto{display:inline}
-html[data-theme-mode="light"] .theme-toggle .tt-dark{display:none}html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
-header{padding:44px 0 22px;border-bottom:1px solid var(--border);}
-.kick{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
-h1{font-family:'Source Serif 4',serif;font-size:33px;font-weight:600;line-height:1.16;margin-bottom:8px}
-.sub{color:var(--muted);font-size:15px;max-width:600px}
-section{padding:30px 0;border-bottom:1px solid var(--border);}
-section:last-of-type{border-bottom:0}
-h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:21px;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-h2 .dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto;background:var(--ai)}
-p{color:var(--text-2);font-size:15px;margin-bottom:12px}
-p strong{color:var(--text);font-weight:600}
-p a{color:var(--ai)}
-h3{font-family:'Source Serif 4',serif;font-size:16px;font-weight:600;margin:20px 0 4px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:14px}
-.kcard{border:1px solid var(--border);border-radius:10px;padding:13px 14px;background:var(--surface)}
-.kcard h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:9px}
-.kcard p{font-size:12.5px;color:var(--muted);margin:0}
-.kcard p em{color:var(--text-2);font-style:normal}
-.note{background:color-mix(in srgb,var(--ai) 9%,transparent);border:1px solid color-mix(in srgb,var(--ai) 32%,transparent);border-left-width:4px;border-radius:12px;padding:16px 18px}
-.note p{margin:0;color:var(--text);font-size:14px}
-footer{padding:28px 0 48px;color:var(--muted);font-size:12.5px;text-align:center}
-footer a{color:var(--ai);text-decoration:none}
-@media(max-width:640px){.wrap,.topbar .in{padding:0 18px}h1{font-size:26px}}
+/* about-only layout; components and colour come from the chrome */
+.wrap{padding:0 28px 60px}
 </style>
 </head>
 <body>
-<div class="topbar"><div class="in">
-  <a class="brand" href="/"><span class="d"></span>AI&nbsp;Digest</a>
-  <nav>
-    <a href="/daily/">Editions</a>
-    <a href="/about/" class="here">About</a>
-    <a href="https://peterjaycox.com">Hub</a>
-    <a href="https://cyber.peterjaycox.com">Cyber</a>
-    <a href="https://intel.peterjaycox.com">Intel</a>
-    <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" onclick="window.__aiTheme.cycle(event)"><span class="tt-auto">🌗</span><span class="tt-light">☀️</span><span class="tt-dark">🌙</span></div>
-  </nav>
-</div></div>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/"><span class="t">Editions</span></a>
+    <a href="/about/" class="active"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
 
-<div class="wrap">
-<header>
-  <div class="kick">About</div>
-  <h1>How to read the AI Digest</h1>
-  <p class="sub">A daily read on artificial intelligence with an Australian and New Zealand lens — what moved at each layer of the stack, and what it obliges an AUNZ organisation to do about it.</p>
+<div class="wrap single">
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="kicker">// about</div>
+  <div class="hero-date">How to read it</div>
+  <h1>AI Digest</h1>
+  <p class="subtitle">A daily read on artificial intelligence with an Australian and New Zealand lens &mdash; what moved at each layer of the stack, and what it obliges an AUNZ organisation to do about it.</p>
 </header>
 
-<section>
-  <h2><span class="dot"></span>What it is</h2>
-  <p>A sibling to the <strong>Cyber Digest</strong>, not a section of it. Where the cyber daily slices the day by industry sector, this one slices it by <strong>layer</strong> — because AI news has no natural industry axis. Every item is rated on independent axes, and a theme with no qualifying item is omitted rather than padded.</p>
+<main id="main" class="main">
+
+<section class="land">
+  <h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> What it is</h2>
+  <p>A sibling to the <strong>Cyber Digest</strong>, not a section of it. Where the cyber daily slices the day by industry sector, this one slices it by <strong>layer</strong> &mdash; because AI news has no natural industry axis. Every item is rated on independent axes, and a theme with no qualifying item is omitted rather than padded.</p>
 </section>
 
-<section>
-  <h2><span class="dot"></span>The rating model</h2>
-  <p>Each card ends in a single-line readout. <strong>Colour on the digest means impact severity and nothing else</strong>; every other rating carries a glyph, so a hue never has to mean two things at once.</p>
-  <div class="grid">
-    <div class="kcard">
-      <h4>Impact — the only coloured axis</h4>
-      <div class="swatchrow"><span style="background:var(--k1)"></span><span style="background:var(--k2)"></span><span style="background:var(--k3)"></span><span style="background:var(--k4)"></span><span style="background:var(--k5)"></span></div>
-      <p><em>Low &middot; Guarded &middot; Elevated &middot; Severe &middot; Critical.</em> How far the risk or obligation position moves.</p>
-    </div>
-    <div class="kcard">
-      <h4>Obligation — does it bind an AUNZ organisation?</h4>
-      <div class="demo"><span class="rd"><span class="gf">&#9632;</span><b>Mandated</b></span><span class="rd"><span class="gf">&#9687;</span><b>Commenced</b></span><span class="rd"><span class="gf">&#9640;</span><b>Proposed</b></span><span class="rd"><span class="gf">&#9640;</span><b>Signalled</b></span></div>
-      <p><em>Proposed</em> and <em>Signalled</em> both mean nothing is enforceable yet.</p>
-    </div>
-    <div class="kcard">
-      <h4>Evidence — what kind of claim is this?</h4>
-      <div class="demo"><span class="rd"><span class="gf">&#9681;</span><b>Confirmed</b></span><span class="rd"><span class="gf">&#9685;</span><b>Corroborated</b></span><span class="rd"><span class="gf">&#9670;</span><b>Vendor claim</b></span><span class="rd"><span class="gf">~</span><b>Rumoured</b></span></div>
-      <p>Also <em>Probable</em>, <em>Other</em>, <em>Independently evaluated</em> and <em>Unreplicated preprint</em>.</p>
-    </div>
-    <div class="kcard">
-      <h4>Capability — how much did the capability itself move?</h4>
-      <div class="demo"><span class="rd"><span class="gf">&#9650;</span><b>Frontier</b></span><span class="rd"><span class="gf">&#9632;</span><b>Material</b></span><span class="rd"><span class="gf">&#9643;</span><b>Incremental</b></span></div>
-      <p>Rated only where the story moves capability rather than policy, market or law.</p>
-    </div>
-    <div class="kcard">
-      <h4>Tier — source reliability</h4>
-      <div class="demo"><span class="rd b-tier"><span class="lb">Tier</span><b>2/4 &middot; High</b><span class="q">on-record govt statement</span></span></div>
-      <p><em>Tier 1/4&ndash;4/4</em> carries a short note on <em>what kind</em> of source it is. Hover the segment for the full rationale.</p>
-    </div>
-    <div class="kcard">
-      <h4>Verification</h4>
-      <div class="demo"><span class="rd b-v"><span class="gf">&#10003;</span><b>Verified</b></span><span class="rd b-r"><span class="gf">~</span><b>Reported</b></span><span class="rd b-u"><span class="gf">?</span><b>Unverified</b></span></div>
-      <p><em>Verified</em> means established by first-party disclosure, a regulator, or two or more independent sources.</p>
-    </div>
+<section class="land">
+  <h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> The rating model</h2>
+  <p>Each card ends in a single-line readout: the source, one pill per axis, the source tier, the verification gate and the date. <strong>Colour on the digest means impact severity and nothing else</strong>; every other axis is monochrome, so a hue never has to mean two things at once.</p>
+
+  <div class="legend-group">
+    <h3>Impact &mdash; the only coloured axis</h3>
+    <p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+    <span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+    <span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+    <span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+    <span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+    <p>How far the risk, obligation or capability position moves. Impact is <em>not</em> harm: a model release or a funding round is not a harm at all, so the band is driven by precedent, blast radius, reversibility, structural change and sector criticality rather than by a severity dictionary borrowed from cyber incidents.</p>
+  </div>
+
+  <div class="legend-group">
+    <h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+    <p><span class="axis o-mandated"><span class="lb">Oblig.</span>Mandated</span>
+    <span class="axis o-commenced"><span class="lb">Oblig.</span>Commenced</span>
+    <span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span>
+    <span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span></p>
+    <p><em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a government has said it will &mdash; a two-stage ministerial statement stays Signalled. Both mean nothing is enforceable yet. The pill is rendered only when the band is not <em>None</em>, and where an obligation is claimed the card names the instrument <em>and</em> its operative provision.</p>
+  </div>
+
+  <div class="legend-group">
+    <h3>Evidence &mdash; what kind of claim is this?</h3>
+    <p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+    <span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+    <span class="axis e-probable"><span class="lb">Evidence</span>Probable</span>
+    <span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+    <span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+    <span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+    <span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+    <p>Orthogonal to verification, and the reason this product exists separately from the cyber digest: an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is <strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the capability is unreplicated). Both badges render.</p>
+  </div>
+
+  <div class="legend-group">
+    <h3>Capability delta &mdash; frontier themes only</h3>
+    <p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+    <span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+    <span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+    <p>Rated only where the story moves capability rather than policy, market or law.</p>
+  </div>
+
+  <div class="legend-group">
+    <h3>Tier &mdash; source reliability, and the verification gate</h3>
+    <table class="data-table">
+    <thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+    <tbody>
+    <tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+    <tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+    <tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+    <tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+    </tbody>
+    </table>
+    <p>Each tier segment carries a short note on <em>what kind</em> of source it is, and the full rationale sits in the segment&rsquo;s tooltip.</p>
+    <p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account, not yet independently confirmed. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
   </div>
 </section>
 
-<section>
-  <h2><span class="dot"></span>Why the claim-type badge matters</h2>
-  <p>A cyber advisory can be independently verified — a register entry, a patch, an exploitation observation. A frontier capability claim usually <strong>cannot be verified at all</strong>: the strongest available statement is that the vendor said it, or that someone with no stake measured it. So every item carries a second badge recording what kind of claim it is — vendor claim, independently evaluated, unreplicated preprint, corroborated or rumoured — and <strong>no vendor benchmark is ever presented as an established fact</strong>.</p>
-  <p>That is also why there is no equivalent of a CISA advisory here. Nothing in AI carries a statutory duty to publish, so a non-disclosure is caught by no anchor at all. The digest is built knowing that. A vendor's claim about its own model is <em>always</em> a vendor claim — price, speed and benchmark numbers are claims, not measurements.</p>
+<section class="land">
+  <h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> Why the claim-type badge matters</h2>
+  <p>A cyber advisory can be independently verified &mdash; a register entry, a patch, an exploitation observation. A frontier capability claim usually <strong>cannot be verified at all</strong>: the strongest available statement is that the vendor said it, or that someone with no stake measured it. So every item carries a second badge recording what kind of claim it is &mdash; vendor claim, independently evaluated, unreplicated preprint, corroborated or rumoured &mdash; and <strong>no vendor benchmark is ever presented as an established fact</strong>.</p>
+  <p>That is also why there is no equivalent of a CISA advisory here. Nothing in AI carries a statutory duty to publish, so a non-disclosure is caught by no anchor at all. The digest is built knowing that. A vendor&rsquo;s claim about its own model is <em>always</em> a vendor claim &mdash; price, speed and benchmark numbers are claims, not measurements.</p>
 </section>
 
-<section>
-  <h2><span class="dot"></span>Coverage and the window</h2>
+<section class="land">
+  <h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Coverage and the window</h2>
   <p>The window is <strong>48 hours</strong> (72 across a weekend) and it is stated in the header of every edition. Outlets report an action days after it happens, so where the dateline and the event date differ, both are given and the <strong>event date governs</strong>. A story that ran in either of the previous two editions is suppressed unless the day genuinely adds a fact, and the new fact must be what the card is about.</p>
-  <p>A story older than the window is not a full entry. If it still matters it appears in the executive summary as context, never as a card. A checked silence — a register swept and found quiet — is a finding and is stated; an unchecked silence is a gap.</p>
+  <p>A story older than the window is not a full entry. If it still matters it appears in the executive summary as context, never as a card. A checked silence &mdash; a register swept and found quiet &mdash; is a finding and is stated; an unchecked silence is a gap.</p>
 </section>
 
-<section>
-  <h2><span class="dot"></span>Status</h2>
-  <div class="note"><p><strong>First edition published 8 October 2026.</strong> The format, taxonomies, source register and rating framework are settled. What is <em>not</em> yet automated: the collection pipeline and its own database are still to be built, so editions currently depend on an operator run rather than a scheduled job. Two weak spots are known and stated rather than hidden — Impact, Obligation and Evidence are editor-assigned per card, and the frontier-lab status pages need a dedicated collector before they can be trusted to fire without a human reading them.</p></div>
+<section class="land">
+  <h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span> Status</h2>
+  <div class="note-box">
+    <p><strong>Editions are published daily.</strong> The format, taxonomy, source register and rating framework are settled, and every edition passes a fail-closed gate (front matter, window, per-card ratings, deep-link shape, source concentration, anchor presence) before it is committed. Two weak spots are stated rather than hidden: the source register is still being broadened, and the anchor spine for AI is mostly first-party vendor disclosure &mdash; exactly the source class this product treats most sceptically, which is why the claim-type badge is not optional.</p>
+  </div>
 </section>
+
+</main>
 </div>
 
-<footer>
-  <a href="/">AI Digest</a> &nbsp;·&nbsp; <a href="/daily/">All editions</a> &nbsp;·&nbsp; <a href="https://peterjaycox.com">Hub</a>
-</footer>
+<footer class="footer"><div class="links">
+  <a href="/">AI Digest</a>
+  <a href="/daily/">All editions</a>
+  <a href="https://peterjaycox.com">Hub</a>
+</div><div class="note">A sibling of the Cyber Digest. Australian English throughout.</div></footer>
+
 </body>
 </html>

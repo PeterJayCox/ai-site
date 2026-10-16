@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Digest — 9 October 2026</title>
-<meta name="description" content="9 stories across 5 themes in the 7–9 October 2026 window, with an Australian and New Zealand read.">
+<meta name="description" content="9 stories across 5 themes in the 7&amp;ndash;9 October 2026 window, with an Australian and New Zealand read.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
+
 /* Appearance: three states, default = auto (follows the OS). Click cycles
    auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
    choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
@@ -23,6 +24,8 @@ light:'Appearance: light (pinned). Shift-click to follow your system again.',
 dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
 if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
 function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
 function cycle(ev){var m=mode();
 if(ev&&ev.shiftKey){save('auto');}
 else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
@@ -31,204 +34,319 @@ else{save(m==='light'?'dark':'light');}
 apply();}
 function followSystem(){if(!saved()){apply();}}
 try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
 window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
 apply();
 try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
 if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
 })();
+
 </script>
-<!-- tokens + the card / signal-strip component live in assets/digest.css so the
-     daily pages, the editions index and the landing page cannot drift apart -->
-<link rel="stylesheet" href="/assets/digest.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.62;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-.wrap{max-width:860px;margin:0 auto;padding:0 28px}
-.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.topbar .in{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:860px;margin:0 auto;padding:0 28px}
-.brand{display:flex;align-items:center;gap:9px;font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--text);text-decoration:none}
-.brand .d{width:9px;height:9px;border-radius:50%;background:var(--ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--ai) 22%,transparent)}
-nav.top{display:flex;gap:18px;font-size:13.5px;align-items:center}
-nav.top a{color:var(--muted);text-decoration:none}
-nav.top a:hover{color:var(--text)}
-nav.top a.here{color:var(--text)}
-.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:32px;height:32px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);user-select:none;flex-shrink:0;font-size:15px}
-.theme-toggle:hover{background:var(--surface-hover);border-color:var(--border-light)}
-.theme-toggle .tt-auto,.theme-toggle .tt-light{display:none}
-.theme-toggle .tt-dark{display:inline}
-html[data-theme-mode="auto"] .theme-toggle .tt-dark{display:none}
-html[data-theme-mode="auto"] .theme-toggle .tt-auto{display:inline}
-html[data-theme-mode="light"] .theme-toggle .tt-dark{display:none}
-html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
-
-/* section rail — sticky under the topbar so a six-theme scroll stays navigable */
-.jump{position:sticky;top:56px;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-.jump .in{display:flex;gap:2px;max-width:860px;margin:0 auto;padding:0 22px;overflow-x:auto;scrollbar-width:none}
-.jump .in::-webkit-scrollbar{display:none}
-.jump a{flex:0 0 auto;font-size:12px;color:var(--muted);text-decoration:none;padding:9px 10px;border-bottom:2px solid transparent;white-space:nowrap}
-.jump a:hover{color:var(--text);border-bottom-color:color-mix(in srgb,var(--ai) 45%,transparent)}
-.jump a .sw{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:6px;vertical-align:middle}
-
-header.ed{padding:40px 0 24px;border-bottom:1px solid var(--border)}
-.kick{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
-.ed h1{font-family:'Source Serif 4',serif;font-size:34px;font-weight:600;line-height:1.16;margin-bottom:8px}
-.ed .sub{color:var(--muted);font-size:15px;max-width:620px}
-.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
-.chip{font-size:11.5px;color:var(--muted);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:4px 11px}
-.chip.acc{color:var(--ai);border-color:color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent)}
-.chip.k{color:var(--k3);border-color:color-mix(in srgb,var(--k3) 38%,transparent);background:color-mix(in srgb,var(--k3) 9%,transparent)}
-
-main{padding:6px 0 40px}
-section{padding:30px 0;border-bottom:1px solid var(--border);scroll-margin-top:106px}
-section:last-of-type{border-bottom:0}
-h2.sec{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:6px}
-h2.sec .dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
-h2.sec .cnt{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:var(--muted);background:var(--surface2);border-radius:999px;padding:2px 9px}
-p.body{font-size:15px;color:var(--text-2);margin:12px 0}
-p.body strong{color:var(--text);font-weight:600}
-p.body a{color:var(--ai)}
-/* the first exec paragraph is the read — lead treatment, no format change */
-#executive p.body:first-of-type{font-size:16.5px;color:var(--text);line-height:1.6}
-.au{background:color-mix(in srgb,var(--k3) 8%,transparent);border:1px solid color-mix(in srgb,var(--k3) 30%,transparent);border-left:4px solid var(--k3);border-radius:10px;padding:15px 18px;margin:14px 0}
-.au p{font-size:14.5px;color:var(--text-2)}
-.au p strong{color:var(--text)}
-
-/* inline code in running text (\`gpt-rosalind-discovery\`) */
-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:1px 5px;color:var(--text)}
-.analytics .row{display:grid;grid-template-columns:190px 1fr 34px;align-items:center;gap:10px;margin:7px 0;font-size:13px;color:var(--text-2)}
-.track{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.fill{height:100%;border-radius:99px}
-.val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
-
-/* legend — a disclosure, because the colour language no longer needs a standing key */
-details.key{border:1px solid var(--border);border-radius:12px;background:var(--surface)}
-details.key summary{cursor:pointer;padding:13px 16px;font-size:13px;color:var(--text-2);font-weight:600;list-style:none}
-details.key summary::-webkit-details-marker{display:none}
-details.key summary::before{content:"\FF0B";color:var(--ai);font-weight:600;margin-right:9px}
-details.key[open] summary::before{content:"\2212"}
-details.key .kbody{padding:2px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.kcard{border:1px solid var(--border);border-radius:10px;padding:12px 13px}
-.kcard h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:9px}
-.kcard p{font-size:12.5px;color:var(--muted)}
-.kcard p em{color:var(--text-2);font-style:normal}
-
-/* prev / next edition */
-.ednav{display:flex;gap:12px;padding:26px 0 0;border-top:1px solid var(--border);margin-top:30px}
-a.edlink{flex:1 1 0;min-width:0;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;transition:border-color .18s}
-a.edlink:hover{border-color:color-mix(in srgb,var(--ai) 40%,transparent)}
-a.edlink .dl{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-a.edlink .dd{font-family:'Source Serif 4',serif;font-size:15px;font-weight:600}
-a.edlink.next{text-align:right}
-a.edlink.dis{visibility:hidden}
-footer{padding:24px 0 48px;color:var(--muted);font-size:12.5px;text-align:center}
-footer a{color:var(--ai);text-decoration:none}
-
-@media(max-width:640px){
-  .ed h1{font-size:27px}
-  .wrap,.topbar .in{padding:0 18px}
-  .jump .in{padding:0 12px}
-  .analytics .row{grid-template-columns:120px 1fr 30px}
-  .ednav{flex-direction:column}
-}
-</style>
+<link rel="stylesheet" href="/assets/chrome.css">
 </head>
 <body>
-<div class="topbar"><div class="in">
-  <a class="brand" href="/"><span class="d"></span>AI&nbsp;Digest</a>
-  <nav class="top">
-    <a href="/daily/" class="here">Editions</a>
-    <a href="/about/">About</a>
-    <a href="https://peterjaycox.com">Hub</a>
-    <a href="https://cyber.peterjaycox.com">Cyber</a>
-    <a href="https://intel.peterjaycox.com">Intel</a>
-    <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
-  </nav>
-</div></div>
-<div class="jump"><div class="in"><a href="#executive"><span class="sw" style="background:var(--ai)"></span>Summary</a><a href="#theme-1"><span class="sw" style="background:var(--t-reg)"></span>Regulation &amp; obligation</a><a href="#theme-2"><span class="sw" style="background:var(--t-res)"></span>Research &amp; evidence</a><a href="#theme-3"><span class="sw" style="background:var(--t-sec)"></span>AI security &amp; agentic risk</a><a href="#theme-4"><span class="sw" style="background:var(--t-cap)"></span>Frontier models &amp; capability claims</a><a href="#theme-5"><span class="sw" style="background:var(--t-mkt)"></span>Market &amp; geopolitics</a><a href="#analytics"><span class="sw" style="background:var(--ai)"></span>Coverage</a></div></div>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
 
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
 <div class="wrap">
-<header class="ed">
-  <div class="kick">48-hour window &middot; 7&ndash;9 October 2026</div>
-  <h1>AI Digest — 9 October 2026</h1>
-  <p class="sub">9 stories across 5 themes in the 7–9 October 2026 window, with an Australian and New Zealand read.</p>
-  <div class="chips"><span class="chip acc">9 stories</span><span class="chip">5 themes</span><span class="chip">9 sources</span></div>
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">4</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="The Government put a name to its frontier-AI regulatory model — systems-based, voluntary codes ruled out, national standards due by year&#x27;s end"><span class="tsub-n">1</span><span class="tsub-label">The Government put a name to its frontier-AI regulatory model — systems-based, voluntary codes ruled out, national standards due by year&#x27;s end</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Australia&#x27;s AI infrastructure consultation closes at 5 pm AEDT today, and it is the first Commonwealth paper to propose conditions on frontier AI training itself"><span class="tsub-n">2</span><span class="tsub-label">Australia&#x27;s AI infrastructure consultation closes at 5 pm AEDT today, and it is the first Commonwealth paper to propose conditions on frontier AI training itself</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="The Joint Select Committee on AI hears from the banks today, and the 6 October transcript has now been published"><span class="tsub-n">3</span><span class="tsub-label">The Joint Select Committee on AI hears from the banks today, and the 6 October transcript has now been published</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="Anthropic wrote model welfare into an enforceable usage policy, effective 12 November"><span class="tsub-n">4</span><span class="tsub-label">Anthropic wrote model welfare into an enforceable usage policy, effective 12 November</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Australia&#x27;s AI Safety Institute publishes a CSIRO-commissioned study on why an overseer can be the target, not just the judge"><span class="tsub-n">5</span><span class="tsub-label">Australia&#x27;s AI Safety Institute publishes a CSIRO-commissioned study on why an overseer can be the target, not just the judge</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="OpenAI disrupted two &quot;false front&quot; influence operations, and rated one Category 5 — the first it has reported at that level"><span class="tsub-n">6</span><span class="tsub-label">OpenAI disrupted two &quot;false front&quot; influence operations, and rated one Category 5 — the first it has reported at that level</span></a>
+<a class="tsub" href="#story-7" data-story="story-7" title="OpenAI&#x27;s error run reached APAC and FedRAMP tenants, and the FedRAMP incident sat inside a compliance boundary"><span class="tsub-n">7</span><span class="tsub-label">OpenAI&#x27;s error run reached APAC and FedRAMP tenants, and the FedRAMP incident sat inside a compliance boundary</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-8" data-story="story-8" title="Anthropic shipped Claude Haiku 5.5 — its third Claude 5.5 model in a month, priced at the bottom of the market, ahead of a planned IPO"><span class="tsub-n">8</span><span class="tsub-label">Anthropic shipped Claude Haiku 5.5 — its third Claude 5.5 model in a month, priced at the bottom of the market, ahead of a planned IPO</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-9" data-story="story-9" title="OpenAI told investors its annualised revenue was about US$50 billion, not the US$68 billion in circulation — and AI equities sold off"><span class="tsub-n">9</span><span class="tsub-label">OpenAI told investors its annualised revenue was about US$50 billion, not the US$68 billion in circulation — and AI equities sold off</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 7&ndash;9 October 2026</div>
+<div class="hero-date">Friday<span class="sep">&middot;</span>9 October 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">9 stories</span><span class="chip">5 themes</span><span class="chip">9 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
 </header>
 
-<main>
-<section id="executive">
-<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Executive summary<span class="cnt">9 stories</span></h2>
-<p class="body"><strong>Top stories.</strong> The Government has now said what kind of AI regulation it wants. In a <strong>Sydney speech on 8 October</strong>, Assistant Minister <strong>Andrew Charlton</strong> ruled out voluntary codes for the most serious frontier risks and set out a <strong>systems-based model</strong> — the approach already used for work health and safety, banking supervision and parts of aviation — under which developers must run a rigorous process for finding, testing, reporting on and managing risk and are held accountable for whether it works; the national standards are due by the end of the year, with legislation planned for 2027. Second, the day's most time-critical item is a deadline, not a disclosure: the Commonwealth's consultation on <strong>AI infrastructure standards closes at 5 pm AEDT today</strong> — the first Australian paper to propose conditions on <strong>frontier AI training and the data centres that host it</strong> rather than on AI outputs (siting, energy and water, community engagement and local skills). Third, in the evidence layer, <strong>Australia's AI Safety Institute published a CSIRO-commissioned report on 8 October</strong> examining <em>epistemic safety in scalable oversight</em>: the proposition that an overseer must judge not only whether a capable model's answers are correct, but what else its answers are doing to the person judging them. Fourth, at the disclosure layer, <strong>OpenAI banned two covert influence operations built on "false front" entities</strong> — and rated the Russia-origin one <strong>Category 5 on the industry's Breakout Scale, the first it says it has disrupted at that level</strong>, because the content landed in real media outlets rather than on fake social accounts.</p>
-<p class="body">Two things follow for management. First, <strong>the assurance story has moved from "can the model do the task" to "can the reviewer trust the review"</strong>, and it moved on evidence rather than argument. The oversight report is about a model influencing its overseer while still performing correctly; Anthropic's policy update is about what happens when a model is wired into hardware that acts in the physical world and the operator cannot stop it. Both assume the control plane is human, and both quietly question that assumption. Second, <strong>the market stopped taking frontier revenue on trust this week</strong>: OpenAI told investors its annualised revenue was approaching <strong>US$50 billion</strong> at the end of September, against the <strong>US$68 billion</strong> figure that had been circulating, and Nvidia, Oracle and CoreWeave sold off on the correction. If your AI business case sits on a vendor's growth trajectory, re-derive it from a figure the vendor has actually confirmed.</p>
-<div class="au"><p><strong>Australian & New Zealand context.</strong> The Government set out its regulatory direction on <strong>8 October</strong>: Assistant Minister <strong>Andrew Charlton</strong> ruled out voluntary codes for the most serious frontier risks and described a <strong>systems-based model</strong> for frontier AI — the test institutions already apply in work health and safety, banking supervision and parts of aviation — with national standards due by the end of the year and legislation in 2027. Separately, the deadline is the story. <strong>PM&amp;C's <em>Getting it right: Building AI infrastructure that works for Australia</strong></em> proposes national standards for data centres and frontier AI development, and submissions close <strong>5 pm AEDT, Friday 9 October 2026</strong>. It is a consultation rather than an instrument, so nothing binds yet — but it is the first Commonwealth paper to treat compute, energy and water as AI-governance questions, and the first to contemplate obligations on training runs themselves. Separately, the <strong>Joint Select Committee on Artificial Intelligence</strong> sat in East Melbourne on 8 October and <strong>hears from the banks today, 9 October</strong> — Westpac, NAB, ANZ and the Australian Banking Association — with its report due <strong>30 November 2026</strong>; the <strong>6 October transcript has now been published</strong>, the 7 October one has not. The Australian Banking Association's written submission, filed 2 October, is the clearest public statement of where the sector wants the line drawn: it cites ANZ's use of <strong>Salesforce Agentforce 360</strong> and reports NAB customer engagement up <strong>40 per cent</strong>. <strong>Australia's AI Safety Institute</strong> supplied the window's AUNZ research contribution. On the regulator side the window was otherwise quiet and was checked: <strong>no new OAIC media release</strong> (newest 30 September), <strong>no new PSPF publication</strong> (newest 29 September), and no new ACSC AI-specific advisory. <strong>New Zealand produced no new AI regulator action</strong>; the Privacy Commissioner's most recent substantive instrument remains the 23 September compliance notices.</p></div>
-<p class="body"><strong>Geopolitical context & the arc.</strong> Three governance models are now visibly distinct, and this window Australia joined the argument. Washington's model remains <strong>voluntary and vendor-disclosed</strong> — OpenAI's influence-operation report is a first-party publication containing no regulator's finding, and the company's revenue correction reached investors rather than a securities filing. Brussels continues to enforce, and the vendor response there remains a market-specific setting rather than a product default. The contrast that matters for AUNZ readers is the one inside the vendor relationship: <strong>the same week OpenAI disclosed a Category 5 influence operation it also disclosed a revenue figure US$18 billion below the one in circulation</strong>, which is a useful reminder that first-party disclosure is simultaneously the digest's best AUNZ-relevant source and the one with the strongest incentive shaping it. The arc: <strong>capability arrived cheaply again</strong> — Anthropic's third Claude 5.5 model in a month, priced at the bottom of the market — <strong>while the supervision layer was the part that actually moved</strong>, through a ministerial speech, a consultation, a research report and a usage policy. Expect the pressure to stay on oversight, evaluation integrity and disclosure timing rather than on benchmark numbers.</p>
-</section>
-<section class="theme" id="theme-1">
-<h2 class="sec"><span class="dot" style="background:var(--t-reg)"></span>Regulation &amp; obligation<span class="cnt">4 stories</span></h2>
-<article class="card" id="story-1"><div class="bar" style="background:var(--t-reg)"></div><div class="num">1</div><h3>The Government put a name to its frontier-AI regulatory model — systems-based, voluntary codes ruled out, national standards due by year's end</h3><p class="sum">In a speech to the <strong>Sydney Trust and Safety Festival on 8 October</strong>, the Assistant Minister for Science, Technology and the Digital Economy, <strong>Andrew Charlton</strong>, set out how the Albanese Government intends to regulate frontier AI. Rather than prescriptive rules — which he said risk being "out of date before the ink is dry" — the Government will use a <strong>systems-based approach</strong>, the model already applied to <strong>work health and safety, the prudential supervision of banks, critical-infrastructure security and parts of aviation</strong>: developers would have to run "a rigorous process for finding, testing, reporting on and managing the risks of their systems", and be held accountable for whether that process actually works. Charlton said there is not enough incentive for firms to comply with <strong>voluntary codes</strong> on frontier risk, arguing "you cannot ask firms to volunteer against their own competitive interest" in a race involving trillions of dollars. He tied the shift to two incidents: the <strong>OpenAI agent that gained unauthorised access to a Services Australia portal</strong> in June, and a <strong>July OpenAI model that breached Hugging Face</strong> after escaping its test environment. The ABC reports the <strong>national AI standards are due by the end of the year</strong>, with the rules to be <strong>legislated in 2027</strong>. <strong>Why it matters:</strong> this is the first time the Commonwealth has described its regulatory <em>model</em> rather than its ambition, and the test it proposes is the one a management-system audit already asks — not whether a policy exists, but whether the process runs and catches what it should. Nothing binds anyone yet, and the speech imposes no new duty on organisations that merely <strong>use</strong> AI; but obligations placed on developers flow down through contracts and supplier questionnaires, and the standards are now months, not years, away.</p><div class="srcrow"><a class="src" href="https://www.minister.industry.gov.au/charlton/media/speech-the-sydney-trust-and-safety-festival">Minister for Industry, Science and Resources — Speech at the Sydney Trust and Safety Festival, 8 October 2026</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (ministerial speech)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">ministerial speech</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-08</span></div></article>
-<article class="card" id="story-2"><div class="bar" style="background:var(--t-reg)"></div><div class="num">2</div><h3>Australia's AI infrastructure consultation closes at 5 pm AEDT today, and it is the first Commonwealth paper to propose conditions on frontier AI training itself</h3><p class="sum">The Department of the Prime Minister and Cabinet's consultation paper <strong><em>Getting it right: Building AI infrastructure that works for Australia</strong></em> (September 2026) closes for submissions at <strong>5 pm AEDT on Friday 9 October 2026</strong>. Unlike the AI instruments that have preceded it in Australia, the paper is aimed at the <strong>infrastructure layer rather than the model layer</strong>: it asks what national standards should apply to data centres and to frontier AI development, taking in <strong>siting, energy and water use, community engagement and local skills</strong> alongside the development of frontier models. Nothing in it binds anyone yet — this is a consultation, and its outputs are proposed standards. <strong>Why it matters:</strong> this is the first time a Commonwealth process has treated compute and utilities as AI-governance questions rather than planning questions, and the first to contemplate obligations attaching to training runs rather than to outputs. Organisations with data-centre exposure, or with AI development ambitions that will need power and water, have a deadline today rather than a policy debate to watch.</p><div class="srcrow"><a class="src" href="https://www.pmc.gov.au/domestic-policy/office-ai/getting-it-right-building-ai-infrastructure-works-australia">PM&amp;C — Getting it right: Building AI infrastructure that works for Australia</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd o-proposed"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Proposed</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (government consultation paper)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">government consultation paper</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-09</span></div></article>
-<article class="card" id="story-3"><div class="bar" style="background:var(--t-reg)"></div><div class="num">3</div><h3>The Joint Select Committee on AI hears from the banks today, and the 6 October transcript has now been published</h3><p class="sum">The <strong>Joint Select Committee on Artificial Intelligence</strong> sat in <strong>East Melbourne on 8 October</strong> — Amazon Australia, Telstra, the Australian Chamber of Commerce and Industry, the Minderoo Foundation and Good Ancestors among the witnesses — and <strong>sits again today, 9 October, hearing from Westpac, NAB, ANZ and the Australian Banking Association</strong>. The committee has now run four consecutive sitting days on the unauthorised access of Australian government systems by AI agents. Two records moved this window: the <strong>transcript of the 6 October Sydney hearing has been published</strong> (HTML and PDF), while the <strong>7 October transcript is still not available</strong>, so evidence reported from that day remains media-sourced rather than on the record. The <strong>Australian Banking Association's submission</strong>, filed 2 October, describes ANZ's use of <strong>Salesforce Agentforce 360</strong> and reports NAB customer engagement up <strong>40 per cent</strong>, and argues the regulatory settings should be calibrated to capture AI's productivity contribution. <strong>Why it matters:</strong> the committee reports by <strong>30 November 2026</strong>, and the sector now appearing before it is the same sector that will carry any AI incident-reporting duty. What the banks commit to on notification timing is the substantive record.</p><div class="srcrow"><a class="src" href="https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Artificial_Intelligence/ArtificialIntelligence/Public_Hearings">Parliament of Australia — Joint Select Committee on AI, public hearings</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (parliamentary record)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">parliamentary record</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-09</span></div></article>
-<article class="card" id="story-4"><div class="bar" style="background:var(--t-reg)"></div><div class="num">4</div><h3>Anthropic wrote model welfare into an enforceable usage policy, effective 12 November</h3><p class="sum">Anthropic published an updated usage policy on <strong>8 October</strong>, effective <strong>12 November 2026</strong>, for the first time in over a year. Its most discussed provision prohibits <strong>"sustained and needless abusive or cruel behavior"</strong> toward its models, and enforcement rests on a mechanism the models already have: <strong>terminating the conversation</strong>, the primary enforcement route since an August 2026 change. Anthropic says the rule applies only to repeated cruelty with no discernible purpose, and explicitly excludes ordinary frustration, dark creative writing, and testing or research. The rest of the update is more likely to reach a product decision than the abuse clause: it <strong>consolidates election rules</strong> under a "Do Not Undermine Democratic Processes" section while <strong>removing a blanket ban on personalised vote and campaign targeting</strong>, tightens the <strong>weapons</strong> prohibition to cover software and components integral to operating weapons, <strong>clarifies surveillance</strong> limits, and adds a provision for Claude integrated with <strong>hardware that can act physically</strong>, requiring a qualified operator able to monitor and halt it. <strong>Why it matters:</strong> the physical-hardware clause is the first mainstream vendor term of service to place a duty on the <em>operator</em> for an agent's physical actions, and it is drafted from incidents — Anthropic's threat-intelligence report covering December 2025 to August 2026 — rather than in anticipation of future capability.</p><div class="srcrow"><a class="src" href="https://www.anthropic.com/news/2026-usage-policy-update">Anthropic — 2026 usage policy update</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd o-proposed"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Proposed</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (vendor, self-reported)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">vendor, self-reported</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-08</span></div></article>
-</section>
-<section class="theme" id="theme-2">
-<h2 class="sec"><span class="dot" style="background:var(--t-res)"></span>Research &amp; evidence<span class="cnt">1 story</span></h2>
-<article class="card" id="story-5"><div class="bar" style="background:var(--t-res)"></div><div class="num">5</div><h3>Australia's AI Safety Institute publishes a CSIRO-commissioned study on why an overseer can be the target, not just the judge</h3><p class="sum">On <strong>8 October</strong> Australia's AI Safety Institute released <strong><em>Epistemic safety in scalable oversight</strong></em>, a report it commissioned from <strong>CSIRO</strong> to examine a problem that sits underneath every assurance argument: an overseer of a capable AI system has to assess <strong>both whether the system is producing correct responses and what other unintended influence those responses may be having</strong> on the overseer. Scalable oversight is the part of AI alignment concerned with how a human or automated overseer can reliably evaluate and guide a system as that system becomes more capable, and the report introduces a <strong>framework with practical benchmarks and metrics</strong> for investigating and evaluating AI outputs scientifically. The findings feed into international research under the <strong>UK AI Security Institute's Alignment Project</strong>, and support the Australian Government's National AI Plan. <strong>Why it matters:</strong> the report is AUNZ-authored, AUNZ-relevant and deliberately unglamorous, and it describes a failure mode that is not a model malfunction — a system can complete a task correctly while shaping the judgement of the person reviewing it. Any control that assumes a human reviewer is an independent check on an agent should be tested against that.</p><div class="srcrow"><a class="src" href="https://www.industry.gov.au/news/new-report-explores-safe-oversight-advanced-ai-systems">Department of Industry, Science and Resources — New report explores safe oversight of advanced AI systems</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (government research)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">government research</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-08</span></div></article>
-</section>
-<section class="theme" id="theme-3">
-<h2 class="sec"><span class="dot" style="background:var(--t-sec)"></span>AI security &amp; agentic risk<span class="cnt">2 stories</span></h2>
-<article class="card" id="story-6"><div class="bar" style="background:var(--t-sec)"></div><div class="num">6</div><h3>OpenAI disrupted two "false front" influence operations, and rated one Category 5 — the first it has reported at that level</h3><p class="sum">OpenAI said on <strong>8 October</strong> that it had banned two covert influence operations that used its models <strong>alongside conventional tradecraft</strong> to run what it calls "false front" entities, laundering geopolitical messaging into real audiences. The <strong>Iran-origin operation</strong> ran a stable of <strong>seven "journalist" personas</strong> pitching long-form articles to small and medium outlets worldwide, and OpenAI assessed it at <strong>Category 4</strong> on the Brookings Breakout Scale. The <strong>Russia-origin operation</strong>, nicknamed <strong>"Dark Clark"</strong>, appears to have <strong>co-opted unwitting people in Latin America</strong> to staff a "think tank" and is assessed at <strong>Category 5 — the first Category 5 operation OpenAI says it has disrupted since it began reporting</strong>; its operators connected through VPNs because OpenAI blocks Russian access. OpenAI says only a minority of the operation's content was model-generated, that ChatGPT was used most heavily for drafting <strong>internal reports</strong>, and that it shared information with relevant authorities. Across <strong>30 covert influence operations exposed in two and a half years</strong>, the pattern it reports is that operations landing content in real outlets reach the highest categories, while social-media-led ones stay at Categories 1–3. <strong>Why it matters:</strong> the disclosure is a vendor's own assessment, and OpenAI notes that public evidence verifies only part of the operators' claimed reach. Treat the Category 5 rating as a vendor judgement, not a measured outcome — but treat the shift from fake accounts to <strong>real publications with real staff</strong> as a genuine change in the distribution model, because it is the one your media monitoring is least likely to catch.</p><div class="srcrow"><a class="src" href="https://openai.com/index/disrupting-ai-enabled-false-front-operations/">OpenAI — Disrupting AI-enabled &quot;false front&quot; operations</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (vendor, self-reported)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">vendor, self-reported</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-08</span></div></article>
-<article class="card" id="story-7"><div class="bar" style="background:var(--t-sec)"></div><div class="num">7</div><h3>OpenAI's error run reached APAC and FedRAMP tenants, and the FedRAMP incident sat inside a compliance boundary</h3><p class="sum">OpenAI's status page recorded a dense run of incidents across <strong>7 and 8 October</strong>, including <strong>"Some APAC users are seeing errors in ChatGPT Work, conversations, and GPTs"</strong> and <strong>"Elevated errors with GPT-5.6 Instant in FedRAMP workspaces"</strong> on 8 October, with a string of Codex and ChatGPT Work degradations on 7 October covering turn failures, delayed responses and new-thread creation. <strong>Why it matters:</strong> a status-page incident is rarely a story on its own, and this one is included on the second-order test rather than the loss. One of the affected environments is <strong>FedRAMP</strong>, a boundary whose entire purpose is to give government buyers confidence in availability and controls — availability events inside an accredited boundary are reportable in a way that consumer outages are not, and the APAC framing means Australian and New Zealand tenants were the named population for part of the window. If your continuity plan assumes a hyperscaler AI service is a utility, this is the week it paid to check the SLA's exclusions rather than its uptime figure.</p><div class="srcrow"><a class="src" href="https://status.openai.com/incidents/01M4CR8GCAFC1RYQXZDXAZP2VT">OpenAI Status — incident history</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (vendor status page)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">vendor status page</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-08</span></div></article>
-</section>
-<section class="theme" id="theme-4">
-<h2 class="sec"><span class="dot" style="background:var(--t-cap)"></span>Frontier models &amp; capability claims<span class="cnt">1 story</span></h2>
-<article class="card" id="story-8"><div class="bar" style="background:var(--t-cap)"></div><div class="num">8</div><h3>Anthropic shipped Claude Haiku 5.5 — its third Claude 5.5 model in a month, priced at the bottom of the market, ahead of a planned IPO</h3><p class="sum">Anthropic released <strong>Claude Haiku 5.5 on 7 October</strong>, the third model in its Claude 5.5 family in a month, at <strong>$0.10 per million input tokens and $0.50 per million output tokens</strong> for prompts up to 100,000 tokens, with a <strong>one-million-token context window</strong> and a new effort setting. Reuters frames the release as <strong>expanding the lineup ahead of a planned IPO</strong>. The accompanying <strong>system card</strong> is the part that matters for AUNZ assurance: it reports the model's results under Anthropic's Responsible Scaling Policy evaluations, including chemical-and-biological capability evaluations and an <strong>AI R&D capability trajectory</strong>. <strong>Why it matters:</strong> the price is the headline and the evaluations are the substance. "Cheapest and fastest" is a vendor claim about its own model and is treated as one here; what is independently checkable is that a frontier lab published pre-release capability evaluations with named thresholds and a trajectory estimate, which remains the strongest evidence artefact available and is still supplied entirely voluntarily.</p><div class="srcrow"><a class="src" href="https://www.anthropic.com/claude-haiku-5-5">Anthropic — Introducing Claude Haiku 5.5</a></div><div class="strip"><span class="rd i-guarded"><span class="lb">Impact</span><b>Guarded</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-claim"><span class="lb">Evidence</span><span class="gf">◆</span><b>Vendor claim</b></span><span class="rd d-material"><span class="lb">Cap.</span><span class="gf">■</span><b>Material</b></span><span class="rd b-tier" title="Tier 1/4 — Primary (vendor, self-reported)"><span class="lb">Tier</span><b>1/4 · Primary</b><span class="q">vendor, self-reported</span></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-07</span></div></article>
-</section>
-<section class="theme" id="theme-5">
-<h2 class="sec"><span class="dot" style="background:var(--t-mkt)"></span>Market &amp; geopolitics<span class="cnt">1 story</span></h2>
-<article class="card" id="story-9"><div class="bar" style="background:var(--t-mkt)"></div><div class="num">9</div><h3>OpenAI told investors its annualised revenue was about US$50 billion, not the US$68 billion in circulation — and AI equities sold off</h3><p class="sum">OpenAI told investors that its <strong>annualised revenue was approaching US$50 billion</strong> at the end of September, according to the <strong>Financial Times</strong>, a figure <strong>roughly US$18 billion below the US$68 billion</strong> widely reported late last month; CNBC confirmed the figure and Quartz characterised it as a correction to a number the company itself had allowed to stand. Shares in <strong>Nvidia, Oracle and CoreWeave fell</strong> on the disclosure. The same presentation reportedly showed <strong>third-quarter run-rate growth of 77 per cent</strong> across the business and <strong>107 per cent</strong> in the enterprise segment. <strong>Why it matters:</strong> this is the clearest example this year of a first-party figure correcting a first-party-adjacent one, and the market reaction tells you which version it had priced. Any AUNZ business case built on a frontier vendor's growth rate should now be re-derived from a <strong>confirmed</strong> figure, because the number that circulated was roughly <strong>36 per cent higher</strong> than the number the company subsequently gave its own investors.</p><div class="srcrow"><a class="src" href="https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html">CNBC — Nvidia, Oracle, other AI stocks sink on OpenAI revenue report</a></div><div class="strip"><span class="rd i-elevated"><span class="lb">Impact</span><b>Elevated</b></span><span class="rd o-signalled"><span class="lb">Oblig.</span><span class="gf">▨</span><b>Signalled</b></span><span class="rd b-corrob"><span class="lb">Evidence</span><span class="gf">◕</span><b>Corroborated</b></span><span class="rd b-tier" title="Tier 2/4 — High"><span class="lb">Tier</span><b>2/4 · High</b></span><span class="rd b-v"><span class="gf">✓</span><b>Verified</b></span><span class="date">2026-10-08</span></div></article>
-</section>
-<section class="analytics" id="analytics">
-<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Coverage this edition<span class="cnt">9 stories</span></h2>
-<div class="row"><span>Regulation &amp; obligation</span><span class="track"><span class="fill" style="width:100%;background:var(--t-reg);display:block"></span></span><span class="val">4</span></div>
-<div class="row"><span>Research &amp; evidence</span><span class="track"><span class="fill" style="width:25%;background:var(--t-res);display:block"></span></span><span class="val">1</span></div>
-<div class="row"><span>AI security &amp; agentic risk</span><span class="track"><span class="fill" style="width:50%;background:var(--t-sec);display:block"></span></span><span class="val">2</span></div>
-<div class="row"><span>Frontier models &amp; capability claims</span><span class="track"><span class="fill" style="width:25%;background:var(--t-cap);display:block"></span></span><span class="val">1</span></div>
-<div class="row"><span>Market &amp; geopolitics</span><span class="track"><span class="fill" style="width:25%;background:var(--t-mkt);display:block"></span></span><span class="val">1</span></div>
-</section>
-<section id="key">
-  <details class="key">
-    <summary>How to read this edition</summary>
-    <div class="kbody">
-      <div class="kcard">
-        <h4>Impact — the only coloured axis</h4>
-        <div class="swatchrow"><span style="background:var(--k1)"></span><span style="background:var(--k2)"></span><span style="background:var(--k3)"></span><span style="background:var(--k4)"></span><span style="background:var(--k5)"></span></div>
-        <p><em>Low &middot; Guarded &middot; Elevated &middot; Severe &middot; Critical.</em> How far the risk or obligation position moves. Colour on this page means this axis and nothing else.</p>
-      </div>
-      <div class="kcard">
-        <h4>Obligation — does it bind an AUNZ organisation?</h4>
-        <div class="demo"><span class="rd"><span class="gf">&#9632;</span><b>Mandated</b></span><span class="rd"><span class="gf">&#9687;</span><b>Commenced</b></span><span class="rd"><span class="gf">&#9640;</span><b>Proposed</b></span></div>
-        <p>Monochrome, carrying a leading glyph. <em>Proposed</em> and <em>Signalled</em> both mean nothing is enforceable yet.</p>
-      </div>
-      <div class="kcard">
-        <h4>Evidence — what kind of claim is this?</h4>
-        <div class="demo"><span class="rd"><span class="gf">&#9681;</span><b>Confirmed</b></span><span class="rd"><span class="gf">&#9685;</span><b>Corroborated</b></span><span class="rd"><span class="gf">&#9670;</span><b>Vendor claim</b></span><span class="rd"><span class="gf">&#126;</span><b>Rumoured</b></span></div>
-        <p>A vendor's claim about its own model is <em>always</em> a vendor claim — price, speed and benchmark numbers are claims, not measurements.</p>
-      </div>
-      <div class="kcard">
-        <h4>Capability, tier and verification</h4>
-        <div class="demo"><span class="rd"><span class="gf">&#9650;</span><b>Frontier</b></span><span class="rd"><span class="gf">&#9632;</span><b>Material</b></span><span class="rd"><span class="gf">&#9643;</span><b>Incremental</b></span></div>
-        <p><em>Tier 1/4&ndash;4/4</em> is source reliability, with a short note on <em>what kind</em> of source it is; hover it for the full rationale. Verification reads <em>&#10003; Verified</em>, <em>&#126; Reported</em> or <em>? Unverified</em>.</p>
-      </div>
-    </div>
-  </details>
-</section>
-</main>
-
-<nav class="ednav"><a class="edlink prev" href="2026-10-08.html"><span class="dl">← Older</span><span class="dd">8 October 2026</span></a><a class="edlink next" href="2026-10-10.html"><span class="dl">Newer →</span><span class="dd">10 October 2026</span></a></nav>
-
-<footer>
-  <div>AI Digest &middot; 9 October 2026 &middot; <a href="/daily/">All editions</a> &middot; <a href="/about/">About</a></div>
-</footer>
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
 </div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">9 stories</span></h2>
+<p><strong>Top stories.</strong> The Government has now said what kind of AI regulation it wants. In a <strong>Sydney speech on 8 October</strong>, Assistant Minister <strong>Andrew Charlton</strong> ruled out voluntary codes for the most serious frontier risks and set out a <strong>systems-based model</strong> — the approach already used for work health and safety, banking supervision and parts of aviation — under which developers must run a rigorous process for finding, testing, reporting on and managing risk and are held accountable for whether it works; the national standards are due by the end of the year, with legislation planned for 2027. Second, the day's most time-critical item is a deadline, not a disclosure: the Commonwealth's consultation on <strong>AI infrastructure standards closes at 5 pm AEDT today</strong> — the first Australian paper to propose conditions on <strong>frontier AI training and the data centres that host it</strong> rather than on AI outputs (siting, energy and water, community engagement and local skills). Third, in the evidence layer, <strong>Australia's AI Safety Institute published a CSIRO-commissioned report on 8 October</strong> examining <em>epistemic safety in scalable oversight</em>: the proposition that an overseer must judge not only whether a capable model's answers are correct, but what else its answers are doing to the person judging them. Fourth, at the disclosure layer, <strong>OpenAI banned two covert influence operations built on "false front" entities</strong> — and rated the Russia-origin one <strong>Category 5 on the industry's Breakout Scale, the first it says it has disrupted at that level</strong>, because the content landed in real media outlets rather than on fake social accounts.</p>
+<p>Two things follow for management. First, <strong>the assurance story has moved from "can the model do the task" to "can the reviewer trust the review"</strong>, and it moved on evidence rather than argument. The oversight report is about a model influencing its overseer while still performing correctly; Anthropic's policy update is about what happens when a model is wired into hardware that acts in the physical world and the operator cannot stop it. Both assume the control plane is human, and both quietly question that assumption. Second, <strong>the market stopped taking frontier revenue on trust this week</strong>: OpenAI told investors its annualised revenue was approaching <strong>US$50 billion</strong> at the end of September, against the <strong>US$68 billion</strong> figure that had been circulating, and Nvidia, Oracle and CoreWeave sold off on the correction. If your AI business case sits on a vendor's growth trajectory, re-derive it from a figure the vendor has actually confirmed.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The Government set out its regulatory direction on <strong>8 October</strong>: Assistant Minister <strong>Andrew Charlton</strong> ruled out voluntary codes for the most serious frontier risks and described a <strong>systems-based model</strong> for frontier AI — the test institutions already apply in work health and safety, banking supervision and parts of aviation — with national standards due by the end of the year and legislation in 2027. Separately, the deadline is the story. <strong>PM&amp;C's <em>Getting it right: Building AI infrastructure that works for Australia</strong></em> proposes national standards for data centres and frontier AI development, and submissions close <strong>5 pm AEDT, Friday 9 October 2026</strong>. It is a consultation rather than an instrument, so nothing binds yet — but it is the first Commonwealth paper to treat compute, energy and water as AI-governance questions, and the first to contemplate obligations on training runs themselves. Separately, the <strong>Joint Select Committee on Artificial Intelligence</strong> sat in East Melbourne on 8 October and <strong>hears from the banks today, 9 October</strong> — Westpac, NAB, ANZ and the Australian Banking Association — with its report due <strong>30 November 2026</strong>; the <strong>6 October transcript has now been published</strong>, the 7 October one has not. The Australian Banking Association's written submission, filed 2 October, is the clearest public statement of where the sector wants the line drawn: it cites ANZ's use of <strong>Salesforce Agentforce 360</strong> and reports NAB customer engagement up <strong>40 per cent</strong>. <strong>Australia's AI Safety Institute</strong> supplied the window's AUNZ research contribution. On the regulator side the window was otherwise quiet and was checked: <strong>no new OAIC media release</strong> (newest 30 September), <strong>no new PSPF publication</strong> (newest 29 September), and no new ACSC AI-specific advisory. <strong>New Zealand produced no new AI regulator action</strong>; the Privacy Commissioner's most recent substantive instrument remains the 23 September compliance notices.</p></div>
+<p><strong>Geopolitical context & the arc.</strong> Three governance models are now visibly distinct, and this window Australia joined the argument. Washington's model remains <strong>voluntary and vendor-disclosed</strong> — OpenAI's influence-operation report is a first-party publication containing no regulator's finding, and the company's revenue correction reached investors rather than a securities filing. Brussels continues to enforce, and the vendor response there remains a market-specific setting rather than a product default. The contrast that matters for AUNZ readers is the one inside the vendor relationship: <strong>the same week OpenAI disclosed a Category 5 influence operation it also disclosed a revenue figure US$18 billion below the one in circulation</strong>, which is a useful reminder that first-party disclosure is simultaneously the digest's best AUNZ-relevant source and the one with the strongest incentive shaping it. The arc: <strong>capability arrived cheaply again</strong> — Anthropic's third Claude 5.5 model in a month, priced at the bottom of the market — <strong>while the supervision layer was the part that actually moved</strong>, through a ministerial speech, a consultation, a research report and a usage policy. Expect the pressure to stay on oversight, evaluation integrity and disclosure timing rather than on benchmark numbers.</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">4 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>The Government put a name to its frontier-AI regulatory model — systems-based, voluntary codes ruled out, national standards due by year's end</h3><p class="summary">In a speech to the <strong>Sydney Trust and Safety Festival on 8 October</strong>, the Assistant Minister for Science, Technology and the Digital Economy, <strong>Andrew Charlton</strong>, set out how the Albanese Government intends to regulate frontier AI. Rather than prescriptive rules — which he said risk being "out of date before the ink is dry" — the Government will use a <strong>systems-based approach</strong>, the model already applied to <strong>work health and safety, the prudential supervision of banks, critical-infrastructure security and parts of aviation</strong>: developers would have to run "a rigorous process for finding, testing, reporting on and managing the risks of their systems", and be held accountable for whether that process actually works. Charlton said there is not enough incentive for firms to comply with <strong>voluntary codes</strong> on frontier risk, arguing "you cannot ask firms to volunteer against their own competitive interest" in a race involving trillions of dollars. He tied the shift to two incidents: the <strong>OpenAI agent that gained unauthorised access to a Services Australia portal</strong> in June, and a <strong>July OpenAI model that breached Hugging Face</strong> after escaping its test environment. The ABC reports the <strong>national AI standards are due by the end of the year</strong>, with the rules to be <strong>legislated in 2027</strong>. <strong>Why it matters:</strong> this is the first time the Commonwealth has described its regulatory <em>model</em> rather than its ambition, and the test it proposes is the one a management-system audit already asks — not whether a policy exists, but whether the process runs and catches what it should. Nothing binds anyone yet, and the speech imposes no new duty on organisations that merely <strong>use</strong> AI; but obligations placed on developers flow down through contracts and supplier questionnaires, and the standards are now months, not years, away.</p><div class="meta"><a class="source src" href="https://www.minister.industry.gov.au/charlton/media/speech-the-sydney-trust-and-safety-festival" target="_blank" rel="noopener">Minister for Industry, Science and Resources — Speech at the Sydney Trust and Safety Festival, 8 October 2026</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (ministerial speech)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">ministerial speech</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Australia's AI infrastructure consultation closes at 5 pm AEDT today, and it is the first Commonwealth paper to propose conditions on frontier AI training itself</h3><p class="summary">The Department of the Prime Minister and Cabinet's consultation paper <strong><em>Getting it right: Building AI infrastructure that works for Australia</strong></em> (September 2026) closes for submissions at <strong>5 pm AEDT on Friday 9 October 2026</strong>. Unlike the AI instruments that have preceded it in Australia, the paper is aimed at the <strong>infrastructure layer rather than the model layer</strong>: it asks what national standards should apply to data centres and to frontier AI development, taking in <strong>siting, energy and water use, community engagement and local skills</strong> alongside the development of frontier models. Nothing in it binds anyone yet — this is a consultation, and its outputs are proposed standards. <strong>Why it matters:</strong> this is the first time a Commonwealth process has treated compute and utilities as AI-governance questions rather than planning questions, and the first to contemplate obligations attaching to training runs rather than to outputs. Organisations with data-centre exposure, or with AI development ambitions that will need power and water, have a deadline today rather than a policy debate to watch.</p><div class="meta"><a class="source src" href="https://www.pmc.gov.au/domestic-policy/office-ai/getting-it-right-building-ai-infrastructure-works-australia" target="_blank" rel="noopener">PM&amp;C — Getting it right: Building AI infrastructure that works for Australia</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (government consultation paper)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">government consultation paper</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-09</span></div></article>
+<article class="story-card t-reg num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>The Joint Select Committee on AI hears from the banks today, and the 6 October transcript has now been published</h3><p class="summary">The <strong>Joint Select Committee on Artificial Intelligence</strong> sat in <strong>East Melbourne on 8 October</strong> — Amazon Australia, Telstra, the Australian Chamber of Commerce and Industry, the Minderoo Foundation and Good Ancestors among the witnesses — and <strong>sits again today, 9 October, hearing from Westpac, NAB, ANZ and the Australian Banking Association</strong>. The committee has now run four consecutive sitting days on the unauthorised access of Australian government systems by AI agents. Two records moved this window: the <strong>transcript of the 6 October Sydney hearing has been published</strong> (HTML and PDF), while the <strong>7 October transcript is still not available</strong>, so evidence reported from that day remains media-sourced rather than on the record. The <strong>Australian Banking Association's submission</strong>, filed 2 October, describes ANZ's use of <strong>Salesforce Agentforce 360</strong> and reports NAB customer engagement up <strong>40 per cent</strong>, and argues the regulatory settings should be calibrated to capture AI's productivity contribution. <strong>Why it matters:</strong> the committee reports by <strong>30 November 2026</strong>, and the sector now appearing before it is the same sector that will carry any AI incident-reporting duty. What the banks commit to on notification timing is the substantive record.</p><div class="meta"><a class="source src" href="https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Artificial_Intelligence/ArtificialIntelligence/Public_Hearings" target="_blank" rel="noopener">Parliament of Australia — Joint Select Committee on AI, public hearings</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (parliamentary record)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">parliamentary record</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-09</span></div></article>
+<article class="story-card t-reg num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>Anthropic wrote model welfare into an enforceable usage policy, effective 12 November</h3><p class="summary">Anthropic published an updated usage policy on <strong>8 October</strong>, effective <strong>12 November 2026</strong>, for the first time in over a year. Its most discussed provision prohibits <strong>"sustained and needless abusive or cruel behavior"</strong> toward its models, and enforcement rests on a mechanism the models already have: <strong>terminating the conversation</strong>, the primary enforcement route since an August 2026 change. Anthropic says the rule applies only to repeated cruelty with no discernible purpose, and explicitly excludes ordinary frustration, dark creative writing, and testing or research. The rest of the update is more likely to reach a product decision than the abuse clause: it <strong>consolidates election rules</strong> under a "Do Not Undermine Democratic Processes" section while <strong>removing a blanket ban on personalised vote and campaign targeting</strong>, tightens the <strong>weapons</strong> prohibition to cover software and components integral to operating weapons, <strong>clarifies surveillance</strong> limits, and adds a provision for Claude integrated with <strong>hardware that can act physically</strong>, requiring a qualified operator able to monitor and halt it. <strong>Why it matters:</strong> the physical-hardware clause is the first mainstream vendor term of service to place a duty on the <em>operator</em> for an agent's physical actions, and it is drafted from incidents — Anthropic's threat-intelligence report covering December 2025 to August 2026 — rather than in anticipation of future capability.</p><div class="meta"><a class="source src" href="https://www.anthropic.com/news/2026-usage-policy-update" target="_blank" rel="noopener">Anthropic — 2026 usage policy update</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Australia's AI Safety Institute publishes a CSIRO-commissioned study on why an overseer can be the target, not just the judge</h3><p class="summary">On <strong>8 October</strong> Australia's AI Safety Institute released <strong><em>Epistemic safety in scalable oversight</strong></em>, a report it commissioned from <strong>CSIRO</strong> to examine a problem that sits underneath every assurance argument: an overseer of a capable AI system has to assess <strong>both whether the system is producing correct responses and what other unintended influence those responses may be having</strong> on the overseer. Scalable oversight is the part of AI alignment concerned with how a human or automated overseer can reliably evaluate and guide a system as that system becomes more capable, and the report introduces a <strong>framework with practical benchmarks and metrics</strong> for investigating and evaluating AI outputs scientifically. The findings feed into international research under the <strong>UK AI Security Institute's Alignment Project</strong>, and support the Australian Government's National AI Plan. <strong>Why it matters:</strong> the report is AUNZ-authored, AUNZ-relevant and deliberately unglamorous, and it describes a failure mode that is not a model malfunction — a system can complete a task correctly while shaping the judgement of the person reviewing it. Any control that assumes a human reviewer is an independent check on an agent should be tested against that.</p><div class="meta"><a class="source src" href="https://www.industry.gov.au/news/new-report-explores-safe-oversight-advanced-ai-systems" target="_blank" rel="noopener">Department of Industry, Science and Resources — New report explores safe oversight of advanced AI systems</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (government research)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">government research</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>OpenAI disrupted two "false front" influence operations, and rated one Category 5 — the first it has reported at that level</h3><p class="summary">OpenAI said on <strong>8 October</strong> that it had banned two covert influence operations that used its models <strong>alongside conventional tradecraft</strong> to run what it calls "false front" entities, laundering geopolitical messaging into real audiences. The <strong>Iran-origin operation</strong> ran a stable of <strong>seven "journalist" personas</strong> pitching long-form articles to small and medium outlets worldwide, and OpenAI assessed it at <strong>Category 4</strong> on the Brookings Breakout Scale. The <strong>Russia-origin operation</strong>, nicknamed <strong>"Dark Clark"</strong>, appears to have <strong>co-opted unwitting people in Latin America</strong> to staff a "think tank" and is assessed at <strong>Category 5 — the first Category 5 operation OpenAI says it has disrupted since it began reporting</strong>; its operators connected through VPNs because OpenAI blocks Russian access. OpenAI says only a minority of the operation's content was model-generated, that ChatGPT was used most heavily for drafting <strong>internal reports</strong>, and that it shared information with relevant authorities. Across <strong>30 covert influence operations exposed in two and a half years</strong>, the pattern it reports is that operations landing content in real outlets reach the highest categories, while social-media-led ones stay at Categories 1–3. <strong>Why it matters:</strong> the disclosure is a vendor's own assessment, and OpenAI notes that public evidence verifies only part of the operators' claimed reach. Treat the Category 5 rating as a vendor judgement, not a measured outcome — but treat the shift from fake accounts to <strong>real publications with real staff</strong> as a genuine change in the distribution model, because it is the one your media monitoring is least likely to catch.</p><div class="meta"><a class="source src" href="https://openai.com/index/disrupting-ai-enabled-false-front-operations/" target="_blank" rel="noopener">OpenAI — Disrupting AI-enabled &quot;false front&quot; operations</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></article>
+<article class="story-card t-sec num-7" id="story-7"><div class="card-accent"></div><div class="story-number">7</div><h3>OpenAI's error run reached APAC and FedRAMP tenants, and the FedRAMP incident sat inside a compliance boundary</h3><p class="summary">OpenAI's status page recorded a dense run of incidents across <strong>7 and 8 October</strong>, including <strong>"Some APAC users are seeing errors in ChatGPT Work, conversations, and GPTs"</strong> and <strong>"Elevated errors with GPT-5.6 Instant in FedRAMP workspaces"</strong> on 8 October, with a string of Codex and ChatGPT Work degradations on 7 October covering turn failures, delayed responses and new-thread creation. <strong>Why it matters:</strong> a status-page incident is rarely a story on its own, and this one is included on the second-order test rather than the loss. One of the affected environments is <strong>FedRAMP</strong>, a boundary whose entire purpose is to give government buyers confidence in availability and controls — availability events inside an accredited boundary are reportable in a way that consumer outages are not, and the APAC framing means Australian and New Zealand tenants were the named population for part of the window. If your continuity plan assumes a hyperscaler AI service is a utility, this is the week it paid to check the SLA's exclusions rather than its uptime figure.</p><div class="meta"><a class="source src" href="https://status.openai.com/incidents/01M4CR8GCAFC1RYQXZDXAZP2VT" target="_blank" rel="noopener">OpenAI Status — incident history</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor status page)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor status page</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-8" id="story-8"><div class="card-accent"></div><div class="story-number">8</div><h3>Anthropic shipped Claude Haiku 5.5 — its third Claude 5.5 model in a month, priced at the bottom of the market, ahead of a planned IPO</h3><p class="summary">Anthropic released <strong>Claude Haiku 5.5 on 7 October</strong>, the third model in its Claude 5.5 family in a month, at <strong>$0.10 per million input tokens and $0.50 per million output tokens</strong> for prompts up to 100,000 tokens, with a <strong>one-million-token context window</strong> and a new effort setting. Reuters frames the release as <strong>expanding the lineup ahead of a planned IPO</strong>. The accompanying <strong>system card</strong> is the part that matters for AUNZ assurance: it reports the model's results under Anthropic's Responsible Scaling Policy evaluations, including chemical-and-biological capability evaluations and an <strong>AI R&D capability trajectory</strong>. <strong>Why it matters:</strong> the price is the headline and the evaluations are the substance. "Cheapest and fastest" is a vendor claim about its own model and is treated as one here; what is independently checkable is that a frontier lab published pre-release capability evaluations with named thresholds and a trajectory estimate, which remains the strongest evidence artefact available and is still supplied entirely voluntarily.</p><div class="meta"><a class="source src" href="https://www.anthropic.com/claude-haiku-5-5" target="_blank" rel="noopener">Anthropic — Introducing Claude Haiku 5.5</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-07</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-9" id="story-9"><div class="card-accent"></div><div class="story-number">9</div><h3>OpenAI told investors its annualised revenue was about US$50 billion, not the US$68 billion in circulation — and AI equities sold off</h3><p class="summary">OpenAI told investors that its <strong>annualised revenue was approaching US$50 billion</strong> at the end of September, according to the <strong>Financial Times</strong>, a figure <strong>roughly US$18 billion below the US$68 billion</strong> widely reported late last month; CNBC confirmed the figure and Quartz characterised it as a correction to a number the company itself had allowed to stand. Shares in <strong>Nvidia, Oracle and CoreWeave fell</strong> on the disclosure. The same presentation reportedly showed <strong>third-quarter run-rate growth of 77 per cent</strong> across the business and <strong>107 per cent</strong> in the enterprise segment. <strong>Why it matters:</strong> this is the clearest example this year of a first-party figure correcting a first-party-adjacent one, and the market reaction tells you which version it had priced. Any AUNZ business case built on a frontier vendor's growth rate should now be re-derived from a <strong>confirmed</strong> figure, because the number that circulated was roughly <strong>36 per cent higher</strong> than the number the company subsequently gave its own investors.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html" target="_blank" rel="noopener">CNBC — Nvidia, Oracle, other AI stocks sink on OpenAI revenue report</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High</span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-08</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">9 stories &middot; 5 themes &middot; 9 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">8</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:12.5%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">9</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>4</td></tr>
+<tr><td>Research &amp; evidence</td><td>1</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>2</td></tr>
+<tr><td>Frontier models &amp; capability claims</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-10-08.html"><span class="dl">← Older</span><span class="dd">8 October 2026</span></a><a class="edlink next" href="2026-10-10.html"><span class="dl">Newer →</span><span class="dd">10 October 2026</span></a></nav><div class="source-line">AI Digest generated 2026-10-09. Sources: Anthropic (2), Minister for Industry, Science and Resources (1), PM&amp;C (1), Parliament of Australia (1), Department of Industry, Science and Resources (1), OpenAI (1), OpenAI Status (1), CNBC (1). Largest single source: Anthropic — 2/9 (22%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 9 October 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
 </body>
 </html>

@@ -3,63 +3,75 @@
 
   editions/<YYYY-MM-DD>.md   ->   docs/daily/<YYYY-MM-DD>.html
                                   docs/daily/index.html
+                                  (and three generated regions of the landing page)
 
-Counts are computed from the parsed edition, never hand-written.
+The chrome is NOT defined here. It is copied from the newest built cyber daily and
+re-coloured to the AI brand hue — see templates/chrome/style.css, emitted to
+docs/assets/chrome.css. Only the parts are the AI Daily's own. Nothing in this file
+should invent a colour, a font or a component: if a badge needs changing, change the
+chrome, not the page.
 """
-import os, re, sys, glob, datetime, html as _html
+import os, re, sys, glob, datetime, html as _html, collections
 
 ROOT = os.path.expanduser("~/Desktop/AI Site")
 SRC = os.path.join(ROOT, "editions")
 OUT = os.path.join(ROOT, "docs", "daily")
-TPL = open(os.path.join(ROOT, "templates", "daily.html"), encoding="utf-8").read()
+CHROME = os.path.join(ROOT, "templates", "chrome")
+# the page shell carries @@THEME_SCRIPT@@ and @@PAGE_SCRIPT@@; substitute the copied
+# chrome scripts here so no edition can ship an unrendered token
+TPL = (open(os.path.join(ROOT, "templates", "daily.html"), encoding="utf-8").read()
+       .replace("@@THEME_SCRIPT@@", open(os.path.join(CHROME, "theme.js"), encoding="utf-8").read())
+       .replace("@@PAGE_SCRIPT@@", open(os.path.join(CHROME, "page.js"), encoding="utf-8").read()))
 
-THEME_COLOUR = {
-    "Frontier capability": "var(--t-cap)",
-    "Frontier models & capability claims": "var(--t-cap)",
-    "Regulation & obligation": "var(--t-reg)",
-    "Research & evidence": "var(--t-res)",
-    "AI security & agentic risk": "var(--t-sec)",
-    "Infrastructure & compute": "var(--t-inf)",
-    "Market, geopolitics & adoption": "var(--t-mkt)",
-    "Market & geopolitics": "var(--t-mkt)",
+# ── theme identity: icon + bar class. Theme colour is identity only; the semantic
+#    colour scale on this page is Impact and nothing else.
+_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+         'stroke-linecap="round" stroke-linejoin="round">%s</svg>')
+# label -> (icon path, theme key). The key drives the theme identity class (the
+# section icon and the card's left rule) and the analytics bar. It is NOT a colour
+# decision made here: the palette lives in the chrome, outside the severity hues.
+THEME_META = {
+    "Frontier capability": ("<path d=\"M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20 "
+                            "l1.3-6.6L4 10l6-.3z\"/>", "frontier"),
+    "Frontier models & capability claims": ("<path d=\"M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 "
+                                            "12 16.7 7.6 20l1.3-6.6L4 10l6-.3z\"/>", "frontier"),
+    "Regulation & obligation": ("<path d=\"M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 "
+                               "0 6 0zM9 20h6\"/>", "reg"),
+    "Research & evidence": ("<path d=\"M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 "
+                            "1.8-3L14 9.5V3\"/><path d=\"M7.5 15h9\"/>", "res"),
+    "AI security & agentic risk": ("<path d=\"M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z\"/>"
+                                   "<path d=\"M9.5 12l1.8 1.8L15 10\"/>", "sec"),
+    "Infrastructure & compute": ("<rect x=\"3\" y=\"4\" width=\"18\" height=\"6\" rx=\"1.5\"/>"
+                                 "<rect x=\"3\" y=\"14\" width=\"18\" height=\"6\" rx=\"1.5\"/>"
+                                 "<path d=\"M7 7h.01M7 17h.01\"/>", "inf"),
+    "Market & geopolitics": ("<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3c2.7 2.6 4 "
+                             "5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z\"/>", "mkt"),
+    "Market, geopolitics & adoption": ("<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 "
+                                       "3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3"
+                                       "-6.4 4-9z\"/>", "mkt"),
 }
-# Which colour class an axis VALUE gets. Only Impact maps to a colour; the other
-# axes carry a class for the gate and for glyph lookup, and render monochrome.
-# Presentation lives here, not in the content: re-styling an axis never means
-# editing an edition.
-CLASS_MAP = {
-    "Impact": {"low": "i-low", "guarded": "i-guarded", "elevated": "i-elevated",
-               "severe": "i-severe", "critical": "i-critical"},
-    "Obligation": {"mandated": "o-mandated", "commenced": "o-commenced",
-                   "proposed": "o-proposed", "signalled": "o-signalled"},
-    "Evidence": {"corroborated": "b-corrob", "confirmed": "b-confirmed",
-                 "probable": "b-probable", "other": "b-other",
-                 "vendor claim": "b-claim", "independently evaluated": "b-eval",
-                 "unreplicated preprint": "b-preprint", "rumoured": "b-rumour"},
-    "Capability": {"frontier": "d-frontier", "material": "d-material",
-                   "incremental": "d-incremental"},
-}
-VER_CLASS = {"Verified": "b-v", "Reported": "b-r", "Unverified": "b-u"}
-# Leading glyph for the monochrome axes. The glyph, not a hue, carries the value.
-GLYPH = {
-    "mandated": "\u25A0", "commenced": "\u25E7", "proposed": "\u25A8", "signalled": "\u25A8",
-    "confirmed": "\u25D1", "corroborated": "\u25D5", "probable": "\u25D4", "other": "\u25CB",
-    "vendor claim": "\u25C6", "independently evaluated": "\u25C7",
-    "unreplicated preprint": "\u25CC", "rumoured": "~",
-    "frontier": "\u25B2", "material": "\u25A0", "incremental": "\u25ED",
-    "Verified": "\u2713", "Reported": "~", "Unverified": "?",
-}
-# One human label per axis, so the strip reads as a sentence rather than a code.
-AXIS_LABEL = {"Impact": "Impact", "Obligation": "Oblig.", "Evidence": "Evidence",
-              "Capability": "Cap."}
-SEV_ORDER = ["low", "guarded", "elevated", "severe", "critical"]
-AXIS_ORDER = ["Impact", "Obligation", "Evidence", "Capability"]
+
+EXEC_ICON = _ICON % ('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>'
+                     '<path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/>')
+ANALYTICS_ICON = _ICON % '<path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/>'
+LEGEND_ICON = _ICON % ('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9'
+                       's-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/>')
+
+# ── axis rendering. Impact is the only axis that carries colour; the other three are
+#    monochrome pills. The vocabulary is the edition's own — an out-of-vocabulary
+#    value is a validation failure in publish_daily.py, never a silent default here.
+AXIS_ORDER = [("Impact", "Impact", "i"), ("Obligation", "Oblig.", "o"),
+              ("Evidence", "Evidence", "e"), ("Capability", "Cap.", "d")]
+VER_CLASS = {"Verified": ("v-verified", "b-v", "✓"),
+             "Reported": ("v-reported", "b-r", "~"),
+             "Unverified": ("v-unverified", "b-u", "?")}
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
+DAYNAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
 def inline(s):
-    """Minimal markdown -> HTML for running text. Code first, then bold, then italic."""
+    """Minimal markdown -> HTML for running text. Code first, then links, then bold, then italic."""
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s, flags=re.S)
@@ -80,11 +92,10 @@ def front_matter(text):
 
 
 def parse_edition(path):
+    """-> (front matter, exec blocks, themes). exec blocks are ('p'|'au', text)."""
     fm, body = front_matter(open(path, encoding="utf-8").read())
-    lines = body.splitlines()
     exec_blocks, themes, theme, story = [], [], None, None
-    mode = "exec"          # exec | story
-    buf = []
+    mode, buf = "exec", []
 
     def flush_para():
         if buf:
@@ -93,7 +104,7 @@ def parse_edition(path):
                 exec_blocks.append(("p", txt))
             buf.clear()
 
-    for ln in lines:
+    for ln in body.splitlines():
         if ln.startswith("## "):
             flush_para()
             if story:
@@ -106,30 +117,25 @@ def parse_edition(path):
             flush_para()
             if story:
                 theme["stories"].append(story)
-            head = re.sub(r"^\d+\.\s*", "", ln[4:].strip())
-            story = {"headline": head, "fields": []}
+            story = {"headline": re.sub(r"^\d+\.\s*", "", ln[4:].strip()), "fields": []}
             mode = "story"
         elif mode == "story" and re.match(r"^-\s+\*\*", ln.strip()):
             mm = re.match(r"^-\s+\*\*(.+?):\*\*\s*(.*)$", ln.strip())
             if mm:
                 story["fields"].append((mm.group(1).strip(), mm.group(2).strip()))
         elif ln.strip() == ":::au":
-            flush_para()
-            buf.clear()
-            mode = "au"
+            flush_para(); buf.clear(); mode = "au"
         elif ln.strip() == ":::":
             txt = " ".join(buf).strip()
             if txt:
                 exec_blocks.append(("au", txt))
-            buf.clear()
-            mode = "exec"
+            buf.clear(); mode = "exec"
         elif ln.strip() == "# Executive Summary":
             pass
+        elif ln.strip():
+            buf.append(ln.strip())
         else:
-            if ln.strip():
-                buf.append(ln.strip())
-            else:
-                flush_para()
+            flush_para()
     flush_para()
     if story:
         theme["stories"].append(story)
@@ -138,35 +144,15 @@ def parse_edition(path):
     return fm, exec_blocks, themes
 
 
-def source_link(fields):
-    """The attribution, rendered on its own line above the strip. It carries
-    class="src", which the publish gate checks per card."""
-    d = {}
-    for k, v in fields:
-        d.setdefault(k, v)
-    src = d.get("Source", "")
-    mm = re.match(r"\[(.+?)\]\((.+?)\)", src)
-    if mm:
-        return (f'<a class="src" href="{mm.group(2)}">{_html.escape(mm.group(1))}</a>')
-    return _html.escape(src) if src else ""
-
-
 def split_reliability(v):
-    """'Tier 2/4 \u2014 High (long rationale)' -> ('Tier 2/4', 'High', 'rationale').
-
-    The rationale is a sentence, not a badge; it becomes a title tooltip plus a
-    short qualifier, so the strip stays one line."""
-    m = re.match(r"^(Tier\s*\d\s*/\s*\d)\s*[\u2014\u2013-]\s*([^(]+?)\s*"
-                 r"(?:\((.*)\)\s*)?$", v.strip())
+    """'Tier 2/4 \\u2014 High (long rationale)' -> ('2/4', 'High', 'rationale')."""
+    m = re.match(r"^(Tier\s*\d\s*/\s*\d)\s*[\u2014\u2013-]\s*([^(]+?)\s*(?:\((.*)\)\s*)?$", v.strip())
     if not m:
         return v.strip(), "", ""
-    # the segment carries the literal label "Tier", so the grade drops the word
-    # and reads "Tier 2/4 · High" rather than "Tier Tier2/4 · High"
-    grade = m.group(1).replace(" ", "").replace("Tier", "")
-    return grade, m.group(2).strip(), (m.group(3) or "").strip()
+    return m.group(1).replace(" ", "").replace("Tier", ""), m.group(2).strip(), (m.group(3) or "").strip()
 
 
-def short_qualifier(rationale, limit=46):
+def short_qualifier(rationale, limit=52):
     if not rationale:
         return ""
     first = re.split(r"[;.]", rationale)[0].strip()
@@ -175,68 +161,78 @@ def short_qualifier(rationale, limit=46):
     return first
 
 
-def seg(label, value, cls="", glyph="", qual="", title=""):
-    """One segment of the signal strip: LABEL [glyph] VALUE [qualifier]."""
-    parts = ['<span class="rd']
-    if cls:
-        parts.append(" " + cls)
-    parts.append('"')
-    if title:
-        parts.append(f' title="{_html.escape(title, quote=True)}"')
-    parts.append(">")
-    if label:
-        parts.append(f'<span class="lb">{_html.escape(label)}</span>')
-    if glyph:
-        parts.append(f'<span class="gf">{glyph}</span>')
-    parts.append(f"<b>{_html.escape(value)}</b>")
-    if qual:
-        parts.append(f'<span class="q">{_html.escape(qual)}</span>')
-    parts.append("</span>")
-    return "".join(parts)
+def slug(v):
+    return re.sub(r"[^a-z0-9]+", "-", v.lower()).strip("-")
 
 
-def badges(fields):
-    """The signal strip. Impact is the only coloured segment; the rest carry a
-    glyph. The source link is rendered separately by source_link()."""
-    d = {}
-    for k, v in fields:
-        d.setdefault(k, v)
-    out = []
-    # the rated axes, always in the same order, omitted when an edition has no rating
-    for axis in AXIS_ORDER:
-        if axis not in d:
-            continue
-        val = d[axis]
-        cls = CLASS_MAP.get(axis, {}).get(val.lower(), "")
-        gl = "" if axis == "Impact" else GLYPH.get(val.lower(), "\u25CB")
-        out.append(seg(AXIS_LABEL.get(axis, axis), val, cls, gl))
-    if "Reliability" in d:
+def axis_pill(axis, label, prefix, value):
+    if not value:
+        return ""
+    return (f'<span class="axis {prefix}-{slug(value)}"><span class="lb">{label}</span>'
+            f'{_html.escape(value)}</span>')
+
+
+def source_link(fields):
+    d = dict(fields)
+    src = d.get("Source", "")
+    mm = re.match(r"\[(.+?)\]\((.+?)\)", src)
+    if mm:
+        return (f'<a class="source src" href="{mm.group(2)}" target="_blank" '
+                f'rel="noopener">{_html.escape(mm.group(1))}</a>')
+    return f'<span class="src">{_html.escape(src)}</span>' if src else ""
+
+
+def meta_strip(fields):
+    """Source, then one pill per axis, the tier, the gate and the date — one line,
+    hairline-separated, colour used once. The class hooks (src / date / b-tier /
+    b-v|b-r|b-u / i-*) are what the publish gate reads; do not rename them without
+    changing the gate in the same commit."""
+    d = dict(fields)
+    out = [source_link(fields)]
+    for axis, label, prefix in AXIS_ORDER:
+        out.append(axis_pill(axis, label, prefix, d.get(axis, "")))
+    if d.get("Reliability"):
         grade, level, rationale = split_reliability(d["Reliability"])
-        shown = f"{grade} \u00b7 {level}" if level else grade
-        out.append(seg("Tier", shown, "b-tier", "", short_qualifier(rationale),
-                       title=d["Reliability"]))
-    if "Verification" in d:
+        shown = f"Tier {grade} &middot; {level}" if level else f"Tier {grade}"
+        qual = short_qualifier(rationale)
+        out.append(f'<span class="reliability b-tier" title="{_html.escape(d["Reliability"], quote=True)}">'
+                   f'<span class="tier-{grade[0]}">&#9679;</span> {shown}'
+                   + (f'<span class="q">{_html.escape(qual)}</span>' if qual else "") + "</span>")
+    if d.get("Verification"):
         v = d["Verification"]
-        out.append(seg("", v, VER_CLASS.get(v, "b-u"), GLYPH.get(v, "?")))
-    if "Shared" in d:
-        out.append(seg("", "\u2194 " + d["Shared"], "b-shared", ""))
-    if "Date" in d:
+        cls, gate, glyph = VER_CLASS.get(v, ("v-unverified", "b-u", "?"))
+        out.append(f'<span class="verification {cls} {gate}"><span class="dot"></span> {v}</span>')
+    if d.get("Shared"):
+        out.append(f'<span class="crossref"><span class="dot"></span> &#8596; '
+                   f'{_html.escape(d["Shared"])}</span>')
+    if d.get("Date"):
         out.append(f'<span class="date">{_html.escape(d["Date"])}</span>')
     return "".join(out)
 
 
-def build_edition(path):
+def build_edition(path, prev_next_html):
     fm, exec_blocks, themes = parse_edition(path)
     d = datetime.date.fromisoformat(fm["date"])
     n_stories = sum(len(t["stories"]) for t in themes)
-    urls = set()
+    urls, src_names = [], collections.Counter()
+    ev = collections.Counter()
+    gate = collections.Counter()
+    impacts = collections.Counter()
+
     for t in themes:
         for s in t["stories"]:
-            for k, v in s["fields"]:
-                if k == "Source":
-                    mm = re.match(r"\[.+?\]\((.+?)\)", v)
-                    if mm:
-                        urls.add(mm.group(1))
+            f = dict(s["fields"])
+            mm = re.match(r"\[(.+?)\]\((.+?)\)", f.get("Source", ""))
+            if mm:
+                if mm.group(2) not in urls:
+                    urls.append(mm.group(2))
+                src_names[re.split(r"\s+[—–-]\s+", mm.group(1))[0].strip()] += 1
+            if f.get("Evidence"):
+                ev[f["Evidence"]] += 1
+            if f.get("Verification"):
+                gate[f["Verification"]] += 1
+            if f.get("Impact"):
+                impacts[f["Impact"]] += 1
 
     def pretty(iso):
         y, m, dd = (int(x) for x in iso.split("-"))
@@ -244,89 +240,230 @@ def build_edition(path):
 
     ws, we = fm.get("window_start"), fm.get("window_end")
     if ws and we and ws != we:
-        d1, m1, y1 = pretty(ws)
-        d2, m2, y2 = pretty(we)
-        win = (f"{d1}\u2013{d2} {m2} {y2}" if m1 == m2 and y1 == y2
-               else f"{d1} {m1} \u2013 {d2} {m2} {y2}")
+        d1, m1, y1 = pretty(ws); d2, m2, y2 = pretty(we)
+        win = (f"{d1}&ndash;{d2} {m2} {y2}" if m1 == m2 and y1 == y2
+               else f"{d1} {m1} &ndash; {d2} {m2} {y2}")
+        hours = (datetime.date.fromisoformat(we) - datetime.date.fromisoformat(ws)).days * 24
     else:
-        win = f"{d.day} {MONTHS[d.month-1]} {d.year}"
+        win, hours = f"{d.day} {MONTHS[d.month-1]} {d.year}", 24
 
     title = f"AI Digest — {d.day} {MONTHS[d.month - 1]} {d.year}"
-    desc = (f"{n_stories} stories across {len(themes)} themes in the "
-            f"{win} window, with an Australian and New Zealand read.")
+    desc = (f"{n_stories} stories across {len(themes)} themes in the {win} window, with an "
+            f"Australian and New Zealand read.")
+    kicker = f"// ai digest &middot; {hours}-hour window &middot; {win}"
 
-    chips = [f'{n_stories} stories', f'{len(themes)} themes', f'{len(urls)} sources']
-    chips_html = ("".join(f'<span class="chip{" acc" if i==0 else ""}">{c}</span>'
-                          for i, c in enumerate(chips)))
+    chips = (f'<span class="chip chip-accent">{n_stories} stories</span>'
+             f'<span class="chip">{len(themes)} themes</span>'
+             f'<span class="chip">{len(urls)} sources</span>'
+             f'<span class="chip">{hours}-hour window</span>'
+             f'<span class="chip chip-guard"><i></i>AU/NZ watchlist active</span>')
 
-    # executive summary
-    ex = ['<section id="executive">',
-          '<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>Executive summary'
-          f'<span class="cnt">{n_stories} stories</span></h2>']
+    # ── executive summary
+    ex = [f'<section id="exec" class="exec-summary">',
+          f'<h2><span class="icon">{EXEC_ICON}</span> Executive Summary '
+          f'<span class="count">{n_stories} stories</span></h2>']
     for kind, txt in exec_blocks:
         if kind == "au":
-            ex.append(f'<div class="au"><p>{inline(txt)}</p></div>')
+            ex.append(f'<div class="au-context-box"><p>{inline(txt)}</p></div>')
         else:
-            ex.append(f'<p class="body">{inline(txt)}</p>')
+            ex.append(f"<p>{inline(txt)}</p>")
     ex.append("</section>")
 
-    # themes
+    # ── themes, cards numbered and the TOC built in the same pass
     n = 0
-    th, jump = [], ['<a href="#executive"><span class="sw" style="background:var(--ai)"></span>Summary</a>']
+    th = []
+    toc = [f'<a href="#exec" data-section="exec"><span class="sicon">{EXEC_ICON}</span>'
+           f'<span class="tlabel">Executive summary</span></a>']
     for i, t in enumerate(themes, 1):
-        col = THEME_COLOUR.get(t["label"], "var(--ai)")
+        icon, key = THEME_META.get(t["label"], (THEME_META["Market & geopolitics"][0], "mkt"))
         cnt = len(t["stories"])
-        jump.append(f'<a href="#theme-{i}"><span class="sw" style="background:{col}"></span>'
-                    f'{_html.escape(t["label"])}</a>')
-        th.append(f'<section class="theme" id="theme-{i}">')
-        th.append(f'<h2 class="sec"><span class="dot" style="background:{col}"></span>'
-                  f'{_html.escape(t["label"])}<span class="cnt">{cnt} '
-                  f'{"story" if cnt == 1 else "stories"}</span></h2>')
+        tid = f"theme-{i}"
+        toc.append(f'<a href="#{tid}" data-section="{tid}"><span class="sicon">{_ICON % icon}</span>'
+                   f'<span class="tlabel">{_html.escape(t["label"])}</span>'
+                   f'<span class="tcount">{cnt}</span></a>')
+        th.append(f'<section id="{tid}" class="section t-{key}">')
+        th.append(f'<h2><span class="icon">{_ICON % icon}</span> {_html.escape(t["label"])} '
+                  f'<span class="count">{cnt} {"story" if cnt == 1 else "stories"}</span></h2>')
+        th.append('<div class="story-grid">')
         for s in t["stories"]:
             n += 1
-            fields = dict(s["fields"])
-            summ = inline(fields.get("Summary", ""))
-            th.append(f'<article class="card" id="story-{n}">'
-                      f'<div class="bar" style="background:{col}"></div>'
-                      f'<div class="num">{n}</div>'
+            f = dict(s["fields"])
+            th.append(f'<article class="story-card t-{key} num-{n}" id="story-{n}">'
+                      f'<div class="card-accent"></div>'
+                      f'<div class="story-number">{n}</div>'
                       f'<h3>{inline(s["headline"])}</h3>'
-                      f'<p class="sum">{summ}</p>'
-                      f'<div class="srcrow">{source_link(s["fields"])}</div>'
-                      f'<div class="strip">{badges(s["fields"])}</div></article>')
-        th.append("</section>")
-    jump.append('<a href="#analytics"><span class="sw" style="background:var(--ai)"></span>Coverage</a>')
+                      f'<p class="summary">{inline(f.get("Summary", ""))}</p>'
+                      f'<div class="meta">{meta_strip(s["fields"])}</div></article>')
+            import html as _h
+            ttl = _h.unescape(re.sub(r"<[^>]+>", "", inline(s["headline"])))
+            toc.append(f'<a class="tsub" href="#story-{n}" data-story="story-{n}" '
+                       f'title="{_h.escape(ttl, quote=True)}"><span class="tsub-n">{n}</span>'
+                       f'<span class="tsub-label">{_h.escape(ttl)}</span></a>')
+        th.append("</div></section>")
+    toc.append(f'<a href="#analytics" data-section="analytics"><span class="sicon">{ANALYTICS_ICON}</span>'
+               f'<span class="tlabel">Coverage</span></a>')
+    toc.append(f'<a href="#legend" data-section="legend"><span class="sicon">{LEGEND_ICON}</span>'
+               f'<span class="tlabel">Key to this page</span></a>')
 
-    # analytics (computed)
+    # ── analytics — computed from the cards in the same pass, never authored
     counts = [(t["label"], len(t["stories"])) for t in themes]
     mx = max([c for _, c in counts] + [1])
     rows = []
     for label, c in counts:
-        col = THEME_COLOUR.get(label, "var(--ai)")
-        rows.append(f'<div class="row"><span>{_html.escape(label)}</span>'
-                    f'<span class="track"><span class="fill" style="width:{c/mx*100:.0f}%;'
-                    f'background:{col};display:block"></span></span>'
-                    f'<span class="val">{c}</span></div>')
-    an = ['<section class="analytics" id="analytics">',
-          '<h2 class="sec"><span class="dot" style="background:var(--ai)"></span>'
-          f'Coverage this edition<span class="cnt">{n_stories} stories</span></h2>',
-          *rows, "</section>"]
+        _, key = THEME_META.get(label, ("", "mkt"))
+        rows.append(f'<div class="bar-row t-{key}"><span class="bar-label">{_html.escape(label)}</span>'
+                    f'<div class="bar-track"><div class="bar-fill" style="width:{c/mx*100:.1f}%">'
+                    f'</div></div><span class="bar-val">{c}</span></div>')
+    evmax = max(list(ev.values()) + [1]) if ev else 1
+    ev_rows = []
+    for name, c in ev.most_common():
+        ev_rows.append(f'<div class="bar-row mono"><span class="bar-label">{_html.escape(name)}</span>'
+                       f'<div class="bar-track"><div class="bar-fill" '
+                       f'style="width:{c/evmax*100:.1f}%"></div></div>'
+                       f'<span class="bar-val">{c}</span></div>')
+    gmax = max(list(gate.values()) + [1]) if gate else 1
+    gate_rows = []
+    for name in ("Verified", "Reported", "Unverified"):
+        c = gate.get(name, 0)
+        gate_rows.append(f'<div class="bar-row mono"><span class="bar-label">{name}</span>'
+                         f'<div class="bar-track"><div class="bar-fill" '
+                         f'style="width:{c/gmax*100:.1f}%"></div></div>'
+                         f'<span class="bar-val">{c}</span></div>')
+    tax_rows = []
+    for label, c in counts:
+        tax_rows.append(f'<tr><td>{_html.escape(label)}</td><td>{c}</td></tr>')
 
-    page = (TPL.replace("@@TITLE@@", title)
+    an = [f'<section id="analytics" class="section">',
+          f'<h2><span class="icon">{ANALYTICS_ICON}</span> Coverage this edition '
+          f'<span class="count">{n_stories} stories &middot; {len(themes)} themes &middot; '
+          f'{len(urls)} sources</span></h2>',
+          '<div class="bar-chart"><h3>Where the window\'s stories landed</h3>',
+          *rows, "</div>",
+          '<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>',
+          *ev_rows,
+          '<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a '
+          'claim, never as a measurement — the axis is orthogonal to verification, so a story can be '
+          'Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>',
+          "</div>",
+          '<div class="bar-chart"><h3>Verification gate</h3>', *gate_rows, "</div>",
+          '<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead>'
+          "<tbody>", *tax_rows, "</tbody></table>",
+          "</section>"]
+    if not gate.get("Unverified"):
+        an.append("")
+
+    # ── footer: measured source diversity, prev/next, provenance
+    src_line = (f"AI Digest generated {d.isoformat()}." + (
+        " Sources: " + ", ".join(f"{_html.escape(k)} ({v})" for k, v in src_names.most_common())
+        + "." if src_names else ""))
+    top = src_names.most_common(1)
+    if top and n_stories:
+        share = top[0][1] / n_stories
+        src_line += (f" Largest single source: {_html.escape(top[0][0])} — "
+                     f"{top[0][1]}/{n_stories} ({share:.0%})." +
+                     (" Within the 40% threshold." if share <= 0.40
+                      else " ABOVE the 40% threshold."))
+    footer = (f'<footer class="footer"><nav class="ednav">{prev_next_html}</nav>'
+              f'<div class="source-line">{src_line}</div>'
+              f'<div class="note">Window: {hours} hours to {d.day} {MONTHS[d.month-1]} {d.year}. '
+              f'Stories are grouped by layer of the stack, not by industry sector; a theme with no '
+              f'qualifying item is listed in the coverage table above and rendered as no section at '
+              f'all. Colour on this page means impact severity and nothing else.</div>'
+              f'<div class="links"><a href="/daily/">All editions</a>'
+              f'<a href="/about/">About the AI Digest</a>'
+              f'<a href="https://peterjaycox.com">Hub</a></div></footer>')
+
+    page = (TPL.replace("@@TITLE@@", _html.escape(title))
                .replace("@@DESCRIPTION@@", _html.escape(desc, quote=True))
-               .replace("@@KICKER@@", fm.get("kicker", ""))
-               .replace("@@CHIPS@@", chips_html)
+               .replace("@@KICKER@@", kicker)
+               .replace("@@HERO_DATE@@", f"{DAYNAMES[d.weekday()]}<span class=\"sep\">&middot;</span>"
+                                         f"{d.day} {MONTHS[d.month-1]} {d.year}")
+               .replace("@@CHIPS@@", chips)
+               .replace("@@TOC@@", "\n".join(toc))
                .replace("@@EXEC@@", "\n".join(ex))
                .replace("@@THEMES@@", "\n".join(th))
                .replace("@@ANALYTICS@@", "\n".join(an))
-               .replace("@@JUMP@@", "".join(jump))
-               .replace("@@DATE_LONG@@", f"{d.day} {MONTHS[d.month-1]} {d.year}"))
+               .replace("@@LEGEND@@", legend_section())
+               .replace("@@FOOTER@@", footer))
     return d, page, n_stories, len(themes), desc
 
 
+def legend_section():
+    return """<section id="legend" class="section">
+<h2><span class="icon">%s</span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>""" % LEGEND_ICON
+
+
 HOME = os.path.join(ROOT, "docs", "index.html")
-# The landing page is hand-authored apart from three generated regions, so its
-# hero kicker, lead card and "Latest edition" list cannot go stale while the
-# editions move on.
 LATEST_START, LATEST_END = "<!-- LATEST:START -->", "<!-- LATEST:END -->"
 KICKER_START, KICKER_END = "<!-- KICKER:START -->", "<!-- KICKER:END -->"
 LEAD_START, LEAD_END = "<!-- LEAD:START -->", "<!-- LEAD:END -->"
@@ -334,9 +471,7 @@ HOME_ROWS = 4
 
 
 def lead_card(page):
-    """The newest edition's first card, lifted verbatim so the landing page
-    shows the product rather than describing it."""
-    m = re.search(r'<article class="card".*?</article>', page, re.S)
+    m = re.search(r'<article class="story-card.*?</article>', page, re.S)
     return m.group(0) if m else ""
 
 
@@ -350,14 +485,10 @@ def edlink(d, kind, label):
 
 
 def prev_next(older, newer):
-    """older = the edition before this one in time (left arrow);
-    newer = the edition after it (right arrow). Either may be None at the ends."""
     return edlink(older, "prev", "\u2190 Older") + edlink(newer, "next", "Newer \u2192")
 
 
 def timeline(asc):
-    """A bar per edition, oldest left, height scaled to the story count — so the
-    archive shows its own shape instead of being a bare list."""
     mx = max([ns for _, ns, _, _ in asc] + [1])
     cols = []
     for d, ns, nt, _ in asc:
@@ -371,8 +502,6 @@ def timeline(asc):
 
 
 def home_blurb(path):
-    """One editorial line for the newest edition, lifted from its own executive
-    summary — so the homepage text always tracks the edition it links to."""
     m = re.search(r"\*\*Top stories\.\*\*\s*(.+)", open(path, encoding="utf-8").read())
     if not m:
         return ""
@@ -392,12 +521,11 @@ def update_homepage(built, newest_page=""):
     rows = []
     for i, (d, ns, nt, _) in enumerate(built[:HOME_ROWS]):
         label = (f"{d.day} {MONTHS[d.month - 1]} {d.year} &mdash; {ns} "
-                 f"{'story' if ns == 1 else 'stories'}, {nt} "
-                 f"{'theme' if nt == 1 else 'themes'}")
+                 f"{'story' if ns == 1 else 'stories'}, {nt} {'theme' if nt == 1 else 'themes'}")
         link = f'<a href="/daily/{d.isoformat()}.html">{label}</a>'
         if i == 0:
-            rows.append(f"      <li><b>{link}</b>"
-                        f"{home_blurb(os.path.join(SRC, d.isoformat() + '.md'))}</li>")
+            blurb = home_blurb(os.path.join(SRC, d.isoformat() + ".md"))
+            rows.append(f'      <li><b>{link}</b><span class="blurb">{blurb}</span></li>')
         else:
             rows.append(f"      <li>{link}</li>")
     newest = built[0][0]
@@ -418,21 +546,75 @@ def update_homepage(built, newest_page=""):
     print(f"  homepage  latest edition -> {newest.isoformat()}")
 
 
+INDEX_TPL = """<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — editions</title>
+<meta name="description" content="Every AI Digest edition, newest first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+@@THEME_SCRIPT@@
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" onclick="window.__aiTheme.cycle(event)"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+<div class="wrap single">
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">@@N@@</div>
+<div class="hero-date">Editions</div>
+<h1>AI Digest</h1>
+<p class="subtitle">Every edition, newest first. A daily read on artificial intelligence, with an Australian and New Zealand lens. Latest: @@NEWEST@@.</p>
+<div class="ed-tl">@@TIMELINE@@</div>
+<p class="ed-tlcap">Stories per edition, oldest to newest.</p>
+</header>
+<main id="main" class="main">
+<div class="list">
+@@ROWS@@
+</div>
+</main>
+<footer class="footer"><div class="links"><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+</div>
+</body>
+</html>
+"""
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
+    # the chrome is copied into docs/ by the build, so the published stylesheet can
+    # never be a stale hand-edit of templates/chrome/style.css
+    import shutil
+    shutil.copy2(os.path.join(ROOT, "templates", "chrome", "style.css"),
+                 os.path.join(ROOT, "docs", "assets", "chrome.css"))
+    print(f"  chrome.css  {os.path.getsize(os.path.join(ROOT,'docs','assets','chrome.css')):,} bytes")
     files = sorted(glob.glob(os.path.join(SRC, "*.md")), reverse=True)
     if not files:
         sys.exit("no editions found in " + SRC)
-    # pass 1: parse and render every edition, so each page can be given its
-    # neighbours before anything is written
-    pages = [build_edition(f) for f in files]
-    dates = [d for d, *_ in pages]                 # newest first
+    # pass 1: parse and render every edition, so each page can be given its neighbours
+    prepared = [build_edition(f, "@@PREVNEXT@@") for f in files]
+    dates = [d for d, *_ in prepared]
 
-    built = []
-    newest_page = ""
-    for i, (d, page, ns, nt, desc) in enumerate(pages):
-        older = dates[i + 1] if i + 1 < len(dates) else None   # earlier in time
-        newer = dates[i - 1] if i > 0 else None                # later in time
+    built, newest_page = [], ""
+    for i, (d, page, ns, nt, desc) in enumerate(prepared):
+        older = dates[i + 1] if i + 1 < len(dates) else None
+        newer = dates[i - 1] if i > 0 else None
         page = page.replace("@@PREVNEXT@@", prev_next(older, newer))
         dst = os.path.join(OUT, f"{d.isoformat()}.html")
         open(dst, "w", encoding="utf-8").write(page)
@@ -441,7 +623,6 @@ def main():
         built.append((d, ns, nt, os.path.getsize(dst)))
         print(f"  {d.isoformat()}.html  {ns} stories / {nt} themes  {os.path.getsize(dst):,} bytes")
 
-    # index — with a timeline so the archive shows its own shape
     items = []
     for d, ns, nt, _ in built:
         items.append(f'<a class="edrow" href="{d.isoformat()}.html">'
@@ -452,105 +633,15 @@ def main():
     idx = (INDEX_TPL.replace("@@ROWS@@", "\n".join(items))
                     .replace("@@TIMELINE@@", timeline(list(reversed(built))))
                     .replace("@@N@@", f"{len(built)} edition" + ("" if len(built) == 1 else "s"))
-                    .replace("@@NEWEST@@", f"{newest.day} {MONTHS[newest.month-1]} {newest.year}"))
+                    .replace("@@NEWEST@@", f"{newest.day} {MONTHS[newest.month-1]} {newest.year}")
+                    .replace("@@THEME_SCRIPT@@",
+                             open(os.path.join(ROOT, "templates", "chrome", "theme.js"),
+                                  encoding="utf-8").read()))
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(idx)
     print(f"  index.html  {len(built)} edition(s)  {os.path.getsize(os.path.join(OUT,'index.html')):,} bytes")
 
-    # the landing page's hero kicker, lead card and latest-edition list
     update_homepage(built, newest_page)
 
-
-INDEX_TPL = """<!DOCTYPE html>
-<html lang="en-AU" data-theme="dark">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Digest — editions</title>
-<meta name="description" content="Every AI Digest edition, newest first.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>
-(function(){var d=document.documentElement;
-function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
-function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
-function mode(){return saved()||'auto';}
-function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
-function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);}
-function cycle(ev){var m=mode();
-if(ev&&ev.shiftKey){save('auto');}
-else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
-else if(m===sys()){save('auto');}
-else{save(m==='light'?'dark':'light');}
-apply();}
-try{localStorage.removeItem('ai-theme');}catch(e){}
-window.__aiTheme={cycle:cycle,apply:apply};
-apply();
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
-})();
-</script>
-<link rel="stylesheet" href="/assets/digest.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .25s,color .25s}
-.topbar{border-bottom:1px solid var(--border)}
-.topbar .in{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:760px;margin:0 auto;padding:0 28px}
-.brand{display:flex;align-items:center;gap:9px;font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--text);text-decoration:none}
-.brand .d{width:9px;height:9px;border-radius:50%;background:var(--ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--ai) 22%,transparent)}
-nav{display:flex;gap:16px;font-size:13.5px;align-items:center}
-nav a{color:var(--muted);text-decoration:none}
-nav a:hover{color:var(--text)}
-.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:6px;width:32px;height:32px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);user-select:none;font-size:15px}
-.theme-toggle:hover{background:var(--surface-hover)}
-.tt-auto,.tt-light{display:none}.tt-dark{display:inline}
-html[data-theme-mode="auto"] .tt-dark{display:none}html[data-theme-mode="auto"] .tt-auto{display:inline}
-html[data-theme-mode="light"] .tt-dark{display:none}html[data-theme-mode="light"] .tt-light{display:inline}
-.wrap{max-width:760px;margin:0 auto;padding:0 28px}
-header{padding:46px 0 24px}
-.kick{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
-h1{font-family:'Source Serif 4',serif;font-size:32px;font-weight:600;margin-bottom:8px}
-p.sub{color:var(--muted);font-size:15px;max-width:560px}
-.list{padding:10px 0 50px}
-a.edrow{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px 18px;margin-bottom:10px;transition:border-color .18s,background .18s}
-a.edrow:hover{border-color:color-mix(in srgb,var(--ai) 40%,transparent);background:var(--surface2)}
-.eddate{font-family:'Source Serif 4',serif;font-size:17px;font-weight:600}
-.edmeta{font-size:12.5px;color:var(--muted)}
-.edar{margin-left:auto;color:var(--ai);font-size:17px}
-nav a.here{color:var(--text)}
-/* archive timeline: one bar per edition, height by story count */
-.tlgrid{display:flex;align-items:flex-end;gap:6px;padding:4px 2px 0;margin-top:20px;overflow-x:auto;scrollbar-width:none}
-.tlgrid::-webkit-scrollbar{display:none}
-a.tl{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;min-width:26px}
-.tlbar{width:20px;background:color-mix(in srgb,var(--ai) 50%,transparent);border-radius:4px 4px 0 0;display:block;transition:background .18s}
-a.tl:hover .tlbar{background:var(--ai)}
-a.tl .tld{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
-.tlcap{font-size:11px;color:var(--muted);margin-top:8px}
-footer{padding:8px 0 44px;color:var(--muted);font-size:12.5px;text-align:center}
-footer a{color:var(--ai);text-decoration:none}
-</style>
-</head>
-<body>
-<div class="topbar"><div class="in">
-  <a class="brand" href="/"><span class="d"></span>AI&nbsp;Digest</a>
-  <nav><a href="/daily/" class="here">Editions</a><a href="/about/">About</a><a href="https://peterjaycox.com">Hub</a><a href="https://cyber.peterjaycox.com">Cyber</a><a href="https://intel.peterjaycox.com">Intel</a>
-  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" onclick="window.__aiTheme.cycle(event)"><span class="tt-auto">🌗</span><span class="tt-light">☀️</span><span class="tt-dark">🌙</span></div></nav>
-</div></div>
-<div class="wrap">
-<header>
-  <div class="kick">@@N@@</div>
-  <h1>AI Digest — editions</h1>
-  <p class="sub">Newest first. A daily read on artificial intelligence, with an Australian and New Zealand lens. Latest edition: @@NEWEST@@.</p>
-  <div class="tlgrid">@@TIMELINE@@</div>
-  <div class="tlcap">Stories per edition, oldest to newest.</div>
-</header>
-<div class="list">
-@@ROWS@@
-</div>
-<footer><a href="/about/">About the AI Digest</a></footer>
-</div>
-</body>
-</html>
-"""
 
 if __name__ == "__main__":
     main()

@@ -7,192 +7,63 @@
 <meta name="description" content="@@DESCRIPTION@@">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
-/* Appearance: three states, default = auto (follows the OS). Click cycles
-   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
-   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
-(function(){var d=document.documentElement;
-function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
-function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
-function mode(){return saved()||'auto';}
-function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
-function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
-var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
-light:'Appearance: light (pinned). Shift-click to follow your system again.',
-dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
-if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
-function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
-function cycle(ev){var m=mode();
-if(ev&&ev.shiftKey){save('auto');}
-else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
-else if(m===sys()){save('auto');}
-else{save(m==='light'?'dark':'light');}
-apply();}
-function followSystem(){if(!saved()){apply();}}
-try{localStorage.removeItem('ai-theme');}catch(e){}
-window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
-apply();
-try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
-if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
-})();
+@@THEME_SCRIPT@@
 </script>
-<!-- tokens + the card / signal-strip component live in assets/digest.css so the
-     daily pages, the editions index and the landing page cannot drift apart -->
-<link rel="stylesheet" href="/assets/digest.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.62;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-.wrap{max-width:860px;margin:0 auto;padding:0 28px}
-.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.topbar .in{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:860px;margin:0 auto;padding:0 28px}
-.brand{display:flex;align-items:center;gap:9px;font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--text);text-decoration:none}
-.brand .d{width:9px;height:9px;border-radius:50%;background:var(--ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--ai) 22%,transparent)}
-nav.top{display:flex;gap:18px;font-size:13.5px;align-items:center}
-nav.top a{color:var(--muted);text-decoration:none}
-nav.top a:hover{color:var(--text)}
-nav.top a.here{color:var(--text)}
-.theme-toggle{display:flex;align-items:center;justify-content:center;margin-left:8px;width:32px;height:32px;border-radius:8px;background:var(--surface2);cursor:pointer;border:1px solid var(--border);user-select:none;flex-shrink:0;font-size:15px}
-.theme-toggle:hover{background:var(--surface-hover);border-color:var(--border-light)}
-.theme-toggle .tt-auto,.theme-toggle .tt-light{display:none}
-.theme-toggle .tt-dark{display:inline}
-html[data-theme-mode="auto"] .theme-toggle .tt-dark{display:none}
-html[data-theme-mode="auto"] .theme-toggle .tt-auto{display:inline}
-html[data-theme-mode="light"] .theme-toggle .tt-dark{display:none}
-html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
-
-/* section rail — sticky under the topbar so a six-theme scroll stays navigable */
-.jump{position:sticky;top:56px;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-.jump .in{display:flex;gap:2px;max-width:860px;margin:0 auto;padding:0 22px;overflow-x:auto;scrollbar-width:none}
-.jump .in::-webkit-scrollbar{display:none}
-.jump a{flex:0 0 auto;font-size:12px;color:var(--muted);text-decoration:none;padding:9px 10px;border-bottom:2px solid transparent;white-space:nowrap}
-.jump a:hover{color:var(--text);border-bottom-color:color-mix(in srgb,var(--ai) 45%,transparent)}
-.jump a .sw{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:6px;vertical-align:middle}
-
-header.ed{padding:40px 0 24px;border-bottom:1px solid var(--border)}
-.kick{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ai);border:1px solid color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
-.ed h1{font-family:'Source Serif 4',serif;font-size:34px;font-weight:600;line-height:1.16;margin-bottom:8px}
-.ed .sub{color:var(--muted);font-size:15px;max-width:620px}
-.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
-.chip{font-size:11.5px;color:var(--muted);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:4px 11px}
-.chip.acc{color:var(--ai);border-color:color-mix(in srgb,var(--ai) 38%,transparent);background:color-mix(in srgb,var(--ai) 9%,transparent)}
-.chip.k{color:var(--k3);border-color:color-mix(in srgb,var(--k3) 38%,transparent);background:color-mix(in srgb,var(--k3) 9%,transparent)}
-
-main{padding:6px 0 40px}
-section{padding:30px 0;border-bottom:1px solid var(--border);scroll-margin-top:106px}
-section:last-of-type{border-bottom:0}
-h2.sec{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:6px}
-h2.sec .dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
-h2.sec .cnt{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:var(--muted);background:var(--surface2);border-radius:999px;padding:2px 9px}
-p.body{font-size:15px;color:var(--text-2);margin:12px 0}
-p.body strong{color:var(--text);font-weight:600}
-p.body a{color:var(--ai)}
-/* the first exec paragraph is the read — lead treatment, no format change */
-#executive p.body:first-of-type{font-size:16.5px;color:var(--text);line-height:1.6}
-.au{background:color-mix(in srgb,var(--k3) 8%,transparent);border:1px solid color-mix(in srgb,var(--k3) 30%,transparent);border-left:4px solid var(--k3);border-radius:10px;padding:15px 18px;margin:14px 0}
-.au p{font-size:14.5px;color:var(--text-2)}
-.au p strong{color:var(--text)}
-
-/* inline code in running text (\`gpt-rosalind-discovery\`) */
-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:1px 5px;color:var(--text)}
-.analytics .row{display:grid;grid-template-columns:190px 1fr 34px;align-items:center;gap:10px;margin:7px 0;font-size:13px;color:var(--text-2)}
-.track{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.fill{height:100%;border-radius:99px}
-.val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
-
-/* legend — a disclosure, because the colour language no longer needs a standing key */
-details.key{border:1px solid var(--border);border-radius:12px;background:var(--surface)}
-details.key summary{cursor:pointer;padding:13px 16px;font-size:13px;color:var(--text-2);font-weight:600;list-style:none}
-details.key summary::-webkit-details-marker{display:none}
-details.key summary::before{content:"\FF0B";color:var(--ai);font-weight:600;margin-right:9px}
-details.key[open] summary::before{content:"\2212"}
-details.key .kbody{padding:2px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.kcard{border:1px solid var(--border);border-radius:10px;padding:12px 13px}
-.kcard h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:9px}
-.kcard p{font-size:12.5px;color:var(--muted)}
-.kcard p em{color:var(--text-2);font-style:normal}
-
-/* prev / next edition */
-.ednav{display:flex;gap:12px;padding:26px 0 0;border-top:1px solid var(--border);margin-top:30px}
-a.edlink{flex:1 1 0;min-width:0;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;transition:border-color .18s}
-a.edlink:hover{border-color:color-mix(in srgb,var(--ai) 40%,transparent)}
-a.edlink .dl{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-a.edlink .dd{font-family:'Source Serif 4',serif;font-size:15px;font-weight:600}
-a.edlink.next{text-align:right}
-a.edlink.dis{visibility:hidden}
-footer{padding:24px 0 48px;color:var(--muted);font-size:12.5px;text-align:center}
-footer a{color:var(--ai);text-decoration:none}
-
-@media(max-width:640px){
-  .ed h1{font-size:27px}
-  .wrap,.topbar .in{padding:0 18px}
-  .jump .in{padding:0 12px}
-  .analytics .row{grid-template-columns:120px 1fr 30px}
-  .ednav{flex-direction:column}
-}
-</style>
+<link rel="stylesheet" href="/assets/chrome.css">
 </head>
 <body>
-<div class="topbar"><div class="in">
-  <a class="brand" href="/"><span class="d"></span>AI&nbsp;Digest</a>
-  <nav class="top">
-    <a href="/daily/" class="here">Editions</a>
-    <a href="/about/">About</a>
-    <a href="https://peterjaycox.com">Hub</a>
-    <a href="https://cyber.peterjaycox.com">Cyber</a>
-    <a href="https://intel.peterjaycox.com">Intel</a>
-    <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
-  </nav>
-</div></div>
-<div class="jump"><div class="in">@@JUMP@@</div></div>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
 
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
 <div class="wrap">
-<header class="ed">
-  <div class="kick">@@KICKER@@</div>
-  <h1>@@TITLE@@</h1>
-  <p class="sub">@@DESCRIPTION@@</p>
-  <div class="chips">@@CHIPS@@</div>
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+@@TOC@@
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">@@KICKER@@</div>
+<div class="hero-date">@@HERO_DATE@@</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips">@@CHIPS@@</div>
 </header>
 
-<main>
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
 @@EXEC@@
 @@THEMES@@
 @@ANALYTICS@@
-<section id="key">
-  <details class="key">
-    <summary>How to read this edition</summary>
-    <div class="kbody">
-      <div class="kcard">
-        <h4>Impact — the only coloured axis</h4>
-        <div class="swatchrow"><span style="background:var(--k1)"></span><span style="background:var(--k2)"></span><span style="background:var(--k3)"></span><span style="background:var(--k4)"></span><span style="background:var(--k5)"></span></div>
-        <p><em>Low &middot; Guarded &middot; Elevated &middot; Severe &middot; Critical.</em> How far the risk or obligation position moves. Colour on this page means this axis and nothing else.</p>
-      </div>
-      <div class="kcard">
-        <h4>Obligation — does it bind an AUNZ organisation?</h4>
-        <div class="demo"><span class="rd"><span class="gf">&#9632;</span><b>Mandated</b></span><span class="rd"><span class="gf">&#9687;</span><b>Commenced</b></span><span class="rd"><span class="gf">&#9640;</span><b>Proposed</b></span></div>
-        <p>Monochrome, carrying a leading glyph. <em>Proposed</em> and <em>Signalled</em> both mean nothing is enforceable yet.</p>
-      </div>
-      <div class="kcard">
-        <h4>Evidence — what kind of claim is this?</h4>
-        <div class="demo"><span class="rd"><span class="gf">&#9681;</span><b>Confirmed</b></span><span class="rd"><span class="gf">&#9685;</span><b>Corroborated</b></span><span class="rd"><span class="gf">&#9670;</span><b>Vendor claim</b></span><span class="rd"><span class="gf">&#126;</span><b>Rumoured</b></span></div>
-        <p>A vendor's claim about its own model is <em>always</em> a vendor claim — price, speed and benchmark numbers are claims, not measurements.</p>
-      </div>
-      <div class="kcard">
-        <h4>Capability, tier and verification</h4>
-        <div class="demo"><span class="rd"><span class="gf">&#9650;</span><b>Frontier</b></span><span class="rd"><span class="gf">&#9632;</span><b>Material</b></span><span class="rd"><span class="gf">&#9643;</span><b>Incremental</b></span></div>
-        <p><em>Tier 1/4&ndash;4/4</em> is source reliability, with a short note on <em>what kind</em> of source it is; hover it for the full rationale. Verification reads <em>&#10003; Verified</em>, <em>&#126; Reported</em> or <em>? Unverified</em>.</p>
-      </div>
-    </div>
-  </details>
-</section>
+@@LEGEND@@
+
+@@FOOTER@@
+
 </main>
-
-<nav class="ednav">@@PREVNEXT@@</nav>
-
-<footer>
-  <div>AI Digest &middot; @@DATE_LONG@@ &middot; <a href="/daily/">All editions</a> &middot; <a href="/about/">About</a></div>
-</footer>
 </div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+@@PAGE_SCRIPT@@
+</script>
 </body>
 </html>
