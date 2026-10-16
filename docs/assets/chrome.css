@@ -620,3 +620,18 @@ a.cvepill{cursor:pointer}
 /* an empty theme is a finding — it renders as a line in the coverage table, never
    as a zero bar */
 .empty-note{font-size:12.5px;color:var(--text-dim);margin:6px 0 0}
+
+/* Coverage bars. The chrome ships bar-green / bar-red / bar-amber / bar-blue, and
+   those hues already mean Low / Critical / Elevated / (govt) on this page — a red
+   bar for "Market & geopolitics" reads as a critical story that is not there. Theme
+   bars take the theme palette; the non-theme bars (evidence class, verification
+   gate) stay in the brand hue. The builder emits `bar-row t-<key>` and
+   `bar-row mono`, so these selectors are the only thing colouring the bars: without
+   them the fill div has no background and every chart renders as empty tracks. */
+.bar-row.t-frontier .bar-fill{background:linear-gradient(90deg,var(--t-frontier),rgba(110,86,207,.2))}
+.bar-row.t-reg .bar-fill{background:linear-gradient(90deg,var(--t-reg),rgba(91,107,134,.2))}
+.bar-row.t-res .bar-fill{background:linear-gradient(90deg,var(--t-res),rgba(63,115,110,.2))}
+.bar-row.t-sec .bar-fill{background:linear-gradient(90deg,var(--t-sec),rgba(122,90,110,.2))}
+.bar-row.t-inf .bar-fill{background:linear-gradient(90deg,var(--t-inf),rgba(95,112,66,.2))}
+.bar-row.t-mkt .bar-fill{background:linear-gradient(90deg,var(--t-mkt),rgba(138,106,80,.2))}
+.bar-row.mono .bar-fill{background:linear-gradient(90deg,var(--accent),rgba(139,122,230,.2))}
