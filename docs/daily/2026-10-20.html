@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 20 October 2026</title>
+<meta name="description" content="12 stories across 6 themes in the 19&amp;ndash;20 October 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">3</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="The Fair Work Commission&#x27;s generative-AI duties took effect on 20 October"><span class="tsub-n">1</span><span class="tsub-label">The Fair Work Commission&#x27;s generative-AI duties took effect on 20 October</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="A former AI Expert Group member told a parliamentary inquiry Australia&#x27;s agent-liability gap needs urgent reform"><span class="tsub-n">2</span><span class="tsub-label">A former AI Expert Group member told a parliamentary inquiry Australia&#x27;s agent-liability gap needs urgent reform</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Meta&#x27;s proposed commercial terms shift liability for its AI&#x27;s mistakes onto enterprise customers from 30 October"><span class="tsub-n">3</span><span class="tsub-label">Meta&#x27;s proposed commercial terms shift liability for its AI&#x27;s mistakes onto enterprise customers from 30 October</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="METR reviewed Anthropic&#x27;s misalignment risk assessment — and found the methods weaker than the conclusion"><span class="tsub-n">4</span><span class="tsub-label">METR reviewed Anthropic&#x27;s misalignment risk assessment — and found the methods weaker than the conclusion</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="IBM says prompt-level memory put a stock GPT-4.1 agent top of a customer-service leaderboard"><span class="tsub-n">5</span><span class="tsub-label">IBM says prompt-level memory put a stock GPT-4.1 agent top of a customer-service leaderboard</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="One operator&#x27;s AI agents attacked more than 1,200 sites and breached over 100, at roughly US$50 each"><span class="tsub-n">6</span><span class="tsub-label">One operator&#x27;s AI agents attacked more than 1,200 sites and breached over 100, at roughly US$50 each</span></a>
+<a class="tsub" href="#story-7" data-story="story-7" title="OpenAI stood up an Australian taskforce on incident notification"><span class="tsub-n">7</span><span class="tsub-label">OpenAI stood up an Australian taskforce on incident notification</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-8" data-story="story-8" title="Mistral shipped Voxtral 3 — a real-time voice-agent stack built for in-region deployment"><span class="tsub-n">8</span><span class="tsub-label">Mistral shipped Voxtral 3 — a real-time voice-agent stack built for in-region deployment</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">3</span></a>
+<a class="tsub" href="#story-9" data-story="story-9" title="NextDC pulled its consent application for an Auckland data centre"><span class="tsub-n">9</span><span class="tsub-label">NextDC pulled its consent application for an Auckland data centre</span></a>
+<a class="tsub" href="#story-10" data-story="story-10" title="SemiAnalysis put a number on 2027: an extra 50GW of data-centre capacity in a single year"><span class="tsub-n">10</span><span class="tsub-label">SemiAnalysis put a number on 2027: an extra 50GW of data-centre capacity in a single year</span></a>
+<a class="tsub" href="#story-11" data-story="story-11" title="Amazon committed €16 billion to German infrastructure in 2027, of which €4.8 billion is data centres and AI"><span class="tsub-n">11</span><span class="tsub-label">Amazon committed €16 billion to German infrastructure in 2027, of which €4.8 billion is data centres and AI</span></a>
+<a href="#theme-6" data-section="theme-6"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-12" data-story="story-12" title="OpenAI acquired Orchestra Bio to fold a drug-development platform into its life-sciences push"><span class="tsub-n">12</span><span class="tsub-label">OpenAI acquired Orchestra Bio to fold a drug-development platform into its life-sciences push</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 24-hour window &middot; 19&ndash;20 October 2026</div>
+<div class="hero-date">Tuesday<span class="sep">&middot;</span>20 October 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">12 stories</span><span class="chip">6 themes</span><span class="chip">12 sources</span><span class="chip">24-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">12 stories</span></h2>
+<p><strong>Top stories.</strong> The most consequential AI story of the window is the first evidenced, priced example of autonomous agents running a criminal intrusion campaign at scale. <strong>NorForge</strong> principal threat researcher <strong>Snorre Fagerland</strong> found more than <strong>20 exposed Cairn panels</strong> — Cairn is an open-source, state-based AI problem-solving engine — in active malicious use from around <strong>2 October 2026</strong>, the busiest cluster (<strong>AIA0001</strong>, 14 panels, <strong>1,100-plus attack projects</strong>) using instructions of fewer than <strong>100 Chinese characters</strong> to hunt unauthenticated remote code execution on real e-commerce sites across the <strong>United States, Canada, Japan and Australia</strong>. By late last week the agents had <strong>attempted more than 1,200 sites and breached over 100</strong>, at an estimated <strong>23 hours</strong> and about <strong>US$50 in tokens per success</strong>, with <strong>Deere, SharkNinja and Cummins</strong> named as victims by Reuters and an <strong>Australian e-commerce case</strong> documented with confirmed command execution. Second, Australia's <strong>Fair Work Commission</strong> began enforcing generative-AI obligations on <strong>20 October</strong>: anyone filing AI-assisted documents must <strong>disclose</strong> the use, have a <strong>person</strong> — not another AI tool — verify every fact, case and quote, and confirm witness statements reflect the witness's own words, with non-compliance risking costs orders, disregarded documents or dismissal, and false information carrying up to <strong>12 months' imprisonment</strong>.</p>
+<p>Two things follow. First, <strong>the agentic-risk scenario has moved from hypothetical to accounted for</strong>: the compelling numbers in the Cairn case are not capability scores but price and throughput — roughly US$5,000 of tokens for a campaign that touched 1,200 sites — and the discipline that breaks the economics is the ordinary one of detecting automated probing before it succeeds. Second, <strong>the obligation layer moved in Australia and contracted everywhere else</strong>: the Fair Work Commission converted AI-slop risk into a binding procedural duty with a commencement date, while <strong>Meta</strong> proposed to shift liability for its own AI's mistakes onto enterprise customers from <strong>30 October</strong> and <strong>OpenAI</strong> stood up a voluntary Australian taskforce on incident notification — a duty created, a duty disclaimed, and a duty volunteered, in the same 48 hours.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The Australian story is squarely the <strong>Fair Work Commission's</strong> <em>Guidance note: Use of generative AI in Commission cases</em>, effective <strong>20 October 2026</strong>, which makes generation disclosure and human verification of AI-assisted filings a procedural obligation rather than advice — the Commission's own research puts use at roughly <strong>40 per cent</strong> of surveyed applicants and lodgements up <strong>44 per cent</strong> between 2022–23 and 2024–25. Two days of hearings of the <strong>Joint Select Committee on Artificial Intelligence</strong> heard University of Sydney professor <strong>Kimberlee Weatherall</strong>, a former member of the government's AI Expert Group, argue the liability gap for AI agents needs urgent law reform, and that Australian law is unclear enough that a vendor is unlikely to face criminal action over an agent-caused breach; the committee still reports by <strong>30 November 2026</strong>. On the instrument sweep the silences are checked rather than assumed: the <strong>OAIC's</strong> newest item remains <strong>12 October</strong>, <strong>ASIC's</strong> news centre <strong>19 October</strong> (a digital-asset licensing deadline, not AI), the <strong>ACSC's</strong> newest news item <strong>15 October</strong>, <strong>eSafety's</strong> last readable release <strong>2 October</strong>, the <strong>PSPF</strong> library <strong>29 September</strong>, and Assistant Minister <strong>Andrew Charlton's</strong> media index <strong>8 October</strong> with no ministerial speech in the window. In New Zealand the <strong>Privacy Commissioner</strong> has published nothing since <strong>23 September</strong> and <strong>NZ NCSC</strong> nothing since <strong>30 September</strong>; the NZ-relevant item of the window is commercial, with <strong>NextDC</strong> withdrawing its resource-consent application for a proposed <strong>Auckland</strong> data centre.</p></div>
+<p><strong>Geopolitical context & the arc.</strong> Three centres of gravity. <strong>Washington</strong> acted on supply rather than capability, with <strong>Homeland Security</strong> ordering <strong>DeepSeek</strong> products and DeepSeek-derived third-party services out of civilian federal IT systems and barring their acquisition, citing "multiple threat vectors" — extending a state-level ban pattern to a specific Chinese model's supply chain, which is the precedent that matters for AUNZ agencies standardised on Chinese open weights. <strong>Canberra</strong> legislated conduct, not models: the Fair Work Commission's guidance is the first Australian instrument in this window to attach a procedural consequence to AI use, and it lands while the parliamentary inquiry is still taking evidence on agent liability. <strong>Brussels and London</strong> were quiet. The capability layer answered with packaging rather than frontier: <strong>Mistral</strong> shipped <strong>Voxtral 3</strong> as EU-hosted or self-deployed voice infrastructure, and <strong>IBM Research</strong> showed a stock <strong>GPT-4.1</strong> agent reaching <strong>67.5 per cent Pass^4</strong> on <strong>τ²-bench retail</strong> by distilling its own run history into the system prompt — reliability bought with memory rather than a bigger model. The arc: <strong>the argument has moved from what models can do to who is answerable when an agent acts</strong> — expect the first AUNZ enforcement or costs order under the Fair Work guidance, the Joint Select Committee's November report, and whether Meta's proposed liability shift survives enterprise pushback before 30 October.</p>
+<p><strong>Anchors checked:</strong> the AUNZ instrument sweep (OAIC Funnelback index, PSPF library, ACSC news listing, ASIC news centre, Home Affairs, eSafety, ai.gov.au, Australian AI Safety Institute, Joint Select Committee on AI), the NZ duty layer (NZ Privacy Commissioner, NZ NCSC, AI Forum NZ), the ministerial speech indexes (Charlton, PMC ministers' media centre), both incident registers (AIID, OECD AIM), and the evidence organs (METR, UK AISI, NIST CAISI). <strong>METR's</strong> external review of Anthropic's August risk report is cited above. UK AISI's newest GOV.UK item is <strong>12 October</strong> and its sitemap's only in-window <code><lastmod></code> is a <strong>17 October</strong> careers page — a CMS artefact, not a publication, so no AISI item is datable inside the window. <strong>NIST CAISI</strong> (now resolving at <code>/caissi</code>) published nothing in-window, the <strong>Australian AI Safety Institute</strong> listing is undated, and the AIID's newest entries are aggregated law-enforcement camera-misuse items with no dated primary event. The <strong>OECD AI Incidents Monitor</strong> was drawn on once, for the DeepSeek order.</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">3 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>The Fair Work Commission's generative-AI duties took effect on 20 October</h3><p class="summary">The Fair Work Commission's <em>Guidance note: Use of generative AI in Commission cases</em> took effect on <strong>20 October 2026</strong>, attaching three requirements to anyone using generative AI to prepare documents filed in Commission matters: <strong>disclose</strong> that generative AI was used and how; <strong>verify</strong> — by a person, not by another AI tool — that every fact, legislative reference, case and quotation is accurate and real; and, for witness statements and declarations, <strong>confirm</strong> that the content reflects the witness's own knowledge and words. Non-compliance can see documents disregarded, costs orders made against the party, or the case dismissed; knowingly providing false or misleading information carries up to <strong>12 months' imprisonment</strong> under <strong>Criminal Code s 137.1</strong>. The Commission's own research found roughly <strong>40 per cent</strong> of surveyed applicants had used AI to prepare or manage a case, and lodgements rose <strong>44 per cent</strong> between 2022–23 and 2024–25. <strong>Why it matters:</strong> this is an Australian regulator converting generative-AI-slop risk into a binding procedural obligation with an operative commencement date inside the window — the clearest AUNZ duty-layer movement of the period, and the first place a costs order for an unverified AI citation can be expected. The obligation commenced <strong>20 October</strong>; the trade-press report of it carries a <strong>21 October</strong> dateline, and the instrument itself is the primary source.</p><div class="meta"><a class="source src" href="https://www.fwc.gov.au/documents/resources/guidance-note-use-of-generative-ai-in-commission-cases.pdf" target="_blank" rel="noopener">Fair Work Commission — Guidance note: Use of generative AI in Commission cases</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-commenced"><span class="lb">Oblig.</span>Commenced</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the Commission&#x27;s own guidance note and effective date; corroborated by The Mandarin)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the Commission&#x27;s own guidance note and effective…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>A former AI Expert Group member told a parliamentary inquiry Australia's agent-liability gap needs urgent reform</h3><p class="summary">University of Sydney law professor <strong>Kimberlee Weatherall</strong>, a former member of the government's <strong>AI Expert Group</strong>, told the latest hearing of the <strong>Joint Select Committee on Artificial Intelligence</strong> on <strong>20 October</strong> that Australian law is unclear on where responsibility for an AI agent begins and ends — leaving a model vendor unlikely to face criminal action over an agent-caused breach — and called for urgent law reform to settle where liability sits. The evidence lands as the committee's <strong>30 November 2026</strong> reporting deadline approaches, and follows a period in which the practical question of agent accountability has been argued in Australian forums rather than legislated. <strong>Why it matters:</strong> the liability question is the operational form of the obligation debate — disclosure and verification duties tell a practitioner what to do, but nothing in Australian law yet says who answers when an autonomous agent acts wrongly on a client's behalf, and the inquiry is the mechanism through which that could change. Read it as on-record testimony at a public hearing, not a finding: the primary artefact is the committee transcript, and no reform has been proposed in a bill.</p><div class="meta"><a class="source src" href="https://www.innovationaus.com/australias-ai-agent-liability-gap-needs-urgent-fix-expert-says/" target="_blank" rel="noopener">InnovationAus — Australia&#x27;s AI agent liability gap needs urgent fix, expert says</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (trade-press report of on-record testimony at a public inquiry; the primary is the committee transcript)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">trade-press report of on-record testimony at a…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+<article class="story-card t-reg num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Meta's proposed commercial terms shift liability for its AI's mistakes onto enterprise customers from 30 October</h3><p class="summary"><strong>Meta's</strong> proposed commercial-terms update, scheduled to take effect <strong>30 October 2026</strong>, states that AI features "may make mistakes" and that customers "are solely responsible for and assume any and all risks associated with such AI features and any resulting content" — moving liability for model error from the vendor to the enterprise customer. The same update claims a licence to crawl and index content "associated with your products or services", which consultants read as ending any practical reliance on <strong>robots.txt</strong>; Meta subsequently told <strong>CIO.com</strong> it was reworking that wording because it applies only to ads and business products. Named analysts — <strong>Frank Dickson</strong>, <strong>Mike Wilkes</strong>, <strong>Thomas Randall</strong> and <strong>Aman Mahapatra</strong> — describe the liability clause as inverting accountability and the crawling licence as open-ended. <strong>Why it matters:</strong> for AUNZ enterprises this is a contractual risk transfer rather than a policy proposal, and it arrives in the same window as live questions about who answers for an agent's errors: the asymmetry to note is that a customer accepts the risk of a vendor's model while retaining none of the vendor's ability to test or monitor it. The terms are draft, and Meta says it will revise them.</p><div class="meta"><a class="source src" href="https://www.computerworld.com/article/4237414/metas-new-commercial-terms-say-if-its-ai-makes-a-mistake-it-will-legally-be-the-customers-fault.html" target="_blank" rel="noopener">Computerworld — Meta&#x27;s new commercial terms say if its AI makes a mistake it will legally be the customer&#x27;s fault</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (enterprise tech press quoting the published term sheet, with named analysts; the terms are draft and Meta says it will revise them)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">enterprise tech press quoting the published term…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-19</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>METR reviewed Anthropic's misalignment risk assessment — and found the methods weaker than the conclusion</h3><p class="summary"><strong>METR</strong> published an external review on <strong>20 October</strong> of the "Misalignment in high-stakes settings" section of <strong>Anthropic's Risk Report: August 2026</strong>, which concludes the risk of catastrophic harm from misalignment of its models is "<strong>low</strong>" as of <strong>15 July 2026</strong>. METR <strong>agrees</strong> the risk is low for the covered models, but <strong>primarily because the models' capabilities are limited — not because safeguards and alignment training work</strong> — and warns the report's covert-capability benchmarks are a poor proxy for evading Anthropic's real monitoring system. It notes recent incidents "undermine several of the report's arguments", and recommends publishing four redacted items, end-to-end red-teaming of the monitoring, and adding a risk pathway for AIs that undermine safety-relevant decisions at Anthropic. As part of the process Anthropic had the right to veto or redact, but <strong>no redactions were made</strong> and METR did not change its conclusions. <strong>Why it matters:</strong> this is the clearest example in the window of an independent evaluator testing a frontier lab's own safety case rather than its model, and it is precisely the "evidence layer" role the source spine was built around — a third-party review with documentary access that reaches the same headline verdict for different and narrower reasons.</p><div class="meta"><a class="source src" href="https://metr.org/blog/2026-10-20-misalignment-risk-report-august-2026-review/" target="_blank" rel="noopener">METR — Review of Anthropic&#x27;s August 2026 misalignment risk report</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span><span class="reliability b-tier" title="Tier 2/4 — High (an external evaluator&#x27;s published third-party review of a named vendor report; its inputs include non-public material and its access was bound by the vendor&#x27;s veto right)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">an external evaluator&#x27;s published third-party…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+<article class="story-card t-res num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>IBM says prompt-level memory put a stock GPT-4.1 agent top of a customer-service leaderboard</h3><p class="summary"><strong>IBM Research's</strong> <strong>ALTK-Evolve</strong> distils an agent's own training-run successes and failures into short behavioural guidelines appended to the system prompt, then applies them unchanged on held-out tasks — no weight updates and no human annotation. Using stock <strong>GPT-4.1</strong> it reaches <strong>Pass^4 = 67.5 per cent</strong> on <strong>τ²-bench retail</strong>, above every frontier entry and ahead of <strong>RAFT-30B-A3B</strong> (<strong>61.4 per cent</strong>), a model fine-tuned on synthetic τ²-bench data; with <strong>GPT-5.5</strong> it reaches <strong>82.0 per cent</strong> on the airline domain, clearing all frontier entries (66–72 per cent). Reliability (<strong>Pass^4</strong>) rose about <strong>10 points</strong> in both domains while conversations got slightly shorter. <strong>Why it matters:</strong> it is a cheap, reproducible demonstration that agent reliability can be bought with memory and prompt engineering rather than a larger model, which is directly relevant to AUNZ enterprises costing agentic deployments — but every figure is <strong>IBM's own</strong> and the benchmark is a single-company public leaderboard, so treat the ranking as a vendor claim until an independent run reproduces it.</p><div class="meta"><a class="source src" href="https://huggingface.co/blog/ibm-research/altk-evolve-bc" target="_blank" rel="noopener">Hugging Face — IBM Research: ALTK-Evolve</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (IBM&#x27;s own write-up and public leaderboard submissions; not independently replicated)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (IBM&#x27;s own write-up and…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-20</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>One operator's AI agents attacked more than 1,200 sites and breached over 100, at roughly US$50 each</h3><p class="summary"><strong>NorForge</strong> principal threat researcher <strong>Snorre Fagerland</strong> found more than <strong>20 exposed Cairn panels</strong> — <strong>Cairn</strong> being an open-source, state-based AI problem-solving engine — in active malicious use from around <strong>2 October 2026</strong>, with the busiest cluster, tracked as <strong>AIA0001</strong> (Chinese-language, 14 panels, <strong>1,100-plus attack projects</strong>), running an automated pipeline against real e-commerce sites with <strong>200,000 to 1.5 million</strong> visitors. Instructions ran to fewer than <strong>100 Chinese characters</strong>, targeting unauthenticated remote code execution via an "uploader" shell, and every task executed through a worker named <strong><code>claudecode_deepseek-v4.1-flash</code></strong>. Targets sat in the <strong>United States, Canada, Japan and Australia</strong>; by late last week the agents had <strong>attempted more than 1,200 sites and breached over 100</strong> at an estimated <strong>23 hours</strong> and about <strong>US$50 in tokens per success</strong> (roughly <strong>US$5,000</strong> overall). <strong>Reuters</strong> named <strong>Deere, SharkNinja</strong> and <strong>Cummins</strong> as victims, and NorForge documents an <strong>Australian e-commerce case</strong> with confirmed command execution. <strong>Why it matters:</strong> this is the first evidenced case of autonomous agents running a large-scale intrusion campaign cheaply enough to be routine, with Australian sites among the targets — the agentic-risk scenario that until now had been hypothetical. The token-cost and success-rate figures are the researcher's estimates, and the campaign's economics, not its sophistication, are the finding: detection of automated probing is what breaks it.</p><div class="meta"><a class="source src" href="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-sharkninja-cummins" target="_blank" rel="noopener">The Verge — AI agents hack John Deere, SharkNinja, Cummins</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (a named security firm&#x27;s primary technical report with indicators, independently reviewed and corroborated by Reuters and The Verge, which named victims; cost and success-rate figures are the researcher&#x27;s own estimates)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a named security firm&#x27;s primary technical report…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span><span class="date">2026-10-19</span></div></article>
+<article class="story-card t-sec num-7" id="story-7"><div class="card-accent"></div><div class="story-number">7</div><h3>OpenAI stood up an Australian taskforce on incident notification</h3><p class="summary"><strong>OpenAI</strong> has appointed three prominent Australians — former Navy chief <strong>Ray Griggs</strong>, Tech Policy Design Institute co-founder <strong>Johanna Weaver</strong>, and former prime ministerial cyber-security special adviser <strong>Alastair MacGibbon</strong> — to an independent taskforce reporting on how the company can improve incident notifications and strengthen coordination with government, due to report <strong>by the end of the year</strong>. <strong>Why it matters:</strong> the disclosure layer is the de facto register for AI incidents, and this is the clearest sign yet that a vendor is trying to make its notification practice legible to an Australian government audience after the fallout from the "Medicare" breach — a voluntary move standing in for an obligation that does not exist, set directly against the mandatory notification duties Australian entities already carry under the <strong>Notifiable Data Breaches</strong> scheme. The appointments are on the record and the taskforce's independence is self-defined; its findings are not yet published, so treat the arrangement as a signal of intent rather than a compliance measure.</p><div class="meta"><a class="source src" href="https://www.innovationaus.com/openai-enlists-cyber-experts-to-australian-taskforce/" target="_blank" rel="noopener">InnovationAus — OpenAI enlists cyber experts to Australian taskforce</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (trade-press report of named, on-record appointments; the taskforce has not reported and its independence is self-defined)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">trade-press report of named, on-record appointments</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-8" id="story-8"><div class="card-accent"></div><div class="story-number">8</div><h3>Mistral shipped Voxtral 3 — a real-time voice-agent stack built for in-region deployment</h3><p class="summary"><strong>Mistral</strong> released <strong>Voxtral 3</strong>, a family of speech-to-text and text-to-speech models plus a voice-agent SDK built on <strong>LiveKit</strong> that streams listening, reasoning, tool calling and speaking in one pipeline with sub-second turns and barge-in. <code>Voxtral Small Transcribe 3</code> claims state-of-the-art multilingual transcription and diarization across <strong>50-plus languages</strong> (including the <strong>24</strong> official EU languages); <code>Voxtral Mini TTS 3</code> covers <strong>35-plus languages</strong> and <strong>50-plus dialects</strong> with emotion and pace control; <strong>Pro Voice</strong> adaptation clones a speaker from <strong>30 minutes</strong> of audio. Per-minute pricing is listed at <strong>$0.0035</strong> (Mini Transcribe batch), <strong>$0.008</strong> (Realtime), <strong>$0.004</strong> (Small) and <strong>$13 per 1 million characters</strong> for Speech, and the stack is available through Mistral's <strong>EU-hosted API or self-deployment</strong>. <strong>Why it matters:</strong> the pitch is sovereign, in-region voice infrastructure — the deployment model AUNZ contact centres and government service lines need before a voice agent can be considered at all, since the data-residency question is usually the blocker. Every benchmark and price is <strong>Mistral's own</strong> and untested here, and the capability claim that matters competitively (sub-second turns) is a latency figure no third party has reproduced.</p><div class="meta"><a class="source src" href="https://mistral.ai/news/voxtral-3/" target="_blank" rel="noopener">Mistral AI — Voxtral 3</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (Mistral&#x27;s own launch post, benchmarks and pricing; not independently evaluated)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (Mistral&#x27;s own launch post,…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">3 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-9" id="story-9"><div class="card-accent"></div><div class="story-number">9</div><h3>NextDC pulled its consent application for an Auckland data centre</h3><p class="summary">Australian data-centre operator <strong>NextDC</strong> withdrew its resource-consent application for a proposed <strong>Auckland</strong> data centre on the <strong>Nelson and Hobson Streets</strong> site, as reported by BusinessDesk's <strong>Oliver Lewis</strong> on <strong>20 October</strong>. <strong>Why it matters:</strong> it is the clearest New Zealand data point in the window that the build-out constraint has moved to planning and permitting — the same dynamic the Financial Times documented for the United States — and it puts a named <strong>ASX-listed</strong> developer's trans-Tasman capacity plan in question at a time when AUNZ governments are arguing for domestic and in-region capacity. The article is subscriber-gated, so the stated reason for the withdrawal could not be read; the headline, reporter, date and site render are confirmed, which is why this is marked <strong>Reported</strong> rather than Verified.</p><div class="meta"><a class="source src" href="https://www.businessdesk.co.nz/technology/nextdc-pulls-consent-application-for-auckland-data-centre/XYXLS7Y6RBB4NPUMXPLVO5NT2Y/" target="_blank" rel="noopener">BusinessDesk — NextDC pulls consent application for Auckland data centre</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (specialist business wire with a named reporter; the article is paywalled, so the stated reason for the withdrawal could not be read)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">specialist business wire with a named reporter</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-20</span></div></article>
+<article class="story-card t-inf num-10" id="story-10"><div class="card-accent"></div><div class="story-number">10</div><h3>SemiAnalysis put a number on 2027: an extra 50GW of data-centre capacity in a single year</h3><p class="summary"><strong>SemiAnalysis</strong> forecasts <strong>an additional 50GW</strong> of global data-centre capacity in <strong>2027</strong> — "essentially the global cumulative market up through 2024 being built in one year" — citing <strong>more than 24GW already in advanced construction across just 40 campuses</strong> and <strong>slightly under US$1 trillion of binding, non-cancellable data-centre leases signed in 2026</strong> year to date as the leading indicator. It says power and labour constraints are largely being engineered around through behind-the-meter generation and modular designs, and warns the binding constraint could shift to <strong>memory and logic</strong> in 2027–28. <strong>Why it matters:</strong> it is the explicit counter-argument to the <strong>Financial Times</strong>' "starting to fray" reporting this digest carried on 19 October, from the analyst house that advises the institutional buyers, and the two read together frame the central uncertainty of the period — whether announced capacity arrives on schedule or is repriced. Every figure is the firm's own estimate from a proprietary model that is not open to inspection, so treat it as <strong>Vendor claim</strong> rather than measurement, though the firm correctly claims to have called prior delay and acceleration cycles.</p><div class="meta"><a class="source src" href="https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration" target="_blank" rel="noopener">SemiAnalysis — Datacenters 2027: the year of acceleration</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="reliability b-tier" title="Tier 3/4 — Moderate (paid research newsletter with a proprietary model not open to inspection; the figures are the firm&#x27;s own estimates)"><span class="tier-3">&#9679;</span> Tier 3/4 &middot; Moderate<span class="q">paid research newsletter with a proprietary model…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-19</span></div></article>
+<article class="story-card t-inf num-11" id="story-11"><div class="card-accent"></div><div class="story-number">11</div><h3>Amazon committed €16 billion to German infrastructure in 2027, of which €4.8 billion is data centres and AI</h3><p class="summary"><strong>Amazon</strong> will invest <strong>€16 billion (US$17.98 billion)</strong> in German infrastructure in <strong>2027</strong>, of which <strong>€4.8 billion (US$5.39 billion)</strong> goes to data centres and AI, expanding the <strong>AWS Europe (Frankfurt)</strong> region; the remainder covers the <strong>Amazon Leo</strong> satellite internet service, logistics and Prime Video. Amazon says it has spent more than <strong>€100 billion</strong> in Germany since 2010, and federal economics minister <strong>Katherina Reiche</strong> endorsed the investment. <strong>Why it matters:</strong> sovereign in-region build-out in Europe is the template AUNZ governments point to when they argue for domestic capacity, and it shows the hyperscalers continuing to commit capital in the same week US project economics were being questioned — the two are not contradictory, because the constrained variable in Europe is permitting and power rather than demand. The figures are the company's own, circulated by specialist trade press with a ministerial statement attached; nothing here is independently audited.</p><div class="meta"><a class="source src" href="https://www.datacenterdynamics.com/en/news/amazon-pledges-16bn-investment-in-germany-in-2027/" target="_blank" rel="noopener">Data Center Dynamics — Amazon pledges €16bn investment in Germany in 2027</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (specialist data-centre press reporting a named company figure and a ministerial statement)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">specialist data-centre press reporting a named…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+</div></section>
+<section id="theme-6" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-12" id="story-12"><div class="card-accent"></div><div class="story-number">12</div><h3>OpenAI acquired Orchestra Bio to fold a drug-development platform into its life-sciences push</h3><p class="summary"><strong>OpenAI</strong> announced it has acquired <strong>Orchestra Bio</strong>, a platform used by biopharma teams to coordinate drug development, which it will combine with <strong>Rosalind</strong>, its models and tools for life-sciences research, noting that drug development takes roughly <strong>10 to 15 years</strong> from target discovery to US approval. <strong>Why it matters:</strong> it is a vertical-integration move — a model vendor buying the workflow software around its models in a regulated, high-margin sector — and it signals where frontier-lab capital and capability are heading beyond general-purpose assistants, which is the bet AUNZ life-sciences and clinical-research organisations should read as a shift in what their tooling vendors will look like. Financial terms and regulatory status were not disclosed, and the announcement is the company's own account of its own deal.</p><div class="meta"><a class="source src" href="https://openai.com/index/openai-to-acquire-orchestra-bio" target="_blank" rel="noopener">OpenAI — OpenAI to acquire Orchestra Bio</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (OpenAI&#x27;s own announcement; financial terms and regulatory status were not disclosed)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (OpenAI&#x27;s own announcement</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-20</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">12 stories &middot; 6 themes &middot; 12 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">7</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:42.9%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Independently evaluated</span><div class="bar-track"><div class="bar-fill" style="width:14.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:14.3%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">9</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>3</td></tr>
+<tr><td>Research &amp; evidence</td><td>2</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>2</td></tr>
+<tr><td>Frontier models &amp; capability claims</td><td>1</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>3</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-10-19.html"><span class="dl">← Older</span><span class="dd">19 October 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-10-20. Sources: InnovationAus (2), Fair Work Commission (1), Computerworld (1), METR (1), Hugging Face (1), The Verge (1), Mistral AI (1), BusinessDesk (1), SemiAnalysis (1), Data Center Dynamics (1), OpenAI (1). Largest single source: InnovationAus — 2/12 (17%). Within the 40% threshold.</div><div class="note">Window: 24 hours to 20 October 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
