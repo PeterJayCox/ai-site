@@ -166,7 +166,17 @@ def slug(v):
 
 
 def axis_pill(axis, label, prefix, value):
-    if not value:
+    """One axis pill, or nothing.
+
+    An axis sitting in its NULL band is absent, not a badge: the legend
+    promises Obligation is "rendered only when the band is not None", because
+    a pill reading "Oblig. None" on every card is exactly the noise the
+    legend exists to prevent. `None` is a legitimate stored value (the
+    publish gate's CANON_OBLIGATION admits it), so suppressing it belongs
+    here — in the renderer — not in the markdown, where deleting the field
+    would also hide the axis from the coverage counts.
+    """
+    if not value or value.strip().lower() in ("none", "n/a", "-"):
         return ""
     return (f'<span class="axis {prefix}-{slug(value)}"><span class="lb">{label}</span>'
             f'{_html.escape(value)}</span>')
@@ -596,6 +606,55 @@ INDEX_TPL = """<!DOCTYPE html>
 """
 
 
+SITEMAP = os.path.join(ROOT, "docs", "sitemap.xml")
+_DAILY_LOC = re.compile(r"^https://[^/]+/daily/\d{4}-\d{2}-\d{2}\.html$")
+
+
+def write_sitemap(built, base="https://ai.peterjaycox.com"):
+    """Emit docs/sitemap.xml from the editions that were actually built.
+
+    This file used to be hand-edited, and the publish steps never said so — a
+    run that followed the documented pipeline shipped a live edition that was
+    absent from the sitemap. The build now owns every entry it can derive:
+
+      * `/` and `/daily/` take the newest edition's date, because both are
+        regenerated on every build (latest-edition regions, editions index);
+      * each edition takes its own date;
+      * anything NOT derivable (currently `/about/`, whose lastmod is edited
+        by hand) is preserved verbatim from the existing file, so a rebuild
+        never silently resets a hand-maintained entry.
+    """
+    kept = []
+    if os.path.exists(SITEMAP):
+        old = open(SITEMAP, encoding="utf-8").read()
+        for block in re.findall(r"<url>.*?</url>", old, re.S):
+            m = re.search(r"<loc>\s*(.*?)\s*</loc>", block)
+            if not m:
+                continue
+            loc = m.group(1)
+            if _DAILY_LOC.match(loc) or loc.rstrip("/") in (base, base + "/daily"):
+                continue            # regenerated below
+            kept.append("  " + block.strip() + "\n")
+    if not built:
+        print("  WARN sitemap: no editions built — sitemap left unchanged")
+        return
+    newest = built[0][0].isoformat()
+    rows = [("  " + _url_block(f"{base}/", newest)),
+            ("  " + _url_block(f"{base}/daily/", newest))]
+    rows += ["  " + _url_block(f"{base}/daily/{d.isoformat()}.html", d.isoformat())
+             for d, *_ in built]
+    out = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           + "".join(rows) + "".join(kept) + "</urlset>\n")
+    open(SITEMAP, "w", encoding="utf-8").write(out)
+    print(f"  sitemap.xml {len(rows) + len(kept)} url(s) — "
+          f"{len(built)} edition(s) + {len(kept)} preserved")
+
+
+def _url_block(loc, lastmod):
+    return (f'<url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>\n')
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     # the chrome is copied into docs/ by the build, so the published stylesheet can
@@ -641,6 +700,7 @@ def main():
     print(f"  index.html  {len(built)} edition(s)  {os.path.getsize(os.path.join(OUT,'index.html')):,} bytes")
 
     update_homepage(built, newest_page)
+    write_sitemap(built)
 
 
 if __name__ == "__main__":

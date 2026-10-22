@@ -248,6 +248,12 @@ def build_and_check(date, n_cards):
         fail(f"card numbering not continuous: {nums}")
     if re.search(r'class="badge axis\s+"', s):
         fail("an axis badge rendered with no colour class")
+    # A null-band axis must render as NOTHING (build_daily.axis_pill). If a pill
+    # reading "Oblig. None" ever reaches the page, the legend is lying on every card.
+    nullpill = re.search(r'<span class="axis [^"]*"[^>]*>\s*<span class="lb">[^<]*</span>\s*'
+                         r'(?:None|N/A|-)\s*</span>', s, re.I)
+    if nullpill:
+        fail(f"a null-band axis rendered as a pill: {nullpill.group(0)[:90]}")
     # class hooks, not literal markup: the card's source link carries `src` alongside
     # the chrome's `source` class, so match the token inside the attribute
     for label, pat in (("source", r'class="[^"]*\bsrc\b[^"]*"'), ("date", r'class="[^"]*\bdate\b[^"]*"'),
