@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 24 October 2026</title>
+<meta name="description" content="6 stories across 4 themes in the 21&amp;ndash;24 October 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Spain&#x27;s opposition party ran AI deepfakes of political figures on its own accounts, days into an election campaign"><span class="tsub-n">1</span><span class="tsub-label">Spain&#x27;s opposition party ran AI deepfakes of political figures on its own accounts, days into an election campaign</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="OpenAI signed a safety-research partnership with Poland&#x27;s national AI institute, extending the AISI network"><span class="tsub-n">2</span><span class="tsub-label">OpenAI signed a safety-research partnership with Poland&#x27;s national AI institute, extending the AISI network</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="The AI-found PHP flaws are being exploited at internet scale, and the response has a name: &quot;Black October&quot;"><span class="tsub-n">3</span><span class="tsub-label">The AI-found PHP flaws are being exploited at internet scale, and the response has a name: &quot;Black October&quot;</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="Google and Voltus will build a 1-gigawatt virtual power plant so Google&#x27;s data centres can draw more"><span class="tsub-n">4</span><span class="tsub-label">Google and Voltus will build a 1-gigawatt virtual power plant so Google&#x27;s data centres can draw more</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Hyperscalers began dismantling the secrecy clauses that have driven data-centre opposition"><span class="tsub-n">5</span><span class="tsub-label">Hyperscalers began dismantling the secrecy clauses that have driven data-centre opposition</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="American Express will cut about 5 per cent of its workforce to &quot;prepare for AI&quot;, in the same week Barclays did the same"><span class="tsub-n">6</span><span class="tsub-label">American Express will cut about 5 per cent of its workforce to &quot;prepare for AI&quot;, in the same week Barclays did the same</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 72-hour window &middot; 21&ndash;24 October 2026</div>
+<div class="hero-date">Saturday<span class="sep">&middot;</span>24 October 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">6 stories</span><span class="chip">4 themes</span><span class="chip">6 sources</span><span class="chip">72-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">6 stories</span></h2>
+<p><strong>Top stories.</strong> The window's dominant story is the one the last two editions could only preview, and it has moved from disclosure to consequence. The two critical <strong>PHP</strong> flaws that frontier models found and that were patched on <strong>21 October</strong> are now being attacked at internet scale: security vendors counted <strong>millions of exploitation attempts</strong> within 24 hours of the identifiers leaking, and by <strong>23 October</strong> the global response had acquired its own name — <strong>"Black October"</strong> — with <strong>Figma's</strong> senior director of product management, <strong>John Milinovich</strong>, writing that "in the last 2 days there have been several dozen cyber attacks which, in isolation, would each have been the worst to happen in an entire calendar year." Former <strong>CISA</strong> director <strong>Chris Krebs</strong> used the moment to tell smaller organisations to scan "constantly", patch, or take legacy systems offline, warning the problem will get "worse before it gets better"; <strong>Anthropic's</strong> deputy chief information security officer said the same. Second, <strong>an established European party ran AI deepfakes of named individuals on its official accounts and dared the regulator to respond</strong>: Spain's opposition <strong>People's Party</strong> published a video, launched <strong>this week</strong> on its own social channels, using AI to make the prime minister's wife <strong>Begoña Gómez</strong> and former Socialist president <strong>José Luis Rodríguez Zapatero</strong> appear to admit to wrongdoing, drawing nearly <strong>2 million</strong> views and a public rebuke from Spain's digital transformation minister — and landing squarely inside the <strong>EU AI Act's</strong> deepfake-disclosure duty, in force since <strong>2 August 2026</strong>. Third, <strong>Google</strong> answered the energy objection to its own build-out with money rather than an argument: a <strong>1-gigawatt virtual power plant</strong> with <strong>Voltus</strong> across the <strong>PJM</strong> grid, under which businesses and households are paid to cut consumption at peak.</p>
+<p>Three things follow. First, <strong>the dual-use ledger has now been settled empirically in the offensive direction</strong>: the same capability that found PHP's flaws "before attackers did" has produced a scramble that governments and banks are still inside, which means the doctrine question for AUNZ readers is no longer whether AI-driven discovery changes the economics of vulnerabilities — it demonstrably has — but whether their own patch cadence assumes the old timeline. Second, <strong>the deepfake question has moved from a hypothetical to a party's campaign budget</strong>: the Spanish ad is precisely the case the AI Act's labelling rule was written for, which turns a compliance question for every AUNZ platform, agency and broadcaster into a live one about who enforces, and how fast, when a political actor breaks it deliberately. Third, <strong>the AI build-out is now paying for its own social licence in cash, not promises</strong> — Google buying demand response, and the hyperscalers retreating from secrecy clauses — which is the industry-side version of the standards Australia is legislating for large data centres.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The AUNZ story of the window is that <strong>the exposure was in the utility layer while the policy layer stayed quiet</strong>. The PHP scramble reached Australian government services: <strong>The Mandarin</strong> reported on <strong>22 October</strong> that emergency fixes for the PHP holes "translate to downtime.gov.au", confirming that federal services were patching through outages. On the <strong>instrument sweep</strong> the silences were checked, not assumed: the <strong>OAIC's</strong> newest publication is its <strong>annual report of 23 October</strong>, a general privacy and information-access item rather than an AI-specific one (its previous newest was <strong>12 October</strong>, the HeyCyan smart-glasses investigation); the <strong>ACSC</strong> has issued no new AI-specific advisory since its <strong>15 October</strong> news item; the <strong>PSPF</strong> publications library is unchanged at <strong>29 September</strong>; <strong>eSafety's</strong> newest media release remains <strong>2 October</strong>; the <strong>Australian AI Safety Institute's</strong> listing carries no machine-readable date but no item newer than <strong>8 October</strong>; <strong>Home Affairs'</strong> news and media listing carried no AI-specific item in the window. Assistant Minister <strong>Andrew Charlton's</strong> media index has not moved since <strong>8 October</strong>, and the <strong>PMC</strong> ministers' media centre is undated — so no ministerial speech landed in the window. The <strong>Joint Select Committee on Artificial Intelligence</strong> held a further public hearing in East Melbourne on <strong>22 October</strong>; its early advice of <strong>12 October</strong> — independent safety checks, reserved compute, and early model access for security agencies — remains the operative statement, and <strong>the ABC's Jacob Greber</strong> argued on <strong>23 October</strong> that the case to "go slow on AI" is growing louder, noting the committee's tight timetable and independent senator <strong>David Pocock's</strong> claim that the government is "starstruck" by OpenAI and Anthropic. In New Zealand the duty layer was quiet: the <strong>Privacy Commissioner</strong> has published nothing since <strong>23 September</strong>, <strong>AI Forum NZ</strong> published its monthly update on <strong>23 October</strong> without a new policy position, and the NZ wires carried nothing AI-specific.</p></div>
+<p><strong>Geopolitical context & the arc.</strong> Three centres of gravity. <strong>Europe</strong> is where the two frontier-regulatory questions of the window landed at once: a national election campaign testing the <strong>AI Act's</strong> deepfake-labelling duty in practice, and <strong>OpenAI</strong> extending its safety-research partnerships to another national AI Safety Institute, <strong>NASK</strong> in Poland — the same network pattern as the <strong>UK AISI–Australia</strong> pact, which matters to AUNZ readers because it is where the evaluation capacity their own AISI depends on is being built. <strong>Washington and the US security establishment</strong> are now the audience for the "Black October" framing, with a former <strong>CISA</strong> director advising small organisations to patch or go offline — the classic asymmetric-defence message, arriving in the same fortnight that AI found an internet-scale flaw. <strong>Canberra and Wellington</strong> remain the quiet end of the ledger: no new instrument, no ministerial statement, the committee reporting by <strong>30 November</strong> and data-centre standards legislation promised for early <strong>2027</strong>. The arc: <strong>expect the labour question and the grid question to converge</strong> — <strong>American Express</strong> cutting about <strong>5 per cent</strong> of its workforce to "prepare for AI" in the same week as <strong>Barclays</strong> did the same, while <strong>Google</strong> pays for grid flexibility to keep its own machines running — and expect the deepfake-labelling test to be the thing European regulators answer first.</p>
+<p><strong>Anchors checked:</strong> the AUNZ instrument sweep (OAIC Funnelback index, PSPF publications library, ACSC alerts and news listings, ASIC news centre, Home Affairs news and media, eSafety, DCCEEW, ACMA via its news-and-media index, <code>ai.gov.au</code>, the Australian AI Safety Institute, the Joint Select Committee on AI and the Senate AI-and-data-centres committee), the NZ duty layer (NZ Privacy Commissioner, NZ NCSC, AI Forum NZ), the ministerial indexes (Charlton and the PMC ministers' media centre), the frontier-lab newsrooms (OpenAI news feed and status, Anthropic news listing, Google AI blog, Google DeepMind, Mistral, Hugging Face, AWS ML), both incident registers (AIID, OECD AIM) and the evidence organs (METR, UK AISI via GOV.UK Search API and sitemap, NIST news feed and listing, Redwood Research, CSET, Ada Lovelace, Epoch AI). Two Tier-A anchors are cited below — <strong>OpenAI's</strong> 23 October NASK announcement and <strong>Google's</strong> 22 October Voltus announcement, both from the disclosure layer. The evidence layer yielded nothing datable inside the window: <strong>METR's</strong> newest publication remains its <strong>22 October</strong> OpenAI red-team report, already carried on 23 October; <strong>NIST's</strong> feed is at <strong>16 October</strong> and its HTML listing drew nothing newer that is AI-specific; <strong>UK AISI</strong> published nothing since its <strong>12 October</strong> GOV.UK item, and its sitemap stamps are rebuild artefacts. The register layer added nothing: the <strong>AI Incident Database's</strong> newest entries are <strong>21 October</strong> and concern a June-dated BMW dealership chatbot dispute, and the <strong>OECD AI Incidents Monitor's</strong> newest are aggregated news items. <strong>Anthropic's</strong> employment report — widely covered on <strong>23 October</strong> — is dated <strong>16 October</strong> in its own JSON-LD, so it falls outside the window and is context, not a card.</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Spain's opposition party ran AI deepfakes of political figures on its own accounts, days into an election campaign</h3><p class="summary">Spain's conservative <strong>People's Party (PP)</strong> launched a video on its official social channels <strong>this week</strong> that used artificial intelligence to manipulate the likenesses of people connected to Prime Minister <strong>Pedro Sánchez's</strong> Socialist party, making them appear to admit to wrongdoing. An AI-generated version of Sánchez's wife, <strong>Begoña Gómez</strong>, speaks about receiving a university post thanks to her husband's job, and a deepfake of former Socialist president <strong>José Luis Rodríguez Zapatero</strong> speaks about hiding jewellery — both nods to live investigations in which Gómez and Zapatero deny wrongdoing. By <strong>23 October</strong> the video had close to <strong>2 million</strong> views, and Spain's digital transformation minister, <strong>Óscar López</strong>, told the broadcaster <strong>TVE</strong> that it was "telling people a colossal lie, and for a party to do it on its official accounts seems intolerable to me". The intervention lands with a general election due next month and directly engages <strong>Article 50(4) of the EU AI Act</strong>, which has required deployers to disclose that image, audio or video content is a deepfake since <strong>2 August 2026</strong>. <strong>Why it matters:</strong> it is the first test of Europe's deepfake-disclosure duty in a national campaign, and the test is a political party rather than a vendor — the actor with the least incentive to comply and the most to gain from not doing so. For AUNZ readers the read is procedural: the obligation exists, the disclosure plainly was not made, and the question is now one of enforcement speed, which is precisely the gap the Australian joint committee's proposals on incident reporting and independent evaluators are trying to close. This is a masthead report of a public video and the official response to it; no regulator has yet opened a proceeding, and the PP's position is not represented in the coverage.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/world/2026/oct/23/opposition-deepfake-video-spain-election" target="_blank" rel="noopener">The Guardian — Opposition deepfake video sparks outrage in Spain ahead of election</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-commenced"><span class="lb">Oblig.</span>Commenced</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a major masthead&#x27;s report of a public party video and the on-record ministerial response; the primary artefacts are the video and the party&#x27;s own post)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a major masthead&#x27;s report of a public party video…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-23</span></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>OpenAI signed a safety-research partnership with Poland's national AI institute, extending the AISI network</h3><p class="summary"><strong>OpenAI</strong> announced on <strong>23 October</strong> that it has signed an agreement with <strong>NASK</strong>, Poland's National Research Institute, to collaborate on AI safety, security and technical research. The counterpart is NASK's <strong>AI Safety Research Center</strong>, which serves as the <strong>Polish Artificial Intelligence Safety Institute</strong>; the work covers evaluating increasingly capable systems, identifying vulnerabilities and strengthening safeguards, with NASK also pursuing detection of synthetic AI-generated content and the multilingual dimension of that problem. NASK's director, <strong>Radosław Nielek</strong>, framed it as a public-institute-to-developer arrangement — "AI safety cannot be achieved in isolation" — and OpenAI's VP and head of EMEA policy, <strong>Tom Duff Gordon</strong>, cited Poland's scientific base, noting that many of OpenAI's own researchers are Polish. OpenAI lists its equivalent arrangements with the <strong>US Center for Advancing Standards and Innovation for Super Intelligence (CAISSI)</strong>, the <strong>UK AI Safety Institute</strong> and other public research institutions as precursors. <strong>Why it matters:</strong> it is the network Australia's own <strong>Australian AI Safety Institute</strong> is being built into — the AISI has an MOU with the <strong>UK AISI</strong> — and it shows the evaluation layer internationalising faster than the regulatory layer, which is the practical answer to the question an AUNZ reader should be asking about who actually tests a frontier model before it is deployed here. The announcement and the framing are <strong>OpenAI's own</strong>; no terms, funding or joint publication has been disclosed.</p><div class="meta"><a class="source src" href="https://openai.com/index/openai-nask-ai-safety-security-partnership" target="_blank" rel="noopener">OpenAI — OpenAI and Poland&#x27;s NASK partner to advance AI safety and security</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (the developer&#x27;s own announcement of a signed agreement; no independent verification of scope or funding)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (the developer&#x27;s own…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-23</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>The AI-found PHP flaws are being exploited at internet scale, and the response has a name: "Black October"</h3><p class="summary">The two critical <strong>PHP</strong> flaws found with frontier models — <strong>CVE-2026-109618</strong> and <strong>CVE-2026-109619</strong>, both <strong>CVSS 9.2</strong>, patched on <strong>21 October</strong> — moved from disclosure to mass exploitation inside 48 hours. Security vendors told <strong>The Guardian</strong> on <strong>22 October</strong> that they had logged <strong>millions of attempts</strong> to exploit the flaw since the identifiers leaked, and <strong>CNBC</strong> reported on <strong>23 October</strong> that cybersecurity teams worldwide were still rushing to patch, in a moment the industry has labelled <strong>"Black October"</strong>. <strong>Figma's</strong> senior director of product management, <strong>John Milinovich</strong>, wrote that "in the last 2 days there have been several dozen cyber attacks which, in isolation, would each have been the worst to happen in an entire calendar year. Every sector from government to education to big tech and banks is being massively affected." Former <strong>CISA</strong> director <strong>Chris Krebs</strong> told smaller companies to "constantly" scan for vulnerabilities, deploy patches or take legacy systems offline, and said the situation would get "worse before it gets better"; <strong>Anthropic's</strong> deputy CISO, <strong>Jason Clinton</strong>, said the cybersecurity landscape is likely to get "a lot worse". Roughly <strong>70 per cent</strong> of websites run PHP. <strong>Why it matters:</strong> this is the consequence half of the dual-use story this product carried on 22 October — a flaw that frontier models were credited with finding "before attackers did" has nonetheless produced an internet-scale scramble, which says the defensive value of AI-assisted discovery is only realised if patch cadence keeps up. It resets urgency for every AUNZ organisation running PHP, from government service portals to e-commerce, and it is the sharpest available evidence for the position that AI compresses the interval between disclosure and exploitation. The exploitation counts come from commercial security vendors and the escalation framing is the industry's own; the CNBC report is the trade press's account rather than a regulator's.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/10/23/php-vulnerabilities-ai-cybersecurity.html" target="_blank" rel="noopener">CNBC — AI&#x27;s &#x27;Black October&#x27;: Critical PHP flaws set off global security scramble</a><span class="axis i-severe"><span class="lb">Impact</span>Severe</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (a business network&#x27;s report of the global response, quoting a former CISA director and named industry figures, alongside a major masthead&#x27;s report of vendor-observed exploitation; the attempt counts are commercial telemetry)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a business network&#x27;s report of the global…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-23</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>Google and Voltus will build a 1-gigawatt virtual power plant so Google's data centres can draw more</h3><p class="summary"><strong>Google</strong> announced on <strong>22 October</strong> an expanded agreement with the energy supplier <strong>Voltus</strong> to build a <strong>1-gigawatt virtual power plant</strong> across the <strong>PJM</strong> grid region, which serves <strong>67 million</strong> people across 13 states and Washington DC. The plant generates nothing itself: Voltus aggregates flexible capacity from businesses and households — smart thermostats, batteries, industrial assets — and during peak demand those assets temporarily reduce consumption to support grid reliability, with participants paid through bill savings and cash. The deal is a <strong>ten-fold</strong> expansion of a <strong>100-megawatt</strong> agreement the two signed earlier this year, and Google describes it as one of the largest known distributed-capacity portfolios deployed by a hyperscaler. <strong>Why it matters:</strong> it is the industry-side answer to the objection that is now the binding constraint on AI build-out in AUNZ as much as in the US — that data centres raise everyone else's power bills — and Google is paying for demand reduction rather than arguing about it. It sits directly beside Australia's proposed mandatory standards, under which large data centres would be obliged to underwrite their own new supply, pay their full share of connection costs and reduce power when needed; Google's is voluntary and its own, but it is the same lever. The <strong>1 GW</strong> figure and the portfolio description are <strong>Google's own</strong>; no independent measure of delivered capacity has been published.</p><div class="meta"><a class="source src" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virtual-power-plant-1-gigawatt/" target="_blank" rel="noopener">Google — We are working with Voltus to build a 1-gigawatt virtual power plant</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (the company&#x27;s own announcement of the agreement; the capacity figure is unaudited and commercially self-interested)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (the company&#x27;s own…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-22</span></div></article>
+<article class="story-card t-inf num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Hyperscalers began dismantling the secrecy clauses that have driven data-centre opposition</h3><p class="summary">The hyperscalers are moving to de-escalate the disputes their own construction secrecy has produced. <strong>Amazon</strong> published a <strong>Data Center Commitment</strong> earlier this month under which it would disclose more about energy and water use and consider a moratorium on asking officials to sign non-disclosure agreements covering planning applications; <strong>Meta</strong> said this week that it is reviewing its use of NDAs after sustained criticism of the secrecy around <strong>Hyperion</strong>, its Louisiana project; <strong>Microsoft</strong> committed in <strong>March</strong> to cease using NDAs in site selection and development, and <strong>Google</strong> has since followed. <strong>Computerworld</strong> reported the trend on <strong>23 October</strong>. <strong>Why it matters:</strong> the NDA was the mechanism that turned a planning process into a grievance, and its withdrawal is the industry conceding that community consent is now a prerequisite rather than an obstacle — the same social-licence argument the UK <strong>SAIL</strong> taskforce put to ministers on 22 October, and the objection Australia's own tiered large-data-centre standards are being written to price in. Each commitment is the company's own; none has been independently audited, and Amazon's moratorium is framed as a consideration rather than a rule.</p><div class="meta"><a class="source src" href="https://www.computerworld.com/article/4239855/hyperscalers-allow-more-scrutiny-of-controversial-data-center-plans-2.html" target="_blank" rel="noopener">Computerworld — Hyperscalers allow more scrutiny of controversial data center plans</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (an enterprise technology outlet&#x27;s report grounded in the companies&#x27; own published commitments; the commitments are primary but self-reported)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">an enterprise technology outlet&#x27;s report grounded…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-23</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>American Express will cut about 5 per cent of its workforce to "prepare for AI", in the same week Barclays did the same</h3><p class="summary"><strong>American Express</strong> told analysts on its third-quarter earnings call on <strong>23 October</strong> that it is eliminating about <strong>5 per cent</strong> of its global workforce — several thousand roles — and taking a <strong>US$336 million</strong> restructuring charge. Chief financial officer <strong>Christophe Le Caillec</strong> told <strong>CNBC</strong> the restructuring was intended to make the company "leaner, more agile, and also to prepare for AI", and said the aim was to reorganise processes before automating them: "You don't want to automate processes that are not optimally structured." Chief executive <strong>Stephen Squeri</strong> devoted a substantial part of his prepared remarks to AI and its potential to personalise services, while drawing a control line — "we're not going to let assistants run rogue through our system" — and saying external AI agents would only reach American Express systems through approved <strong>API</strong> or <strong>Model Context Protocol</strong> channels. The cuts follow <strong>Barclays'</strong> confirmation on <strong>22 October</strong> that it would cut about <strong>5,000</strong> roles, also roughly 5 per cent, with AI cited among the drivers, and they landed alongside quarterly profit ahead of expectations. <strong>Why it matters:</strong> it is now a pattern rather than an anecdote — two large financial institutions in one week, each quantifying an AI-linked headcount reduction against strong earnings, and one of them setting an explicit permissioning rule for third-party agents that reads like a direct answer to the bank-agent problem this product carried on 23 October. The AI attribution is the executives' characterisation on an earnings call, not a measured causal finding, and the reduction is a restructuring with several drivers. The precise headcount is reported at between roughly <strong>3,500</strong> and <strong>3,850</strong> depending on the outlet.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/10/23/american-express-job-cuts.html" target="_blank" rel="noopener">CNBC — American Express is cutting 5% of its workforce to &#x27;prepare for AI&#x27;</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a business network&#x27;s report of the company&#x27;s earnings call, quoting the CFO and CEO directly; the causal role of AI is the company&#x27;s own account)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a business network&#x27;s report of the company&#x27;s…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-23</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">6 stories &middot; 4 themes &middot; 6 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">2</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:20.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>2</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>2</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-10-23.html"><span class="dl">← Older</span><span class="dd">23 October 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-10-24. Sources: CNBC (2), The Guardian (1), OpenAI (1), Google (1), Computerworld (1). Largest single source: CNBC — 2/6 (33%). Within the 40% threshold.</div><div class="note">Window: 72 hours to 24 October 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
