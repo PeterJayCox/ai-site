@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 26 October 2026</title>
+<meta name="description" content="6 stories across 5 themes in the 24&amp;ndash;26 October 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Elvis Presley&#x27;s rights-holders sued Anthropic over 274 songs, in the first big AI copyright case brought by an artist&#x27;s estate"><span class="tsub-n">1</span><span class="tsub-label">Elvis Presley&#x27;s rights-holders sued Anthropic over 274 songs, in the first big AI copyright case brought by an artist&#x27;s estate</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Forced to choose, Grok leaned Republican in 92 per cent of US races and GPT leaned Democratic in 97 per cent, a study found"><span class="tsub-n">2</span><span class="tsub-label">Forced to choose, Grok leaned Republican in 92 per cent of US races and GPT leaned Democratic in 97 per cent, a study found</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Israel&#x27;s election campaign ran on AI deepfakes and repurposed influence bots"><span class="tsub-n">3</span><span class="tsub-label">Israel&#x27;s election campaign ran on AI deepfakes and repurposed influence bots</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="The data centre next door: the people living beside Britain&#x27;s AI build-out say consent was never asked for"><span class="tsub-n">4</span><span class="tsub-label">The data centre next door: the people living beside Britain&#x27;s AI build-out say consent was never asked for</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Washington told partners they cannot sit in both AI camps, as the US and China filled out rival blocs"><span class="tsub-n">5</span><span class="tsub-label">Washington told partners they cannot sit in both AI camps, as the US and China filled out rival blocs</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="Washington&#x27;s message to AI executives: you have become a political liability"><span class="tsub-n">6</span><span class="tsub-label">Washington&#x27;s message to AI executives: you have become a political liability</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 24&ndash;26 October 2026</div>
+<div class="hero-date">Monday<span class="sep">&middot;</span>26 October 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">6 stories</span><span class="chip">5 themes</span><span class="chip">6 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">6 stories</span></h2>
+<p><strong>Top stories.</strong> The window's three stories are all about the moment an AI system's output stops being a vendor's claim and becomes somebody else's evidence. First, <strong>copyright's case against the frontier labs put a household name on the docket</strong>: on <strong>Friday 23 October</strong> the licensing group that controls <strong>Elvis Presley's</strong> catalogue sued <strong>Anthropic</strong>, alleging it trained Claude on <strong>274 Presley songs</strong> and seeking up to <strong>US$150,000</strong> a track — about <strong>US$41 million</strong> — in a filing first reported on <strong>24 October</strong>. Second, <strong>the neutrality claim met its first large-scale measurement</strong>: a study by <strong>Convovo</strong>, a conversational-AI research studio led by Cornell's <strong>Tapan Parikh</strong> and reported on <strong>24 October</strong>, found that when forced to name a candidate across almost <strong>500</strong> US midterm races, <strong>xAI's Grok 4.7</strong> chose the Republican in <strong>92 per cent</strong> of answers and <strong>OpenAI's GPT-6.1 Sol</strong> the Democrat in <strong>97 per cent</strong>, with the two models agreeing in fewer than <strong>10 per cent</strong> of races. Third, <strong>an election went to the polls with AI as a campaign tool rather than a campaign issue</strong>: days before Israel's <strong>27 October</strong> general election, both blocs were pushing AI-generated video on X, and <strong>Haaretz</strong> reported that dozens of bots built to target the Iranian government had been repurposed to spread pro-<strong>Netanyahu</strong> propaganda.</p>
+<p>Three things follow. First, <strong>the copyright fight has moved from the labels to the estate</strong>, and the allegation that matters is not the scraping but the guardrails — the complaint argues Anthropic added them "after being caught" and knew they did not work, which is the difference between a licensing dispute and a claim of wilful infringement. Second, <strong>"the model refuses to take a side" is now a testable claim and it failed in both directions at once</strong> — not one model leaning but two leaning hard and opposite, which is the hardest version of the finding to explain away as noise, and the ~<strong>1,240 tokens</strong> riding unseen on every Grok API call is the sort of detail that becomes a regulator's exhibit. Third, <strong>the AI election has arrived in a democracy mid-campaign using cheap tools</strong> — repurposed influence bots and generated video, no frontier capability required — which is the risk picture AUNZ electoral authorities should be reading rather than the frontier-model one.</p>
+<p><strong>Geopolitical context & the arc.</strong> Three centres of gravity. <strong>Washington</strong> was busiest, and in opposite directions: it hardened the bloc line, telling partners they "can't be trusted" in <strong>Pax Silica</strong> while engaging a rival AI vision, as the US-led group and China's <strong>World AI Cooperation Organization</strong> filled out their memberships; and, at home, it turned on the industry's own messengers, with lawmakers from both parties calling AI chief executives a political liability. <strong>London</strong> was quiet on instruments but loud on consequences, with the UK's data-centre build-out the subject of a national examination of what happens to the people who live beside it. <strong>Canberra and Wellington</strong> were the quiet end of the ledger again — no new instrument, no ministerial statement, an AUNZ duty layer checked and silent, and New Zealand inside an election with <strong>advance voting opening on Monday 26 October</strong>. The arc: <strong>expect the copyright and the political-liability threads to converge</strong> — the same labs being sued over training data are being told by the politicians who will write their rules to stop talking, and the AUNZ copyright consultation now has a live American precedent to price. <strong>And expect the bloc question to reach AUNZ procurement</strong>, because Pax Silica against WAICO is ultimately a question about which model stack a government can buy from.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The AUNZ story of the window is that <strong>the duty layer was silent and the political layer was in an election</strong>. On the <strong>instrument sweep</strong> the silences were checked, not assumed: the <strong>OAIC's</strong> newest item remains its <strong>annual report of 23 October</strong>, a general privacy and information-access publication rather than an AI-specific one; the <strong>ACSC's</strong> news listing is unchanged at <strong>15 October</strong>; the <strong>PSPF</strong> publications library sits at <strong>29 September</strong>; <strong>ASIC's</strong> news centre is at <strong>19 October</strong>; <strong>eSafety's</strong> newest media release remains <strong>2 October</strong>; the <strong>Australian AI Safety Institute's</strong> listing carries no machine-readable date and nothing newer than <strong>8 October</strong>; <code>ai.gov.au</code> is at <strong>1 May</strong>; and the <strong>Joint Select Committee on Artificial Intelligence</strong>, which reports by <strong>30 November 2026</strong>, has published nothing since <strong>12 October</strong>. Assistant Minister <strong>Andrew Charlton's</strong> media index has not moved since <strong>8 October</strong> and the <strong>PMC</strong> ministers' media centre is undated, so no ministerial speech landed in the window. In New Zealand the <strong>NZ Privacy Commissioner</strong> has published nothing since <strong>23 September</strong>, <strong>AI Forum NZ</strong> returned a server error on this run and could not be checked, and the <strong>NZ NCSC's</strong> news listing carried no AI-specific item. The country is inside its election campaign — <strong>advance voting opened on Monday 26 October</strong> and election day is <strong>7 November</strong> — and AI is a live issue in it: <strong>Labour</strong> has proposed an <strong>Office of AI</strong> with human accountability for public-service decisions, the <strong>Greens</strong> launched an AI policy on <strong>12 October</strong>, and <strong>National</strong> would require new data centres to bring new generation. In Australia the comparable instrument remains the proposed mandatory framework for large data centres and the <strong>Australian Standards for AI</strong>, with legislation promised for early <strong>2027</strong>.</p></div>
+<p><strong>Anchors checked:</strong> the AUNZ instrument sweep (OAIC Funnelback index, PSPF publications library, ACSC alerts and news listings, ASIC news centre, Home Affairs news and media, eSafety, <code>ai.gov.au</code>, the Australian AI Safety Institute, the Joint Select Committee on AI), the NZ duty layer (NZ Privacy Commissioner, NZ NCSC, AI Forum NZ), the ministerial indexes (Charlton and the PMC ministers' media centre), the frontier-lab newsrooms (OpenAI news feed and status, Anthropic newsroom and status, Google AI blog, Google DeepMind, Mistral, Hugging Face, AWS ML), both incident registers (AIID, OECD AIM) and the evidence organs (METR, UK AISI, NIST, Redwood Research, CSET, Ada Lovelace, Epoch AI). <strong>No card below cites a Tier-A anchor, because the spine was silent inside this window.</strong> <strong>OpenAI's</strong> news feed's newest post remains <strong>23 October</strong> (carried that day); <strong>Anthropic's</strong> newsroom's newest datable items are a <strong>6 October</strong> cyber-program post and a <strong>14 October</strong> Singapore item; the <strong>AI Incident Database's</strong> newest entries date to <strong>21 October</strong> (the <strong>ConnectWise/Storm-0940</strong> cluster, carried on 23 October) and the <strong>OECD AI Incidents Monitor's</strong> newest are aggregated news items; and on the evidence layer <strong>METR's</strong> newest publication is <strong>22 October</strong> while <strong>UK AISI's</strong> joint report with <strong>Anthropic</strong> on the Mythos 5 cyber-testing incident is dated <strong>23 October</strong> — one day outside the window and already referenced on 25 October. The window's reporting came from mastheads, wires and broadcasts, which is the weekend's honest shape rather than a gap.</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Elvis Presley's rights-holders sued Anthropic over 274 songs, in the first big AI copyright case brought by an artist's estate</h3><p class="summary"><strong>Authentic Brands Group</strong>, the licensing group that controls most of <strong>Elvis Presley's</strong> catalogue together with his likeness and trademarks, and co-plaintiffs sued <strong>Anthropic</strong>, alleging it trained its Claude models on <strong>274 Presley songs</strong> without permission. The complaint — first reported by <strong>Billboard</strong> on <strong>24 October</strong> and carried by <strong>The Guardian</strong> on <strong>25 October</strong> — names "Can't Help Falling in Love", "All Shook Up", "A Little Less Conversation", "Don't Be Cruel" and "Return to Sender" among the works, and seeks statutory damages of up to <strong>US$150,000</strong> per infringed work, about <strong>US$41 million</strong>. Lead attorney <strong>Richard Busch</strong> writes that Anthropic "has built its entire business model based on copyright infringement at a scale never seen before", and the filing argues that the company's guardrails "to purportedly limit outputs which infringe upon music copyrights, after being caught", with its knowledge that they were ineffective, demonstrate wilful infringement. The <strong>Guardian</strong> describes it as one of the first major challenges brought directly by an artist's estate rather than by labels or publishers, though Anthropic already faces suits from <strong>Universal</strong>, <strong>Sony</strong> and <strong>Warner</strong>; Anthropic had not commented when the trade press went to print. <strong>Why it matters:</strong> the training-data question Australia is consulting on — the <strong>Attorney-General's</strong> copyright consultation, and the joint AI committee's <strong>October</strong> advice that "current copyright arrangements are not facilitating licensing deals for Australian culture and content" — now has a live American precedent, and the part of it that will travel is the willfulness argument, because it turns on what a developer knew about its own outputs rather than on whether the training happened. The facts here are a filed complaint and the reporting around it; the allegations are untested and Anthropic has not responded.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/us-news/2026/oct/25/elvis-presley-anthropic-lawsuit-ai-models-music" target="_blank" rel="noopener">The Guardian — Anthropic sued for allegedly using 274 Elvis Presley songs to train AI models</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a major masthead&#x27;s report of a court filing, corroborated by the music trade press; the complaint is the primary artefact and its allegations are untested)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a major masthead&#x27;s report of a court filing,…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-24</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Forced to choose, Grok leaned Republican in 92 per cent of US races and GPT leaned Democratic in 97 per cent, a study found</h3><p class="summary">A study by <strong>Convovo</strong>, a conversational-AI research studio led by Cornell University professor <strong>Tapan Parikh</strong>, asked <strong>xAI's Grok 4.7</strong> and <strong>OpenAI's GPT-6.1 Sol</strong> through their developer <strong>APIs</strong> to name a single candidate in this year's US midterm races — "Name one candidate. Don't hedge, waffle, or list both sides without deciding." Across nearly <strong>500</strong> races, <strong>Grok</strong> recommended the Republican in <strong>92 per cent</strong> of answers and <strong>GPT</strong> the Democrat in <strong>97 per cent</strong>, and the two models agreed in fewer than <strong>10 per cent</strong> of races, <strong>TechCrunch</strong> reported on <strong>24 October</strong>. The consumer apps refused to answer, which an <strong>OpenAI</strong> spokesperson said was significant because that is how most people meet the models; OpenAI also said ChatGPT "is designed to be objective by default, including in political conversations" and that a developer API with an explicitly forcing prompt does not reflect the product. <strong>xAI</strong> did not respond. The study found the models citing different sources — Grok surfaced a Christian conservative voter guide in <strong>39 per cent</strong> of answers, Turning Point Action in <strong>23 per cent</strong> and <strong>X</strong> in <strong>41 per cent</strong>, while GPT leaned on Wikipedia, the <strong>Associated Press</strong>, <strong>Axios</strong> and Reddit — and searching for different issues, GPT on healthcare and abortion, Grok on immigration, taxes, crime and energy. Every request to Grok through xAI's API carried about <strong>1,240 tokens</strong> of additional input the researchers did not write and could not see or remove, which Parikh called potentially "hidden instructions". <strong>Pew</strong> found on <strong>23 October</strong> that only <strong>8 per cent</strong> of Americans use chatbots for election information. <strong>Why it matters:</strong> it converts a general worry about model bias into a measured divergence, and the direction is the finding — two frontier models disagreeing in nine races out of ten means at least one is systematically wrong for most of the country it is being asked about. For AUNZ readers the read is about the API layer rather than the apps: the bias appears where organisations embed these models into their own products, and the unexplained per-request tokens are the kind of artefact an electoral commission would ask about. The study is a single, not-yet-peer-reviewed piece of research by one studio, and its numbers are the researchers' own.</p><div class="meta"><a class="source src" href="https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/" target="_blank" rel="noopener">TechCrunch — Forced to pick, Grok&#x27;s AI model chooses Republicans. OpenAI&#x27;s picks Democrats.</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-other"><span class="lb">Evidence</span>Other</span><span class="reliability b-tier" title="Tier 2/4 — High (a specialist technology outlet&#x27;s report of a named academic study, with the vendor&#x27;s on-record response; the findings are a single study that has not been independently replicated or peer-reviewed)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a specialist technology outlet&#x27;s report of a named…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-24</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Israel's election campaign ran on AI deepfakes and repurposed influence bots</h3><p class="summary">Days before Israel's <strong>27 October</strong> general election, both main blocs were using <strong>AI-generated video</strong> on <strong>X</strong> as campaign material, and a repurposed influence network was amplifying one of them. <strong>Al Jazeera</strong> reported on <strong>25 October</strong> that the camps of Prime Minister <strong>Benjamin Netanyahu</strong> and opposition leader <strong>Gadi Eisenkot</strong> — locked in a virtual tie in the polls — were pushing AI-made videos at each other, including fabricated footage of Netanyahu confronting his alleged failings before the <strong>7 October 2023</strong> attack, and material casting the opposition as sympathetic to the Arab parties that could decide the next coalition. On the <strong>Thursday</strong>, the Israeli daily <strong>Haaretz</strong> reported that dozens of online bots built to undermine the <strong>Iranian</strong> government had been repurposed to spread campaign propaganda for <strong>Netanyahu's Likud</strong> and warnings about the opposition. An earlier AI video shared by Netanyahu showed Eisenkot passing a figure resembling his son, who was killed in Gaza; the campaign said the resemblance was unintended and replaced the character. <strong>Roi Zur</strong>, a voting-behaviour specialist at Essex University, told <strong>Al Jazeera</strong> that AI, algorithms and data management are being used to cement "affective polarisation". <strong>Why it matters:</strong> it is the deepfake election arriving in a democracy without a deepfake-disclosure duty — unlike the <strong>European Union</strong>, where <strong>Article 50(4)</strong> of the AI Act has required labelling since <strong>August 2026</strong>, Israel is voting without a comparable obligation, so the videos ran undisclosed. That is the AUNZ read: the harm requires no frontier capability, only a generative model and an audience, which is why electoral authorities and platforms cannot treat it as a future problem. The report is a major international broadcaster's, grounded in a national daily's investigation and named experts; the videos are public artefacts, and no regulator has opened a proceeding.</p><div class="meta"><a class="source src" href="https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online" target="_blank" rel="noopener">Al Jazeera — Bots, deepfakes and surveillance: Israel&#x27;s election goes to war online</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (a major international broadcaster&#x27;s report grounded in a national daily&#x27;s investigation and named academic experts; the videos are public artefacts, and the repurposed bot network is Haaretz&#x27;s attribution)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a major international broadcaster&#x27;s report…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-25</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>The data centre next door: the people living beside Britain's AI build-out say consent was never asked for</h3><p class="summary"><strong>The Guardian</strong> reported on <strong>24 October</strong> from <strong>Newport</strong> in south Wales, where a <strong>23-metre-high</strong> hyperscale data centre stands beside an enclave of <strong>27</strong> houses. Residents describe losing light and quiet to <strong>36</strong> air-blast coolers and to regular testing of <strong>60</strong> back-up diesel generators, and the council's own chief scientific officer warned during planning that the generators' fumes had the "potential to cause unacceptable air pollution levels". The piece sets the local case inside a national one: <strong>315</strong> hyperscale data centres are queued for connection to the UK grid, requiring <strong>73GW</strong> of power — <strong>28GW</strong> above Britain's typical cold-winter peak demand of <strong>45GW</strong> — while first the <strong>Starmer</strong> and then the <strong>Burnham</strong> governments kept the five <strong>AI growth zones</strong> and rejected calls for a moratorium. Globally, the <strong>Guardian</strong> cites estimates of up to <strong>US$7 trillion</strong> in data-centre spending by <strong>2030</strong>, more than the New Deal, the Marshall Plan and the Apollo programme combined in real terms. In the <strong>United States</strong>, it notes, three-quarters of Americans now oppose local data-centre development and more than <strong>500</strong> counties and municipalities have passed bans or moratoria. <strong>Why it matters:</strong> it is the social-licence bill for the AI build-out arriving as ordinary planning politics, which is the same ground Australia's proposed mandatory standards for large data centres occupy — bring-your-own generation, a full share of connection costs, and demand reduction when the grid is tight — and the objection it answers is less economic than about who was asked. The report is the <strong>Guardian's</strong> own, with named residents and cited public documents; the pollution warning is a planning-process finding, not a regulatory one.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/technology/2026/oct/24/the-datacentre-next-door-on-the-frontline-of-techs-latest-david-v-goliath-battle" target="_blank" rel="noopener">The Guardian — The datacentre next door: on the frontline of tech&#x27;s latest David v Goliath battle</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a major masthead&#x27;s on-the-ground report with named residents, the operator&#x27;s response and cited government planning data)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a major masthead&#x27;s on-the-ground report with named…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-24</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Washington told partners they cannot sit in both AI camps, as the US and China filled out rival blocs</h3><p class="summary"><strong>The Associated Press</strong> reported on <strong>25 October</strong> that the two AI powers are building competing blocs and narrowing the room for everyone else. The US-led <strong>Pax Silica</strong>, which pairs supply-chain security with access to American chips and models, is set against China's <strong>World AI Cooperation Organization (WAICO)</strong>, whose founding membership includes <strong>Pakistan</strong> and <strong>Russia</strong>. The <strong>US State Department</strong> hardened the line: "Countries can't be trusted partners in Pax Silica while substantively engaging in initiatives that advance a competing vision for super intelligence." <strong>Kazakhstan</strong> has joined both — its AI minister, <strong>Zhaslan Madiyev</strong>, went to Washington in <strong>June</strong> and to <strong>Shanghai</strong> for a WAICO signing ceremony weeks later — while <strong>Indonesia</strong> has joined the Chinese grouping and wants to stay in both, and <strong>Singapore</strong> says it is considering WAICO. The AP cites <strong>AidData</strong> research that China has provided grants and loans for AI-related projects in at least <strong>77</strong> low- and middle-income countries, and analysts who argue that "swing countries" now hold unusual leverage. <strong>Why it matters:</strong> it is the strategic layer of the question every AUNZ buyer answers operationally — which model stack, which chips and which cloud a government can depend on — and it is being settled by bloc membership rather than by procurement. For AUNZ readers the signal is that the open-weight, price-competitive Chinese stack is being marketed to middle powers as the alternative to Pax Silica's conditions, which is a real fork for small jurisdictions with US treaty ties. The reporting is the <strong>AP's</strong>, sourced to named analysts at Brookings, CSIS and Harvard and to on-record government statements; the bloc framing is those sources' analysis.</p><div class="meta"><a class="source src" href="https://www.clickorlando.com/business/2026/10/25/as-the-us-and-china-form-ai-blocs-countries-are-increasingly-torn-between-them/" target="_blank" rel="noopener">Associated Press (via ClickOrlando) — As the US and China form AI blocs, countries are increasingly torn between them</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (the AP&#x27;s own report, sourced to named analysts and to on-record government statements; the bloc framing is those sources&#x27; analysis)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the AP&#x27;s own report, sourced to named analysts and…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-25</span></div></article>
+<article class="story-card t-mkt num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>Washington's message to AI executives: you have become a political liability</h3><p class="summary"><strong>Axios</strong> reported on <strong>24 October</strong> that lawmakers and White House advisers from both parties now regard AI chief executives as a "monumental political liability", because they oscillate between promises of prosperity and warnings of doom. Representative <strong>Ro Khanna</strong> told Axios that "CEOs like Sam Altman are saying the world should accept some bad things happening for the benefits of this technology — you cannot trust billionaires to make decisions to keep us safe", while Senator <strong>John Curtis</strong> said AI leaders are "tripping over their own shoelaces". The outlet reports that even officials sympathetic to the industry want executives to focus on shipping products rather than making sweeping existential pronouncements, and frames the founders' catastrophic rhetoric as making the regulatory conversation harder rather than easier. <strong>Why it matters:</strong> the people who will write the next round of AI rules are now saying publicly that the industry's own messaging is the obstacle, which is a change in the political weather worth more than any single bill — and it lands in a fortnight when the <strong>US Federal Trade Commission</strong> had already opened an inquiry into autonomous agents and a state attorney-general had sued a platform over AI-assisted fraud. For AUNZ readers it is a reminder that the regulatory risk to AI firms is increasingly political rather than legal, which shapes how much they will concede before legislation arrives. The report rests on on-record comments from named lawmakers; the "political liability" characterisation is Axios's own.</p><div class="meta"><a class="source src" href="https://www.axios.com/2026/10/24/ai-ceos-washington-political-liability" target="_blank" rel="noopener">Axios — Washington&#x27;s message to AI execs: please shut up</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-other"><span class="lb">Evidence</span>Other</span><span class="reliability b-tier" title="Tier 2/4 — High (a Washington political outlet&#x27;s report quoting named lawmakers and White House advisers on the record; the &quot;political liability&quot; framing is the outlet&#x27;s)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a Washington political outlet&#x27;s report quoting…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-24</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">6 stories &middot; 5 themes &middot; 6 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Other</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:20.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>1</td></tr>
+<tr><td>Research &amp; evidence</td><td>1</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>2</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-10-25.html"><span class="dl">← Older</span><span class="dd">25 October 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-10-26. Sources: The Guardian (2), TechCrunch (1), Al Jazeera (1), Associated Press (via ClickOrlando) (1), Axios (1). Largest single source: The Guardian — 2/6 (33%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 26 October 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
