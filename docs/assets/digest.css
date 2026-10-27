@@ -101,6 +101,13 @@ ul.editorial li .blurb{display:block;margin-top:4px}
 .note-box p{margin:0;color:var(--text-muted);font-size:14px;line-height:1.7}
 .note-box p strong{color:var(--text);font-weight:600}
 
+/* The card's reading paragraph. A `Why it matters:` field renders here, set apart
+   from the news above it by a keyline rather than by a second colour; a card
+   without the field renders exactly as before. Emitted by build_daily.py. */
+.story-card p.why{color:var(--text-secondary);font-size:13px;line-height:1.68;
+  margin:-4px 0 12px;padding-left:12px;border-left:2px solid var(--accent)}
+.story-card p.why strong{color:var(--text);font-weight:600}
+
 #latest{margin:6px 0 18px}
 #latest li{margin-bottom:10px;font-size:14px;color:var(--text-secondary);line-height:1.6}
 #latest li b a{color:var(--text);font-weight:600;text-decoration:none}

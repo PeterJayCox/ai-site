@@ -303,7 +303,9 @@ def build_edition(path, prev_next_html):
                       f'<div class="story-number">{n}</div>'
                       f'<h3>{inline(s["headline"])}</h3>'
                       f'<p class="summary">{inline(f.get("Summary", ""))}</p>'
-                      f'<div class="meta">{meta_strip(s["fields"])}</div></article>')
+                      + (f'<p class="why">{inline(f["Why it matters"])}</p>'
+                         if f.get("Why it matters") else "")
+                      + f'<div class="meta">{meta_strip(s["fields"])}</div></article>')
             import html as _h
             ttl = _h.unescape(re.sub(r"<[^>]+>", "", inline(s["headline"])))
             toc.append(f'<a class="tsub" href="#story-{n}" data-story="story-{n}" '
