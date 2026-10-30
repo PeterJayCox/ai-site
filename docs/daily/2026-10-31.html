@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 31 October 2026</title>
+<meta name="description" content="8 stories across 4 themes in the 29&amp;ndash;31 October 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">4</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Australia will bar AI data centres from the suburbs and rewrite its copyright bargain"><span class="tsub-n">1</span><span class="tsub-label">Australia will bar AI data centres from the suburbs and rewrite its copyright bargain</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Experts warn the AI copyright change could hand rights holders a constitutional claim"><span class="tsub-n">2</span><span class="tsub-label">Experts warn the AI copyright change could hand rights holders a constitutional claim</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="OpenAI will honour a shared robots.txt signal for AI training preferences"><span class="tsub-n">3</span><span class="tsub-label">OpenAI will honour a shared robots.txt signal for AI training preferences</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="OpenAI will report on its violence safeguards and further restrict weapons content for teens"><span class="tsub-n">4</span><span class="tsub-label">OpenAI will report on its violence safeguards and further restrict weapons content for teens</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="An attacker masqueraded as OpenAI&#x27;s and Anthropic&#x27;s own agents to harvest credentials"><span class="tsub-n">5</span><span class="tsub-label">An attacker masqueraded as OpenAI&#x27;s and Anthropic&#x27;s own agents to harvest credentials</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="Universities and Hugging Face launched a programme to make public science AI-ready"><span class="tsub-n">6</span><span class="tsub-label">Universities and Hugging Face launched a programme to make public science AI-ready</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-7" data-story="story-7" title="The AI trade sold off as investors questioned the spending"><span class="tsub-n">7</span><span class="tsub-label">The AI trade sold off as investors questioned the spending</span></a>
+<a class="tsub" href="#story-8" data-story="story-8" title="Reddit says Google&#x27;s AI Mode sends it no traffic, and will put most of the site behind a login"><span class="tsub-n">8</span><span class="tsub-label">Reddit says Google&#x27;s AI Mode sends it no traffic, and will put most of the site behind a login</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 29&ndash;31 October 2026</div>
+<div class="hero-date">Saturday<span class="sep">&middot;</span>31 October 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">8 stories</span><span class="chip">4 themes</span><span class="chip">8 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">8 stories</span></h2>
+<p><strong>Australia moved to put AI infrastructure and AI training data under new rules.</strong> The Australian Financial Review reported on 29 October that the government will bar AI data centres from residential areas. It has also dropped a licensing regime that would have let labs train on Australian content without paying. Draft laws are due before the end of the year. Experts warned the copyright change may breach the Constitution's "just terms" guarantee.</p>
+<p><strong>The AI trade sold off.</strong> The Nasdaq lost nearly a trillion US dollars of value in a week. Alphabet's shares fell more than 12 per cent in a day, after the biggest technology companies reported rising AI spending and softer returns. Investors are pricing the build-out on cash flow rather than promise.</p>
+<p><strong>A threat actor hid behind OpenAI's and Anthropic's own agent identities.</strong> Cequence reported a single scanner posing as about 32 AI bots. It hunted enterprise servers for credentials. A bot's self-declared name no longer proves anything.</p>
+<p><strong>The arc.</strong> Expect the AUNZ obligation to move from chatbots to infrastructure and training inputs, where the state has real leverage. Expect the market to referee the build-out before regulators do. And expect agent identity, rather than model capability, to be the next security control under strain.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's AUNZ instrument is still a set of intentions rather than law. The AFR's 29 October report on data-centre siting and copyright is the government's first move from principle to drafting, with consultation due by the end of 2026, and Guardian Australia's 31 October report adds the constitutional risk. The rest of the duty layer was quiet. The OAIC published nothing new beyond its 30 September automated-decision guidance. eSafety's newest release remains 2 October. The Australian AI Safety Institute, <code>ai.gov.au</code>, the PSPF library and ASIC all stood still. The Joint Select Committee on AI, which reports by 30 November, last published on 12 October. Assistant Minister Andrew Charlton's media index last moved on 27 October, to a device-reuse charter. New Zealand's Privacy Commissioner published on 30 October, on a health-records matter rather than AI, and the NZ NCSC carried no AI item. New Zealand votes on 7 November.</p></div>
+<p><strong>Anchors checked:</strong> the AUNZ instrument sweep (the ACSC alerts and news listings, the OAIC index, the PSPF library, ASIC's news centre, Home Affairs news and media, eSafety, DCCEEW, <code>ai.gov.au</code>, the Australian AI Safety Institute and the Joint Select Committee on AI), the NZ duty layer (NZ Privacy Commissioner, NZ NCSC, AI Forum NZ), the ministerial indexes, the frontier-lab newsrooms (OpenAI, Anthropic, Mistral, Google, Hugging Face, AWS), both incident registers (AI Incident Database, OECD AI Incidents Monitor) and the evidence organs (METR, UK AISI, NIST, Epoch AI). <strong>Tier-A anchors are cited below</strong> from the disclosure layer: OpenAI's 30 October training-preference and community-safety posts, and Hugging Face's 29 October Project ProtoStar post. The register layer stayed silent inside the window: the AI Incident Database's newest batch is stamped 29 October but its items carry earlier datelines, and the OECD AI Incidents Monitor's newest entries are dated 22 October. On the evidence layer, METR's newest publication remains 22 October, NIST's news listing sits at 16 October, and UK AISI published nothing datable in the window. Three items fall outside the window but bear on today's cards: Anthropic's Frontier Red Team research post on chained exploits (27 October), the EU AI Office's update on its first AI Act information requests (28 October), and the Nvidia and AMD investment in Meta (26&ndash;27 October).</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">4 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Australia will bar AI data centres from the suburbs and rewrite its copyright bargain</h3><p class="summary"><strong>The federal government</strong> will ban AI data centres from being built near homes and recreational facilities, the Australian Financial Review reported on 29 October. The decision follows voter backlash against large sites appearing in inner Sydney and Melbourne suburbs. Labor has also dropped a licensing regime that would have let firms train on Australian content without paying rights holders, and now favours direct negotiation between creators and AI companies. Draft laws are expected for consultation before the end of the year. The package may also require AI companies to disclose their training data. Data centres would have to run on renewable energy, with non-compliant sites at risk of losing power access.</p><p class="why">It is the first time an Australian government has priced the political cost of AI infrastructure rather than its benefits. The copyright reversal favours creators over labs, which is the opposite of the direction taken in the United States and European Union. For an AUNZ operator, both signals matter: where a facility may stand, and what it must pay for the data it trains on.</p><div class="meta"><a class="source src" href="https://www.afr.com/politics/federal/labor-to-ban-ai-data-centres-in-suburban-australia-20261029-p618xn" target="_blank" rel="noopener">The Australian Financial Review — AI data centres won&#x27;t be allowed in suburban Australia</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-probable"><span class="lb">Evidence</span>Probable</span><span class="reliability b-tier" title="Tier 2/4 — High (the policy is reported by the AFR from unnamed government sources, with news.com.au, Capital Brief and Grafa following; no instrument, exposure draft or ministerial statement accompanies it)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the policy is reported by the AFR from unnamed…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-29</span></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Experts warn the AI copyright change could hand rights holders a constitutional claim</h3><p class="summary"><strong>Constitutional lawyers and Coalition senators</strong> have warned that letting AI firms scrape Australian content could breach the Constitution. Guardian Australia reported the concerns on 31 October. Section 51 allows the Commonwealth to acquire property only on "just terms". An opt-out model, which lets firms train on content unless a rights holder objects, may diminish the property rights of creators. The Attorney-General's Department said it was "extremely alive" to the risk. Constitutional lawyer Anne Twomey called the concern "potentially" real, depending on how the legislation is drafted. Nationals senator Ross Cadell said Australia could owe compensation to "every rights holder on Earth".</p><p class="why">It turns a lobbying fight into a legal liability question for the Commonwealth. If the drafting fails, the remedy is compensation rather than a correction, which is the costly kind of error. It also gives AUNZ rights holders a second route to challenge any deal struck with the labs.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/law/2026/oct/31/experts-warn-ai-copyright-changes-could-breach-australian-constitution-and-spark-huge-compensation-rights-case" target="_blank" rel="noopener">The Guardian — Experts warn AI copyright changes could breach Australian constitution</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-probable"><span class="lb">Evidence</span>Probable</span><span class="reliability b-tier" title="Tier 2/4 — High (a Guardian Australia report quoting named constitutional and parliamentary sources; the department&#x27;s response is general, and the risk is put as potential rather than established)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a Guardian Australia report quoting named…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-31</span></div></article>
+<article class="story-card t-reg num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>OpenAI will honour a shared robots.txt signal for AI training preferences</h3><p class="summary"><strong>OpenAI</strong> said on 30 October that it will honour a common signal in robots.txt, the file that websites use to state how their content may be used. The signal lets a site express one AI-training preference to several providers at once, instead of a separate rule for each crawler. It follows a draft from the Internet Engineering Task Force's AI preferences working group, authored by an Anthropic staffer. OpenAI said it aims to implement the signal "in the coming months", and that its existing crawler controls will continue to apply. The draft is not a standard, so nothing in it is enforceable.</p><p class="why">A single machine-readable preference is the closest thing to a standardised opt-out the open web has, short of legislation. It matters most to publishers, who presently police dozens of crawlers by hand. It is also a vendor promising future behaviour, and the commitment can be narrowed when it is implemented.</p><div class="meta"><a class="source src" href="https://openai.com/index/helping-websites-express-ai-training-preferences/" target="_blank" rel="noopener">OpenAI — Making it easier for websites to express AI training preferences</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (OpenAI&#x27;s own statement of a future implementation; the signal is a voluntary draft, not a standard, and no other provider has committed to it)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (OpenAI&#x27;s own statement of…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-30</span></div></article>
+<article class="story-card t-reg num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>OpenAI will report on its violence safeguards and further restrict weapons content for teens</h3><p class="summary"><strong>OpenAI</strong> said on 30 October that it will publish a Community Safety Report on violence prevention and the effectiveness of its safeguards. The first edition is due in early 2027 and will cover the second half of 2026, with updates every six months. The company also tightened what ChatGPT tells teenagers about weapons, even when a question appears harmless. For all users it will limit detail on past mass attacks and can end chats that appear fixated on violence. OpenAI said it strengthened its age-prediction system and will notify parents when a teen account is paused.</p><p class="why">It is a safety metric published on the vendor's own terms, six months after the fact, in a field where the incidents are counted in days. The teen limits follow a Common Sense Media finding that ChatGPT's teen alerts were late or missing. They land in the same week as Australia's duty-of-care bill, which would make chatbot conduct toward a child a regulated harm rather than a vendor policy.</p><div class="meta"><a class="source src" href="https://openai.com/index/community-safety-report-and-new-protections-for-teens" target="_blank" rel="noopener">OpenAI — Community safety report and new protections for teens</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (OpenAI&#x27;s own account of its safeguards, reported by Reuters; the reporting commitment and the teen restrictions are policies, not measured outcomes)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (OpenAI&#x27;s own account of…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-30</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>An attacker masqueraded as OpenAI's and Anthropic's own agents to harvest credentials</h3><p class="summary"><strong>Cequence</strong> reported on 29 October that a single actor posed as about 32 AI bots while probing enterprise servers for secrets. The false identities included ChatGPT, Claude, Meta and Perplexity. The scanner ignored normal pages and requested files that store credentials, such as .env configuration, cloud credential files and private SSH keys, drawn from a list of about 90 paths. Each address fired 50 to 190 requests in about eight seconds and then moved on. It ran from a major cloud provider and used more than 300 cloud addresses in a single day. Targets spanned financial services, retail, telecommunications, energy and software.</p><p class="why">A bot's self-declared identity is now worthless as an access control. Security teams that allow-list AI agents by name are trusting a string the attacker controls. As enterprises hand agents the keys to accounts and APIs, that is the decision now under attack.</p><div class="meta"><a class="source src" href="https://www.csoonline.com/article/4242088/imposter-abused-trust-in-openai-anthropic-and-30-others-to-hunt-for-secrets.html" target="_blank" rel="noopener">CSO Online — Imposter abused trust in OpenAI, Anthropic and 30 others to hunt for secrets</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span><span class="reliability b-tier" title="Tier 2/4 — High (a vendor threat-research report on traffic the vendor observed across its own customer base, reported by a security trade outlet; the attribution rests on the vendor&#x27;s telemetry alone)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a vendor threat-research report on traffic the…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-10-29</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>Universities and Hugging Face launched a programme to make public science AI-ready</h3><p class="summary"><strong>Hugging Face</strong> and five universities announced Project ProtoStar on 29 October. The programme aims to release publicly funded datasets, models and code in machine-readable formats, so researchers and AI systems can reuse them. Founding partners include Carnegie Mellon, Purdue, Georgia Tech, Arizona State and George Washington, working through the Open Forum for AI. Hugging Face provides the infrastructure and the Open Research Community Accelerator the community network. Each partner signs a non-binding memorandum. The first challenge, hosted by Carnegie Mellon from 2 November, uses historical weather records from 210 American cities to test AI climate forecasting.</p><p class="why">Publicly funded research often sits in PDFs that no model can use well, so the return on that funding is lower than it should be. Turning it into documented, machine-readable data changes who can build on it. The model is voluntary and non-binding, which is also its weakness: nothing obliges a university to keep releasing artefacts after the first challenge ends.</p><div class="meta"><a class="source src" href="https://huggingface.co/blog/announcing-project-protostar" target="_blank" rel="noopener">Hugging Face — Announcing Project ProtoStar</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span><span class="reliability b-tier" title="Tier 2/4 — High (the announcement comes from the infrastructure partner and is corroborated by founding institutions&#x27; own newsrooms; the participation commitments are non-binding)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the announcement comes from the infrastructure…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-29</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-7" id="story-7"><div class="card-accent"></div><div class="story-number">7</div><h3>The AI trade sold off as investors questioned the spending</h3><p class="summary"><strong>The AI trade sold off</strong> through the week to 30 October, as investors questioned whether the spending will produce returns. The Nasdaq lost nearly US$1 trillion in value in a week, Guardian Australia reported. Alphabet's shares fell more than 12 per cent in a day, wiping about US$500 billion, after the company said AI spending had pushed its free cash flow negative. Intel fell nearly 30 per cent on weak guidance, and Nvidia dropped 3.1 per cent. The index shed more than 5.8 per cent across October.</p><p class="why">The market is now grading AI on cash flow rather than capability, which changes the calculus for every build-out announcement. Alphabet's miss does not mean the spending is wrong, because its cloud revenue doubled. It means the bill arrives before the return does, and that is the argument an AUNZ board will have to answer.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/technology/2026/oct/30/tech-stocks-drop-earnings-report" target="_blank" rel="noopener">The Guardian — Tech sell-off drives US markets down by nearly $1tn after subpar earnings reports</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (market movements and company disclosures reported by Guardian Australia and widely covered; the figures are drawn from the companies&#x27; own quarterly results)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">market movements and company disclosures reported…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-30</span></div></article>
+<article class="story-card t-mkt num-8" id="story-8"><div class="card-accent"></div><div class="story-number">8</div><h3>Reddit says Google's AI Mode sends it no traffic, and will put most of the site behind a login</h3><p class="summary"><strong>Reddit</strong> said on 29 October that Google's AI search features no longer send it visitors. Search referrals fell by more than one million a week on average in October, the company told shareholders. Chief executive Steve Huffman said AI Mode does "not drive traffic", for Reddit or for anyone else. Reddit will test requiring users to log in for most content, in markets outside the United States, in the current quarter. That ends two decades of open browsing. US daily active users fell 2 per cent, the first decline since the company listed in 2024. Shares fell as much as 23 per cent.</p><p class="why">It is the clearest evidence yet that AI answers are taking the referral traffic the open web was built on. Reddit's response, a login wall, is the same choice facing every publisher that depends on search. The tests start outside the United States, so AUNZ users are likely to be in the first cohort.</p><div class="meta"><a class="source src" href="https://www.theverge.com/tech/1022848/reddit-ceo-google-ai-mode-traffic" target="_blank" rel="noopener">The Verge — Reddit&#x27;s CEO says Google&#x27;s AI Mode &#x27;does not drive traffic&#x27;</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (the figures come from Reddit&#x27;s own quarterly shareholder letter and earnings call, reported by The Verge, Reuters and CNBC; the cause is attributed by the company, not proven)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the figures come from Reddit&#x27;s own quarterly…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-29</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">8 stories &middot; 4 themes &middot; 8 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">2</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Probable</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Independently evaluated</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:60.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>4</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Research &amp; evidence</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>2</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-10-30.html"><span class="dl">← Older</span><span class="dd">30 October 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-10-31. Sources: The Guardian (2), OpenAI (2), The Australian Financial Review (1), CSO Online (1), Hugging Face (1), The Verge (1). Largest single source: The Guardian — 2/8 (25%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 31 October 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
