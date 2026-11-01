@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 2 November 2026</title>
+<meta name="description" content="4 stories across 4 themes in the 31 October &amp;ndash; 2 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="A stalled regulator pushed Australia&#x27;s biggest outback AI data centre off schedule"><span class="tsub-n">1</span><span class="tsub-label">A stalled regulator pushed Australia&#x27;s biggest outback AI data centre off schedule</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="DeepSeek open-sourced a coding agent built to watch a team&#x27;s chat"><span class="tsub-n">2</span><span class="tsub-label">DeepSeek open-sourced a coding agent built to watch a team&#x27;s chat</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Apple confirmed Apple Intelligence in China, powered by Alibaba&#x27;s Qwen"><span class="tsub-n">3</span><span class="tsub-label">Apple confirmed Apple Intelligence in China, powered by Alibaba&#x27;s Qwen</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="New York opened registration for frontier AI developers under the RAISE Act"><span class="tsub-n">4</span><span class="tsub-label">New York opened registration for frontier AI developers under the RAISE Act</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 31 October &ndash; 2 November 2026</div>
+<div class="hero-date">Monday<span class="sep">&middot;</span>2 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">4 stories</span><span class="chip">4 themes</span><span class="chip">4 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">4 stories</span></h2>
+<p><strong>Australia's data-centre ambitions met the planning system.</strong> The developer of one of the country's largest planned AI data centres scrapped its target start date after the Northern Territory's environment regulator paused its own deadline. Energy North's 1-gigawatt Project Ares is the biggest Australian project to slip so far.</p>
+<p><strong>DeepSeek open-sourced a coding agent that watches a team's chat.</strong> The Chinese lab released Super-Agent under an MIT licence. It monitors a repository and a workplace chat, and picks up work without being summoned. It is aimed at Anthropic's Claude Code.</p>
+<p><strong>Apple confirmed its AI is going to China, with Alibaba's Qwen.</strong> The features arrive in a developer beta from 4 November and publicly in December with iOS 27.3. Alibaba's model runs inside Siri and Writing Tools. Apple said its rebuilt Siri AI is not part of the first release.</p>
+<p><strong>The arc.</strong> Expect the AUNZ constraint on AI infrastructure to come from planning and consent, not from a statute. Expect the open-weight contest to move from models to agents.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's AUNZ story is a planning one. The Northern Territory regulator suspended its seven-week deadline to set environmental terms for Energy North's Project Ares on 7 October, and the developer has now dropped its June 2028 target. The regulator said it would consult the federal government, which is still drafting policy expectations for data centres and AI infrastructure. The duty layer was quiet: the OAIC's newest item remains its 26 October breach statistics, eSafety's 2 October, and Assistant Minister Andrew Charlton's media index last moved on 27 October, to a device-reuse charter rather than an AI matter. New Zealand votes on 7 November, with the AI Forum NZ holding its annual meeting today.</p></div>
+<p><strong>Anchors checked:</strong> the AUNZ instrument sweep (the ACSC alerts and news listings, the OAIC Funnelback index, the PSPF publications library, ASIC's news centre, Home Affairs news and media, eSafety, DCCEEW, <code>ai.gov.au</code>, the Australian AI Safety Institute and the Joint Select Committee on AI), the NZ duty layer (NZ Privacy Commissioner, NZ NCSC, AI Forum NZ), the ministerial indexes (Assistant Minister Charlton's DISR media page and the PMC ministers' media centre), the frontier-lab newsrooms (OpenAI, Anthropic, Google AI blog, Google DeepMind, Mistral, Hugging Face, AWS ML), both incident registers (AI Incident Database, OECD AI Incidents Monitor) and the evidence organs (METR, UK AISI, NIST, CSET, Ada Lovelace, Epoch AI). No card below cites a Tier-A anchor, and the reason is stated: the register layer's newest entries are stamped 31 October and are carried in the 1 November edition, the disclosure layer published nothing dated 31 October&ndash;2 November, and the evidence layer yielded no window-qualifying item. METR's newest publication remains 22 October, NIST's news listing sits at 16 October, and UK AISI published nothing datable in the window.</p>
+</section>
+<section id="theme-1" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>A stalled regulator pushed Australia's biggest outback AI data centre off schedule</h3><p class="summary"><strong>Energy North</strong> has scrapped the target start date for its Project Ares data centre in the Northern Territory, Reuters reported on 2 November. The developer had given a "first power" date of 28 June 2028 in regulatory filings four months ago. The Territory's environment regulator said on 7 October that it was suspending its seven-week deadline to decide what hurdles the project must clear. The 1-gigawatt facility would sit on a cattle ranch 683 kilometres from the nearest city, alongside a gas turbine, a solar farm and an airstrip. The regulator warned of ten impacts, from the strain on water systems to the disruption of Aboriginal sacred sites.</p><p class="why">It is the largest Australian AI data centre to slip so far, which shows the binding constraint is permitting rather than capital. The regulator paused because the federal government is still drafting policy expectations for data centres and AI infrastructure, so the project is waiting on a national framework that does not yet exist. For an AUNZ developer, timetable risk now sits in the regulator's queue, not the boardroom.</p><div class="meta"><a class="source src" href="https://www.whbl.com/2026/11/01/exclusive-australian-outback-data-centre-pulls-timeline-after-regulator-stalls/" target="_blank" rel="noopener">Reuters (via WHBL) — Exclusive: Australian outback data centre pulls timeline after regulator stalls</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (Reuters reporting, quoting the developer&#x27;s vice-president and the regulator&#x27;s ruling; the project&#x27;s financing is not disclosed and no new timeline has been set)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">Reuters reporting, quoting the developer&#x27;s…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-11-02</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>DeepSeek open-sourced a coding agent built to watch a team's chat</h3><p class="summary"><strong>DeepSeek</strong> released Super-Agent, an experimental coding agent, on 1 November. The Chinese lab published the code under the name dsh-superagent with an MIT licence. The agent works on one GitHub repository and can also listen to Feishu, a workplace chat app. When an approved person asks it for work, it opens its own session and replies in the original thread, for example with a pull request. DeepSeek calls it a research prototype and "not an official DeepSeek product". Bloomberg reported the release is aimed at Anthropic's Claude Code.</p><p class="why">It is the open-weight play applied to agents: DeepSeek is commoditising the coding assistant that US labs sell. The stated design goal, to take as little human attention as possible, is also the risk, because an agent acting for a whole team can spend that attention rather than save it. An AUNZ enterprise now has a free, inspectable coding agent, with no support and a caution to review the code first.</p><div class="meta"><a class="source src" href="https://thenextweb.com/news/deepseek-super-agent-open-source-coding-agent" target="_blank" rel="noopener">The Next Web — DeepSeek open-sources Super-Agent, a coding agent that reads team chats</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 2/4 — High (the release and its licence are verifiable on GitHub, with Bloomberg, the South China Morning Post and The Next Web reporting; the agent&#x27;s autonomy is the developer&#x27;s claim about a prototype)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the release and its licence are verifiable on…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-01</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Apple confirmed Apple Intelligence in China, powered by Alibaba's Qwen</h3><p class="summary"><strong>Apple</strong> confirmed on 31 October that Apple Intelligence will launch in China, with Alibaba's Qwen model built in. The first features arrive in a developer beta from 4 November, then publicly in December with iOS 27.3, Apple said in a post on its Chinese newsroom. Qwen will run in Siri, Writing Tools and Visual Intelligence. The rollout includes Live Translation, Genmoji and notification summaries. Apple said "Siri AI" and its other next-generation features are not part of the first release. Chinese approval had kept Apple Intelligence out of the mainland since 2024.</p><p class="why">It is the template for how a US model vendor enters a market that will not take an American model directly: pair with a local one and ship what is approved. For AUNZ users it is mostly a signal, but it reframes the sovereignty debate, where a local model is now the price of entry rather than a preference. Australia's own AI procurement will be asked the same question.</p><div class="meta"><a class="source src" href="https://www.theapplepost.com/2026/10/31/73757/apple-intelligence-finally-coming-to-china-in-december-with-ios-27-3/" target="_blank" rel="noopener">The Apple Post — Apple Intelligence finally coming to China in December with iOS 27.3</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span><span class="reliability b-tier" title="Tier 2/4 — High (Apple&#x27;s own China newsroom announcement, reported by The Apple Post and 9to5Mac; the schedule depends on Chinese approvals not yet granted)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">Apple&#x27;s own China newsroom announcement, reported…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-10-31</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>New York opened registration for frontier AI developers under the RAISE Act</h3><p class="summary"><strong>New York</strong> began registering large frontier AI developers with the state from 1 November, under the Responsible AI Safety and Education (RAISE) Act. Governor Kathy Hochul announced the step on 21 September. Developers above the law's revenue and training-compute thresholds must register with the new Office of Digital Innovation, Governance, Integrity and Trust, or DIGIT, inside the Department of Financial Services. From January 2027 they must meet the safety standards and report critical incidents within 72 hours. The governor said she is exploring further steps.</p><p class="why">It is the first US state registration regime for frontier developers, and it lands while federal action stalls. The duty is thin beside the EU's, but it is enforceable, which makes it the reference point other states will copy. For an AUNZ board it is a reminder that the operating rule for a global model is now set by the strictest jurisdiction it serves.</p><div class="meta"><a class="source src" href="https://www.dfs.ny.gov/reports_and_publications/press_releases/pr20260921" target="_blank" rel="noopener">New York State Department of Financial Services — Governor Hochul announces next steps to regulate major AI developers</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-commenced"><span class="lb">Oblig.</span>Commenced</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the state&#x27;s own press release and the statute; the thresholds and the January start are the state&#x27;s own, and the scheme is untested against a major developer)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the state&#x27;s own press release and the statute</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-01</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">4 stories &middot; 4 themes &middot; 4 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+<tr><td>Frontier models &amp; capability claims</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+<tr><td>Regulation &amp; obligation</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-01.html"><span class="dl">← Older</span><span class="dd">1 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-02. Sources: Reuters (via WHBL) (1), The Next Web (1), The Apple Post (1), New York State Department of Financial Services (1). Largest single source: Reuters (via WHBL) — 1/4 (25%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 2 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
