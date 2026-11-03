@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 4 November 2026</title>
+<meta name="description" content="6 stories across 5 themes in the 2&amp;ndash;4 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Britain&#x27;s cyber agency expects AI-written malware inside an attack on critical infrastructure by 2028"><span class="tsub-n">1</span><span class="tsub-label">Britain&#x27;s cyber agency expects AI-written malware inside an attack on critical infrastructure by 2028</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="WA Police scanned 1.38 million faces in a five-month trial and made 122 arrests"><span class="tsub-n">2</span><span class="tsub-label">WA Police scanned 1.38 million faces in a five-month trial and made 122 arrests</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="A Crown prosecutor cited a case that does not exist after an AI search"><span class="tsub-n">3</span><span class="tsub-label">A Crown prosecutor cited a case that does not exist after an AI search</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="A preprint says frontier models can read raw model weights, and a laptop model can too"><span class="tsub-n">4</span><span class="tsub-label">A preprint says frontier models can read raw model weights, and a laptop model can too</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Drax signed a £20 billion agreement to put a gigawatt datacentre on its power station estate"><span class="tsub-n">5</span><span class="tsub-label">Drax signed a £20 billion agreement to put a gigawatt datacentre on its power station estate</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="Google told US schools that blocking its AI also turns off its Search"><span class="tsub-n">6</span><span class="tsub-label">Google told US schools that blocking its AI also turns off its Search</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 2&ndash;4 November 2026</div>
+<div class="hero-date">Wednesday<span class="sep">&middot;</span>4 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">6 stories</span><span class="chip">5 themes</span><span class="chip">6 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">6 stories</span></h2>
+<p><strong>Britain's cyber agency has put a date on AI-assisted ransomware.</strong> The National Cyber Security Centre said on 3 November that AI-powered malware is "highly likely" to appear in an attack on UK critical infrastructure by 2028. It blamed decades of underinvestment, not novel attack methods.</p>
+<p><strong>Drax signed a £20 billion agreement to build a gigawatt datacentre on its power station estate.</strong> Brookfield and its AI platform Radiant would develop the capacity in North Yorkshire. The plant's subsidy halves from 2027, so the project is a rescue as much as an expansion. No final investment decision has been taken.</p>
+<p><strong>WA Police closed a five-month facial recognition trial with 1.38 million scans and 122 arrests.</strong> The force reported nine incorrect alerts. Civil liberties groups say the error rate should be counted against the people stopped, not the scans run. That dispute will set the precedent for every Australian deployment that follows.</p>
+<p><strong>The arc.</strong> AI's constraint now appears in two currencies: the watt a grid connection can supply, and the way a false match gets counted.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's AUNZ story was domestic and biometric. Western Australia's facial recognition trial ended on 31 October, and the force put its error rate at 0.00065 per cent of scans at a press conference the next day. Civil Liberties Australia says the real rate will only be known once the 122 arrests are tested in court. The duty layer was a checked silence, and the dates are in the anchor note. New Zealand votes on 7 November, with the parties still split on whether the country needs an AI regulator.</p></div>
+<p><strong>Anchors checked:</strong> the full spine sweep, the AUNZ instrument check and the ministerial pass. The duty layer carried the lead, and the NCSC enters the manifest today. Its quiet dates: OAIC news 26 October, eSafety media releases 2 October, the Australian AI Safety Institute 8 October, the Joint Select Committee on AI 12 October, Assistant Minister Charlton's media index 27 October, AI Forum NZ 23 October, PSPF library 29 September, <code>ai.gov.au</code> 1 May. The register layer's newest entries are 31 October and were carried in the 1 November edition. The evidence layer was otherwise quiet: METR's newest publication is 22 October, NIST's news listing 16 October, and UK AISI published nothing datable in the window. Mistral's newest post is 29 October. Two apparent dates were artefacts rather than news: ASIC's 2 November and Home Affairs' 3 November both came from CMS metadata, and neither listing carries an AI item in the window.</p>
+</section>
+<section id="theme-1" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Britain's cyber agency expects AI-written malware inside an attack on critical infrastructure by 2028</h3><p class="summary">The <strong>National Cyber Security Centre</strong> published its annual review, State of the Cyber Nation, on 3 November. It assesses that AI-powered malware is "highly likely" to have appeared in a ransomware attack on UK critical national infrastructure by 2028. The report says Russia and China will use AI routinely in cyber operations. It puts the annual cost of malicious cyber activity to UK organisations at £14.7 billion. Richard Horne, the agency's chief executive, said the danger is not that AI invents new ways to attack. It is that weaknesses tolerated for years can now be found and exploited at a scale that was once unimaginable.</p><p class="why">The claim is a forecast by a government agency, not an observed event, and should be read that way. The diagnosis is the part that travels. End-of-life systems, default passwords and unpatched services are now discoverable faster than they can be fixed. Australia's own cyber agency made a comparable warning in October. Neither assessment creates a duty, so the decision to spend still sits with each board, which is the gap both agencies are describing.</p><div class="meta"><a class="source src" href="https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years" target="_blank" rel="noopener">NCSC — Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 1/4 — Primary (a government agency&#x27;s own annual review; the 2028 assessment is a forward judgement and the £14.7 billion figure is a government estimate, not a measurement)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">a government agency&#x27;s own annual review</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>WA Police scanned 1.38 million faces in a five-month trial and made 122 arrests</h3><p class="summary">Western Australia Police ended a trial of overt live facial recognition on 31 October. Cameras on marked vans scanned 1,380,882 faces across 100 deployments at 43 locations, including the Perth royal show. The force reported 122 arrests, contact with 146 registered sex offenders and 10 welfare checks. Nine alerts were wrong, which police put at 0.00065 per cent of scans. Commissioner Col Blanch said each false match led to a conversation and no arrest. Images of people who were not on the alert list were pixelated in real time and not stored, police said.</p><p class="why">The force divided errors by scans. Civil Liberties Australia argues the honest divisor is the people stopped, and that the true rate is only known once the 122 arrests are tested in court. That distinction decides whether live facial matching is a targeted tool or a dragnet with a small tail of mistakes. The trial is now the reference case for any AUNZ agency weighing the same deployment, and the arithmetic is the first thing that will be tested.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/australia-news/2026/nov/02/wa-police-facial-recognition-technology-trial" target="_blank" rel="noopener">The Guardian — Police use facial recognition to scan one million faces in WA trial leading to 122 arrests</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (figures given by the force at a press conference and reported by Guardian Australia; the civil liberties criticism is quoted, and the conviction rate behind the 122 arrests is not yet known)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">figures given by the force at a press conference…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-02</span></div></article>
+<article class="story-card t-reg num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>A Crown prosecutor cited a case that does not exist after an AI search</h3><p class="summary">A senior Crown Prosecution Service prosecutor cited a nonexistent precedent in a High Court case, the Guardian reported on 3 November. Ravinder Dhillon referred to a decision she called R v J [2024] EWCA Crim 3529 while arguing that an 11-year-old boy should be prosecuted for raping his younger sister. The Guardian understands the citation came from an AI response during an internet search. Two High Court judges called her explanation unsatisfactory. The court said the error did not change the outcome of the boy's challenge.</p><p class="why">A model inventing a citation is ordinary. What matters is that a state prosecutor used one in a document arguing for a child's prosecution, and that no review caught it before a judge did. The Guardian reports dozens of AI-related errors in court proceedings this year, mostly from people representing themselves. For AUNZ legal teams the control is unglamorous and cheap: check every authority against a primary database, whether or not a model drafted the document.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/technology/2026/nov/03/a-serious-failure-cps-prosecutor-cites-imaginary-case-to-high-court-after-ai-search" target="_blank" rel="noopener">The Guardian — &#x27;A serious failure&#x27;: CPS prosecutor cites imaginary case to high court after AI search</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (the High Court judgment is published and citable; the link to an AI response is the Guardian&#x27;s own reporting, not a court finding)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the High Court judgment is published and citable</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>A preprint says frontier models can read raw model weights, and a laptop model can too</h3><p class="summary">Four authors posted a paper on 2 November reporting that language models can interpret and rewrite the weights of a neural network. They call the practice weight-space programming. They report that GPT-6 Astra identified what a small network had been trained to do from its weights alone. They also say it lifted Qwen3.5-0.8B's MATH-500 score from 7.9 to 48.1 per cent by editing 0.016 per cent of its parameters. Simon Willison reproduced part of the result on 3 November, using Qwen 3.8 27B on a laptop.</p><p class="why">The critiques are as instructive as the claim. Matthew Honnibal says the paper conflates reading weights with running code to change them, and Sean Goedecke argues the worked example repeats the steps a human researcher would take. The question worth watching is the narrower one: can a model infer behaviour from numbers, with no tools? If that holds, capability becomes something an auditor can read out of a file, and the same is true for anyone publishing open weights.</p><div class="meta"><a class="source src" href="https://rikiyat.github.io/blog/weight-space-programming/" target="_blank" rel="noopener">Rikiya Takehi et al. — Sparks of Weight-Space Programming: LLMs can natively read &amp; write neural network weights</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 3/4 — Specialist (an authors&#x27; preprint with no peer review; one partial independent reproduction and two published methodological critiques, from Honnibal and Goedecke)"><span class="tier-3">&#9679;</span> Tier 3/4 &middot; Specialist<span class="q">an authors&#x27; preprint with no peer review</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-02</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Drax signed a £20 billion agreement to put a gigawatt datacentre on its power station estate</h3><p class="summary"><strong>Drax</strong> said on 3 November that it had signed an agreement with Brookfield and Radiant, Brookfield's AI infrastructure platform, to develop a datacentre on the Drax Power Station estate in North Yorkshire. The project targets more than 1 gigawatt and could attract more than £20 billion of investment. If built in full, Drax says it would be one of the largest datacentres in the United Kingdom. Drax will provide land and access to existing grid connections. Its shares rose almost 9 per cent, to a market value near £3 billion.</p><p class="why">The site is Britain's largest single emitter of carbon dioxide, and its subsidy halves from 2027, so the plant needs a second income. A datacentre turns land and a grid connection into revenue without joining a connection queue. The announcement carried no financial detail and no final investment decision, which is the gap between a share price move and a project. The AUNZ parallel is direct, because Australian data centre rules are being written around this same trade of power access for local benefit.</p><div class="meta"><a class="source src" href="https://www.drax.com/what-we-do/ai-data-centres/" target="_blank" rel="noopener">Drax — Powering AI and data centres</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the company&#x27;s own account of an agreement it signed; the company has a direct interest, and neither the financing nor a final investment decision has been published)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the company&#x27;s own account of an agreement it signed</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>Google told US schools that blocking its AI also turns off its Search</h3><p class="summary"><strong>Google</strong> announced new classroom AI features and new administrator controls on 3 November. Access to Gemini, Gemini Notebook, Gemini in Classroom and Google Search will be off for K-12 student accounts until a school administrator turns each one on. A school that withholds consent for the AI products cannot keep Search. Chris Phillips, Google's general manager for education, told the New York Times that search and AI are deeply integrated. New York's mayor, Zohran Mamdani, said Google was using monopoly power to force AI into public schools.</p><p class="why">A product decision has become a competition question. If the most widely used search product cannot be separated from its AI layer, a school's refusal is not a real choice and consent becomes nominal. The same bundling arrives in AUNZ procurement, where devices and accounts are bought as one package. Expect the argument to move from product design to whether tying search to AI is an abuse of market power.</p><div class="meta"><a class="source src" href="https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/" target="_blank" rel="noopener">Google — Designing responsible AI for learning</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (Google&#x27;s own announcement of the control change; the description of it as coercive is critics&#x27; opinion, and the New York Times interview is quoted by other outlets rather than read here)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">Google&#x27;s own announcement of the control change</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">6 stories &middot; 5 themes &middot; 6 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Unreplicated preprint</span><div class="bar-track"><div class="bar-fill" style="width:20.0%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">6</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Regulation &amp; obligation</td><td>2</td></tr>
+<tr><td>Frontier models &amp; capability claims</td><td>1</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-03.html"><span class="dl">← Older</span><span class="dd">3 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-04. Sources: The Guardian (2), NCSC (1), Rikiya Takehi et al. (1), Drax (1), Google (1). Largest single source: The Guardian — 2/6 (33%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 4 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
