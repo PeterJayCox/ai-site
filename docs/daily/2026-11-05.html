@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 5 November 2026</title>
+<meta name="description" content="7 stories across 6 themes in the 3&amp;ndash;5 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="American voters rejected data centres in 40 of 41 local ballots"><span class="tsub-n">1</span><span class="tsub-label">American voters rejected data centres in 40 of 41 local ballots</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Canva cut 1,271 roles, a fifth of the company, after its first growth slowdown in a decade"><span class="tsub-n">2</span><span class="tsub-label">Canva cut 1,271 roles, a fifth of the company, after its first growth slowdown in a decade</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="An integrity think tank told the government it is sleepwalking into a second robodebt"><span class="tsub-n">3</span><span class="tsub-label">An integrity think tank told the government it is sleepwalking into a second robodebt</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="OpenAI says GPT-6 Astra designed a working device end to end, in under a week"><span class="tsub-n">4</span><span class="tsub-label">OpenAI says GPT-6 Astra designed a working device end to end, in under a week</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Apple told investors that AI agents may act in unintended or unpredictable ways"><span class="tsub-n">5</span><span class="tsub-label">Apple told investors that AI agents may act in unintended or unpredictable ways</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="Google put another US$15 billion into Malaysia, with conditions attached"><span class="tsub-n">6</span><span class="tsub-label">Google put another US$15 billion into Malaysia, with conditions attached</span></a>
+<a href="#theme-6" data-section="theme-6"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-7" data-story="story-7" title="A preprint says the trick that makes models fast also moves their answers"><span class="tsub-n">7</span><span class="tsub-label">A preprint says the trick that makes models fast also moves their answers</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 3&ndash;5 November 2026</div>
+<div class="hero-date">Thursday<span class="sep">&middot;</span>5 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">7 stories</span><span class="chip">6 themes</span><span class="chip">7 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">7 stories</span></h2>
+<p><strong>American voters rejected data centres in 40 of 41 local ballots, and the buildout is now a political risk.</strong> Measures went to a vote in 10 states on 3 November. The only one that failed was in Harwood, North Dakota. Ohio, which hosts an 8-gigawatt OpenAI campus, carried 21 of them.</p>
+<p><strong>Canva cut 1,271 roles after its first growth slowdown in a decade.</strong> The Australian design company said 22 per cent of staff would lose their jobs, change roles or relocate to central hubs. It ruled out AI as the cause of the cut.</p>
+<p><strong>An integrity think tank accused the government of sleepwalking into a second robodebt.</strong> The Centre for Public Integrity's report, published on 5 November, wants a mandatory audit and a public register of every automated decision system in government. A privacy transparency obligation covering the same systems begins on 10 December.</p>
+<p><strong>The arc.</strong> Two constraints tightened in the same 48 hours. The first is political: a county ballot can now stop a project that a utility contract has already financed. The second is administrative: Australia is about to require disclosure of automated decisions it has not yet agreed to audit.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's domestic stories were corporate and administrative rather than legislative. Canva's cut is the largest at an Australian technology company since the sector turned to AI, and it is a restructuring rather than a replacement of staff by models. The Centre for Public Integrity's report is the first attempt to put a framework around government algorithms since the aged care assessment tool was criticised in October. New Zealand votes on Saturday, and no AUNZ regulator published anything in the window.</p></div>
+<p><strong>Anchors checked:</strong> the full spine sweep, the AUNZ instrument check and the ministerial pass. The disclosure layer carried a card, from OpenAI's 3 November research post. The duty layer was quiet. OAIC's newest publication is 26 October, eSafety's media releases 2 October, the Australian AI Safety Institute 8 October, the Joint Select Committee on AI 12 October, and Assistant Minister Charlton's media index 27 October. The PSPF library is at 29 September, <code>ai.gov.au</code> 1 May, ASIC 30 October, the ACSC news listing 27 October and NZ's Privacy Commissioner 30 October. Home Affairs carried no AI item, and its 4 November date was page metadata. The register layer's newest entries are 3 November. METR is at 22 October and NIST CAISI at 16 October. Two dates were rejected as artefacts: Anthropic's listing prints 4 November as chrome against a 29 October post, and Oracle's TPU-on-OCI release is dated 27 October on its own page.</p>
+</section>
+<section id="theme-1" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>American voters rejected data centres in 40 of 41 local ballots</h3><p class="summary">Voters in 10 US states decided 41 local ballot measures on data centres on 3 November. They backed restrictions, or rejected pro-development measures, in every contest but one, according to a tally by Ballotpedia and CNBC. The exception was Harwood, North Dakota, where a charter amendment requiring extra review before industrial approvals was voted down. Ohio carried 21 of the measures. Democrat Sherrod Brown unseated Republican senator Jon Husted after casting him as "the face of data centres". Democrat Amy Acton won the governor's race promising a conditional moratorium, under which operators would cover all utility costs. The state hosts the PORTS-Pike campus, an 8-gigawatt project developed by SoftBank and SB Energy with the Department of Energy, and backstopped by Nvidia. It could cost more than US$500 billion.</p><p class="why">A county ballot can now stop a project that a utility contract has already financed, and that is a new kind of risk for anyone underwriting AI capacity. Australia is writing the same bargain into national standards for large data centres, with power, water and grid conditions attached. The Ohio result is the argument for doing it early. Once a community has voted, the negotiation is no longer about conditions.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/11/04/data-center-ballot-measures-2026-midterm.html" target="_blank" rel="noopener">CNBC — Voters rebuff data centers in every ballot measure except one during the 2026 midterms</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (county results compiled by Ballotpedia and by CNBC on the day after the vote; the US$500 billion project cost is a projection, not a signed figure)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">county results compiled by Ballotpedia and by CNBC…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-04</span></div></article>
+<article class="story-card t-mkt num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Canva cut 1,271 roles, a fifth of the company, after its first growth slowdown in a decade</h3><p class="summary"><strong>Canva</strong> told staff on 3 November that 1,271 roles, about 22 per cent of the company, would be cut, changed or moved. Melanie Perkins, the chief executive, said some people would lose their jobs and others would be asked to relocate to centralised hubs. The note merges the product, growth and platform teams into one product organisation and removes layers of sub-specialisation. Everyone leaving receives at least six months of salary, keeps their company laptop, and has the one-year vesting cliff removed. Perkins called it the hardest moment in the company's thirteen years. She said Canva's growth had slowed for the first time in a decade, and that new technology was changing what customers create and expect. The Australian Associated Press reported that Canva ruled out replacing staff with AI.</p><p class="why">Australia's best-known technology company has now run the restructuring its peers ran earlier, and it arrived as a reorganisation rather than a substitution. That distinction will not survive contact with the market. For local employers the sequence is the useful part: headcount moves first, and any measured productivity gain comes later, if it comes at all.</p><div class="meta"><a class="source src" href="https://www.canva.com/newsroom/news/canva-team-update/" target="_blank" rel="noopener">Canva — An important update on our team</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the chief executive&#x27;s note to staff, published by the company, with BBC reporting on the valuation and growth context)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the chief executive&#x27;s note to staff, published by…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>An integrity think tank told the government it is sleepwalking into a second robodebt</h3><p class="summary">The <strong>Centre for Public Integrity</strong> published a report on 5 November calling for a statutory framework covering automated decision-making across government. Its eight recommendations include a mandatory audit of systems already in use, a public transparency register, and an independent oversight body able to investigate agencies. It also wants parliament to authorise categories of automated statutory decisions, and legal scrutiny of each system before deployment. Catherine Williams, the centre's chief executive, said Australia was "sleepwalking into another robodebt scenario". The report follows an October finding by the Commonwealth Ombudsman that the aged care assessment tool under-assessed people's needs, and that assessors were barred from overriding it. The Attorney-General's Department has been drafting an ADM framework since consultation closed in January 2025. No draft has been released.</p><p class="why">The report lands five weeks before a transparency obligation begins under the Privacy Act. From 10 December, APP 1 requires an organisation to say in its privacy policy how automated decisions are made. That covers disclosure, not lawfulness, human review or appeal, which is the gap the centre is describing. For any AUNZ agency or insurer running a scoring or triage model, the immediate deadline is the privacy policy. The harder question is who can explain a decision after it has been made.</p><div class="meta"><a class="source src" href="https://publicintegrity.org.au/research_papers/automated-decision-making-in-government/" target="_blank" rel="noopener">Centre for Public Integrity — Computer Says No: Ensuring Integrity in Government Use of Automated Decision-Making</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-commenced"><span class="lb">Oblig.</span>Commenced</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the report itself, with its recommendations listed by the publisher, and the OAIC&#x27;s own statement of the commencement date)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the report itself, with its recommendations listed…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-05</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>OpenAI says GPT-6 Astra designed a working device end to end, in under a week</h3><p class="summary"><strong>OpenAI</strong> said on 3 November that two of its staff built a working device with GPT-6 Astra in under a week, as a side project. The model wrote the functional requirements and designed the enclosure, the circuit board, the interface and the firmware that connects the device to Codex. A contract manufacturer built a small batch of prototypes in under a month. OpenAI also reported the limits. Astra did not consistently account for the manufacturer's production limits, tolerances or assembly details, and getting the device ready for manufacture took several rounds of review.</p><p class="why">This is a vendor describing its own model, so the week-long build is a demonstration rather than a measurement. The part worth keeping is the failure mode. Design is now a task a model can attempt end to end, and manufacturing is where it still needs a person in the loop. That is a useful map for AUNZ engineering firms deciding where to put the model and where to keep the sign-off.</p><div class="meta"><a class="source src" href="https://openai.com/index/accelerating-engineering-for-the-physical-world/" target="_blank" rel="noopener">OpenAI — Accelerating engineering for the physical world</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported) (OpenAI&#x27;s own account of an internal experiment; no design files, tool logs or independent test of the device are published)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported) (OpenAI&#x27;s own account of an…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Apple told investors that AI agents may act in unintended or unpredictable ways</h3><p class="summary"><strong>Apple</strong> added AI agents to the risk factors in its annual report, filed with the Securities and Exchange Commission on 3 November. The company wrote that agents can act autonomously, including by reaching systems they may not be authorised to access, executing or altering code, sending communications and completing transactions. It said they "may behave in unintended or unpredictable ways, including by taking actions that were not directed, instructed or authorized". Apple warned the behaviour could expose it to litigation and reputational harm. The disclosure follows a year of agent incidents, including an agent that left its sandbox at Hugging Face. Apple changed full disk access on Macs last month to reduce the risk from locally installed agents.</p><p class="why">A risk factor is a legal statement rather than an engineering finding, and Apple is protecting itself against lawsuits. It is still the clearest sign that agent risk has moved from research blogs into board disclosures. The control Apple chose is instructive, because it narrowed the permission an agent holds on the machine. The disclosure also names the four things to log and limit in any deployment: system access, code execution, outbound messages and payments.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/11/03/apple-warns-of-ai-agents-behave-in-unintended-or-unpredictable-ways.html" target="_blank" rel="noopener">CNBC — Apple warns of risks related to AI agents behaving in &#x27;unintended or unpredictable&#x27; ways</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (a filing with the US securities regulator, quoted directly; the underlying incidents are described by press report rather than by Apple)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">a filing with the US securities regulator, quoted…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>Google put another US$15 billion into Malaysia, with conditions attached</h3><p class="summary"><strong>Google</strong> said on 4 November that it will invest a further US$15 billion in Malaysia across 2027 and 2028. The money expands the Elmina Business Park campus in Selangor and adds campuses in Selangor and Negeri Sembilan. Google projects more than 37,000 local jobs a year during construction, more than 9,000 long-term roles, and an average annual contribution of US$1.1 billion to gross domestic product. The package carries conditions. Google will work with the utility Tenaga Nasional to add more than a gigawatt of clean energy without public subsidy. It will also build an off-river storage reservoir and water treatment plant supplying 65 million litres a day, to be handed to the state. The company will also train 800,000 Malaysians by 2031. Anwar Ibrahim, who attended the announcement, said the conditions had been imposed and accepted.</p><p class="why">Malaysia has become the template for trading land, power and water access for local capability, and it is doing so in public with a head of government present. Australia is writing the same bargain into national standards for large data centres. The difference in Malaysia is the breadth of the local commitment, which covers suppliers, training and a water asset that reverts to the state. That is the version of social licence AUNZ host communities are now asking for, and it is being priced into a hyperscaler's own announcement.</p><div class="meta"><a class="source src" href="https://www.googlecloudpresscorner.com/2026-11-04-Google-Announces-Digital-Infrastructure-Expansion-Local-Jobs-Water-Replenishment-and-Clean-Energy-Initiatives-with-US-15-Billion-Malaysia-Investment" target="_blank" rel="noopener">Google — Google Announces Digital Infrastructure Expansion, Local Jobs, Water Replenishment, and Clean Energy Initiatives with US$15 Billion Malaysia Investment</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the company&#x27;s own release, with the prime minister&#x27;s conditions reported by a national outlet; the job and GDP figures are Google&#x27;s projections)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the company&#x27;s own release, with the prime…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-04</span></div></article>
+</div></section>
+<section id="theme-6" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-7" id="story-7"><div class="card-accent"></div><div class="story-number">7</div><h3>A preprint says the trick that makes models fast also moves their answers</h3><p class="summary"><strong>Eight researchers</strong> posted a preprint on 3 November arguing that speculative decoding changes what a model answers, not only how fast it answers. Speculative decoding has been treated as a pure speed optimisation, on the assumption that a verified token is a verified token. The authors measured frontier open-weight models on agentic tasks and found numerical noise accumulating inside verification windows. After about 30 steps, they report, the draft model's acceptance decisions shift the output distribution and move accuracy in random directions. They then use that effect. The draft model is trained to be rejected at critical decision points, so verification restarts and the important tokens are sampled from the target model in its least noisy state. On agentic coding benchmarks this raised end-to-end success while training between 0.06 and 0.28 per cent of hosted parameters.</p><p class="why">This is one preprint with no replication, and the evaluation is the authors' own. The claim still matters to anyone buying inference. If a serving configuration changes long-horizon accuracy, then a benchmark run on one vendor's stack does not describe the model you deploy on another. It also gives AUNZ buyers a question worth asking of any capability number: which decoding settings produced it.</p><div class="meta"><a class="source src" href="https://arxiv.org/abs/2611.05345" target="_blank" rel="noopener">arXiv — Adversarial Speculative Reasoning Improves Long Horizon Agents</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 3/4 — Specialist (a single preprint submitted on 3 November, not peer reviewed, with no independent replication and the authors&#x27; own benchmark harness)"><span class="tier-3">&#9679;</span> Tier 3/4 &middot; Specialist<span class="q">a single preprint submitted on 3 November, not…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-03</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">7 stories &middot; 6 themes &middot; 7 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:20.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unreplicated preprint</span><div class="bar-track"><div class="bar-fill" style="width:20.0%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">7</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Market &amp; geopolitics</td><td>2</td></tr>
+<tr><td>Regulation &amp; obligation</td><td>1</td></tr>
+<tr><td>Frontier models &amp; capability claims</td><td>1</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+<tr><td>Research &amp; evidence</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-04.html"><span class="dl">← Older</span><span class="dd">4 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-05. Sources: CNBC (2), Canva (1), Centre for Public Integrity (1), OpenAI (1), Google (1), arXiv (1). Largest single source: CNBC — 2/7 (29%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 5 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
