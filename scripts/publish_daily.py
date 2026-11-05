@@ -17,7 +17,7 @@ This is deliberately fail-closed: a broken edition must not reach the site.
 import argparse, datetime, json, os, re, subprocess, sys, time, urllib.request
 from urllib.parse import urlparse
 
-ROOT = os.path.expanduser("~/Desktop/AI Site")
+ROOT = os.path.expanduser("~/Desktop/Hermes/AI Site")
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/141.0 Safari/537.36")
 BASE = "https://ai.peterjaycox.com"

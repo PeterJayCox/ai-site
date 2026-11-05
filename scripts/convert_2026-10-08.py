@@ -9,8 +9,8 @@ published page, never retyped.
 """
 import os, re, html, collections
 
-SRC = os.path.expanduser("~/Desktop/AI Site/docs/daily/2026-10-08.html")
-OUT = os.path.expanduser("~/Desktop/AI Site/editions/2026-10-08.md")
+SRC = os.path.expanduser("~/Desktop/Hermes/AI Site/docs/daily/2026-10-08.html")
+OUT = os.path.expanduser("~/Desktop/Hermes/AI Site/editions/2026-10-08.md")
 s = open(SRC, encoding="utf-8").read()
 body = re.sub(r"<(script|style).*?</\1>", "", s, flags=re.S)
 

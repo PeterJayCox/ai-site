@@ -13,7 +13,7 @@ chrome, not the page.
 """
 import os, re, sys, glob, datetime, html as _html, collections
 
-ROOT = os.path.expanduser("~/Desktop/AI Site")
+ROOT = os.path.expanduser("~/Desktop/Hermes/AI Site")
 SRC = os.path.join(ROOT, "editions")
 OUT = os.path.join(ROOT, "docs", "daily")
 CHROME = os.path.join(ROOT, "templates", "chrome")

@@ -4,7 +4,7 @@ edition's durable markdown source. Faithful by construction — parsed, not rety
 import os, re, html, sys
 
 PARTS = os.path.expanduser("~/Desktop/Hermes/AI Daily/prototype/parts")
-OUT = os.path.expanduser("~/Desktop/AI Site/editions/2026-10-06.md")
+OUT = os.path.expanduser("~/Desktop/Hermes/AI Site/editions/2026-10-06.md")
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 
 def rd(p):
