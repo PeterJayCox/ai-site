@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 8 November 2026</title>
+<meta name="description" content="6 stories across 5 themes in the 5&amp;ndash;8 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Three men were charged over $129 million stolen with cloned voices"><span class="tsub-n">1</span><span class="tsub-label">Three men were charged over $129 million stolen with cloned voices</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="OpenAI built a benchmark for the messy end of laboratory science"><span class="tsub-n">2</span><span class="tsub-label">OpenAI built a benchmark for the messy end of laboratory science</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="OpenAI closed $11 billion at a $1.25 trillion valuation, short of its target"><span class="tsub-n">3</span><span class="tsub-label">OpenAI closed $11 billion at a $1.25 trillion valuation, short of its target</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="Washington and Moscow are working to stop binding rules on autonomous weapons"><span class="tsub-n">4</span><span class="tsub-label">Washington and Moscow are working to stop binding rules on autonomous weapons</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="The National AI Centre loses its head a year into Australia&#x27;s AI plan"><span class="tsub-n">5</span><span class="tsub-label">The National AI Centre loses its head a year into Australia&#x27;s AI plan</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="Advanced chip packaging became the bottleneck the buildout cannot route around"><span class="tsub-n">6</span><span class="tsub-label">Advanced chip packaging became the bottleneck the buildout cannot route around</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 72-hour window &middot; 5&ndash;8 November 2026</div>
+<div class="hero-date">Sunday<span class="sep">&middot;</span>8 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">6 stories</span><span class="chip">5 themes</span><span class="chip">6 sources</span><span class="chip">72-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">6 stories</span></h2>
+<p><strong>OpenAI closed $11 billion at a $1.25 trillion valuation, well short of what it was asking.</strong> The first slice of a round the company had hoped would reach $30 billion landed on 6 November, at a valuation below the $1.5 trillion it first sought. Two days after the share market repriced the buildout, the private market did the same.</p>
+<p><strong>Three men were charged over $129 million stolen with AI voice impersonations.</strong> The US indictment, unsealed on 5 November, describes employees wiring money after calls with a convincing chief executive and a convincing lawyer. No model was broken. A payment instruction was simply believed.</p>
+<p><strong>The United States and Russia are working to stop binding rules on autonomous weapons.</strong> A review conference in Geneva opens on 16 November with 128 countries due, and the question is whether it will even authorise negotiations. A 50-state coalition has asked for a mandate. Washington and Moscow want more voluntary discussion.</p>
+<p><strong>The arc.</strong> Three prices moved on the same facts this week. OpenAI's round cleared below target, a $129 million fraud cost nothing but a cloned voice, and the one instrument that would price a lethal autonomous system is being argued down before it exists.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The AUNZ signal this window is institutional rather than legislative. Lee Hickin will leave the National AI Centre in January, a year into the National AI plan and while the government drafts AI standards and data centre rules. His successor inherits the adoption work. Separately, Deputy Prime Minister Richard Marles told ABC News Breakfast on 6 November that suburbs are the wrong place for data centres, and that operators bringing their own power and water should be part of the arrangement. He framed both as social licence for the standards already promised. No new instrument was published. New Zealand voted on 7 November, and no AUNZ AI regulator published anything in the window.</p></div>
+<p><strong>Anchors checked:</strong> the spine sweep, the AUNZ instrument check and the ministerial pass. The disclosure layer carried the research card and the duty layer was quiet: eSafety's newest media release is 2 October, the Australian AI Safety Institute's newest publication 8 October, the Joint Select Committee on AI 12 October, the PSPF library 29 September and <code>ai.gov.au</code> 1 May. OAIC's newest item is 4 November, a transcription-provider outcome with no AI dimension. ASIC's listing prints 2 November but its newest release is 30 October. Home Affairs' 7 November stamp is a CMS timestamp and the listing carried no AI item. Assistant Minister Charlton's media index is at 27 October, with no speech in the window. NZ's Privacy Commissioner is at 30 October and the NZ NCSC at 9 March. The register layer added nothing new: AIID's newest entry is 31 October and the OECD monitor's newest dates are 5&ndash;6 November, neither carrying an AUNZ item. UK AISI's newest research is 26 October, and METR's 5 November assessment ran in the 6 November edition. Two dates were rejected as chrome: Anthropic's newsroom header prints 7 November over items datelined September and October, its Opus 5.5 page carrying 22 September.</p>
+</section>
+<section id="theme-1" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Three men were charged over $129 million stolen with cloned voices</h3><p class="summary">The <strong>US Department of Justice</strong> unsealed an indictment on 5 November against three men accused of using AI to impersonate executives and lawyers. Jacob Soall, Sharon Hazan and Guy Sheetrit are alleged to have mimicked the voices and images of chief executives on calls to employees. They then posed as lawyers at large international firms and told the employees to wire funds for a confidential transaction. The scheme took more than $129 million between 2024 and 2026. Victims included two hospital systems, a Rhode Island bank and a British financial technology company that lost $11.6 million. The men were arrested in Spain and the United Kingdom. Extradition requests are pending.</p><p class="why">The control that failed here was not technical. An employee received a payment instruction and acted on it because the voice and the face were right. Australia's privacy framework asks for reasonable security of personal information under APP 11, and no state or federal offence is specific to voice cloning. Deepfake fraud therefore lands on ordinary payment controls. A call-back to a number already on file, and dual authorisation above a threshold, still stop it.</p><div class="meta"><a class="source src" href="https://www.justice.gov/usao-sdny/pr/three-foreign-nationals-arrested-and-charged-scheme-use-super-intelligence-defraud" target="_blank" rel="noopener">US Department of Justice — Three foreign nationals arrested and charged with scheme to use super intelligence to defraud companies of $129 million</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the indictment and the prosecutors&#x27; own release; the conduct is alleged and untested)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the indictment and the prosecutors&#x27; own release</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-05</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>OpenAI built a benchmark for the messy end of laboratory science</h3><p class="summary"><strong>OpenAI</strong> published BioBasicsBench on 6 November, a test of 100 routine wet-lab tasks built with the biotech firm Ligo. The tasks use raw experimental evidence: gel and blot images, plate photographs, sequencing reads and instrument exports. An agent has to read the data, spot a failed control and say when the evidence cannot support a conclusion. At the highest reasoning setting, GPT-6 Astra scored 66.7 per cent of available credit against 43.8 per cent for GPT-5.6 Sol. OpenAI also published the failures. Astra overcounted colonies on one plate by about 12 per cent, and marked empty agar as a colony.</p><p class="why">Benchmarks drawn from published papers flatter models, because a paper's figures are already the clean ones. Bench data is where an agent will actually be pointed, and where a misread costs an experiment. The honest reading for AUNZ labs is that agent-assisted analysis is improving fast and is not yet dependable at the routine end. The biosecurity implication runs the same way, which is why OpenAI says it will keep tracking these tasks.</p><div class="meta"><a class="source src" href="https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science/" target="_blank" rel="noopener">OpenAI — Measuring how AI agents handle everyday wet-lab science</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported: OpenAI built the benchmark, graded its own models against it and publishes no independent replication)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported: OpenAI built the benchmark,…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-06</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>OpenAI closed $11 billion at a $1.25 trillion valuation, short of its target</h3><p class="summary"><strong>OpenAI</strong> closed $11 billion of new funding at a $1.25 trillion valuation, a source familiar with the matter told Reuters on 6 November. The sum is the first part of a round the company had hoped would reach $30 billion. The valuation is also below the $1.5 trillion it initially sought, according to two investors. SoftBank and MGX took part. Bloomberg reported the funding first. Sentiment towards AI companies has cooled over the past month. Investors are now valuing Anthropic's planned listing at about $1.5 trillion, down from earlier expectations of roughly $2 trillion.</p><p class="why">This is the private market catching up with the public one. The share market repriced the buildout on 5 November and the round cleared a day later at a third of its target. None of the money has stopped moving, so the read is a change in price and pace rather than in demand. For AUNZ institutional investors with private-market exposure, and for buyers negotiating compute contracts, the leverage has shifted a little towards the buyer.</p><div class="meta"><a class="source src" href="https://www.reuters.com/business/openai-secures-11-billion-funding-125-trillion-valuation-bloomberg-news-reports-2026-11-06/" target="_blank" rel="noopener">Reuters — OpenAI gets $11 billion funding at $1.25 trillion valuation</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-probable"><span class="lb">Evidence</span>Probable</span><span class="reliability b-tier" title="Tier 2/4 — High (a wire report resting on one unnamed source, following a Bloomberg report; OpenAI has not confirmed the figure or the valuation)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a wire report resting on one unnamed source,…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-06</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>Washington and Moscow are working to stop binding rules on autonomous weapons</h3><p class="summary"><strong>Russia and the United States</strong> are leading a group of states trying to stop a United Nations conference from authorising negotiations on a legally binding instrument for autonomous weapons. The review conference of the certain conventional weapons convention runs in Geneva from 16 to 20 November, with 128 countries due to attend. A coalition of 50 states led by Ireland called on 22 October for a mandate covering three negotiating sessions in 2027. Russia, the US and Israel want talks to continue on voluntary measures instead. The United Kingdom did not join the Irish statement. The International Committee of the Red Cross said on 5 November that the time had come to negotiate.</p><p class="why">This is the governance gap deciding whether to close. The instrument in question would set limits on weapons that select and engage a target without a human referral. Australia is a party to the convention, so its delegation will have to take a position on the mandate in Geneva. A conference that settles for more voluntary discussion leaves the ADF and its partners operating to national policy alone, which is where the rules already sit.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/world/2026/nov/06/autonomous-weapons-ai-russia-us-binding-rules" target="_blank" rel="noopener">The Guardian — Russia and US seek to block plan for binding rules on autonomous weapons</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a masthead report quoting named campaigners, the ICRC and government positions; the conference outcome is not yet known)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a masthead report quoting named campaigners, the…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-06</span></div></article>
+<article class="story-card t-reg num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>The National AI Centre loses its head a year into Australia's AI plan</h3><p class="summary"><strong>Lee Hickin</strong> will step down as head of Australia's National AI Centre in January, InnovationAus reported on 6 November. He has led the centre since early 2025, after running Microsoft's Australian technology and AI practice, and announced the move in a LinkedIn post. Recruitment for his successor has started. The departure lands a year after the National AI plan, and while the government drafts AI standards and data centre rules. Separately, the Australian AI Safety Institute has added Ben Robinson, who spent three years on AI policy and research in the United Kingdom.</p><p class="why">Institutions rather than announcements decide whether a standard gets implemented. The centre is the adoption arm, and the standards now being written need someone to explain them to firms that have never had to comply with one. Continuity risk at that point is a delivery risk, not a reputational one. AUNZ organisations waiting on guidance should expect the timetable to rest on a smaller group of people for the next few months.</p><div class="meta"><a class="source src" href="https://www.innovationaus.com/gig-guide-national-ai-centre-boss-bows-out/" target="_blank" rel="noopener">InnovationAus — Gig Guide: National AI Centre boss bows out</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 3/4 — Specialist (trade press reporting a LinkedIn announcement and a recruitment advertisement; the government has not issued a release)"><span class="tier-3">&#9679;</span> Tier 3/4 &middot; Specialist<span class="q">trade press reporting a LinkedIn announcement and…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-06</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>Advanced chip packaging became the bottleneck the buildout cannot route around</h3><p class="summary"><strong>Advanced packaging</strong> is emerging as the constraint on AI chip supply, according to reporting from Taipei on 6 November. Revenue from packaging is forecast to overtake revenue from conventional chipmaking for the first time in 2026, with capital spending near US$28 billion, according to the research firm Yole Group. TSMC dominates the most advanced technique, chip-on-wafer-on-substrate, and its capacity limits have pushed buyers to other suppliers. Nvidia is providing billions of dollars to expand packaging capacity at Siliconware Precision Industries. Taiwan's Powertech plans a US$400 million packaging joint venture with Broadcom in Singapore, with production from 2028.</p><p class="why">Every AUNZ capacity forecast assumes chips arrive. The constraint has moved downstream from lithography to the step where processors and memory are joined, and that step sits in a handful of Taiwanese plants. Whoever holds packaging capacity sets the schedule for everyone else. For buyers, the contract that matters is now a capacity agreement with a named supplier rather than a compute price.</p><div class="meta"><a class="source src" href="https://www.reuters.com/world/asia-pacific/ai-boom-turns-chip-packaging-into-next-battleground-semiconductors-2026-11-06/" target="_blank" rel="noopener">Reuters — AI boom turns chip packaging into the next battleground for semiconductors</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 2/4 — High (a wire investigation built on interviews with more than a dozen executives and analysts; the Nvidia financing detail rests on one unnamed executive and Nvidia did not comment)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a wire investigation built on interviews with more…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-06</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">6 stories &middot; 5 themes &middot; 6 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Probable</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">6</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Research &amp; evidence</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+<tr><td>Regulation &amp; obligation</td><td>2</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-07.html"><span class="dl">← Older</span><span class="dd">7 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-08. Sources: Reuters (2), US Department of Justice (1), OpenAI (1), The Guardian (1), InnovationAus (1). Largest single source: Reuters — 2/6 (33%). Within the 40% threshold.</div><div class="note">Window: 72 hours to 8 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
