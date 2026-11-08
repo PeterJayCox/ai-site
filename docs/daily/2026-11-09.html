@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 9 November 2026</title>
+<meta name="description" content="5 stories across 3 themes in the 7&amp;ndash;9 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="The global music industry told Albanese that an AI copyright carve-out would be a &quot;disaster&quot;"><span class="tsub-n">1</span><span class="tsub-label">The global music industry told Albanese that an AI copyright carve-out would be a &quot;disaster&quot;</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Elvis Presley&#x27;s rights holders and Eminem&#x27;s publisher sued Suno under Tennessee&#x27;s voice law"><span class="tsub-n">2</span><span class="tsub-label">Elvis Presley&#x27;s rights holders and Eminem&#x27;s publisher sued Suno under Tennessee&#x27;s voice law</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Congress turned on Nvidia&#x27;s China business after a spy report and an empty office"><span class="tsub-n">3</span><span class="tsub-label">Congress turned on Nvidia&#x27;s China business after a spy report and an empty office</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="Anthropic will list at a cut valuation into the backlash the midterms produced"><span class="tsub-n">4</span><span class="tsub-label">Anthropic will list at a cut valuation into the backlash the midterms produced</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="South-east Asia&#x27;s datacentre boom hit a power and water wall"><span class="tsub-n">5</span><span class="tsub-label">South-east Asia&#x27;s datacentre boom hit a power and water wall</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 7&ndash;9 November 2026</div>
+<div class="hero-date">Monday<span class="sep">&middot;</span>9 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">5 stories</span><span class="chip">3 themes</span><span class="chip">5 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">5 stories</span></h2>
+<p><strong>Australia's copyright review has found its loudest opponent outside the country.</strong> The global recording-industry body warned the government that a training carve-out would be "ridiculous and dangerous". One safe harbour would cover music from everywhere, its chief executive said. No bill exists yet, which is the point of speaking now.</p>
+<p><strong>Anthropic will list into a market that just voted against its supply chain.</strong> The company is aiming for a mid-November Nasdaq debut at $1 trillion to $1.5 trillion, down from the $2 trillion floated. Its amended prospectus discloses $895.4 billion of committed spend on compute and infrastructure. In the same week, voters rejected 40 of 41 data-centre ballots.</p>
+<p><strong>Washington's China chip problem moved from policy to a closed-door briefing.</strong> Three House committee chairs have called Nvidia's chief executive for 18 November. The trigger was a report that a Megaspeed executive was a recruited intelligence asset, and a second report that an approved Chinese chip assembler barely exists.</p>
+<p><strong>The arc.</strong> Two prices met their limits this weekend. Australia's creative sector put a number on a copyright carve-out, and Anthropic put the political risk of the buildout into its listing. Neither cleared at the asking price.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The weekend's AUNZ story is a lobby, not an instrument. The IFPI's warning is aimed at a copyright review with no bill and no exposure draft, and it lands before the Joint Select Committee on AI reports on 30 November. New Zealand's election produced a caretaker government, so no NZ instrument will move this week. The Australian AI Safety Institute has published nothing since 8 October, and the privacy and securities regulators were quiet. Nothing in the window obliged an AUNZ organisation to do anything new.</p></div>
+<p><strong>Anchors checked:</strong> the spine sweep, the AUNZ instrument check, the ministerial pass and the coverage feeds. The duty layer was quiet in the window. eSafety's newest media release is 2 October; the Australian AI Safety Institute's newest publication is the 8 October oversight report; the Joint Select Committee on AI last published on 12 October; the PSPF library on 29 September; <code>ai.gov.au</code> on 1 May. OAIC's newest item is 4 November, a transcription-provider outcome with no AI dimension. ASIC's listing prints 2 November but its newest release is 30 October, and Home Affairs' 8 November stamp is a CMS timestamp with no AI item in the list. Assistant Minister Charlton's media index is at 27 October with no speech in the window; the PMC ministers' hub returns a 212-byte block page to automated fetches, so it is unchecked rather than quiet. NZ's Privacy Commissioner is at 30 October, the NZ NCSC at 9 March, and the AI Forum NZ at 23 October. The register layer added nothing: the AI Incident Database's newest entries, 7 November, restate the voice-fraud indictment already carried on 8 November, and the OECD monitor's 6&ndash;7 November items are Turkish, Bosnian, Brazilian and Singaporean, with no AUNZ entry. The week's two Tier-A publications, ASD's open-weight guidance and METR's Anthropic assessment, were both dated 5 November and carried in that day's edition. Anthropic's newsroom header prints 8 November over a 22 September featured post and was rejected as page chrome.</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>The global music industry told Albanese that an AI copyright carve-out would be a "disaster"</h3><p class="summary">The <strong>International Federation of the Phonographic Industry</strong> has warned Australia against weakening copyright law to let AI companies train on local material. Its chief executive, Victoria Oakley, told Guardian Australia that a carve-out would be "ridiculous and dangerous". She argued that a single safe harbour would let a model train on music from anywhere in the world. The intervention lands while the government weighs changes AI companies have requested. Anthropic has proposed an opt-out model, where content is scraped unless a rights holder objects. OpenAI told a parliamentary committee that licensing music for streaming is a different business from training on it. The Attorney-General, Michelle Rowland, has said any changes must deliver "meaningful control and fair compensation". Australian labels have raised constitutional concerns about a compensation case.</p><p class="why">A safe harbour granted here would cover training that reaches every market, so the cost falls on rights holders who never agreed to it. That is why the lobby is offshore: Australia is being argued about as a precedent, not as a market. The Joint Select Committee on AI reports by 30 November, and copyright is the question it cannot avoid. Read the committee's findings before the minister's next statement, because the committee is where the text will first appear.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/technology/2026/nov/09/weakening-ai-copyright-law-will-spell-disaster-for-creativity-australia" target="_blank" rel="noopener">The Guardian — Weakening AI copyright law will spell &#x27;disaster for creativity&#x27;, global music body warns Albanese</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a masthead exclusive built on an on-record interview with the IFPI&#x27;s chief executive; the government position is a spokesperson statement, and the constitutional claim is the labels&#x27; argument, not a ruling)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a masthead exclusive built on an on-record…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-09</span></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Elvis Presley's rights holders and Eminem's publisher sued Suno under Tennessee's voice law</h3><p class="summary"><strong>Two groups of music rights holders</strong> filed federal lawsuits against the AI music generator Suno in the Northern District of California. The Presley action, brought by Authentic Brands Group, Raleigh Music Publishing and others, runs to 51 pages. It alleges copyright infringement and a breach of Tennessee's Ensuring Likeness Voice and Image Security Act, a 2024 law against cloning a singer's voice. The filing says Suno reproduces Presley's "rich vocal timbre" without permission. Eight Mile Style, which controls much of Eminem's catalogue, filed separately over generated songs and lyrics; Eminem is not a party. Suno said it blocks prompts naming specific artists and screens uploads.</p><p class="why">Australia has no likeness right for a voice. A local artist's remedy runs through passing off and section 18 of the Australian Consumer Law, both of which need a misleading representation rather than a cloned timbre. The United States is where the rule is being written, state by state, and the ELVIS Act is the first statute to name the harm. AUNZ labels and studios should assume the licensing market forms offshore first.</p><div class="meta"><a class="source src" href="https://variety.com/2026/music/news/elvis-eminem-sue-suno-ai-music-generator-1236941798/" target="_blank" rel="noopener">Variety — Elvis Music Owners, Eminem Publisher File Sprawling New Lawsuits Against AI Music Generator Suno</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (specialist trade coverage quoting the filed complaints and Suno&#x27;s response; the allegations are untested and Suno denies them)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">specialist trade coverage quoting the filed…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-07</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Congress turned on Nvidia's China business after a spy report and an empty office</h3><p class="summary"><strong>Three House Republican committee chairs</strong> asked Nvidia's chief executive, Jensen Huang, to appear for a closed-door briefing on 18 November, a day after the company reports quarterly earnings. The letter cites national-security concerns about Chinese access to sensitive technology. Senator Chris Coons, in line to chair Foreign Relations in January, said Congress would investigate. The reports behind it: The New York Times said a memo identified Megaspeed executive Alice Huang as recruited by China's Ministry of State Security. Nvidia says Huang's contacts with her were ordinary customer meetings. Separately, Senator John Cornyn publicised a Times report that Commerce approved New Matrix to assemble Nvidia chips in Beijing despite little evidence the firm operates. Its owners are linked to a blacklisted private equity firm.</p><p class="why">Export control is now enforced by headline as well as by licence, and that raises the political risk attached to every allocation of Nvidia capacity. AUNZ buyers, including sovereign AI programmes and research clouds, compete for the same supply. The second finding is the more useful one for them: an approval on paper is not evidence of a counterparty, and due diligence on a broker is now part of procurement.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/11/08/jensen-huang-nvidia-china-spy-congress.html" target="_blank" rel="noopener">CNBC — Nvidia CEO Jensen Huang faces bipartisan congressional scrutiny over reported China spy link</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (two outlets, a published congressional letter and named lawmakers; the intelligence assessment and the Commerce approvals are reported, not published)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">two outlets, a published congressional letter and…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-08</span></div></article>
+<article class="story-card t-mkt num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>Anthropic will list at a cut valuation into the backlash the midterms produced</h3><p class="summary"><strong>Anthropic</strong> is preparing a Nasdaq listing, likely in mid-November, and investors see a valuation of $1 trillion to $1.5 trillion, down from the $2 trillion floated in recent months. Its amended prospectus discloses about $895.4 billion of purchase commitments and leases, substantially all for compute and infrastructure. The Nasdaq had its steepest one-day fall in 19 months the previous Thursday. In the midterms, voters rejected data-centre ballot measures in 40 of 41 cases, and an NBC News exit poll found more than half called data centres a crucial or major factor in their vote. Seventy-one per cent of Americans opposed a local AI data centre in a Gallup survey in March.</p><p class="why">This is the first time a pure-play AI company has had to price political opposition into an equity story. The $895 billion commitment is the part that matters to AUNZ readers, because it is capacity contracted years ahead against a public mood that can delay the sites. Institutional investors here with private-market exposure should read the risk-factor section, which already names organised opposition to data-centre development.</p><div class="meta"><a class="source src" href="https://www.cnbc.com/2026/11/07/anthropic-ipo-ai-data-center-backlash.html" target="_blank" rel="noopener">CNBC — Anthropic IPO meets AI backlash after midterms show stinging rebuke of data centers</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (a business network drawing on the filed prospectus, its own sourcing on valuation and published polling; the valuation range is investor expectation, not a filed figure)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a business network drawing on the filed…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-07</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>South-east Asia's datacentre boom hit a power and water wall</h3><p class="summary"><strong>Thailand</strong> paused construction on 49 datacentre projects and approval decisions on 117 more in September, over insufficient detail for regulation and monitoring. The governor of West Java halted a project for want of permits and an incomplete environmental assessment. The pause follows a year of extraordinary growth: operational capacity in Malaysia's Johor rose from 94 megawatts in 2023 to 1,110 megawatts in 2026, with 3,088 megawatts more planned. Wood Mackenzie estimates Johor's datacentres already use 24 per cent of the state's power, rising to 40 per cent by 2035. Australian operator AirTrunk plans to spend $3 billion doubling its Johor sites to four.</p><p class="why">This is the sequence Australia is entering, compressed into two years. Capacity arrives before the grid connection and the water allocation, and the objections follow the construction. The NSW upper-house inquiry reported on 5 November that its planning framework assesses each project alone, while the cumulative effects land on one substation. AUNZ operators should read a signed power purchase agreement as the real approval, and a planning consent as the weaker one.</p><div class="meta"><a class="source src" href="https://www.theguardian.com/technology/2026/nov/07/datacentres-southeast-asia" target="_blank" rel="noopener">The Guardian — The datacentre arms race hits pause in south-east Asia</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 2/4 — High (a masthead feature citing Wood Mackenzie, Cushman and Wakefield and government statements; several capacity and water figures are consultant or operator estimates)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a masthead feature citing Wood Mackenzie, Cushman…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-07</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">5 stories &middot; 3 themes &middot; 5 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>2</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>2</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-08.html"><span class="dl">← Older</span><span class="dd">8 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-09. Sources: The Guardian (2), CNBC (2), Variety (1). Largest single source: The Guardian — 2/5 (40%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 9 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
