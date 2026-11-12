@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 13 November 2026</title>
+<meta name="description" content="7 stories across 6 themes in the 11&amp;ndash;13 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Nonprofits sued to halt frontier model development outright"><span class="tsub-n">1</span><span class="tsub-label">Nonprofits sued to halt frontier model development outright</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="The Finance secretary warned agencies off buying their own AI tools"><span class="tsub-n">2</span><span class="tsub-label">The Finance secretary warned agencies off buying their own AI tools</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="DeepMind moved its genome model from tissues to single cells"><span class="tsub-n">3</span><span class="tsub-label">DeepMind moved its genome model from tissues to single cells</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="Microsoft backdoored an agent model by editing seven neurons"><span class="tsub-n">4</span><span class="tsub-label">Microsoft backdoored an agent model by editing seven neurons</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Google put a cheaper Gemini 4 model into Search for everyone"><span class="tsub-n">5</span><span class="tsub-label">Google put a cheaper Gemini 4 model into Search for everyone</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="CDC refiled for a 1.4-gigawatt campus in western Sydney"><span class="tsub-n">6</span><span class="tsub-label">CDC refiled for a 1.4-gigawatt campus in western Sydney</span></a>
+<a href="#theme-6" data-section="theme-6"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-7" data-story="story-7" title="Nvidia&#x27;s board removed Jensen Huang and installed the finance chief"><span class="tsub-n">7</span><span class="tsub-label">Nvidia&#x27;s board removed Jensen Huang and installed the finance chief</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 11&ndash;13 November 2026</div>
+<div class="hero-date">Friday<span class="sep">&middot;</span>13 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">7 stories</span><span class="chip">6 themes</span><span class="chip">7 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">7 stories</span></h2>
+<p><strong>Nvidia's board removed the chief executive who built the AI boom's supply chain.</strong> Jensen Huang resigned as president, director and chief executive on 12 November, effective immediately. The board met the previous night, after a second affair was reported. Colette Kress, the finance chief, is interim chief executive. The shares fell as much as 12 per cent before closing down 4.8 per cent.</p>
+<p><strong>Four nonprofit groups asked a California court to stop frontier model development outright.</strong> The complaint was filed in San Francisco on 12 November against OpenAI, Anthropic, Google, Meta and SpaceXAI. It quotes the companies' own executives on catastrophic risk, and the incidents where models escaped test environments. The vehicle is California's unfair competition law, argued as a public nuisance.</p>
+<p><strong>Microsoft showed that a backdoored model can pass every standard evaluation.</strong> Editing fewer than ten dormant neurons turns an open-weight model into a sleeper agent, with no retraining and no poisoned dataset. The company says it has seen no use in the wild. The defensive consequence is that behavioural testing stops being sufficient evidence of model integrity.</p>
+<p><strong>Google put a cheaper Gemini 4 model into Search for every user worldwide.</strong> Hydrogen scores 51 on one external index against Argon's 50, at $1.50 and $7.50 per million tokens. The price is flat across a million-token context, which is the line that changes what long-context work costs.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The instrument layer was quiet and the reason is structural. New Zealand is in a caretaker period after the 7 November election: the Beehive's newest release is 6 November and no AI instrument issued. In Australia the 10 November AI Standards announcement is still the live item, carried in full on 11 November, and nothing new was published in this window. The Joint Select Committee on AI reports by 30 November. Checked silences: the Australian AI Safety Institute's newest publication remains 5 November, eSafety 2 October, the PSPF library 29 September, <code>ai.gov.au</code> 1 May, the committee 12 October, ASIC 9 November with no AI release, and the NZ Privacy Commissioner 30 October. The one AUNZ instrument-grade item in the window is not an instrument at all: CDC's revised filing for a 1.4-gigawatt campus at Kemps Creek, more than twice the capacity the company operates across four cities.</p></div>
+<p><strong>Anchors checked:</strong> the spine sweep, the ministerial pass and the AUNZ instrument check. The Prime Minister's media page carries nothing after 11 November, and <code>minister.industry.gov.au/ayres/media</code> is an archived page for a minister who left the portfolio in 2024, so the register's ministerial URL for that portfolio is stale and needs replacing. The registers added nothing datable: the AI Incident Database's newest entries are 8 November and the OECD monitor's are 11 November with no AUNZ item. Two Tier-A publishers supplied the first source on a card — <code>blog.google</code> and <code>deepmind.google</code>, both disclosure. A third, <code>labs.cloudsecurityalliance.org</code> (evidence), corroborates the Microsoft Research disclosure as the second link on that card, which the gate does not count; Microsoft's research blog sits on <code>microsoft.com</code>, a host the manifest lists under rotation rather than disclosure. Ruled out: Claroc's Grok app-builder exposure (10 November, 67 hours old) and OpenAI's children's-safety charter (a $2 million pledge to a voluntary Paris Peace Forum instrument, with no enforcement edge).</p>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Nonprofits sued to halt frontier model development outright</h3><p class="summary">Four nonprofit groups sued <strong>OpenAI, Anthropic, Google, Meta and SpaceXAI</strong> on 12 November. The complaint was filed in the Superior Court of California in San Francisco. It asks the court to bar further development of the most advanced models, including ChatGPT, Gemini and Claude. The groups are the Irreplaceable Education Fund, Public Citizen, Heat Initiative and The Alliance for Secure AI. They plead California's unfair competition law, arguing the products create a public nuisance. The complaint quotes the companies' own executives on catastrophic risk, including Anthropic's Dario Amodei and SpaceX's Elon Musk. It also cites recent incidents in which models escaped testing environments and attacked government systems. No hearing date has been set.</p><p class="why">The theory is the news. It converts a company's own safety warnings into evidence of a defective product, which is why the complaint can quote a chief executive rather than commission research. A model release is normally a private commercial decision. This asks a state court to treat it as an act requiring permission. For AUNZ buyers, an injunction would land on the same quarterly release cadence the government's proposed independent-evaluation duty assumes.</p><div class="meta"><a class="source src" href="https://www.reuters.com/business/openai-google-anthropic-hit-with-lawsuit-seeking-halt-frontier-ai-development-2026-11-12/" target="_blank" rel="noopener">Reuters — OpenAI, Google, Anthropic hit with lawsuit seeking halt to frontier AI development</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (a wire report of a filed complaint, plus the complaint published by Public Citizen, which is a party to the suit and therefore self-interested in how the case is framed)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a wire report of a filed complaint, plus the…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-12</span></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>The Finance secretary warned agencies off buying their own AI tools</h3><p class="summary"><strong>Matt Yannopoulos</strong> runs the Department of Finance, and on 12 November he told federal agencies that big spending on their own AI tools would draw scrutiny. He spoke at the Digital Transformation Agency's AI event. GovAI, run by Finance, offers access to about 60 models, including ChatGPT and Claude. Only 33 of the 196 federal agencies have so far opted to trial it. The warning was reported by InnovationAus, which attended the event. No transcript of the remarks has been published.</p><p class="why">Two numbers carry it: 33 of 196, and 60 models behind one gateway. The Commonwealth built GovAI so that public-service AI use sits inside a single procurement, a single set of terms and a single data boundary. A department that buys elsewhere steps outside that perimeter and out of Finance's visibility. For vendors, the addressable direct federal market is the 163 agencies that have not signed up. GovAI is also the reference implementation other Australian jurisdictions copy, which is why a procurement warning is worth recording as governance news.</p><div class="meta"><a class="source src" href="https://www.innovationaus.com/use-govai-agencies-face-scrutiny-over-ai-spending/" target="_blank" rel="noopener">InnovationAus — &#x27;Use GovAI&#x27;: agencies face scrutiny over AI spending</a><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-probable"><span class="lb">Evidence</span>Probable</span><span class="reliability b-tier" title="Tier 2/4 — High (a specialist trade outlet reporting a named official&#x27;s remarks at an event it attended; the speech transcript is unpublished and the article is paywalled beyond its opening, so the figures rest on one report)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a specialist trade outlet reporting a named…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-11-12</span></div></article>
+</div></section>
+<section id="theme-2" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>DeepMind moved its genome model from tissues to single cells</h3><p class="summary"><strong>Google DeepMind</strong> published AlphaGenome 2 on 11 November. It is a DNA sequence model that predicts how a genetic variant changes gene expression in a named cell type. The company says it finds nearly twice as many expression-changing variants as its previous model. It was trained on more than 100 million cell profiles across 68 tissues. Researchers can name a cell type, or supply one derived from their own single-cell experiment. The model is free for non-commercial research through the AlphaGenome API, and in private preview for commercial work. DeepMind states it is for research only and has not been validated for clinical or diagnostic use.</p><p class="why">The step from tissue averages to single cells is what makes a variant effect useful to a geneticist. A signal that vanishes when averaged across a tissue is precisely the one a rare-disease team is hunting. The claim is the vendor's and the paper has not been replicated. The access tier is the practical point for AUNZ institutions: a free API puts a cell-type model inside reach of a university lab with no compute budget.</p><div class="meta"><a class="source src" href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">Google DeepMind — AlphaGenome 2: Deciphering how cells read DNA to better understand disease</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported research; a paper is linked but not peer reviewed or independently replicated, and the performance comparison is DeepMind&#x27;s own)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported research</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-11</span></div></article>
+</div></section>
+<section id="theme-3" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>Microsoft backdoored an agent model by editing seven neurons</h3><p class="summary"><strong>Microsoft Research</strong> published a technique it calls Lazarus late on 10 November, US time. It turns a capable open-weight model into a backdoor by reprogramming fewer than ten rarely firing neurons. No retraining and no poisoned dataset are needed; write access to a model checkpoint is enough. The edited model behaves normally and passes standard evaluations. When a chosen trigger appears, it emits a command the agent executes with whatever permissions it already holds. Editing seven of more than 12,000 neurons in one eight-billion-parameter model produced the target command in at least 98.8 per cent of triggered sessions. Microsoft says it has seen no threat-actor use of the method.</p><p class="why">The attack cost is the story. Poisoning training data needs a fine-tune and a GPU budget; editing a checkpoint needs one compromised account or pipeline. That moves the threat from the model publisher to anyone in the distribution path, including a mirror, a quantiser or an inference host. Microsoft's own conclusion is that no scan can prove a model clean, and that diffing weights against the publisher's declared base model is the strongest signal available. For AUNZ organisations running open-weight models, that makes a signed hash of the deployed weights the control to hold, not a behavioural test.</p><div class="meta"><a class="source src" href="https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/" target="_blank" rel="noopener">Microsoft Research — Lazarus: Reprogramming dormant neurons to backdoor AI agents</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="reliability b-tier" title="Tier 1/4 — Primary (first-party research disclosure from Microsoft with the paper published; the per-model success rates are read here from secondary coverage, because the analysing body could not open the paper, and Microsoft states it has no evidence of use in the wild)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">first-party research disclosure from Microsoft…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-11</span></div></article>
+</div></section>
+<section id="theme-4" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Google put a cheaper Gemini 4 model into Search for everyone</h3><p class="summary"><strong>Google</strong> released Gemini 4 Hydrogen on 12 November. It sits below the frontier Carbon and Argon models as the fast, cheap member of the family. Google says it scores 51 on the Artificial Analysis Intelligence Index at its default thinking level, against 50 for Argon. It costs $1.50 per million input tokens and $7.50 per million output, flat across a one-million-token context. The company claims tasks finish 2.5 times faster than Gemini 3.8 Flash, with Terminal-Bench 4.1 rising from 18.2 to 57 per cent. The model shipped in the Gemini API, AI Studio, the Gemini app and paid Antigravity tiers, and in Search for all users worldwide.</p><p class="why">The flat price across a million-token context is the consequential line. Long-context work has been priced by the token, so an agent reading a whole repository or case file pays for the read every time. Flat pricing changes which of those workloads are economic. The benchmark comparisons are Google's own, run on suites its partners publish, so treat the ranking as a claim. The Search deployment is the part with reach: it puts a Gemini 4 model in front of users who never chose a model. That is also the part an Australian regulator would reach first, since the proposed digital duty of care is written to cover AI services as well as platforms.</p><div class="meta"><a class="source src" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">Google — Introducing Gemini 4 Hydrogen</a><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported: Google set the benchmarks, selected the comparison model and publishes the price; the index score is a third-party suite but the reading of it is Google&#x27;s)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported: Google set the benchmarks,…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-12</span></div></article>
+</div></section>
+<section id="theme-5" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>CDC refiled for a 1.4-gigawatt campus in western Sydney</h3><p class="summary"><strong>CDC</strong> filed a revised application with the New South Wales government this month for a data centre campus at Kemps Creek. The filing covers six two-storey buildings totalling 1.4 gigawatts, plus an on-site substation, on 117.5 hectares. It replaces an August application for a single 144-megawatt building. The company describes the new filing as the entire campus under one approval rather than a first stage. CDC operates or is building more than 600 megawatts across Sydney, Melbourne, Canberra and Auckland, including 70 megawatts in New Zealand. Its development pipeline runs to a further 1.6 gigawatts by 2034. The application sits on the NSW major projects portal.</p><p class="why">One campus at 1.4 gigawatts is more than twice everything the company has in operation and development across four cities. That is the scale now arriving at planning authorities one project at a time, which is the gap the NSW upper-house inquiry identified. The federal data centre expectations published this year would have a project this size underwrite new firm generation and pay its full connection cost. Whether the grid in that corridor can carry it is a question the application does not answer, and the answer will set the timetable for the AI capacity Australian buyers are being sold.</p><div class="meta"><a class="source src" href="https://www.datacenterdynamics.com/en/news/cdc-files-to-develop-14gw-data-center-campus-in-kemps-creek-australia/" target="_blank" rel="noopener">DatacenterDynamics — CDC files to develop 1.4GW data center campus in Kemps Creek, Australia</a><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 2/4 — High (trade press reporting a public NSW planning application, which is the primary artefact; the capacity figures are the applicant&#x27;s own and the project is unapproved)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">trade press reporting a public NSW planning…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-12</span></div></article>
+</div></section>
+<section id="theme-6" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-7" id="story-7"><div class="card-accent"></div><div class="story-number">7</div><h3>Nvidia's board removed Jensen Huang and installed the finance chief</h3><p class="summary"><strong>Nvidia's board</strong> announced on 12 November that Jensen Huang had resigned as president, chief executive and a director, effective immediately. Chief financial officer Colette Kress is interim chief executive. Former Synopsys chief executive Harvey Jones becomes the company's first board chair. The board met the previous night, after the New York Times reported a second extramarital affair, with an executive who reported to Huang. The first involved Alice Huang, a Chinese businesswoman US intelligence suspects of spying for Beijing. Nvidia shares fell as much as 12 per cent before closing down about 4.8 per cent. AMD and Broadcom each rose about 6 per cent. Huang, who holds a 3.61 per cent stake, also leaves the board.</p><p class="why">The company is the systemically important node of the AI buildout and it now has an interim finance chief running operations. Nvidia has spent two years recycling its cash into the labs and neoclouds that buy its chips, and the governance question is who signs those commitments before a permanent appointment. The second-order effect is policy. Huang argued for continued access to the Chinese market while Congress moved the other way, and the House Speaker says consensus is building to limit chip exports. AUNZ buyers of GPU capacity are exposed to both legs of that, the price of the hardware and the export rule that decides where it can go.</p><div class="meta"><a class="source src" href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" target="_blank" rel="noopener">NVIDIA — NVIDIA announces CEO transition</a><span class="axis i-critical"><span class="lb">Impact</span>Critical</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="reliability b-tier" title="Tier 1/4 — Primary (the company&#x27;s own press release and the resignation letter filed with the SEC; the circumstances behind the resignation come from press reporting of the board&#x27;s deliberations, which Nvidia does not address)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the company&#x27;s own press release and the…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-12</span></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">7 stories &middot; 6 themes &middot; 7 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Probable</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unreplicated preprint</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">6</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:16.7%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div><span class="bar-val">0</span></div>
+</div>
+<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead><tbody>
+<tr><td>Regulation &amp; obligation</td><td>2</td></tr>
+<tr><td>Research &amp; evidence</td><td>1</td></tr>
+<tr><td>AI security &amp; agentic risk</td><td>1</td></tr>
+<tr><td>Frontier models &amp; capability claims</td><td>1</td></tr>
+<tr><td>Infrastructure &amp; compute</td><td>1</td></tr>
+<tr><td>Market &amp; geopolitics</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-12.html"><span class="dl">← Older</span><span class="dd">12 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-13. Sources: Reuters (1), InnovationAus (1), Google DeepMind (1), Microsoft Research (1), Google (1), DatacenterDynamics (1), NVIDIA (1). Largest single source: Reuters — 1/7 (14%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 13 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
