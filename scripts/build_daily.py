@@ -197,37 +197,40 @@ def source_link(fields):
 
 
 def meta_strip(fields):
-    """Source on its own row, then one pill per axis, the tier, the gate and the date
-    on the second. The class hooks (src / date / b-tier / b-v|b-r|b-u / i-*) are what
-    the publish gate reads; do not rename them without changing the gate in the same
-    commit.
+    """Three fixed rows: source (with the date, right-aligned, on that row), the axis
+    pills, then the source tier and the verification gate.
 
-    Two rows, not one wrapping row: with a single flex line the source shared a line
-    with the axis pills on narrow cards and did not on wide ones, so two cards in one
-    edition disagreed about the layout.
+    The class hooks (src / date / b-tier / b-v|b-r|b-u / i-*) are what the publish gate
+    reads; do not rename them without changing the gate in the same commit.
+
+    Three rows rather than one wrapping row because wrapping is not deterministic: a
+    five-segment strip at card width dropped the date alone onto its own line on some
+    cards and not others, and two cards in one edition then disagreed about the
+    layout. Each row here has a bounded set of segments, so it holds at any width
+    above mobile.
     """
     d = dict(fields)
-    out = []
+    axes, tier = [], []
     for axis, label, prefix in AXIS_ORDER:
-        out.append(axis_pill(axis, label, prefix, d.get(axis, "")))
+        axes.append(axis_pill(axis, label, prefix, d.get(axis, "")))
     if d.get("Reliability"):
         grade, level, rationale = split_reliability(d["Reliability"])
         shown = f"Tier {grade} &middot; {level}" if level else f"Tier {grade}"
         qual = short_qualifier(rationale)
-        out.append(f'<span class="reliability b-tier" title="{_html.escape(d["Reliability"], quote=True)}">'
-                   f'<span class="tier-{grade[0]}">&#9679;</span> {shown}'
-                   + (f'<span class="q">{_html.escape(qual)}</span>' if qual else "") + "</span>")
+        tier.append(f'<span class="reliability b-tier" title="{_html.escape(d["Reliability"], quote=True)}">'
+                    f'<span class="tier-{grade[0]}">&#9679;</span> {shown}'
+                    + (f'<span class="q">{_html.escape(qual)}</span>' if qual else "") + "</span>")
     if d.get("Verification"):
         v = d["Verification"]
         cls, gate, glyph = VER_CLASS.get(v, ("v-unverified", "b-u", "?"))
-        out.append(f'<span class="verification {cls} {gate}"><span class="dot"></span> {v}</span>')
+        tier.append(f'<span class="verification {cls} {gate}"><span class="dot"></span> {v}</span>')
     if d.get("Shared"):
-        out.append(f'<span class="crossref"><span class="dot"></span> &#8596; '
-                   f'{_html.escape(d["Shared"])}</span>')
-    if d.get("Date"):
-        out.append(f'<span class="date">{_html.escape(d["Date"])}</span>')
-    return (f'<div class="mrow srcrow">{source_link(fields)}</div>'
-            f'<div class="mrow">{"".join(out)}</div>')
+        tier.append(f'<span class="crossref"><span class="dot"></span> &#8596; '
+                    f'{_html.escape(d["Shared"])}</span>')
+    date = (f'<span class="date">{_html.escape(d["Date"])}</span>' if d.get("Date") else "")
+    return (f'<div class="mrow srcrow">{source_link(fields)}{date}</div>'
+            f'<div class="mrow axisrow">{"".join(axes)}</div>'
+            f'<div class="mrow tierrow">{"".join(tier)}</div>')
 
 
 def build_edition(path, prev_next_html):
