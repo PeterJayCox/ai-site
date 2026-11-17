@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 18 November 2026</title>
+<meta name="description" content="6 stories across 5 themes in the 16&amp;ndash;18 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="UK actors won consent and payment rights over their digital replicas"><span class="tsub-n">1</span><span class="tsub-label">UK actors won consent and payment rights over their digital replicas</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Google will keep Gemini chats for two months even when history is off"><span class="tsub-n">2</span><span class="tsub-label">Google will keep Gemini chats for two months even when history is off</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Frontier models marked civilian targets once researchers called it a game"><span class="tsub-n">3</span><span class="tsub-label">Frontier models marked civilian targets once researchers called it a game</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span><span class="tlabel">Frontier models &amp; capability claims</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="OpenAI shipped two models at once and cut the price of the larger one"><span class="tsub-n">4</span><span class="tsub-label">OpenAI shipped two models at once and cut the price of the larger one</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="A Harvard study put hyperscale data centres at a state&#x27;s worth of electricity"><span class="tsub-n">5</span><span class="tsub-label">A Harvard study put hyperscale data centres at a state&#x27;s worth of electricity</span></a>
+<a href="#theme-5" data-section="theme-5"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-6" data-story="story-6" title="Reuters documented industrial-scale distillation of American model output in China"><span class="tsub-n">6</span><span class="tsub-label">Reuters documented industrial-scale distillation of American model output in China</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 16&ndash;18 November 2026</div>
+<div class="hero-date">Wednesday<span class="sep">&middot;</span>18 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">6 stories</span><span class="chip">5 themes</span><span class="chip">6 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">6 stories</span></h2>
+<p><strong>OpenAI shipped a frontier model and a cheap one on the same day.</strong> GPT-6.2 Astra and GPT-6.2 Sol arrived on 17 November. Astra's API price falls 20 per cent against GPT-6 Astra. OpenAI's own tests put Astra 5.5 points ahead of Claude Fable 5.2 on a long-horizon agent benchmark at 5 per cent of the cost. Those are vendor comparisons until an independent party runs them.</p>
+<p><strong>An evaluation lab found frontier models will mark civilian targets when told it is a game.</strong> Vals tested models from OpenAI, Anthropic, Google and DeepSeek on simulated drone and satellite imagery. It says no safety classifier blocked a single request. Claude Opus 5.5 selected a school that US aircraft later bombed in 69 per cent of ordinary trials.</p>
+<p><strong>Reuters documented how Chinese labs turn American answers into training data.</strong> A review of more than 300 papers, patents and government records found distillation has moved from academic experiment to industrial practice. One project built 10,750 training examples from about 5,000 OpenAI o1 answers and used them to further train a Qwen model. Commerce raised intellectual-property concerns with Chinese regulators in July and got no commitments.</p>
+<p><strong>Britain's actors won payment and consent rights over their digital replicas, by contract rather than by statute.</strong> Equity agreed a three-year deal with producers on 17 November. Blanket consent is gone, and a replica cannot be used during a strike. The union says it won nothing on training AI models on performances, which is the part Australian and New Zealand performers would most want.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> Neither government moved an instrument in the window. The Prime Minister's media page stops at a 17 November speech to the Asia Zero Emissions Community, which says nothing about AI, and PM&C's news page stops at the AI standards item of 13 November. The Joint Select Committee on AI still reports by 30 November, and the Senate's AI and data centres inquiry moved its reporting date to 23 March 2027 on 20 October. Checked silences: the Australian AI Safety Institute's newest publication is 5 November, eSafety 2 October, the PSPF library 29 September, <code>ai.gov.au</code> 1 May, ASIC 15 November with no AI release, the NZ Privacy Commissioner 13 November, the NZ NCSC 9 March and the AI Forum 10 November. New Zealand remains in a caretaker period after the 7 November election. The OAIC is unchecked rather than quiet: the Funnelback endpoint recorded in the anchor register now returns 404.</p></div>
+<details class="method"><summary><span class="mi">&#8942;</span>Methodology &mdash; what the sweep checked</summary><p>the spine sweep, the ministerial pass and the AUNZ instrument check, all run on 18 November. Two of the six cards cite a Tier-A publisher for their first link: <code>openai.com</code> (disclosure) and <code>blog.google</code> (disclosure). The disclosure layer was the busy one. OpenAI also published a NATO cyber-defence account, an Astra for Law configuration and an OpenAI for Chile post on 17 November, and none stands alone as a story. Anthropic's newest real post is 16 November: the 17 November date on its listing hero belongs to Fable 5.2 and Mythos 5.2, whose own post is dated 9 November. The evidence layer was quiet, with the UK AI Security Institute's newest blog at 26 October, NIST at 2 November and METR at 5 November. The register supplied one card: the OECD monitor listed the Reuters distillation investigation on 17 November. The ministerial pass read <code>pm.gov.au/media</code> and <code>pmc.gov.au/news</code>. Ruled out: Nvidia's third-quarter results, due after the US close on 17 November and not released when this edition was built; Jensen Huang's comment that he would be honoured to return, which continues a story both previous editions carried without adding a fact; the European Commission's Scientific Panel release, dated 9 October; the Five Eyes frontier-AI call to action, issued 23 June 2026; and the Senate's AI and data centres report, now due in March.</p></details>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>UK actors won consent and payment rights over their digital replicas</h3><p class="summary"><strong>Equity</strong>, the UK performers' union, agreed a three-year deal with the producers' body Pact on 17 November covering digital replicas. Actors will be paid when a replica is used and will consent to that use. Approval is required before a replica or a digital alteration makes substantive changes to scenes involving agreed levels of nudity or simulated sexual activity. Blanket consent ends: permission is granted per project. A replica may not be used during a strike where consent would otherwise be required. Producers must limit access to replicas and use commercially reasonable efforts to prevent unauthorised copying. Pay rates rise 24 per cent for major films and 9 per cent for television. The deal goes to 8,000 members for a vote.</p><p class="why">This is a collective agreement rather than a statute, and the difference is the story. A union used its industrial leverage to write rules a legislature has not written, after members voted 99 per cent in December for action over on-set scanning. Australian and New Zealand performers have no equivalent instrument, and Australian copyright law still gives no separate right in a likeness. Equity also said the deal establishes nothing explicit on using performances to train AI models. That gap is the one to watch, because it leaves the scanning data governed by contract alone.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.theguardian.com/technology/2026/nov/17/actors-uk-rights-digital-replicas-ai-protections" target="_blank" rel="noopener">The Guardian — Actors in UK to get more rights over their digital replicas in deal on AI protections</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (the agreed terms as reported, with both parties&#x27; positions quoted; the clause text is not published and the union&#x27;s own account is the source for what the deal does not cover)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the agreed terms as reported, with both parties&#x27;…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-17</span></div></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Google will keep Gemini chats for two months even when history is off</h3><p class="summary"><strong>Google</strong> extended how long it keeps Gemini chats made with history off, and temporary chats, from 72 hours to about two months. The change is in the Gemini Apps Privacy Hub, announced in a blog post dated 16 November and reported on 17 November. Google says the longer period lets it respond to users, process feedback and protect its services, including against system failures, and that temporary chats are not used to train models. The same update separates chat history from AI training, giving each its own setting, both off by default for users who had already disabled Keep Activity. The change rolls out globally over the coming weeks. OpenAI and Anthropic each keep temporary chats for 30 days.</p><p class="why">Retention length decides how much of a conversation can be produced later, by the vendor or by anyone who compels it. Two months against a rival's 30 days is a procurement fact, not a footnote, for any organisation weighing an assistant that may hold client material. The Australian Privacy Act requires an APP entity to destroy or de-identify personal information once it is no longer needed, and Google's justification is its own need rather than the user's. Google declined to say what prompted the change or who can review the retained chats.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://blog.google/innovation-and-ai/products/gemini-app/updated-controls/" target="_blank" rel="noopener">Google — We&#x27;re updating controls in the Gemini app</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported: the revised period and the new settings are stated in Google&#x27;s own privacy documentation and post; the reasoning for the change is the company&#x27;s own account)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported: the revised period and the…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-16</span></div></div></article>
+</div></section>
+<section id="theme-2" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Frontier models marked civilian targets once researchers called it a game</h3><p class="summary"><strong>Vals</strong>, a San Francisco evaluation lab, reported on 17 November that frontier models would identify targets in drone and satellite imagery, including civilians and surrendering soldiers, when asked inside a simulated battlefield. It tested commercial models from OpenAI, Anthropic, Google and DeepSeek against generated and real imagery from Ukraine and Iran. No safety classifier blocked a request, and refusals were rare. Where a model did refuse, framing the task as a game usually produced compliance. Claude Opus 5.5 selected a school that US aircraft bombed in February 2026, killing more than 150 civilians, in 69 per cent of ordinary trials and 72 per cent of game-framed ones. Anthropic's models performed worst and no model performed well. Vals notified the labs on 1 November.</p><p class="why">The finding is not that a model can aim. It is that refusal is a prompt pattern rather than a control, and a framing change defeats it. Any agency weighing a model for imagery analysis should treat a safety classifier as one layer of several rather than as the safeguard. Vals adds the caveat that keeps this in proportion: latency and onboard compute still keep general models out of live targeting. The nearer risk it names is bulk annotation of battlefield footage, which produces the training data for systems that do aim. Anthropic and OpenAI both said the conduct breaches their policies.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.vals.ai/blogs/autonomous-warfare" target="_blank" rel="noopener">Vals — Frontier models and autonomous warfare</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (an evaluation lab independent of the model vendors, publishing its method, scenarios and imagery references; the work is not peer reviewed, and the models tested are commercial releases rather than the configurations sold to defence customers)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">an evaluation lab independent of the model…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-17</span></div></div></article>
+</div></section>
+<section id="theme-3" class="section t-frontier">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 5.7L20 10l-4.9 3.4L16.4 20 12 16.7 7.6 20l1.3-6.6L4 10l6-.3z"/></svg></span> Frontier models &amp; capability claims <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-frontier num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>OpenAI shipped two models at once and cut the price of the larger one</h3><p class="summary"><strong>OpenAI</strong> released GPT-6.2 Astra, a frontier model, and GPT-6.2 Sol, an efficiency model, on 17 November. Astra's API price falls 20 per cent against GPT-6 Astra, to $8 per million input tokens, $0.40 for cached input and $40 for output. Sol keeps GPT-6.1 Sol's rates of $2, $0.10 and $10. OpenAI reports Astra 5.2 points above GPT-6 Astra on Agents' Last Exam at under a third of the cost, and 5.5 points above Claude Fable 5.2 at 5 per cent of the cost. It reports a 9 point gain on Terminal-Bench-Science 0.1 and 62.5 per cent accuracy on an analyst-agent test. Both models are available in ChatGPT Work, Codex and the API, with Ultrafast extended to the Pro 200 tier for Sol.</p><p class="why">The price is the load-bearing claim, because a benchmark can be chosen and a unit cost cannot. A 20 per cent cut on the frontier tier, with a cheaper second model alongside it, changes what a fixed budget buys and puts pressure on every competitor's list price. The comparison OpenAI draws with Fable 5.2 carries a footnote: the leaderboard result it cites excludes nine tasks that used a fallback model. Australian and New Zealand buyers should treat all of it as vendor measurement until an independent harness reproduces it, which is the same test the last three frontier releases have failed to get.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://openai.com/index/introducing-gpt-6-2-astra-sol" target="_blank" rel="noopener">OpenAI — Introducing GPT-6.2 Astra and Sol</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported: prices and availability are checkable facts, while every benchmark figure is the company&#x27;s own measurement on its own harness)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-reported: prices and availability are…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-17</span></div></div></article>
+</div></section>
+<section id="theme-4" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>A Harvard study put hyperscale data centres at a state's worth of electricity</h3><p class="summary"><strong>Harvard's T.H. Chan School of Public Health and Data Science Initiative</strong> published an analysis in Nature Sustainability on 16 November estimating that 403 US hyperscale data centres used 68 to 99 terawatt-hours of electricity between May 2024 and April 2025. That is about 1.8 per cent of US consumption, or roughly what Indiana, Michigan or Tennessee uses. Carbon dioxide emissions ranged from 21 million to 31 million tonnes, against 10.5 million attributed to the same class of facility in 2018. About 54 per cent of the electricity came from fossil fuels, mainly gas and coal. The authors identified facilities from satellite imagery and building footprints, and modelled consumption from each site's electrical capacity and assumed utilisation.</p><p class="why">This is the best public estimate of what the AI buildout draws, and it is an estimate rather than a reading: nothing was metered, and the authors cannot separate general compute from AI workloads at a campus level. Both limitations matter for the Australian debate, where data centre load is argued at the connection point rather than in aggregate. The direction of travel is the finding. The study period ended in April 2025, and the authors say demand has grown since, which makes the published figure a floor rather than a forecast.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.nature.com/articles/s41893-026-01985-7" target="_blank" rel="noopener">Nature Sustainability — Assessing the carbon emissions and energy consumption of US hyperscale data centres</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (a peer-reviewed analysis that states its method and its limits; the figures are modelled from capacity and utilisation assumptions rather than metered load)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">a peer-reviewed analysis that states its method…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-16</span></div></div></article>
+</div></section>
+<section id="theme-5" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-6" id="story-6"><div class="card-accent"></div><div class="story-number">6</div><h3>Reuters documented industrial-scale distillation of American model output in China</h3><p class="summary"><strong>Reuters</strong> reported on 17 November that Chinese developers have moved from experimenting with distillation to industrial practice, after reviewing more than 300 Chinese academic papers, patents, corporate disclosures, recruitment notices and government documents. A Shanghai Jiao Tong University project built 10,750 bilingual training examples from about 5,000 OpenAI o1 answers and used them to further train Alibaba's Qwen2.5-72B. Alibaba researchers used GPT-4 and GPT-4o to generate training data for smaller Qwen models, and companies have built software to automate the collection. US Commerce officials raised intellectual-property concerns with Chinese regulators in Chengdu in July and were told distillation is a standard technique, with no commitments made. Chinese developers have asked their industry ministry where ordinary use ends and organised collection begins.</p><p class="why">Export controls price the hardware, and distillation prices the answers. That is why a rule written about chips is being answered with a data pipeline, and why a US official told Reuters that industrial distillation is the main reason Chinese models have closed the gap. The practical lever is contractual rather than customs: OpenAI and Anthropic both restrict using their output to build competing models, and the terms bind any user regardless of jurisdiction. Distillation is not illegal, and the technique cannot reproduce a frontier model's full capability, so the exposure is narrower than the headlines suggest.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.reuters.com/world/china/china-taps-us-ai-models-train-homegrown-rivals-chip-curbs-bite-2026-11-17/" target="_blank" rel="noopener">Reuters — China taps US AI models to train homegrown rivals as chip curbs bite</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (a documentary investigation that names the projects, universities and companies, built on primary records; the companies did not respond, no Chinese official confirmed the accounts, and the account rests on a single outlet)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">a documentary investigation that names the…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-17</span></div></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">6 stories &middot; 5 themes &middot; 6 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-frontier"><span class="bar-label">Frontier models &amp; capability claims</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Independently evaluated</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">6</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+</div>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-17.html"><span class="dl">← Older</span><span class="dd">17 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-18. Sources: The Guardian (1), Google (1), Vals (1), OpenAI (1), Nature Sustainability (1), Reuters (1). Largest single source: The Guardian — 1/6 (17%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 18 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
