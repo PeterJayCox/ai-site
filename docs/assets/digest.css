@@ -177,7 +177,7 @@ details.method p:last-child{margin-bottom:16px}
       ones, so two cards in the same edition disagreed about the layout. The chrome
       also styles the source as a bordered pill, which at card width reads as a
       button — on this product the source is a readout line, so it goes quiet. */
-.story-card .meta{display:flex;flex-direction:column;gap:8px}
+.story-card .meta{display:flex;flex-direction:column;gap:8px;align-items:stretch}
 .story-card .meta .mrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 9px}
 .story-card .meta .source{background:none;border:0;border-radius:0;padding:0;
   display:inline-flex;align-items:baseline;gap:6px;line-height:1.5;
