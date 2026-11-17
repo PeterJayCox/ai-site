@@ -38,20 +38,70 @@ a.edlink.dis{visibility:hidden}
    any page without a rail opts out and gets a single column */
 .wrap.single{display:block}
 .wrap.single .main{width:auto}
-.list{display:grid;gap:10px;padding:6px 0 40px}
-a.edrow{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:15px 17px;
+
+/* the archive: what is IN an edition, not just that it exists */
+.edfilters{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 4px}
+#edq{flex:1 1 250px;min-width:190px;background:var(--surface);border:1px solid var(--border);
+  border-radius:9px;padding:9px 13px;color:var(--text);font-family:inherit;font-size:13px;
+  transition:border-color .15s,box-shadow .15s}
+#edq:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+#edq::placeholder{color:var(--text-dim)}
+.edtabs{display:flex;flex-wrap:wrap;gap:6px}
+.edtab{display:inline-flex;align-items:center;gap:6px;background:var(--surface);
+  border:1px solid var(--border);border-radius:999px;padding:6px 12px;color:var(--text-muted);
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.02em;
+  cursor:pointer;transition:color .15s,border-color .15s,background .15s}
+.edtab:hover{color:var(--text);border-color:var(--border-light)}
+.edtab.on{color:var(--accent);border-color:var(--accent);background:var(--accent-bg)}
+.edtab .dk{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.edtab .dk.t-frontier{background:var(--t-frontier)}
+.edtab .dk.t-reg{background:var(--t-reg)}
+.edtab .dk.t-res{background:var(--t-res)}
+.edtab .dk.t-sec{background:var(--t-sec)}
+.edtab .dk.t-inf{background:var(--t-inf)}
+.edtab .dk.t-mkt{background:var(--t-mkt)}
+.edshown{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim)}
+.edmonth{margin:26px 0 0}
+.edmonth h2{display:flex;align-items:baseline;gap:12px;font-size:1.05rem;font-weight:600;
+  color:var(--text);border-bottom:1px solid var(--border);padding-bottom:9px;margin-bottom:12px}
+.edmonth h2 span{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+  color:var(--text-dim);letter-spacing:.02em}
+.edgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+a.edcard{display:flex;gap:13px;text-decoration:none;color:var(--text);background:var(--surface);
+  border:1px solid var(--border);border-radius:11px;padding:13px 15px;
   transition:border-color .18s,background .18s}
-a.edrow:hover{border-color:var(--accent);background:var(--surface2);text-decoration:none}
-.eddate{font-size:15.5px;font-weight:600}
-.edmeta{font-size:12px;color:var(--text-muted)}
-.edar{margin-left:auto;color:var(--accent);font-size:16px}
-.ed-tl{display:flex;align-items:flex-end;gap:6px;padding:4px 2px 0;margin-top:20px;overflow-x:auto;
+a.edcard:hover{border-color:var(--accent);background:var(--surface2);text-decoration:none}
+a.edcard[hidden]{display:none}
+.edc-date{flex:0 0 44px;display:flex;flex-direction:column;align-items:center;
+  border-right:1px solid var(--border);padding:2px 11px 0 0;align-self:stretch}
+.edc-date b{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;line-height:1}
+.edc-date em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:10px;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-top:3px}
+.edc-date i{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:var(--text-dim);margin-top:1px}
+.edc-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:7px}
+.edc-lead{font-size:13.5px;font-weight:600;line-height:1.42;color:var(--text)}
+.edc-chips{display:flex;flex-wrap:wrap;gap:5px}
+.edchip{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);
+  background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 6px}
+.edchip i{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+.edchip b{font-weight:700;color:var(--text-dim);font-variant-numeric:tabular-nums}
+.edc-tot{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text-dim);
+  letter-spacing:.03em;align-self:center;padding-left:2px}
+.edchip.t-frontier i{background:var(--t-frontier)}
+.edchip.t-reg i{background:var(--t-reg)}
+.edchip.t-res i{background:var(--t-res)}
+.edchip.t-sec i{background:var(--t-sec)}
+.edchip.t-inf i{background:var(--t-inf)}
+.edchip.t-mkt i{background:var(--t-mkt)}
+.edempty{color:var(--text-muted);font-size:13px;padding:22px 0}
+.ed-tl{display:flex;align-items:flex-end;gap:4px;padding:4px 2px 0;margin-top:20px;overflow-x:auto;
   scrollbar-width:none}
 .ed-tl::-webkit-scrollbar{display:none}
 a.tl{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:5px;
-  text-decoration:none;min-width:26px}
-.tlbar{width:20px;background:rgba(139,122,230,.45);border-radius:4px 4px 0 0;display:block;
+  text-decoration:none;min-width:19px}
+.tlbar{width:13px;background:rgba(139,122,230,.45);border-radius:4px 4px 0 0;display:block;
   transition:background .18s}
 a.tl:hover .tlbar{background:var(--accent)}
 a.tl .tld{font-size:10px;color:var(--text-dim);font-variant-numeric:tabular-nums}
@@ -100,6 +150,51 @@ ul.editorial li .blurb{display:block;margin-top:4px}
   border-radius:10px;padding:16px 18px}
 .note-box p{margin:0;color:var(--text-muted);font-size:14px;line-height:1.7}
 .note-box p strong{color:var(--text);font-weight:600}
+
+/* The register sweep is audit trail, not the reader's first paragraph. It renders
+   collapsed at the foot of the executive summary: present, one click away, and no
+   longer 250 words of semicolon chain between the summary and the first card. */
+details.method{margin:18px 0 0;border:1px solid var(--border);border-radius:10px;
+  background:var(--surface2);overflow:hidden}
+details.method>summary{cursor:pointer;list-style:none;padding:11px 15px;display:flex;
+  align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;
+  font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);
+  transition:color .15s}
+details.method>summary::-webkit-details-marker{display:none}
+details.method>summary:hover{color:var(--text)}
+details.method>summary .mi{color:var(--accent);font-size:14px;line-height:1}
+details.method[open]>summary{border-bottom:1px solid var(--border);color:var(--text)}
+details.method p{margin:14px 16px;font-size:12.5px;line-height:1.72;color:var(--text-muted)}
+details.method p:last-child{margin-bottom:16px}
+
+/* ── craft fixes to the copied chrome ───────────────────────────────────── */
+/* 1. rail story links clipped mid-word with no ellipsis ("Washington put the
+      licence on the" — the rest silently gone). Clamp to two lines with one. */
+#toc a.tsub .tsub-label{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;max-height:none}
+/* 2. the meta readout is two rows, not one wrapping row. With a single flex line the
+      source shared a line with the axis pills on narrow cards and did not on wide
+      ones, so two cards in the same edition disagreed about the layout. The chrome
+      also styles the source as a bordered pill, which at card width reads as a
+      button — on this product the source is a readout line, so it goes quiet. */
+.story-card .meta{display:flex;flex-direction:column;gap:8px}
+.story-card .meta .mrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 9px}
+.story-card .meta .source{background:none;border:0;border-radius:0;padding:0;
+  display:inline-flex;align-items:baseline;gap:6px;line-height:1.5;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted)}
+.story-card .meta .source::before{content:"\2197";color:var(--accent);font-size:10px}
+.story-card .meta .source:hover{color:var(--text);border-color:transparent;
+  background:none;text-decoration:underline}
+/* 3. story numbers: the chrome colours 1-3 pink / violet / amber by position, which
+      reads as severity on a page where colour means Impact and nothing else. It
+      also centres the digit in a tall card, where it floats beside nothing; pin it
+      to the headline's first line instead. */
+.story-card.num-1 .story-number,.story-card.num-2 .story-number,
+.story-card.num-3 .story-number{color:var(--text-dim)}
+.story-card .story-number{align-items:flex-start;justify-content:center;padding-top:21px}
+/* 4. coverage labels wrapped at the chrome's 130px ("AI security & agentic /
+      risk"), which pushed the bars out of alignment row to row. */
+.bar-row .bar-label{width:186px;font-size:11.5px;line-height:1.3}
 
 /* The card's reading paragraph. A `Why it matters:` field renders here, set apart
    from the news above it by a keyline rather than by a second colour; a card

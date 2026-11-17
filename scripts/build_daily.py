@@ -67,6 +67,10 @@ VER_CLASS = {"Verified": ("v-verified", "b-v", "✓"),
              "Unverified": ("v-unverified", "b-u", "?")}
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
+# short labels for the archive chips and the filter tabs: the six theme names are
+# too long for a chip, and the filter vocabulary has to match the chip vocabulary
+THEME_SHORT = {"frontier": "Frontier", "reg": "Regulation", "res": "Research",
+               "sec": "Security", "inf": "Infrastructure", "mkt": "Market"}
 DAYNAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
@@ -193,12 +197,17 @@ def source_link(fields):
 
 
 def meta_strip(fields):
-    """Source, then one pill per axis, the tier, the gate and the date — one line,
-    hairline-separated, colour used once. The class hooks (src / date / b-tier /
-    b-v|b-r|b-u / i-*) are what the publish gate reads; do not rename them without
-    changing the gate in the same commit."""
+    """Source on its own row, then one pill per axis, the tier, the gate and the date
+    on the second. The class hooks (src / date / b-tier / b-v|b-r|b-u / i-*) are what
+    the publish gate reads; do not rename them without changing the gate in the same
+    commit.
+
+    Two rows, not one wrapping row: with a single flex line the source shared a line
+    with the axis pills on narrow cards and did not on wide ones, so two cards in one
+    edition disagreed about the layout.
+    """
     d = dict(fields)
-    out = [source_link(fields)]
+    out = []
     for axis, label, prefix in AXIS_ORDER:
         out.append(axis_pill(axis, label, prefix, d.get(axis, "")))
     if d.get("Reliability"):
@@ -217,7 +226,8 @@ def meta_strip(fields):
                    f'{_html.escape(d["Shared"])}</span>')
     if d.get("Date"):
         out.append(f'<span class="date">{_html.escape(d["Date"])}</span>')
-    return "".join(out)
+    return (f'<div class="mrow srcrow">{source_link(fields)}</div>'
+            f'<div class="mrow">{"".join(out)}</div>')
 
 
 def build_edition(path, prev_next_html):
@@ -272,11 +282,21 @@ def build_edition(path, prev_next_html):
     ex = [f'<section id="exec" class="exec-summary">',
           f'<h2><span class="icon">{EXEC_ICON}</span> Executive Summary '
           f'<span class="count">{n_stories} stories</span></h2>']
+    # The register sweep is audit trail, not the reader's first paragraph: an
+    # `**Anchors checked:**` block runs 200-300 words and used to sit between the
+    # summary and the first card. It stays in the page, one click away.
+    method = []
     for kind, txt in exec_blocks:
         if kind == "au":
             ex.append(f'<div class="au-context-box"><p>{inline(txt)}</p></div>')
+        elif re.match(r"^\*\*Anchors checked:\*\*", txt.strip()):
+            method.append(re.sub(r"^\*\*Anchors checked:\*\*\s*", "", txt.strip()))
         else:
             ex.append(f"<p>{inline(txt)}</p>")
+    if method:
+        ex.append('<details class="method"><summary><span class="mi">&#8942;</span>'
+                  'Methodology &mdash; what the sweep checked</summary>'
+                  + "".join(f"<p>{inline(t)}</p>" for t in method) + "</details>")
     ex.append("</section>")
 
     # ── themes, cards numbered and the TOC built in the same pass
@@ -337,13 +357,13 @@ def build_edition(path, prev_next_html):
     gate_rows = []
     for name in ("Verified", "Reported", "Unverified"):
         c = gate.get(name, 0)
+        # a zero renders as an empty track, never as a 4px stub: the fill's
+        # min-width exists so a 1-in-12 value stays visible, and it turns 0 into
+        # a bar that reads as a count it does not have
+        fill = (f'<div class="bar-fill" style="width:{c/gmax*100:.1f}%"></div>' if c else "")
         gate_rows.append(f'<div class="bar-row mono"><span class="bar-label">{name}</span>'
-                         f'<div class="bar-track"><div class="bar-fill" '
-                         f'style="width:{c/gmax*100:.1f}%"></div></div>'
+                         f'<div class="bar-track">{fill}</div>'
                          f'<span class="bar-val">{c}</span></div>')
-    tax_rows = []
-    for label, c in counts:
-        tax_rows.append(f'<tr><td>{_html.escape(label)}</td><td>{c}</td></tr>')
 
     an = [f'<section id="analytics" class="section">',
           f'<h2><span class="icon">{ANALYTICS_ICON}</span> Coverage this edition '
@@ -358,8 +378,6 @@ def build_edition(path, prev_next_html):
           'Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>',
           "</div>",
           '<div class="bar-chart"><h3>Verification gate</h3>', *gate_rows, "</div>",
-          '<table class="data-table"><thead><tr><th>Theme (taxonomy)</th><th>Stories</th></tr></thead>'
-          "<tbody>", *tax_rows, "</tbody></table>",
           "</section>"]
     if not gate.get("Unverified"):
         an.append("")
@@ -397,7 +415,17 @@ def build_edition(path, prev_next_html):
                .replace("@@ANALYTICS@@", "\n".join(an))
                .replace("@@LEGEND@@", legend_section())
                .replace("@@FOOTER@@", footer))
-    return d, page, n_stories, len(themes), desc
+    # metadata for the editions index, computed in this same pass — the archive
+    # shows a lead headline and theme chips per edition, and neither may be
+    # re-derived by scraping the page it just rendered
+    lead = ""
+    if themes and themes[0]["stories"]:
+        lead = _html.unescape(re.sub(r"<[^>]+>", "", inline(themes[0]["stories"][0]["headline"])))
+    meta = {"lead": lead,
+            "themes": [(THEME_META.get(t["label"], ("", "mkt"))[1], t["label"], len(t["stories"]))
+                       for t in themes],
+            "sources": len(urls)}
+    return d, page, n_stories, len(themes), desc, meta
 
 
 def legend_section():
@@ -501,15 +529,20 @@ def prev_next(older, newer):
 
 
 def timeline(asc):
+    """Sparkline of stories per edition. Only the first bar and each month's first
+    bar carry a label: forty consecutive day numbers under 13px bars is noise, and
+    the archive below is grouped by month anyway."""
     mx = max([ns for _, ns, _, _ in asc] + [1])
-    cols = []
-    for d, ns, nt, _ in asc:
+    cols, last_month = [], None
+    for i, (d, ns, nt, _) in enumerate(asc):
         h = 5 + round(ns / mx * 33)
+        label = MONTHS[d.month - 1][:3] if (i == 0 or d.month != last_month) else ""
+        last_month = d.month
         cols.append(f'<a class="tl" href="{d.isoformat()}.html" '
-                    f'title="{d.day} {MONTHS[d.month-1]} {d.year} \u2014 {ns} '
+                    f'title="{d.day} {MONTHS[d.month-1]} {d.year} &#8212; {ns} '
                     f'{"story" if ns == 1 else "stories"}, {nt} themes">'
                     f'<span class="tlbar" style="height:{h}px"></span>'
-                    f'<span class="tld">{d.day}</span></a>')
+                    f'<span class="tld">{label}</span></a>')
     return "".join(cols)
 
 
@@ -567,7 +600,7 @@ INDEX_TPL = """<!DOCTYPE html>
 <meta name="description" content="Every AI Digest edition, newest first.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <script>
 @@THEME_SCRIPT@@
 </script>
@@ -597,12 +630,58 @@ INDEX_TPL = """<!DOCTYPE html>
 <p class="ed-tlcap">Stories per edition, oldest to newest.</p>
 </header>
 <main id="main" class="main">
-<div class="list">
-@@ROWS@@
+<div class="edfilters">
+  <input id="edq" type="search" placeholder="Search editions &mdash; headline or theme" aria-label="Search editions" autocomplete="off">
+  <div class="edtabs" role="group" aria-label="Filter by theme">
+    <button class="edtab on" data-k="" aria-pressed="true">All</button>
+    <button class="edtab" data-k="frontier" aria-pressed="false"><i class="dk t-frontier"></i>Frontier</button>
+    <button class="edtab" data-k="reg" aria-pressed="false"><i class="dk t-reg"></i>Regulation</button>
+    <button class="edtab" data-k="sec" aria-pressed="false"><i class="dk t-sec"></i>Security</button>
+    <button class="edtab" data-k="res" aria-pressed="false"><i class="dk t-res"></i>Research</button>
+    <button class="edtab" data-k="inf" aria-pressed="false"><i class="dk t-inf"></i>Infrastructure</button>
+    <button class="edtab" data-k="mkt" aria-pressed="false"><i class="dk t-mkt"></i>Market</button>
+  </div>
+  <span class="edshown" id="edshown"></span>
 </div>
+@@ROWS@@
+<p class="edempty" id="edempty" hidden>No edition in the archive matches that.</p>
 </main>
 <footer class="footer"><div class="links"><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
 </div>
+<script>
+/* Filter the archive client-side. Every card is server-rendered and visible with
+   JS off; this only hides. Cards carry data-themes (theme keys) and data-q
+   (lowercased date + headline + theme names), so one input covers both axes. */
+(function(){
+  var q = document.getElementById('edq'), tabs = [].slice.call(document.querySelectorAll('.edtab'));
+  var cards = [].slice.call(document.querySelectorAll('.edcard'));
+  var months = [].slice.call(document.querySelectorAll('.edmonth'));
+  var shown = document.getElementById('edshown'), empty = document.getElementById('edempty');
+  var key = '';
+  function apply(){
+    var words = (q.value || '').toLowerCase().split(/\s+/).filter(Boolean), n = 0;
+    cards.forEach(function(c){
+      var ok = (!key || (' ' + c.dataset.themes + ' ').indexOf(' ' + key + ' ') > -1)
+            && words.every(function(w){ return c.dataset.q.indexOf(w) > -1; });
+      c.hidden = !ok; if (ok) n++;
+    });
+    months.forEach(function(m){
+      m.hidden = !m.querySelector('.edcard:not([hidden])');
+    });
+    shown.textContent = n + (n === 1 ? ' edition' : ' editions');
+    empty.hidden = n > 0;
+  }
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){
+      key = b.dataset.k;
+      tabs.forEach(function(x){ x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+      apply();
+    });
+  });
+  q.addEventListener('input', apply);
+  apply();
+})();
+</script>
 </body>
 </html>
 """
@@ -657,6 +736,48 @@ def _url_block(loc, lastmod):
     return (f'<url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>\n')
 
 
+def archive_sections(built, metas):
+    """The editions index: month groups of cards.
+
+    The index used to be a list of dates and counts, which gave a reader no reason
+    to open one edition rather than another. Each card now carries the edition's own
+    lead headline and its theme chips, and both come from the same parse that built
+    the page — never scraped back out of the rendered HTML.
+    """
+    groups = collections.OrderedDict()
+    for d, ns, nt, _ in built:
+        groups.setdefault((d.year, d.month), []).append((d, ns, nt))
+    out = []
+    for (y, m), rows in groups.items():
+        stories = sum(r[1] for r in rows)
+        out.append(f'<section class="edmonth"><h2>{MONTHS[m - 1]} {y}'
+                   f'<span>{len(rows)} {"edition" if len(rows) == 1 else "editions"} '
+                   f'&middot; {stories} {"story" if stories == 1 else "stories"}</span></h2>'
+                   f'<div class="edgrid">')
+        for d, ns, nt in rows:
+            meta = metas.get(d.isoformat(), {"lead": "", "themes": [], "sources": 0})
+            keys = " ".join(k for k, _, _ in meta["themes"])
+            chips = "".join(
+                f'<span class="edchip t-{k}" title="{_html.escape(label, quote=True)}: {c} '
+                f'{"story" if c == 1 else "stories"}"><i></i>{THEME_SHORT.get(k, label)}</span>'
+                for k, label, c in meta["themes"])
+            lead = meta["lead"] or f"{d.day} {MONTHS[m - 1]} {d.year}"
+            q = " ".join([f"{d.day} {MONTHS[m - 1]} {d.year}", meta["lead"],
+                          " ".join(lbl for _, lbl, _ in meta["themes"])]).lower()
+            out.append(
+                f'<a class="edcard" href="{d.isoformat()}.html" data-themes="{keys}" '
+                f'data-q="{_html.escape(q, quote=True)}">'
+                f'<span class="edc-date"><b>{d.day}</b><em>{MONTHS[m - 1][:3]}</em>'
+                f'<i>{DAYNAMES[d.weekday()][:3]}</i></span>'
+                f'<span class="edc-body"><span class="edc-lead">'
+                f'{_html.escape(lead, quote=True)}</span>'
+                f'<span class="edc-chips">{chips}'
+                f'<span class="edc-tot">{ns} {"story" if ns == 1 else "stories"} '
+                f'&middot; {nt} {"theme" if nt == 1 else "themes"}</span></span></span></a>')
+        out.append("</div></section>")
+    return "\n".join(out)
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     # the chrome is copied into docs/ by the build, so the published stylesheet can
@@ -673,7 +794,7 @@ def main():
     dates = [d for d, *_ in prepared]
 
     built, newest_page = [], ""
-    for i, (d, page, ns, nt, desc) in enumerate(prepared):
+    for i, (d, page, ns, nt, desc, meta) in enumerate(prepared):
         older = dates[i + 1] if i + 1 < len(dates) else None
         newer = dates[i - 1] if i > 0 else None
         page = page.replace("@@PREVNEXT@@", prev_next(older, newer))
@@ -684,12 +805,8 @@ def main():
         built.append((d, ns, nt, os.path.getsize(dst)))
         print(f"  {d.isoformat()}.html  {ns} stories / {nt} themes  {os.path.getsize(dst):,} bytes")
 
-    items = []
-    for d, ns, nt, _ in built:
-        items.append(f'<a class="edrow" href="{d.isoformat()}.html">'
-                     f'<span class="eddate">{d.day} {MONTHS[d.month-1]} {d.year}</span>'
-                     f'<span class="edmeta">{ns} stories &middot; {nt} themes</span>'
-                     f'<span class="edar">&#8594;</span></a>')
+    metas = {d.isoformat(): m for d, _, _, _, _, m in prepared}
+    items = [archive_sections(built, metas)]
     newest = built[0][0]
     idx = (INDEX_TPL.replace("@@ROWS@@", "\n".join(items))
                     .replace("@@TIMELINE@@", timeline(list(reversed(built))))
