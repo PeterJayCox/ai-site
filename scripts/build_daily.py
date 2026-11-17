@@ -227,8 +227,9 @@ def meta_strip(fields):
     if d.get("Shared"):
         tier.append(f'<span class="crossref"><span class="dot"></span> &#8596; '
                     f'{_html.escape(d["Shared"])}</span>')
-    date = (f'<span class="date">{_html.escape(d["Date"])}</span>' if d.get("Date") else "")
-    return (f'<div class="mrow srcrow">{source_link(fields)}{date}</div>'
+    if d.get("Date"):
+        tier.append(f'<span class="date">{_html.escape(d["Date"])}</span>')
+    return (f'<div class="mrow srcrow">{source_link(fields)}</div>'
             f'<div class="mrow axisrow">{"".join(axes)}</div>'
             f'<div class="mrow tierrow">{"".join(tier)}</div>')
 
