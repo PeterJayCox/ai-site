@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 21 November 2026</title>
+<meta name="description" content="5 stories across 4 themes in the 18&amp;ndash;21 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<h3>AI Digest</h3>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Anthropic&#x27;s record debut did not lift the AI trade"><span class="tsub-n">1</span><span class="tsub-label">Anthropic&#x27;s record debut did not lift the AI trade</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Congress published the chip licences, and military-linked buyers are on the list"><span class="tsub-n">2</span><span class="tsub-label">Congress published the chip licences, and military-linked buyers are on the list</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Nearly 600 submissions on Anthropic&#x27;s Queensland data centre, two in support"><span class="tsub-n">3</span><span class="tsub-label">Nearly 600 submissions on Anthropic&#x27;s Queensland data centre, two in support</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="OpenAI&#x27;s usage rules now cover whoever resells its models"><span class="tsub-n">4</span><span class="tsub-label">OpenAI&#x27;s usage rules now cover whoever resells its models</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Meta&#x27;s own staff watched Muse read their Signal messages"><span class="tsub-n">5</span><span class="tsub-label">Meta&#x27;s own staff watched Muse read their Signal messages</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 72-hour window &middot; 18&ndash;21 November 2026</div>
+<div class="hero-date">Saturday<span class="sep">&middot;</span>21 November 2026</div>
+<h1>AI Digest</h1>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">5 stories</span><span class="chip">4 themes</span><span class="chip">5 sources</span><span class="chip">72-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">5 stories</span></h2>
+<p><strong>Anthropic's record listing did not steady the AI trade, and the second day gave most of it back.</strong> The stock closed its first session at $97.17, up 17 per cent from the $83 offer. On the same day the Dow fell 1,102 points and closed below 50,000 for the first time since June. By Friday in New York the shares were around $86, three dollars above the price the company sold them for. The Nasdaq was heading for its worst week since April 2025.</p>
+<p><strong>A data centre built around Anthropic drew 595 objections from almost 600 submissions.</strong> The Western Downs Digital Park near Kogan in Queensland would carry 1.44 gigawatts. Two submitters supported it. That is the country's first real social-licence test for a frontier AI facility, and it is being decided by a local council rather than by the AI Standards.</p>
+<p><strong>OpenAI's rewritten usage rules took effect, and they reach the resale layer.</strong> Any service giving third parties direct access to OpenAI models now needs OpenAI's prior review and approval. The change was published on 21 October and applies from 20 November. No application route has been published.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The government's AI money moved this week, quietly. Senator Tim Ayres announced $81 million across 30 Cooperative Research Centre projects on 20 November, including $20 million earmarked for AI under the AI Accelerator initiative in the National AI Plan. The recipients are concrete: an AI tool for cattle breeding, satellites turned into space-weather sensors, AI-designed modular housing. It is funding, not regulation, and no instrument commenced in the window. The Joint Select Committee on AI still reports by 30 November. Checked and quiet on this run's sweep: the Australian AI Safety Institute (5 November), eSafety (2 October), the PSPF publications library (29 September), ai.gov.au (1 May), ASIC (no AI release), the NZ Privacy Commissioner (13 November), the NZ NCSC (9 March) and the AI Forum of New Zealand (10 November). New Zealand remains in a caretaker period after the 7 November election.</p></div>
+<details class="method"><summary><span class="mi">&#8942;</span>Methodology &mdash; what the sweep checked</summary><p>the spine sweep, the ministerial pass and the AUNZ instrument check, all run on 21 November. Two of five cards lead with a Tier-A publisher: <code>anthropic.com</code> and <code>openai.com</code>, both disclosure. The OAIC's search endpoint returned a bot block rather than results, so its silence is a gap this run, not a finding. The register layer added nothing: the AI Incident Database's newest entries are the 18 November cluster, and the OECD monitor's newest is 19 November. The evidence layer was quiet, with METR at 5 November, the UK AI Security Institute at 26 October and NIST at 2 November. The ministerial pass read <code>pm.gov.au/media</code>, whose newest item is a 20 November Shenzhen transcript with no AI content, and the industry portfolio index at <code>minister.industry.gov.au/t-ayres/media</code>, which is working again — the register's <code>ayres</code> path without the initial is the one that 404s. Ruled out: the Rapid Review into the OpenAI agent's Medicare portal breach, whose coverage ran on 20 November but whose release was 10 November; Mistral 3, which search surfaces as this week's launch but dates to December 2025; Google's agentic threat tracker of 17 November; and the four-lab robots.txt training opt-out standard, announced 30 October.</p></details>
+</section>
+<section id="theme-1" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Anthropic's record debut did not lift the AI trade</h3><p class="summary"><strong>Anthropic</strong> closed its first session at $97.17 on 19 November, up 17 per cent from the $83 offer. It had opened at $111.50 and briefly implied a valuation above $2 trillion. The same session the Dow fell 1,102.71 points, or 2.20 per cent, to 49,095.46. The S&P 500 and Nasdaq each lost more than 2 per cent. On Friday the shares slid about 11 per cent to roughly $86, three dollars above the offer. The company's closing release on 20 November put the final deal at 1.127 billion shares, including the full underwriters' option, for about $93.5 billion gross. A $26 billion private placement to seven chip and cloud firms closed at the same price.</p><p class="why">The listing was meant to answer whether public money would fund a frontier lab. It answered narrowly yes, and the surrounding market said something else. The week's selling priced infrastructure spending and borrowing costs, not demand for models, which is why the largest IPO on record could not lift its own sector. For Australian and New Zealand buyers the change is leverage. A supplier that reports to shareholders each quarter has less room to absorb a customer's regulatory risk, and price discipline usually follows a falling share price.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.anthropic.com/news/ipo-close" target="_blank" rel="noopener">Anthropic — Anthropic announces closing of initial public offering</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (the company&#x27;s own closing release carries the final share count, the greenshoe and the private placement; closing prices and index moves are market data reported across outlets, and the Friday percentage moved through the session)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">the company&#x27;s own closing release carries the…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-20</span></div></div></article>
+<article class="story-card t-mkt num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Congress published the chip licences, and military-linked buyers are on the list</h3><p class="summary">The House Foreign Affairs Committee released export licence records on 19 November showing Chinese buyers requested 3.4 million Nvidia and AMD AI chips, and that the Commerce Department approved 879,868 across 21 applications as of 11 May. The covered parts are Nvidia's H200 and AMD's MI325X. Applications sought 948,950 chips for Alibaba and its subsidiaries; 75,000 were approved. Tencent got 150,000, Baidu 43,000 and BYD 4,000, all on the Pentagon's 1260H list of Chinese military companies. Chairman <strong>Brian Mast</strong> named two firms in the applications as suspected smuggling fronts. Nvidia said the approvals carried strict conditions and limited volumes.</p><p class="why">A licence is not a shipment, and the committee released the first numbers that separate the two. The distinction matters for Australian and New Zealand planning, because H200-class allocation is what decides whether a facility here is built on current or previous-generation silicon. It also puts a figure on an enforcement gap that export-control debates have argued about in the abstract: 3.4 million requested, 879,868 approved, and no published count of what arrived. Mast released the records under the Export Control Reform Act.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://foreignaffairs.house.gov/news/press-releases/chairman-brian-mast-exercises-legislative-authority-to-publicly-release-ai-chip-license-information-for-china" target="_blank" rel="noopener">House Foreign Affairs Committee — Chairman Brian Mast exercises legislative authority to publicly release AI chip license information for China</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (a congressional committee publishing licence records obtained under statutory authority; the figures are administrative data, but how many approvals became deliveries is not disclosed, and the committee is a partisan actor releasing material against the administration)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">a congressional committee publishing licence…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-19</span></div></div></article>
+</div></section>
+<section id="theme-2" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Nearly 600 submissions on Anthropic's Queensland data centre, two in support</h3><p class="summary">Of nearly 600 public submissions on the proposed Western Downs Digital Park, two supported the project, one was neutral and 595 opposed it or asked for a delay, according to a filing lodged for developer <strong>Zerra DC</strong>. The project sits on farmland near Kogan, about 250 km west of Brisbane, and would carry a computing load of 1.44 gigawatts, among the largest in the country. About a third of submitters lived within 200 km. Objections cited water use, electricity demand and prices, noise, road damage from construction traffic and pressure on housing. Before Anthropic was named as tenant on 15 September, the project had drawn five objections in a month.</p><p class="why">A local planning file has become the country's first social-licence test for a frontier AI facility, and it is being run by a council rather than by the AI Standards. The objection list is the constraint list for every Australian buildout: power, water, roads, housing. Zerra says it will expand community engagement and report the changes the public demanded, which sets a precedent other developers will be measured against. Anthropic's first Australian facility now depends on a consent process it does not control.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.afr.com/technology/anthropic-s-queensland-data-centre-overwhelmingly-opposed-by-residents-20261120-p61g31" target="_blank" rel="noopener">Australian Financial Review — Anthropic&#x27;s Queensland data centre overwhelmingly opposed by residents</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (the submission counts come from the developer&#x27;s own filing and were reported independently by Reuters and the Financial Review; the filing is the developer&#x27;s characterisation of the objections, and the council&#x27;s decision is pending)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">the submission counts come from the developer&#x27;s…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-20</span></div></div></article>
+</div></section>
+<section id="theme-3" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>OpenAI's usage rules now cover whoever resells its models</h3><p class="summary"><strong>OpenAI</strong>'s revised Usage Policies took effect on 20 November, a month after they were published on 21 October. A new section, "Providing access to our models", requires any model-access intermediary to obtain OpenAI's prior review and approval. OpenAI's accompanying post names model routers and AI gateways as the target, and carves out applications that only use its models to power their own features. Another new section bars using OpenAI models or outputs to build training data, rubrics or preference signals for substitute models. The high-stakes automation ban now covers actions and submissions, not only decisions. OpenAI has published no application route.</p><p class="why">This is a contract of adhesion, not a statute, and it reaches a layer most enterprises do not own. If you buy OpenAI capacity through an aggregator, the supplier's approval status becomes part of your supply-chain risk, and the policy gives you no way to check it. Anthropic's equivalent rule, effective 12 November, is stricter: it requires prior authorisation to train any model on outputs, not only competing ones. Australian and New Zealand teams that route prompts through a gateway should ask for written confirmation and keep the answer on file.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://openai.com/policies/usage-policies" target="_blank" rel="noopener">OpenAI — Usage policies</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-commenced"><span class="lb">Oblig.</span>Commenced</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-interested: the policy text and its effective date are published in full, but the requirement&#x27;s reach, its criteria and its enforcement are described only by OpenAI, and no approval process is published)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary<span class="q">vendor, self-interested: the policy text and its…</span></span><span class="verification v-verified b-v"><span class="dot"></span> Verified</span><span class="date">2026-11-20</span></div></div></article>
+</div></section>
+<section id="theme-4" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Meta's own staff watched Muse read their Signal messages</h3><p class="summary"><strong>Meta</strong> staff reported its AI agent making connections they had not asked for, in more than two dozen internal posts reviewed by Reuters. The posts span mid-September to November. Many come from a feedback group where staff flag problems to the team building Muse. Staff described replies to requests they never made, balances from accounts that were not theirs, and a reference to a message received on the encrypted app Signal. One post about fishing weather ended with two bank balances and the line, "I'm afraid it's sending other's bank info to me." Reuters worked with Signal staff and the AI Now Institute to replicate the access, and said the behaviour appeared ongoing. Meta called the cases isolated incidents and said many were hallucinations.</p><p class="why">The permission model is the finding, not the invention. An agent with standing access to a phone's notifications reads everything the user can read, including apps built to keep others out. Meta's defence, that it made the messages up, is its own argument against the product: a fabricated balance in a stranger's chat is still a stranger's chat. Reuters could not establish whether the balances were real, so treat the cross-account question as open. Any organisation letting staff run consumer agents on devices that also hold work mail should test exactly this.</p><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.reuters.com/investigations/meta-bets-big-muse-ai-agent-early-safety-mishaps-surface-2026-11-18/" target="_blank" rel="noopener">Reuters — As Meta bets big on Muse AI agent, early safety mishaps surface</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (Reuters reviewed internal posts and replicated the Signal access with Signal staff and an outside institute; Meta disputes the characterisation, the account-mix-ups are unproven, and no user outside Meta is identified)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High<span class="q">Reuters reviewed internal posts and replicated the…</span></span><span class="verification v-reported b-r"><span class="dot"></span> Reported</span><span class="date">2026-11-18</span></div></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">5 stories &middot; 4 themes &middot; 5 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+</div>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-20.html"><span class="dl">← Older</span><span class="dd">20 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-21. Sources: Anthropic (1), House Foreign Affairs Committee (1), Australian Financial Review (1), OpenAI (1), Reuters (1). Largest single source: Anthropic — 1/5 (20%). Within the 40% threshold.</div><div class="note">Window: 72 hours to 21 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
