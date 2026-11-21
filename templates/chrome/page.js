@@ -55,7 +55,7 @@ if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
 });
 });
 }
-function setView(m){
+function setView(m,remember){
 document.body.classList.toggle('exec-view',m==='exec');
 document.getElementById('btn-full').classList.toggle('active',m==='full');
 document.getElementById('btn-exec').classList.toggle('active',m==='exec');
@@ -65,7 +65,11 @@ c.setAttribute('role',interactive?'button':null);
 c.setAttribute('tabindex',interactive?'0':null);
 c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
 });
+/* The choice used to reset on every page load, so a reader who wanted the
+   brief view made the same click on every edition they opened. */
+if(remember!==false){try{localStorage.setItem('aidigest:view',m);}catch(e){}}
 }
+try{if(localStorage.getItem('aidigest:view')==='exec')setView('exec',false);}catch(e){}
 document.addEventListener('keydown',function(e){
 if(e.key==='Escape') setView('full');
 });

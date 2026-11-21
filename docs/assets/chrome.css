@@ -30,7 +30,7 @@ html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
 /* Layout */
 .wrap{max-width:1100px;margin:auto;padding:0 28px 60px;display:flex;gap:32px;position:relative;z-index:1}
 #toc{position:sticky;top:80px;width:210px;flex-shrink:0;height:fit-content;max-height:calc(100vh - 100px);overflow-y:auto;padding:18px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;font-size:12px;transition:background .25s,border .25s}
-#toc h3{color:var(--accent);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+#toc .toc-title{color:var(--accent);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
 /* Rail collapse toggle — mobile only (hidden here, shown in the <=860px query
    where the rail goes position:static and would otherwise sit between the
    reader and the digest). */
@@ -62,7 +62,7 @@ html[data-theme-mode="light"] .theme-toggle .tt-light{display:inline}
 .hero .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--kicker-color);margin-bottom:14px;padding:5px 16px;border-radius:6px;display:inline-block;background:var(--kicker-bg);border:1px solid var(--kicker-border)}
 .hero-date{font-family:'JetBrains Mono',monospace;font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;background:linear-gradient(120deg,var(--text) 55%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
 .hero-date .sep{margin:0 12px;opacity:.45;font-weight:400}
-.hero h1{font-size:.95rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.hero .hero-brand{font-size:.95rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
 .hero .subtitle{color:var(--text-secondary);font-size:13.5px;margin-bottom:18px}
 .hero-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:5px 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text-secondary);font-family:'JetBrains Mono',monospace}
@@ -527,8 +527,24 @@ body.exec-view .story-card.expanded{padding-left:50px}
 #toc.toc-collapsed .toc-chev{transform:rotate(-90deg)}
 #toc.toc-collapsed #toc-list{display:none}
 #toc.toc-collapsed{padding-bottom:12px}
-#toc.toc-collapsed h3{margin-bottom:8px}.pie-container{flex-direction:column;align-items:center;gap:16px}.stats-row{gap:8px}.analytics-grid{grid-template-columns:1fr}}
-@media(max-width:620px){.navlinks a span.t{display:none}.hero{padding:32px 18px 24px}.story-card{padding-left:50px}}
+#toc.toc-collapsed .toc-title{margin-bottom:8px}.pie-container{flex-direction:column;align-items:center;gap:16px}.stats-row{gap:8px}.analytics-grid{grid-template-columns:1fr}}
+@media(max-width:620px){
+/* The nav used to hide every label here and leave five 24px unlabelled links
+   rendering as an empty grey pill: on a phone the whole site nav (Editions,
+   About, Hub, Cyber, Intel) was invisible and had no accessible name, because
+   display:none removes the text from the a11y tree too. Keep the labels and
+   give the row its own line instead. */
+.topnav .inner{flex-wrap:wrap;height:auto;padding:8px 16px;row-gap:0}
+.navlinks{order:3;width:100%;margin-left:0;justify-content:flex-start;flex-wrap:wrap;gap:0;padding-bottom:2px}
+.navlinks a{padding:5px 9px;font-size:12px}
+.navlinks a span.t{display:inline}
+.theme-toggle{margin-left:auto}
+.hero{padding:32px 18px 24px}
+/* the 58px number gutter costs a fifth of the measure on a phone; the story
+   number is a navigational aid the contents bar above already carries */
+.story-card{padding:16px 16px 18px}
+.story-number{display:none}
+}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}}
 @media print{body{background:#fff!important;color:#111!important;font-size:11pt}body::before:before,.orb{display:none}#toc{display:none}.wrap{display:block;max-width:100%;padding:0}.main{width:100%}.exec-summary p,.story-card p.summary,.bar-chart,.au-context-box p,.bundle-box ul li{color:#333!important}.exec-summary,.story-card,.bar-chart,.pie-container{break-inside:avoid}.exec-toggle{display:none!important}.exec-preview{display:none!important}.exec-body{display:block!important}.exec-thread,.exec-note{break-inside:avoid;background:#fff!important;border-color:#ddd!important}[hidden]{display:none!important}@page{margin:2cm 2.5cm;@bottom-right{content:counter(page)" / "counter(pages);font-size:9pt;color:#999}}}
 /* ===== CVE SEVERITY PILLS =====

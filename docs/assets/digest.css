@@ -21,6 +21,11 @@
       shrinking and the card's overflow:hidden would clip it mid-word. ─────── */
 .reliability{white-space:normal}
 .reliability .q{color:var(--text-dim);font-size:10.5px;margin-left:5px}
+/* the tier's rationale is a whole line, not a fragment: it used to ride inside the
+   tier segment and every card in the edition clipped it mid-phrase */
+.story-card .meta .qualrow{display:block}
+.story-card .meta .qualrow .q{display:block;font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;line-height:1.5;color:var(--text-dim);margin:0;letter-spacing:.01em}
 
 /* ── previous / next edition ─────────────────────────────────────────────── */
 .ednav{display:flex;gap:12px;margin:26px 0 0}
@@ -196,15 +201,105 @@ details.method p:last-child{margin-bottom:16px}
       risk"), which pushed the bars out of alignment row to row. */
 .bar-row .bar-label{width:186px;font-size:11.5px;line-height:1.3}
 
-/* The card's reading paragraph. A `Why it matters:` field renders here, set apart
-   from the news above it by a keyline rather than by a second colour; a card
-   without the field renders exactly as before. Emitted by build_daily.py. */
-.story-card p.why{color:var(--text-secondary);font-size:13px;line-height:1.68;
-  margin:-4px 0 12px;padding-left:12px;border-left:2px solid var(--accent)}
+/* The card's reading paragraph. The `Why it matters:` field is interpretation,
+   not news, and used to render as an unlabelled ruled block — which read as
+   "more of the summary". It is named now, so a reader can tell the news above
+   it from the judgement below it. Emitted by build_daily.py as
+   .whybox > .whylab + p.why. */
+.whybox{margin:-4px 0 12px;padding-left:12px;border-left:2px solid var(--accent)}
+.whybox .whylab{display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:3px}
+.story-card p.why{color:var(--text-secondary);font-size:13.5px;line-height:1.66;margin:0}
 .story-card p.why strong{color:var(--text);font-weight:600}
+/* the card body carried a 13px measure of 68-81 characters at desktop width,
+   and 30 on a phone. 14px pulls the desktop measure to ~63-75. */
+.story-card p.summary{font-size:14px}
+/* Measured, not guessed: at the card's own 716px width the summary ran to ~107
+   characters per line even at 14px — the eye loses its place on returns. The
+   text block is capped at a 68ch measure (~530px); the badges stay full width
+   because they are a readout, not prose. */
+.story-card p.summary,.whybox{max-width:60ch}
 
 #latest{margin:6px 0 18px}
 #latest li{margin-bottom:10px;font-size:14px;color:var(--text-secondary);line-height:1.6}
 #latest li b a{color:var(--text);font-weight:600;text-decoration:none}
 #latest li a{color:var(--accent);text-decoration:none}
 #latest li a:hover{text-decoration:underline}
+
+/* ══ review fixes (UX pass, 20 Nov 2026) ════════════════════════════════════ */
+
+/* ── contrast ─────────────────────────────────────────────────────────────────
+   The shared dim token failed WCAG AA in both themes for every role that uses
+   it: the tier qualifier and the card date (12px/11px at 3.73-3.78:1), the rail's
+   story labels (11px) and the footer (3.95:1). Measured on --surface. These two
+   values put each of those over 4.5:1 without changing the palette's character.
+   Re-declared here rather than in chrome.css so a chrome re-copy cannot quietly
+   undo it. */
+:root{--text-dim:#75859b}                 /* was #64748b — 3.73:1 -> 4.72:1 */
+[data-theme="light"]{--text-dim:#6b6b6b}  /* was #808080 — 3.78:1 -> 5.1:1  */
+
+/* ── one hue, one meaning ─────────────────────────────────────────────────────
+   The chrome colours the tier dot and the verification chip with the same green
+   / amber / red it uses for Impact severity, so on a single card amber meant
+   Elevated, Tier 2 and Reported at once — while the legend promises "colour on
+   this page means impact severity and nothing else". Tier and verification go
+   monochrome and carry a glyph; the words ("Tier 2/4 · High", "Reported") were
+   always there, so nothing is lost but the collision. */
+.story-card .meta .reliability .tier-1,.story-card .meta .reliability .tier-2,
+.story-card .meta .reliability .tier-3,.story-card .meta .reliability .tier-4,
+.legend-group .reliability .tier-1,.legend-group .reliability .tier-2,
+.legend-group .reliability .tier-3,.legend-group .reliability .tier-4{
+  color:var(--text-muted)}
+.data-table .tier-1,.data-table .tier-2,.data-table .tier-3,.data-table .tier-4{
+  background:var(--surface2);color:var(--text-muted)}
+.story-card .meta .verification,.legend-group .verification{
+  color:var(--text-secondary)!important;background:var(--surface2)!important;
+  border-color:var(--border-light)!important}
+.story-card .meta .verification .vmark,.legend-group .verification .vmark{
+  font-weight:700;color:var(--text);min-width:9px;text-align:center;
+  font-variant-numeric:tabular-nums}
+.story-card .meta .verification .dot,.legend-group .verification .dot{
+  background:var(--text-muted)}
+
+/* ── executive view: the brief, not the commentary ────────────────────────────
+   The chrome hides p.summary and .meta and leaves p.why visible, so the "brief"
+   view showed the interpretation and hid the news, the source, the tier, the
+   verification and the date — an opinion the reader could not check, and one
+   they could not hand to anyone else. Keep the news and the evidence apparatus;
+   drop the analysis, and let a card expand to reveal it. */
+body.exec-view .story-card .whybox{display:none!important}
+body.exec-view .story-card p.summary{display:block!important;font-size:13.5px}
+body.exec-view .story-card .meta{display:flex!important}
+body.exec-view .story-card.expanded .whybox{display:block!important}
+body.exec-view .story-card .story-number{display:none!important}
+body.exec-view .story-card,
+body.exec-view .story-card.expanded{padding-left:18px}
+/* the chrome's label described a mechanic ("Click to expand") rather than the
+   thing being revealed; the number gutter is empty here, so it is reclaimed.
+   Literal glyphs, not \25B8: a hex escape swallows the space after it. */
+body.exec-view .story-card::after{content:'▸ Show why it matters';
+  color:var(--text-muted);opacity:.9}
+body.exec-view .story-card:hover::after{opacity:1}
+body.exec-view .story-card.expanded::after{content:'▾ Hide why it matters'}
+
+/* ── editions index ──────────────────────────────────────────────────────────
+   The totals line sat inside the wrapping chip row, so it landed at a different
+   height on every card whose themes wrapped to two lines (measured 629 / 639 /
+   648px across one row). It is a card footer now, pinned to the bottom of an
+   equal-height grid row. */
+.edc-tot{margin-top:auto;align-self:flex-start;padding-top:2px}
+/* 19px-wide bars were under the 24px touch-target minimum */
+a.tl{min-width:24px}
+
+/* ── the landing hero's primary action ───────────────────────────────────────
+   The first-run page had no call to action above the fold: "Read the full
+   edition →" sat under a 500px hero and a whole story card. */
+.hero-cta{display:flex;justify-content:center;margin:2px 0 16px}
+a.cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);
+  color:#12131c;font-size:14px;font-weight:600;padding:11px 22px;border-radius:9px;
+  text-decoration:none;transition:filter .15s,transform .15s}
+[data-theme="light"] a.cta-primary{color:#fff}
+a.cta-primary:hover{filter:brightness(1.08);transform:translateY(-1px);
+  text-decoration:none}
+a.cta-primary:focus-visible{outline:2px solid var(--text);outline-offset:2px}

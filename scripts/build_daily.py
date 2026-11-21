@@ -156,13 +156,30 @@ def split_reliability(v):
     return m.group(1).replace(" ", "").replace("Tier", ""), m.group(2).strip(), (m.group(3) or "").strip()
 
 
-def short_qualifier(rationale, limit=52):
+def short_qualifier(rationale, limit=104, floor=30):
+    """A short, readable descriptor for the card's tier strip.
+
+    It used to be a hard 52-character cut at a word boundary, which clipped the
+    rationale mid-phrase and left a trailing ellipsis on all five cards of an
+    edition ("Reuters, three people familiar with internal…"). Splitting on any
+    period also cut at the dot inside a domain name, so a rationale naming
+    pm.gov.au was truncated to "...published in full by pm". The strip now cuts
+    at a whole phrase boundary, so what a reader sees is a complete descriptor;
+    the full sentence stays in the segment's `title`.
+    """
     if not rationale:
         return ""
-    first = re.split(r"[;.]", rationale)[0].strip()
-    if len(first) > limit:
-        first = first[:limit - 1].rsplit(" ", 1)[0] + "\u2026"
-    return first
+    first = re.split(r";\s+|\.\s+", rationale)[0].strip()
+    if len(first) <= limit:
+        return first.rstrip(" ,;:")
+    head = first[:limit]
+    # rsplit returns the whole string when the separator is absent, so check for
+    # the comma explicitly — otherwise a 96-character cut is accepted as if it
+    # were a phrase boundary and renders without an ellipsis
+    cut = head.rsplit(", ", 1)[0].strip() if ", " in head else ""
+    if len(cut) >= floor:
+        return cut.rstrip(" ,;:")
+    return first[:limit].rsplit(" ", 1)[0].rstrip(" ,;:") + "\u2026"
 
 
 def slug(v):
@@ -197,20 +214,22 @@ def source_link(fields):
 
 
 def meta_strip(fields):
-    """Three fixed rows: source (with the date, right-aligned, on that row), the axis
-    pills, then the source tier and the verification gate.
+    """Four fixed rows: the source, the axis pills, the tier and the verification
+    gate with the date, then the tier's rationale on its own line.
 
     The class hooks (src / date / b-tier / b-v|b-r|b-u / i-*) are what the publish gate
     reads; do not rename them without changing the gate in the same commit.
 
-    Three rows rather than one wrapping row because wrapping is not deterministic: a
-    five-segment strip at card width dropped the date alone onto its own line on some
-    cards and not others, and two cards in one edition then disagreed about the
-    layout. Each row here has a bounded set of segments, so it holds at any width
-    above mobile.
+    Fixed rows rather than one wrapping row because wrapping is not deterministic:
+    a five-segment strip at card width dropped the date alone onto its own line on
+    some cards and not others, and two cards in one edition then disagreed about the
+    layout. The tier rationale used to ride inside the tier segment as a truncated
+    fragment, which is why it clipped mid-phrase on every card — it has its own line
+    now, at full width, and is not truncated at all.
     """
     d = dict(fields)
     axes, tier = [], []
+    qual = ""
     for axis, label, prefix in AXIS_ORDER:
         axes.append(axis_pill(axis, label, prefix, d.get(axis, "")))
     if d.get("Reliability"):
@@ -218,12 +237,12 @@ def meta_strip(fields):
         shown = f"Tier {grade} &middot; {level}" if level else f"Tier {grade}"
         qual = short_qualifier(rationale)
         tier.append(f'<span class="reliability b-tier" title="{_html.escape(d["Reliability"], quote=True)}">'
-                    f'<span class="tier-{grade[0]}">&#9679;</span> {shown}'
-                    + (f'<span class="q">{_html.escape(qual)}</span>' if qual else "") + "</span>")
+                    f'<span class="tier-{grade[0]}">&#9679;</span> {shown}</span>')
     if d.get("Verification"):
         v = d["Verification"]
         cls, gate, glyph = VER_CLASS.get(v, ("v-unverified", "b-u", "?"))
-        tier.append(f'<span class="verification {cls} {gate}"><span class="dot"></span> {v}</span>')
+        tier.append(f'<span class="verification {cls} {gate}">'
+                    f'<span class="vmark" aria-hidden="true">{glyph}</span> {v}</span>')
     if d.get("Shared"):
         tier.append(f'<span class="crossref"><span class="dot"></span> &#8596; '
                     f'{_html.escape(d["Shared"])}</span>')
@@ -231,7 +250,9 @@ def meta_strip(fields):
         tier.append(f'<span class="date">{_html.escape(d["Date"])}</span>')
     return (f'<div class="mrow srcrow">{source_link(fields)}</div>'
             f'<div class="mrow axisrow">{"".join(axes)}</div>'
-            f'<div class="mrow tierrow">{"".join(tier)}</div>')
+            f'<div class="mrow tierrow">{"".join(tier)}</div>'
+            + (f'<div class="mrow qualrow"><span class="q">{_html.escape(qual)}</span></div>'
+               if qual else ""))
 
 
 def build_edition(path, prev_next_html):
@@ -327,7 +348,8 @@ def build_edition(path, prev_next_html):
                       f'<div class="story-number">{n}</div>'
                       f'<h3>{inline(s["headline"])}</h3>'
                       f'<p class="summary">{inline(f.get("Summary", ""))}</p>'
-                      + (f'<p class="why">{inline(f["Why it matters"])}</p>'
+                      + (f'<div class="whybox"><span class="whylab">Why it matters</span>'
+                         f'<p class="why">{inline(f["Why it matters"])}</p></div>'
                          if f.get("Why it matters") else "")
                       + f'<div class="meta">{meta_strip(s["fields"])}</div></article>')
             import html as _h
@@ -511,6 +533,7 @@ HOME = os.path.join(ROOT, "docs", "index.html")
 LATEST_START, LATEST_END = "<!-- LATEST:START -->", "<!-- LATEST:END -->"
 KICKER_START, KICKER_END = "<!-- KICKER:START -->", "<!-- KICKER:END -->"
 LEAD_START, LEAD_END = "<!-- LEAD:START -->", "<!-- LEAD:END -->"
+CTA_START, CTA_END = "<!-- CTA:START -->", "<!-- CTA:END -->"
 HOME_ROWS = 4
 
 
@@ -550,6 +573,20 @@ def timeline(asc):
     return "".join(cols)
 
 
+def timeline_caption(asc):
+    """Say what the bars measure. The sparkline had no axis and no values, so it
+    read as decoration: forty bars and two month labels, with the numbers only
+    available on hover. State the range in the caption instead."""
+    if not asc:
+        return "Stories per edition, oldest to newest."
+    hi = max(asc, key=lambda r: r[1])
+    lo = min(asc, key=lambda r: r[1])
+    def lbl(r):
+        return f"{r[0].day} {MONTHS[r[0].month - 1]} {r[0].year}"
+    return (f"Stories per edition, oldest to newest &mdash; bar height is the story count. "
+            f"Tallest: {hi[1]} on {lbl(hi)}. Smallest: {lo[1]} on {lbl(lo)}.")
+
+
 def home_blurb(path):
     m = re.search(r"\*\*Top stories\.\*\*\s*(.+)", open(path, encoding="utf-8").read())
     if not m:
@@ -581,6 +618,9 @@ def update_homepage(built, newest_page=""):
     regions = ((LATEST_START, LATEST_END, "\n" + "\n".join(rows) + "\n"),
                (KICKER_START, KICKER_END,
                 f"Latest edition &middot; {newest.day} {MONTHS[newest.month - 1]} {newest.year}"),
+               (CTA_START, CTA_END,
+                f'\n<a class="cta-primary" href="/daily/{newest.isoformat()}.html">'
+                f'Read the latest edition <span aria-hidden="true">&rarr;</span></a>\n'),
                (LEAD_START, LEAD_END,
                 "\n<div class=\"leadwrap\">" + lead_card(newest_page)
                 + f'<a class="leadmore" href="/daily/{newest.isoformat()}.html">'
@@ -627,11 +667,11 @@ INDEX_TPL = """<!DOCTYPE html>
 <header class="hero" id="top">
 <div class="hero-grid"></div>
 <div class="kicker">@@N@@</div>
-<div class="hero-date">Editions</div>
-<h1>AI Digest</h1>
+<h1 class="hero-date">Editions</h1>
+<p class="hero-brand">AI Digest</p>
 <p class="subtitle">Every edition, newest first. A daily read on artificial intelligence, with an Australian and New Zealand lens. Latest: @@NEWEST@@.</p>
 <div class="ed-tl">@@TIMELINE@@</div>
-<p class="ed-tlcap">Stories per edition, oldest to newest.</p>
+<p class="ed-tlcap">@@TL_CAP@@</p>
 </header>
 <main id="main" class="main">
 <div class="edfilters">
@@ -775,9 +815,9 @@ def archive_sections(built, metas):
                 f'<i>{DAYNAMES[d.weekday()][:3]}</i></span>'
                 f'<span class="edc-body"><span class="edc-lead">'
                 f'{_html.escape(lead, quote=True)}</span>'
-                f'<span class="edc-chips">{chips}'
+                f'<span class="edc-chips">{chips}</span>'
                 f'<span class="edc-tot">{ns} {"story" if ns == 1 else "stories"} '
-                f'&middot; {nt} {"theme" if nt == 1 else "themes"}</span></span></span></a>')
+                f'&middot; {nt} {"theme" if nt == 1 else "themes"}</span></span></a>')
         out.append("</div></section>")
     return "\n".join(out)
 
@@ -814,6 +854,7 @@ def main():
     newest = built[0][0]
     idx = (INDEX_TPL.replace("@@ROWS@@", "\n".join(items))
                     .replace("@@TIMELINE@@", timeline(list(reversed(built))))
+                    .replace("@@TL_CAP@@", timeline_caption(list(reversed(built))))
                     .replace("@@N@@", f"{len(built)} edition" + ("" if len(built) == 1 else "s"))
                     .replace("@@NEWEST@@", f"{newest.day} {MONTHS[newest.month-1]} {newest.year}")
                     .replace("@@THEME_SCRIPT@@",
