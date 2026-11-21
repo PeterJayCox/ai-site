@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 22 November 2026</title>
+<meta name="description" content="5 stories across 3 themes in the 20&amp;ndash;22 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<div class="toc-title" aria-hidden="true">AI Digest</div>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Australia and China agreed to open an AI dialogue"><span class="tsub-n">1</span><span class="tsub-label">Australia and China agreed to open an AI dialogue</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">3</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="An AI framework found a zero-day on its own and used it twice"><span class="tsub-n">2</span><span class="tsub-label">An AI framework found a zero-day on its own and used it twice</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Bell Canada says an &quot;agentic&quot; attacker took enterprise data"><span class="tsub-n">3</span><span class="tsub-label">Bell Canada says an &quot;agentic&quot; attacker took enterprise data</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="OpenAI closed the door on its own reasoning traces"><span class="tsub-n">4</span><span class="tsub-label">OpenAI closed the door on its own reasoning traces</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="A cheap adapter squeezed 16 points out of a 27-billion model"><span class="tsub-n">5</span><span class="tsub-label">A cheap adapter squeezed 16 points out of a 27-billion model</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 20&ndash;22 November 2026</div>
+<h1 class="hero-date">Sunday<span class="sep">&middot;</span>22 November 2026</h1>
+<p class="hero-brand">AI Digest</p>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">5 stories</span><span class="chip">3 themes</span><span class="chip">5 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">5 stories</span></h2>
+<p><strong>An autonomous attack tool found and used a genuine zero-day flaw, and no human chose each step.</strong> Amazon's threat-intelligence team published the case on 20 November. Operators pointed the open-source framework Cairn at universities in East Asia. The agents ran for 16 hours without a break and worked through their own failed attempts. One of them found a path-traversal flaw in an open-source medical-imaging application.</p>
+<p><strong>Bell Canada named the same class of attacker in a breach notice the same day.</strong> The carrier told enterprise customers that an "agentic threat actor" reached a pre-production Maximo system on 17 November. OpenAI, also on 20 November, published the defensive side of the problem. It cut the rate at which attackers recovered its models' protected reasoning from 54 per cent to 0.2 per cent between two model generations.</p>
+<p><strong>Australia and China agreed to open an AI dialogue, in a joint statement released on 21 November.</strong> The commitment sits in paragraph eight of the leaders' joint outcomes from Beijing. Neither government published a scope, a participant list or a first meeting. It is Australia's first formal government-to-government channel on AI safety with its largest trading partner.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's only Australian instrument-layer movement was that dialogue commitment, made at the Annual Leaders' Meeting in Beijing on 20 November and published the next day. No Australian instrument commenced, was tabled or was released. The Joint Select Committee on AI still reports by 30 November. The Government's AI Standards legislation remains slated for early 2027. Checked and quiet on this run's sweep: the Australian AI Safety Institute (5 November), eSafety (2 October), the PSPF publications library (29 September), ai.gov.au (1 May), ASIC (16 November, no AI release), the Australian Parliament's Joint Select Committee page (12 October), the NZ Privacy Commissioner (13 November), the NZ NCSC (9 March) and the AI Forum of New Zealand (10 November). New Zealand remains in a caretaker period after the 7 November election.</p></div>
+<details class="method"><summary><span class="mi">&#8942;</span>Methodology &mdash; what the sweep checked</summary><p>the spine sweep, the ministerial pass and the AUNZ instrument check, all run on 22 November. Three of five cards lead with a Tier-A publisher: <code>openai.com</code>, <code>aws.amazon.com</code> and <code>huggingface.co</code>, all disclosure. The register layer added nothing in the window: the AI Incident Database's newest entries are 21 November storm-related transport items, and the OECD monitor's newest is 20 November. The evidence layer was quiet, with METR at 5 November, the UK AI Security Institute at 26 October and NIST at 2 November. The ministerial pass read <code>pm.gov.au/media</code>, whose newest two items are the 21 November China joint-outcomes statement and a 20 November Shenzhen press conference, and the industry portfolio index at <code>minister.industry.gov.au/t-ayres/media</code>, whose newest release is the 20 November $81 million research announcement already carded on 21 November. Ruled out: Anthropic's Fable and Mythos 5.2, promoted in the newsroom hero slot at "November 21" but dated 9 November in its own article list and on the post itself; the UK CMA's Meta terms investigation, opened 30 October; Senator Warner's AI legislative package, 21 July; OVHcloud's 55 AI and cloud launches, announced 19 November; the San Francisco Declaration, signed 15 November; Nvidia's earnings, 17 November; and OpenAI's MedChemBench, a 20 November vendor benchmark whose scores are the company's own single-attempt runs.</p></details>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Australia and China agreed to open an AI dialogue</h3><p class="summary">The commitment is one line, paragraph eight of the Australia–China Statement on Joint Outcomes. It reads: "The two sides agreed on the establishment of an AI dialogue, to exchange respective views on AI safety, governance and application." The <strong>Prime Minister</strong> published the statement on Saturday 21 November. It followed the Annual Leaders' Meeting that Li Qiang and Anthony Albanese convened in Beijing on 20 November. Paragraph six also welcomes the APEC leaders' statement from Shenzhen, including its outcomes on the digital economy and artificial intelligence. Neither government published terms of reference, a participant list, an agenda or a date for a first meeting.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">A dialogue is a channel, not a rule, and it commits neither side to anything enforceable. Its value is that it exists before Australia's AI Standards legislation reaches Parliament in 2027. Australian and New Zealand firms that build or buy AI from Chinese platforms now have a government channel through which to raise a safety question, which previously meant a regulator with no counterpart. Watch the second meeting, not the first: a dialogue that produces no published readout is a photograph opportunity.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.pm.gov.au/media/statement-joint-outcomes-australia-china-annual-leaders-meeting-0" target="_blank" rel="noopener">Prime Minister of Australia — Statement on Joint Outcomes of the Australia-China Annual Leaders&#x27; Meeting</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (the Prime Minister&#x27;s own published statement; the commitment is quoted verbatim, while its scope and operation are undetermined by the text itself)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-21</span></div><div class="mrow qualrow"><span class="q">the Prime Minister&#x27;s own published statement</span></div></div></article>
+</div></section>
+<section id="theme-2" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">3 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>An AI framework found a zero-day on its own and used it twice</h3><p class="summary"><strong>Amazon's</strong> threat-intelligence team reported that Chinese-speaking operators pointed Cairn, an open-source autonomous AI penetration-testing framework, at universities in East Asia. The team found a publicly accessible server hosting an instance of the tool and could read its full operational history. Prompts were written in Simplified Chinese and timestamps were set to China Standard Time. Given only IP addresses and the goal of obtaining shell access, the agents planned, executed and adjusted their approach without the operator choosing each step. One attempt ran 148 actions over 16 hours. The one success was a path-traversal flaw in an open-source medical-imaging application with no advisory and no fix.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">Two things are new, and neither is the model. The first is autonomy: the agents worked through 30,000 credential combinations against 80 real user names and a failed Log4Shell attempt without a human deciding what to try next. The second is that the vulnerable software was itself an AI application in a clinical setting. Amazon assesses the flaw was a genuine zero-day, and the maintainers have patched it. An agent that goes from an address to a shell in minutes works faster than a security operations centre triages an alert, which is the sentence Australian and New Zealand hospital and university network owners should read twice.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/" target="_blank" rel="noopener">Amazon — Chinese-nexus actors&#x27; Cairn AI agents found a zero-day on their own</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span><span class="axis d-material"><span class="lb">Cap.</span>Material</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (the cloud provider&#x27;s own threat-intelligence unit, writing from an instance&#x27;s captured history; Amazon does not name the universities, the country or the attackers, and the &quot;high confidence&quot; zero-day assessment is its own)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span><span class="date">2026-11-20</span></div><div class="mrow qualrow"><span class="q">the cloud provider&#x27;s own threat-intelligence unit, writing from an instance&#x27;s captured history</span></div></div></article>
+<article class="story-card t-sec num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Bell Canada says an "agentic" attacker took enterprise data</h3><p class="summary"><strong>Bell Canada</strong> confirmed that an "agentic threat actor" breached its systems on 17 November and stole enterprise customer data. The entry point was a pre-production environment of the carrier's Maximo system, which is used to order and provision telecommunications circuits. The data taken included business contact details, information in ticket titles, and some IP addresses of network elements. Bell told BleepingComputer it contained the incident and that customer services were unaffected. It is sharing indicators of compromise with enterprise customers and the Canadian Centre for Cyber Security, but has published none of them. It has not identified the attacker or said how many customers were affected.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">The word doing the work here is "agentic", and it is the victim's characterisation, not a finding. A carrier describing its own intrusion as machine-driven is a notable shift, because it tells customers what to defend against next. The missing piece is the one that would let them: indicators withheld from the public are withheld from every organisation that shares Bell's software. Australian and New Zealand carriers running the same enterprise provisioning suites should ask for those indicators directly, rather than assume a peer's incident stops at the border.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/" target="_blank" rel="noopener">BleepingComputer — Bell Canada says &#x27;agentic&#x27; hacker stole enterprise customer data</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span><span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (the company&#x27;s own breach notification and an on-record statement to a specialist outlet; the attribution, the volume and the &quot;agentic&quot; description all rest on Bell&#x27;s account alone)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="crossref"><span class="dot"></span> &#8596; Cyber Digest</span><span class="date">2026-11-20</span></div><div class="mrow qualrow"><span class="q">the company&#x27;s own breach notification and an on-record statement to a specialist outlet</span></div></div></article>
+<article class="story-card t-sec num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>OpenAI closed the door on its own reasoning traces</h3><p class="summary"><strong>OpenAI</strong> published its defences against adversarial distillation on 20 November. The technique uses a frontier model's outputs to train a second model with similar capabilities and weaker safeguards. OpenAI's focus is the chain of thought, the intermediate steps a model writes on the way to an answer, which carry detail the final answer omits. It hardened those protections in GPT-6.2 Astra and Sol, and tested whether an attacker could recover reasoning from an earlier prompt. In an internal adaptive evaluation using automated red-teaming, the average attack success rate fell from 54.0 per cent against GPT-6 Astra to 0.2 per cent against GPT-6.2 Astra. Its own study found that students trained on exact reasoning traces outperformed those trained on summaries.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">The measurement is the argument for hiding reasoning, and it cuts against the industry's drift toward showing it. OpenAI's numbers say a summary teaches less than a transcript, including cyber capability transfer on tasks its own policy permits. That is why effort is now going into classifiers, API controls and campaign-level investigation rather than into the model's behaviour alone. The figure is the company's own internal evaluation of its own models, so treat it as a claim about direction rather than a validated rate. Anthropic, whose equivalent work OpenAI cites, reported the same advantage on a software benchmark.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://openai.com/index/combatting-adversarial-distillation" target="_blank" rel="noopener">OpenAI — Combatting adversarial distillation</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span><span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (vendor, self-reported: the safeguards are live and the study is published, but the 54.0 to 0.2 per cent comparison is OpenAI&#x27;s internal adaptive evaluation of its own two model generations, with no external replication)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-20</span></div><div class="mrow qualrow"><span class="q">vendor, self-reported: the safeguards are live and the study is published</span></div></div></article>
+</div></section>
+<section id="theme-3" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>A cheap adapter squeezed 16 points out of a 27-billion model</h3><p class="summary"><strong>Hugging Face</strong> published a reusable recipe for training an adapter to a specific agent harness on 20 November. The technique freezes the model's weights and adds a small RL-trained LoRA adapter, trained inside the harness exactly as it ships rather than against a framework's reimplementation of the agent loop. On Qwen3.8-27B running the pi harness on Terminal-Bench 2.1, the base model scored 39 per cent pass@1 at about 2,900 output tokens per task. With a custom adapter it scored 55 per cent at about 1,500 tokens. Three adapters for three harnesses were merged into one that runs unchanged across all of them.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">This is the cheapest capability gain in the stack, and it does not need a frontier lab. A 16-point jump with lower token use on a 27-billion-parameter open model means the harness, not just the model, is now a performance variable. For Australian and New Zealand teams running local or self-hosted agents, the practical read is that a generic model is leaving throughput on the table until it is tuned to the tool loop it actually runs. The artefacts are published and the recipe is reproducible, which is why this is carded at all.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://huggingface.co/blog/harness-adapters-at-scale" target="_blank" rel="noopener">Hugging Face — Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost</a></div><div class="mrow axisrow"><span class="axis i-low"><span class="lb">Impact</span>Low</span><span class="axis e-other"><span class="lb">Evidence</span>Other</span><span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — High (an engineering report from the platform that served the training, with adapters, quantised weights, tasks and the plugin published; the benchmark numbers are the authors&#x27; own runs, and the post itself flags an open question about what the model actually learned)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; High</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-20</span></div><div class="mrow qualrow"><span class="q">an engineering report from the platform that served the training, with adapters, quantised weights</span></div></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">5 stories &middot; 3 themes &middot; 5 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Vendor claim</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Other</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+</div>
+</section>
+
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-21.html"><span class="dl">← Older</span><span class="dd">21 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-22. Sources: Prime Minister of Australia (1), Amazon (1), BleepingComputer (1), OpenAI (1), Hugging Face (1). Largest single source: Prime Minister of Australia — 1/5 (20%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 22 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m,remember){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+/* The choice used to reset on every page load, so a reader who wanted the
+   brief view made the same click on every edition they opened. */
+if(remember!==false){try{localStorage.setItem('aidigest:view',m);}catch(e){}}
+}
+try{if(localStorage.getItem('aidigest:view')==='exec')setView('exec',false);}catch(e){}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
