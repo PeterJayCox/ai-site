@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — lead story wrap: three options</title>
+<!-- Real site stylesheets, so every chip, badge and font is the live one. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://ai.peterjaycox.com/assets/chrome.css">
+<link rel="stylesheet" href="https://ai.peterjaycox.com/assets/digest.css">
+<style>
+/* ── mockup shell only ───────────────────────────────────────────────────── */
+body{background:#0a0e1a;padding:34px 26px 70px}
+.mk{max-width:1120px;margin:0 auto}
+.mk h1{font-size:1.45rem;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.mk .lede{color:var(--text-muted);font-size:13.5px;line-height:1.6;max-width:78ch;margin-bottom:10px}
+.mk .lede b{color:var(--text-secondary);font-weight:600}
+.mk .facts{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:9px 0;margin:16px 0 30px;
+  display:flex;gap:20px;flex-wrap:wrap}
+.mk .facts b{color:var(--text-secondary);font-weight:500}
+.panel{margin-bottom:40px}
+.phead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.pnum{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);border:1px solid rgba(139,122,230,.35);
+  background:rgba(139,122,230,.08);border-radius:99px;padding:3px 9px}
+.phead h2{font-size:1rem;font-weight:600}
+.pnote{color:var(--text-muted);font-size:12.5px;line-height:1.6;max-width:86ch;margin-bottom:5px}
+.ptrade{color:var(--text-dim);font-size:12px;line-height:1.6;max-width:86ch;margin-bottom:12px}
+.ptrade b{color:var(--text-secondary);font-weight:600}
+/* The landing page has no contents rail, so its main column is the full
+   1100 wrap − 28×2 padding = 1044px. Inside an edition the same card sits
+   beside a 210px rail, so it is 802px there. The landing is the worse case
+   and the one shown here; the card's own padding leaves 958px of text. */
+.demo{width:min(1044px,100%)}
+.measure{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.9;
+  color:var(--text-dim)}
+.measure div{display:flex;gap:16px;flex-wrap:wrap}
+.measure b{color:var(--text-secondary);font-weight:500}
+.mk footer{border-top:1px solid var(--border);margin-top:46px;padding-top:16px;
+  color:var(--text-dim);font-size:12px;line-height:1.6}
+
+/* ══ OPTION A — one measure, aligned ══════════════════════════════════════
+   Bug fix. `.whybox` carries the same 60ch cap as the summary, but `ch`
+   resolves against the box's own 16px font, not the 13.5px text inside it:
+   so the judgement draws 592px wide against the summary's 530px, and its
+   right edge sits 76px further out. Both blocks get one shared 530px
+   measure here, so they end on the same line, and text-wrap:pretty stops
+   the short orphan. Nothing moves. */
+.a .story-card p.summary{max-width:530px;text-wrap:pretty}
+.a .story-card .whybox{max-width:530px;padding-left:14px}
+.a .story-card p.why{max-width:100%;text-wrap:pretty}
+
+/* ══ OPTION B — two-column standfirst ═════════════════════════════════════
+   Newspaper setting: the news runs as two balanced columns of ~43ch under
+   the full-width headline, and the judgement drops out of the prose into a
+   band beneath a hairline. Whole story visible at once. */
+.b .story-card p.summary{max-width:none;font-size:14px;line-height:1.66;
+  columns:2;column-gap:38px;column-rule:1px solid rgba(255,255,255,.1);
+  margin-bottom:16px;orphans:2;widows:2}
+.b .story-card .whybox{max-width:500px;margin:0 0 14px;padding:13px 0 0 0;
+  border-left:0;border-top:1px solid var(--border)}
+.b .story-card .whybox .whylab{margin-bottom:4px}
+.b .story-card p.why{max-width:100%;font-size:13.5px;text-wrap:pretty}
+
+/* ══ OPTION C — judgement rail ════════════════════════════════════════════
+   The news keeps a single column; the judgement moves out of the stack and
+   into the width that was empty, as a narrow rail with its own rule. The
+   card gets shorter because the two blocks sit side by side rather than one
+   after the other, and the dead width disappears entirely. */
+.c .story-card{display:grid;grid-template-columns:530px minmax(0,1fr);column-gap:32px}
+.c .story-card > h3{grid-column:1/-1}
+.c .story-card > .card-accent,.c .story-card > .story-number{grid-row:1/-1}
+.c .story-card > p.summary{grid-column:1;max-width:none;margin-bottom:14px;text-wrap:pretty}
+.c .story-card > .whybox{grid-column:2;max-width:none;margin:2px 0 14px;padding:0 0 0 16px;
+  border-left:2px solid var(--accent);align-self:start}
+.c .story-card > .meta{grid-column:1/-1;border-top:1px solid var(--border);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="mk">
+  <h1>Lead story wrap — three options</h1>
+  <p class="lede">The lead card on the landing page is lifted verbatim from the newest edition, so whatever you pick lands in both places. All three use the live stylesheets and the real 23&nbsp;November story, at the real desktop size. The landing page has no contents rail, so its card is <b>1044px wide with 958px of text inside it</b>; the same card inside an edition is 802px. The landing is the worse case, so that is what is shown.</p>
+  <p class="lede">What is actually wrong, measured rather than eyeballed: the summary is capped at 530px and ends on a clean edge. The why-it-matters paragraph below it draws to 592px instead — because <b>the 60ch cap on that block resolves against its 16px font, not the 13.5px text inside it</b> — so it overruns the summary by 76px, and the evidence chips below it by 353px. Three right edges in one card, and none of them chosen: the prose gives up 429px of the card's width, 45% of the line, for the whole story. That is what reads as garbage.</p>
+  <div class="facts">
+    <span>landing card <b>1044px</b></span>
+    <span>text column <b>958px</b></span>
+    <span>summary <b>530px ≈ 75 ch/line</b></span>
+    <span>why-it-matters <b>592px ≈ 77 ch/line</b></span>
+    <span>empty width <b>429px</b></span>
+  </div>
+
+  <!-- ── TODAY ─────────────────────────────────────────────────────────── -->
+  <section class="panel today">
+    <div class="phead"><span class="pnum">Today</span><h2>Two measures in one card</h2></div>
+    <p class="pnote">The summary stops at 530px, the judgement overruns it to 592px, and the evidence chips run to the full 958px — three different right edges stacked in one card, and 429px of empty card beside the prose. The eye reads that as three unrelated things rather than one story with a judgement attached.</p>
+    <div class="demo">
+      <article class="story-card t-sec num-1"><div class="card-accent"></div><div class="story-number">1</div><h3>A model marketplace pulled three providers over logged prompts</h3><p class="summary">OpenRouter off-boarded three inference providers and removed 125 endpoints from its Zero Data Retention eligibility list. The marketplace announced the action on 22 November, after Dragos researchers ran canary-token prompts against hosted models from July to November. Their tests found resellers logging prompts, and providers ignoring no-collection flags. OpenRouter says no breach touched its own systems. Three providers have posted notices: Together, which admitted prompt leakage for requests made in June and July; Novita, on MiniMax requests; and Phala, in a preliminary incident report.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">A retention badge on a model marketplace is a promise, and nothing was auditing it. Dragos only found this by planting tokens and watching where they surfaced. Any team sending proprietary code or customer data through a reseller should treat the label as unverified, and check which provider actually serves its endpoint. Australian and New Zealand firms that buy inference through aggregators rather than direct now have a documented failure mode in that chain.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="#">OpenRouter — Data Processing Incidents on Inference Providers</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier"><span class="tier-2">●</span> Tier 2/4 · Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-22</span></div><div class="mrow qualrow"><span class="q">the platform's own incident disclosure</span></div></div></article>
+      <div class="measure" data-measure data-align></div>
+    </div>
+  </section>
+
+  <!-- ── OPTION A ──────────────────────────────────────────────────────── -->
+  <section class="panel a">
+    <div class="phead"><span class="pnum">Option A</span><h2>One measure, aligned</h2></div>
+    <p class="pnote">The outright fix, and the smallest: both prose blocks get the one 530px right edge, so the judgement pulls back 76px and sets at ~66 characters instead of 77. Add <code>text-wrap:pretty</code> and the last line of each block stops being an orphan. Nothing is restructured, no markup changes, and the same rule fixes the cards inside the editions.</p>
+    <p class="ptrade"><b>Trade-off:</b> it does not reclaim the empty width — the prose still ends 429px short of the card's right edge, next to chips that run full width. It makes the wrap look deliberate instead of broken, and it fixes a real bug, but the card still reads narrow in a wide field. I would ship this regardless of which layout you choose.</p>
+    <div class="demo">
+      <article class="story-card t-sec num-1"><div class="card-accent"></div><div class="story-number">1</div><h3>A model marketplace pulled three providers over logged prompts</h3><p class="summary">OpenRouter off-boarded three inference providers and removed 125 endpoints from its Zero Data Retention eligibility list. The marketplace announced the action on 22 November, after Dragos researchers ran canary-token prompts against hosted models from July to November. Their tests found resellers logging prompts, and providers ignoring no-collection flags. OpenRouter says no breach touched its own systems. Three providers have posted notices: Together, which admitted prompt leakage for requests made in June and July; Novita, on MiniMax requests; and Phala, in a preliminary incident report.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">A retention badge on a model marketplace is a promise, and nothing was auditing it. Dragos only found this by planting tokens and watching where they surfaced. Any team sending proprietary code or customer data through a reseller should treat the label as unverified, and check which provider actually serves its endpoint. Australian and New Zealand firms that buy inference through aggregators rather than direct now have a documented failure mode in that chain.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="#">OpenRouter — Data Processing Incidents on Inference Providers</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier"><span class="tier-2">●</span> Tier 2/4 · Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-22</span></div><div class="mrow qualrow"><span class="q">the platform's own incident disclosure</span></div></div></article>
+      <div class="measure" data-measure></div>
+    </div>
+  </section>
+
+  <!-- ── OPTION B ──────────────────────────────────────────────────────── -->
+  <section class="panel b">
+    <div class="phead"><span class="pnum">Option B</span><h2>Two-column standfirst</h2></div>
+    <p class="pnote">Newspaper setting: the news runs as two balanced columns of about 60 characters under the full-width headline, and the judgement drops out of the prose into a band beneath a hairline. The whole story is on screen at once, and the card reads as a page rather than a ribbon down the middle of one.</p>
+    <p class="ptrade"><b>Trade-off:</b> a column break lands mid-sentence by nature, so it needs orphans/widows tuning and a hard check at 720px, where the columns collapse. Highest visual payoff; also the fussiest to keep right as story lengths vary.</p>
+    <div class="demo">
+      <article class="story-card t-sec num-1"><div class="card-accent"></div><div class="story-number">1</div><h3>A model marketplace pulled three providers over logged prompts</h3><p class="summary">OpenRouter off-boarded three inference providers and removed 125 endpoints from its Zero Data Retention eligibility list. The marketplace announced the action on 22 November, after Dragos researchers ran canary-token prompts against hosted models from July to November. Their tests found resellers logging prompts, and providers ignoring no-collection flags. OpenRouter says no breach touched its own systems. Three providers have posted notices: Together, which admitted prompt leakage for requests made in June and July; Novita, on MiniMax requests; and Phala, in a preliminary incident report.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">A retention badge on a model marketplace is a promise, and nothing was auditing it. Dragos only found this by planting tokens and watching where they surfaced. Any team sending proprietary code or customer data through a reseller should treat the label as unverified, and check which provider actually serves its endpoint. Australian and New Zealand firms that buy inference through aggregators rather than direct now have a documented failure mode in that chain.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="#">OpenRouter — Data Processing Incidents on Inference Providers</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier"><span class="tier-2">●</span> Tier 2/4 · Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-22</span></div><div class="mrow qualrow"><span class="q">the platform's own incident disclosure</span></div></div></article>
+      <div class="measure" data-measure></div>
+    </div>
+  </section>
+
+  <!-- ── OPTION C ──────────────────────────────────────────────────────── -->
+  <section class="panel c">
+    <div class="phead"><span class="pnum">Option C</span><h2>Judgement rail</h2></div>
+    <p class="pnote">The news keeps its single 530px column at the left; the judgement moves out of the stack and into the width that was empty, as a 378px rail with its own rule. The empty width disappears entirely, the judgement settles at about 51 characters, and the card gets shorter because the two blocks sit side by side rather than one after the other.</p>
+    <p class="ptrade"><b>Trade-off:</b> CSS only, no template change, but the reading order becomes left-to-right rather than top-to-bottom, and below 720px the rail has to fold back under the news. In an edition, where the card is 802px, the rail has to be narrower still.</p>
+    <div class="demo">
+      <article class="story-card t-sec num-1"><div class="card-accent"></div><div class="story-number">1</div><h3>A model marketplace pulled three providers over logged prompts</h3><p class="summary">OpenRouter off-boarded three inference providers and removed 125 endpoints from its Zero Data Retention eligibility list. The marketplace announced the action on 22 November, after Dragos researchers ran canary-token prompts against hosted models from July to November. Their tests found resellers logging prompts, and providers ignoring no-collection flags. OpenRouter says no breach touched its own systems. Three providers have posted notices: Together, which admitted prompt leakage for requests made in June and July; Novita, on MiniMax requests; and Phala, in a preliminary incident report.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">A retention badge on a model marketplace is a promise, and nothing was auditing it. Dragos only found this by planting tokens and watching where they surfaced. Any team sending proprietary code or customer data through a reseller should treat the label as unverified, and check which provider actually serves its endpoint. Australian and New Zealand firms that buy inference through aggregators rather than direct now have a documented failure mode in that chain.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="#">OpenRouter — Data Processing Incidents on Inference Providers</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier"><span class="tier-2">●</span> Tier 2/4 · Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-22</span></div><div class="mrow qualrow"><span class="q">the platform's own incident disclosure</span></div></div></article>
+      <div class="measure" data-measure></div>
+    </div>
+  </section>
+
+  <footer>Numbers are measured in this page after the fonts settle, at the real desktop column. Say a letter and I'll implement it in <code>digest.css</code> (A and C are CSS-only; B needs a mobile breakpoint), rebuild the newest edition and the landing page, and show you the rendered result before anything is pushed.</footer>
+</div>
+
+<script>
+function rowsFor(el){
+  if(!el) return null;
+  var cs = getComputedStyle(el);
+  var r  = el.getBoundingClientRect();
+  if(!r.width) return null;
+  var cols = parseInt(cs.columnCount,10) || 1;
+  var gap  = parseFloat(cs.columnGap) || 0;
+  var colW = (el.clientWidth - gap*(cols-1))/cols;
+  var lines = Math.max(1, Math.round(r.height / parseFloat(cs.lineHeight)));
+  var chars = el.textContent.trim().length;
+  return {w: Math.round(r.width), right: Math.round(r.right), cols: cols,
+          colW: Math.round(colW), lines: lines,
+          ch: Math.round(chars / (lines * cols))};
+}
+function line(out, name, d){
+  var div = document.createElement('div');
+  var lab = document.createElement('span');
+  lab.textContent = name;
+  div.appendChild(lab);
+  function add(label, value){
+    var s = document.createElement('span');
+    s.appendChild(document.createTextNode(label + ' '));
+    var b = document.createElement('b');
+    b.textContent = value;
+    s.appendChild(b);
+    div.appendChild(s);
+  }
+  add('width', d.w + 'px' + (d.cols > 1 ? ' (' + d.cols + ' × ' + d.colW + 'px)' : ''));
+  add('lines', d.cols > 1 ? d.lines + '/col' : String(d.lines));
+  add('avg', '≈' + d.ch + ' ch/line');
+  add('right edge', d.right + 'px');
+  out.appendChild(div);
+  return d;
+}
+function measure(out){
+  var card = out.parentElement.querySelector('.story-card');
+  var sum  = card.querySelector('p.summary');
+  var why  = card.querySelector('p.why');
+  var meta = card.querySelector('.meta');
+  out.textContent = '';
+  var s = line(out, 'summary', rowsFor(sum));
+  var w = line(out, 'why', rowsFor(why));
+  if(meta) line(out, 'meta row', rowsFor(meta));
+  if(s && w && out.hasAttribute('data-align')){
+    var div = document.createElement('div');
+    var b = document.createElement('b');
+    b.textContent = Math.abs(s.right - w.right) + 'px';
+    div.appendChild(document.createTextNode('summary vs why right edge: '));
+    div.appendChild(b);
+    out.appendChild(div);
+  }
+}
+var runs = document.querySelectorAll('[data-measure]');
+function all(){ runs.forEach(measure); }
+all();
+if(document.fonts && document.fonts.ready){ document.fonts.ready.then(all); }
+window.addEventListener('load', all);
+window.addEventListener('resize', all);
+</script>
+</body>
+</html>

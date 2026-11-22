@@ -216,10 +216,16 @@ details.method p:last-child{margin-bottom:16px}
    and 30 on a phone. 14px pulls the desktop measure to ~63-75. */
 .story-card p.summary{font-size:14px}
 /* Measured, not guessed: at the card's own 716px width the summary ran to ~107
-   characters per line even at 14px — the eye loses its place on returns. The
-   text block is capped at a 68ch measure (~530px); the badges stay full width
-   because they are a readout, not prose. */
-.story-card p.summary,.whybox{max-width:60ch}
+   characters per line even at 14px — the eye loses its place on returns. Both
+   prose blocks are capped at a 530px measure (~60ch of 14px Inter); the badges
+   stay full width because they are a readout, not prose.
+   The cap is in px, not ch. `ch` resolves against the element's OWN font-size,
+   and .whybox inherits 16px while the text inside it is 13.5px — so the old
+   `60ch` on the box drew 592px and overran the summary's 530px by 76px, leaving
+   two prose blocks in one card ending on two different right edges, with the
+   chips below them on a third. */
+.story-card p.summary{max-width:530px}
+.story-card .whybox{max-width:530px}
 
 #latest{margin:6px 0 18px}
 #latest li{margin-bottom:10px;font-size:14px;color:var(--text-secondary);line-height:1.6}
@@ -303,3 +309,27 @@ a.cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--ac
 a.cta-primary:hover{filter:brightness(1.08);transform:translateY(-1px);
   text-decoration:none}
 a.cta-primary:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+
+/* ── the landing lead: judgement rail ────────────────────────────────────────
+   The landing page has no contents rail, so its lead card is 1044px wide with
+   958px of text inside it. A 530px measure in that field left 429px empty to
+   the right of every line — 45% of the card — while the evidence chips beneath
+   ran the full width, so one story read as three unrelated blocks.
+   The news keeps its single 530px column; the judgement moves out of the stack
+   and into the width that was empty, in a rail with its own rule. The card gets
+   shorter, because the two blocks sit side by side instead of one after the
+   other. Under 980px there is no room for a 530px column and a usable rail, so
+   the card falls back to the stacked layout it has today. */
+@media (min-width:980px){
+  .leadwrap .story-card{display:grid;grid-template-columns:530px minmax(0,1fr);
+    column-gap:32px}
+  .leadwrap .story-card > h3{grid-column:1/-1}
+  .leadwrap .story-card > .card-accent,
+  .leadwrap .story-card > .story-number{grid-row:1/-1}
+  .leadwrap .story-card > p.summary{grid-column:1;max-width:none;margin-bottom:14px;
+    text-wrap:pretty}
+  .leadwrap .story-card > .whybox{grid-column:2;max-width:none;margin:2px 0 14px;
+    padding:0 0 0 16px;border-left:2px solid var(--accent);align-self:start}
+  .leadwrap .story-card > .meta{grid-column:1/-1;border-top:1px solid var(--border);
+    padding-top:12px}
+}
