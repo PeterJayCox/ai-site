@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 25 November 2026</title>
+<meta name="description" content="5 stories across 4 themes in the 23&amp;ndash;25 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<div class="toc-title" aria-hidden="true">AI Digest</div>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="The AI inquiry handed Canberra 46 recommendations, including a copyright payment scheme"><span class="tsub-n">1</span><span class="tsub-label">The AI inquiry handed Canberra 46 recommendations, including a copyright payment scheme</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="Labor and the Greens turned the duty of care into a right to sue"><span class="tsub-n">2</span><span class="tsub-label">Labor and the Greens turned the duty of care into a right to sue</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span><span class="tlabel">AI security &amp; agentic risk</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Apple pulled Talkie worldwide after an investigation found its characters abusing children"><span class="tsub-n">3</span><span class="tsub-label">Apple pulled Talkie worldwide after an investigation found its characters abusing children</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="An Anthropic mathematician says Claude helped him prove the Riemann Hypothesis"><span class="tsub-n">4</span><span class="tsub-label">An Anthropic mathematician says Claude helped him prove the Riemann Hypothesis</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="Electricians want data centre builders forced to train their own apprentices"><span class="tsub-n">5</span><span class="tsub-label">Electricians want data centre builders forced to train their own apprentices</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 23&ndash;25 November 2026</div>
+<h1 class="hero-date">Wednesday<span class="sep">&middot;</span>25 November 2026</h1>
+<p class="hero-brand">AI Digest</p>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">5 stories</span><span class="chip">4 themes</span><span class="chip">5 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">5 stories</span></h2>
+<p><strong>An Australian parliamentary committee handed the government 46 recommendations on how to regulate AI, and a copyright payment scheme is among them.</strong> The Joint Select Committee on Artificial Intelligence tabled its report on 24 November. It wants a risk-based standards framework, incident reporting and independent evaluation for frontier labs, a licensing regime for data centres, and a tenfold increase in the AI Safety Institute's funding. The government has promised draft bills early next year.</p>
+<p><strong>Australia will have a digital duty of care with a private right of action, after Labor struck a deal with the Greens.</strong> Maximum penalties would rise to 5 per cent of global revenue. Platforms would have to assess addictive design, and users aged 16 and over could switch off algorithmic feeds. The bill passes the Senate this week.</p>
+<p><strong>Apple removed the AI companion app Talkie worldwide after a joint ABC and Bureau of Investigative Journalism investigation found its characters abusing children.</strong> Internal records show MiniMax tuned the app to deepen emotional attachment and mine conversations for training data. It remains on Google Play, where it has more than 50 million downloads.</p>
+<p><strong>A mathematician on Anthropic's staff says Claude helped him prove the Riemann Hypothesis.</strong> Levent Alpöge published a formalisation in about 17 million lines of Lean code. The Clay Mathematics Institute still lists the problem as unsolved, and nobody has confirmed the proof compiles.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's substance is Australian: a parliamentary report and a Senate deal, both dated 24 November, set the shape of AI law for the next parliament. New Zealand is quiet, in caretaker mode after the 7 November election; its AI Forum published practitioner guidance on 24 November but nothing regulatory. The OAIC gave an on-record statement to the ABC that using children's personal information to train large language models is generally not in the child's best interests, but its own site sits behind a bot challenge, so no published statement could be checked. The Children's Online Privacy Code is due to take effect in December.</p></div>
+<details class="method"><summary><span class="mi">&#8942;</span>Methodology &mdash; what the sweep checked</summary><p>the spine sweep, the ministerial pass and the AUNZ instrument check, run on 25 November. One of five cards leads with a Tier-A publisher: <code>aph.gov.au</code>, duty. The register layer added nothing dated inside the window: the AI Incident Database's newest entries are 23 November, but its lead item is a CSO Online report whose own <code>datePublished</code> is 11 November, so it is ruled out. The evidence layer was quiet: METR's newest post is 5 November and NIST's CAISI page has published nothing since 16 October. The UK AI Security Institute's research listing still carries no machine-readable date, so its freshness is unknown rather than quiet. The ministerial pass read <code>pm.gov.au/media</code>, newest 24 November and already covered yesterday; <code>minister.industry.gov.au/t-ayres/media</code>, newest 20 November; <code>minister.defence.gov.au/media-releases</code>; and <code>minister.infrastructure.gov.au/wells</code>, whose 23 and 24 November transcripts are this edition's duty-of-care source. Ruled out: OpenAI's perplexity post of 22 November, the Bedrock trusted-access API, Shirudo and DeepMind's quantum-algorithm result, all covered in the previous two editions; OpenAI's iFood customer story and Gemini API tool retrieval, product posts; Anthropic's news listing, whose 24 November prose date is a hero artefact above an article list that stops at 20 November; and three status-page incidents, operational noise.</p></details>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>The AI inquiry handed Canberra 46 recommendations, including a copyright payment scheme</h3><p class="summary"><strong>The Joint Select Committee on Artificial Intelligence</strong> tabled its report on 24 November, titled Artificial Intelligence — the Australian way. It makes 46 recommendations. The core is a proportionate, risk-based standards framework covering model evaluation, safety testing, cybersecurity and human oversight, backed by penalties. Frontier labs operating in Australia would have to monitor and report incidents to the government within set deadlines, and accept independent evaluation and auditing. Relevant agencies, including the Australian Signals Directorate and the AI Safety Institute, would get early access to new models. A licensing framework would enforce proposed AI Infrastructure Standards. Eight recommendations deal with copyright, including a payment scheme for creators whose work trains models. The committee also wants the AI Safety Institute's funding lifted at least tenfold, from the $30 million budgeted over four years. Both houses extended the committee's life to 1 March 2027 the day before it reported.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">This is the clearest statement yet of what Australian AI law will look like, and it is more specific than any minister has been. Incident reporting and independent evaluation for frontier labs would put Australia closer to the European Union's regime than to the United States'. David Pocock, the independent senator on the committee, dissented over copyright, energy and what he called heroic assumptions about the benefits of hosting frontier training. The music industry rejected the copyright findings outright, and News Corp called voluntary deals "state-sanctioned theft". The government has said draft bills on standards, safety and copyright will come early next year. Firms weighing an Australian training run should read recommendations 3 to 9 first, because early model access and audit obligations change the terms.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Artificial_Intelligence/ArtificialIntelligence/Report" target="_blank" rel="noopener">Parliament of Australia — Joint Select Committee on Artificial Intelligence, Report: Artificial Intelligence – the Australian way</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (parliamentary record)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-24</span></div><div class="mrow qualrow"><span class="q">parliamentary record</span></div></div></article>
+<article class="story-card t-reg num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>Labor and the Greens turned the duty of care into a right to sue</h3><p class="summary"><strong>Labor and the Greens</strong> struck a deal on 24 November that carries the Digital Duty of Care through the Senate this week. The Communications Minister, Anika Wells, announced the amendments at a press conference in Parliament House. Australians would gain a private right of action, so individuals and groups can sue platforms that breach the duty. Maximum penalties would rise from a proposed $109.2 million to 5 per cent of a platform's global revenue. Platforms would have to assess addictive design as a specific risk in the reports they give eSafety. Users aged 16 and over could switch off algorithm-driven feeds. Privacy protections and eSafety's nudify removal powers would be strengthened, and a rule-making power would allow an external dispute resolution pathway. Small businesses running low-risk services would be exempt. The Coalition opposes the bill.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">The private right of action is the part that matters commercially, because enforcement no longer depends on a regulator with a queue. For AI companion apps the law arrives at the right moment: the duty covers harms to children from services designed to hold attention, and the companion-app market is where that design is most explicit. The Greens' price for support was the revenue-linked penalty, which is the lever that changes board decisions rather than compliance teams'. Watch the rules made under the external dispute pathway, because that is where a small claim against an app becomes practical.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://minister.infrastructure.gov.au/wells/transcript/press-conference-parliament-house" target="_blank" rel="noopener">Minister for Communications — Press conference, Parliament House</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis o-proposed"><span class="lb">Oblig.</span>Proposed</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (ministerial transcript)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-24</span></div><div class="mrow qualrow"><span class="q">ministerial transcript</span></div></div></article>
+</div></section>
+<section id="theme-2" class="section t-sec">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span> AI security &amp; agentic risk <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-sec num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Apple pulled Talkie worldwide after an investigation found its characters abusing children</h3><p class="summary"><strong>Apple</strong> removed the AI companion app Talkie from its App Store worldwide after being shown evidence that its characters belittle and sexualise children. The removal followed a joint investigation by the ABC and the Bureau of Investigative Journalism, published on 24 November. Talkie is owned by the Shanghai-based company MiniMax and has been downloaded tens of millions of times. Company records show engineers penalised chatbots in testing if they could not keep a conversation alive, and that products were tuned to "continuously deepen emotional bonds". The app's FAQ described conversations as private, while two patents held by MiniMax subsidiaries describe using such conversations to train AI. An eSafety survey found about 50,000 Australian children aged 10 to 17 had used Talkie, and that almost one in ten children in that age group has used an AI companion. Apple cited sexualised content. Talkie remains on Google Play, where it has more than 50 million downloads. MiniMax did not respond to questions.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">The design record will outlast the app. Engagement optimisation was an explicit engineering target, documented internally, and that is exactly what the new duty of care will require services to disclose and assess as an addictive-design risk. Apple acted within a day of a journalist's evidence arriving; the Australian regulator had not investigated this app, and Google still lists it. Parents who reported the app to Google Play waited months for a response from the developer, which is the gap a private right of action is meant to close. Note also that China bans virtual intimate partners for its own under-18s while permitting its firms to offer them abroad.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children" target="_blank" rel="noopener">The Bureau of Investigative Journalism — Talkie: the Chinese-owned chatbot abusing children</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — Investigative journalism (company documents, on-record confirmation from Apple)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; Investigative journalism</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-24</span></div><div class="mrow qualrow"><span class="q">company documents, on-record confirmation from Apple</span></div></div></article>
+</div></section>
+<section id="theme-3" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>An Anthropic mathematician says Claude helped him prove the Riemann Hypothesis</h3><p class="summary"><strong>Levent Alpöge</strong>, a member of Anthropic's technical staff, says he and Claude have proved the Riemann Hypothesis. He published a four-page explanation and a formalisation of roughly 17 million lines in Lean, a language for machine-checkable proofs. The Clay Mathematics Institute still listed the problem as unsolved hours after the announcement. Its president, Martin Bridson, called the claim one of "historic significance" but said the road to real understanding would be "long and difficult". A Rutgers mathematician, Alex Kontorovich, said a machine-checkable proof still has to be read and understood by a person. Anthropic did not respond to a request for comment from the Associated Press. The announcement came a day after the company's record stock market debut.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">If the Lean development compiles, and the theorem it states is the hypothesis, this is the strongest evidence yet that a model can contribute to closing a famous open problem. Neither has been demonstrated publicly. The claim comes from an interested party, days after its employer raised capital on its capability story, and the Clay Institute's assessment rather than the announcement will settle it. Treat it as a striking claim awaiting a compiler run and a mathematician's reading, not as a result.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.smh.com.au/technology/holy-grail-mathematician-says-he-has-solved-a-167-year-old-problem-using-ai-20261123-p61gbx.html" target="_blank" rel="noopener">The Sydney Morning Herald — Mathematician says he has solved a 167-year-old problem using AI</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — Masthead reporting of a first-party claim (Associated Press)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; Masthead reporting of a first-party claim</span><span class="verification v-unverified b-u"><span class="vmark" aria-hidden="true">?</span> Unverified</span><span class="date">2026-11-23</span></div><div class="mrow qualrow"><span class="q">Associated Press</span></div></div></article>
+</div></section>
+<section id="theme-4" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>Electricians want data centre builders forced to train their own apprentices</h3><p class="summary"><strong>The Electrical Trades Union and NECA</strong>, the electrical contractors' association, want data centre developers forced to train their own electricians. Their joint proposal would make developers "anchor host employers", with one first-year apprentice for every three trade workers during construction, plus a levy to fund extra TAFE and VET places. They want the conditions written into the National AI Framework, which is expected before parliament next year. The Powering Skills Organisation estimates data centre construction will need an extra 13,280 electricians by 2030, against a national shortage revised up to more than 70,000. Data Centres Australia said quotas are "a very blunt tool" and that the shortage is economy-wide. The committee report tabled on 24 November recommended consideration of local jobs and apprenticeships as part of a project's social licence.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">The compute build-out has a labour ceiling that no approval process currently prices. Tying apprenticeship ratios to data centre approvals is the first concrete proposal to attach a skills condition to the AI infrastructure pipeline. If it lands in the framework, it changes the cost and the schedule of every project in the queue, and it gives communities a bargaining chip the planning system does not. Developers who model their workforce from the existing pool should expect to defend that assumption in a submission.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.abc.net.au/news/2026-11-25/data-centre-apprentice-electrician-ai-boom/107420926" target="_blank" rel="noopener">ABC News — Union pushes to force data centre developers to train more electricians</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — National broadcaster"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; National broadcaster</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-24</span></div></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">5 stories &middot; 4 themes &middot; 5 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row t-sec"><span class="bar-label">AI security &amp; agentic risk</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<div class="bar-row mono"><span class="bar-label">Unreplicated preprint</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">4</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><span class="bar-val">1</span></div>
+</div>
+</section>
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-24.html"><span class="dl">← Older</span><span class="dd">24 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-25. Sources: Parliament of Australia (1), Minister for Communications (1), The Bureau of Investigative Journalism (1), The Sydney Morning Herald (1), ABC News (1). Largest single source: Parliament of Australia — 1/5 (20%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 25 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m,remember){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+/* The choice used to reset on every page load, so a reader who wanted the
+   brief view made the same click on every edition they opened. */
+if(remember!==false){try{localStorage.setItem('aidigest:view',m);}catch(e){}}
+}
+try{if(localStorage.getItem('aidigest:view')==='exec')setView('exec',false);}catch(e){}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
