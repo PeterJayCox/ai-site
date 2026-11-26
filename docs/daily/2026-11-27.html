@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digest — 27 November 2026</title>
+<meta name="description" content="5 stories across 4 themes in the 25&amp;ndash;27 November 2026 window, with an Australian and New Zealand read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+
+/* Appearance: three states, default = auto (follows the OS). Click cycles
+   auto -> pin -> the other pin -> auto; Shift-click returns to auto. Pinned
+   choice lives in `ai-theme2`; the legacy `ai-theme` key is discarded. */
+(function(){var d=document.documentElement;
+function sys(){try{return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}catch(e){return 'dark';}}
+function saved(){try{var s=localStorage.getItem('ai-theme2');return (s==='light'||s==='dark')?s:null;}catch(e){return null;}}
+function mode(){return saved()||'auto';}
+function save(m){try{if(m==='auto'){localStorage.removeItem('ai-theme2');}else{localStorage.setItem('ai-theme2',m);}}catch(e){}}
+function label(m){var b=document.querySelector('.theme-toggle');if(!b){return;}
+var t={auto:'Appearance: auto \u2014 follows your system ('+sys()+'). Click to cycle auto \u2192 light \u2192 dark.',
+light:'Appearance: light (pinned). Shift-click to follow your system again.',
+dark:'Appearance: dark (pinned). Shift-click to follow your system again.'}[m];
+if(t){b.setAttribute('title',t);b.setAttribute('aria-label',t);}}
+function apply(){var m=mode();d.setAttribute('data-theme',m==='auto'?sys():m);d.setAttribute('data-theme-mode',m);label(m);}
+/* Cycle visits all three states, always flipping away from what is on screen
+   first: auto -> a pin (opposite of the current look) -> the other pin -> auto. */
+function cycle(ev){var m=mode();
+if(ev&&ev.shiftKey){save('auto');}
+else if(m==='auto'){save(sys()==='dark'?'light':'dark');}
+else if(m===sys()){save('auto');}
+else{save(m==='light'?'dark':'light');}
+apply();}
+function followSystem(){if(!saved()){apply();}}
+try{localStorage.removeItem('ai-theme');}catch(e){}
+window.__aiSysTheme=sys;
+window.__aiTheme={cycle:cycle,apply:apply,mode:mode,setAuto:function(){save('auto');apply();}};
+apply();
+try{var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+if(mq&&mq.addEventListener){mq.addEventListener('change',followSystem);}}catch(e){}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',apply);}
+})();
+
+</script>
+<link rel="stylesheet" href="/assets/chrome.css">
+<link rel="stylesheet" href="/assets/digest.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+  <a class="brand" href="/"><span class="dot"></span>AI&nbsp;Digest<small>daily</small></a>
+  <div class="navlinks">
+    <a href="/daily/" class="active"><span class="t">Editions</span></a>
+    <a href="/about/"><span class="t">About</span></a>
+    <a href="https://peterjaycox.com"><span class="t">Hub</span></a>
+    <a href="https://cyber.peterjaycox.com"><span class="t">Cyber</span></a>
+    <a href="https://intel.peterjaycox.com"><span class="t">Intel</span></a>
+  </div>
+  <div class="theme-toggle" role="button" tabindex="0" aria-label="Appearance" title="Appearance" onclick="window.__aiTheme.cycle(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.__aiTheme.cycle(event)}"><span class="tt-auto" aria-hidden="true">🌗</span><span class="tt-light" aria-hidden="true">☀️</span><span class="tt-dark" aria-hidden="true">🌙</span></div>
+</div></nav>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="progress"></div>
+<div class="wrap">
+<nav id="toc" aria-label="Table of contents">
+<div class="toc-title" aria-hidden="true">AI Digest</div>
+<button type="button" id="toc-toggle" aria-expanded="true" aria-controls="toc-list"><span>Contents</span><span class="toc-chev" aria-hidden="true">▾</span></button>
+<div id="toc-list">
+<a href="#exec" data-section="exec"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><span class="tlabel">Executive summary</span></a>
+<a href="#theme-1" data-section="theme-1"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span><span class="tlabel">Regulation &amp; obligation</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-1" data-story="story-1" title="Regulators met in Sydney and agreed a joint line on AI-made abuse imagery"><span class="tsub-n">1</span><span class="tsub-label">Regulators met in Sydney and agreed a joint line on AI-made abuse imagery</span></a>
+<a href="#theme-2" data-section="theme-2"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span><span class="tlabel">Research &amp; evidence</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-2" data-story="story-2" title="A rotation and one scale let a model read another model&#x27;s mind"><span class="tsub-n">2</span><span class="tsub-label">A rotation and one scale let a model read another model&#x27;s mind</span></a>
+<a href="#theme-3" data-section="theme-3"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span><span class="tlabel">Infrastructure &amp; compute</span><span class="tcount">1</span></a>
+<a class="tsub" href="#story-3" data-story="story-3" title="Cloudflare gave every website a search endpoint that agents can find"><span class="tsub-n">3</span><span class="tsub-label">Cloudflare gave every website a search endpoint that agents can find</span></a>
+<a href="#theme-4" data-section="theme-4"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Market &amp; geopolitics</span><span class="tcount">2</span></a>
+<a class="tsub" href="#story-4" data-story="story-4" title="Nvidia stopped servers leaving for four South-East Asian markets"><span class="tsub-n">4</span><span class="tsub-label">Nvidia stopped servers leaving for four South-East Asian markets</span></a>
+<a class="tsub" href="#story-5" data-story="story-5" title="The chip rules and anti-distillation defences are bending Chinese model plans"><span class="tsub-n">5</span><span class="tsub-label">The chip rules and anti-distillation defences are bending Chinese model plans</span></a>
+<a href="#analytics" data-section="analytics"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><span class="tlabel">Coverage</span></a>
+<a href="#legend" data-section="legend"><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span><span class="tlabel">Key to this page</span></a>
+</div>
+</nav>
+<main id="main" class="main">
+
+<header class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="kicker">// ai digest &middot; 48-hour window &middot; 25&ndash;27 November 2026</div>
+<h1 class="hero-date">Friday<span class="sep">&middot;</span>27 November 2026</h1>
+<p class="hero-brand">AI Digest</p>
+<p class="subtitle">A daily read on artificial intelligence &mdash; what moved at each layer of the stack, and what it obliges an Australian or New Zealand organisation to do about it</p>
+<div class="hero-chips"><span class="chip chip-accent">5 stories</span><span class="chip">4 themes</span><span class="chip">5 sources</span><span class="chip">48-hour window</span><span class="chip chip-guard"><i></i>AU/NZ watchlist active</span></div>
+</header>
+
+<div class="controls">
+<button class="btn active" id="btn-full" onclick="setView('full')">Full report</button>
+<button class="btn" id="btn-exec" onclick="setView('exec')">Executive view</button>
+</div>
+
+<section id="exec" class="exec-summary">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></span> Executive Summary <span class="count">5 stories</span></h2>
+<p><strong>Online-safety regulators from around the world met in Sydney this week and endorsed a joint position on AI-generated abuse imagery.</strong> The Global Online Safety Regulators Network published the statement on 25 November. Germany's Federal Network Agency joined the network, and Brazil's data protection authority became its first South American member and its vice-chair.</p>
+<p><strong>Nvidia has told Dell and Supermicro to stop shipping servers built on its chips to Malaysia, Singapore, Thailand and Indonesia.</strong> The halt follows a US Commerce rule in force since 19 November. It requires a licence for advanced AI chips going to those four countries and to Brazil. It is unclear whether the pause is temporary.</p>
+<p><strong>China's Z.AI has slipped its next flagship model, and Moonshot expects the gap between releases to double.</strong> Both companies blame US chip curbs and more effective anti-distillation safeguards, according to a Reuters exclusive published on 26 November.</p>
+<p><strong>A Stanford lab showed that one model can use another's internal representation after a single rotation and a global scale.</strong> Hazy Research fitted the map in closed form across 12 models from eight families, and recovered a fifth of the facts a model stores but cannot recall.</p>
+<p><strong>Cloudflare now gives any website a search endpoint that agents can find and call.</strong> Search for Agents is a dashboard toggle that indexes a domain and advertises the endpoint in the page head, and it returns retrieved pages rather than a generated answer.</p>
+<div class="au-context-box"><p><strong>Australian & New Zealand context.</strong> The window's one instrument-layer item is Australian: eSafety hosted the regulator meeting in Sydney and is a signatory to the position statement, which is a commitment rather than an enforceable duty. Nothing in the statement binds a platform until a member's own statute does. Australia is not among the four countries in the new US chip-licensing rule, so the shipment halt does not reach Australian data centre builds; the rule's effect here is indirect, through supply and pricing. New Zealand is quiet in caretaker mode after the 7 November election, and its Privacy Commissioner's news listing carries no new item. The Joint Select Committee on AI reports by 30 November.</p></div>
+<details class="method"><summary><span class="mi">&#8942;</span>Methodology &mdash; what the sweep checked</summary><p>the spine sweep, the ministerial pass and the AUNZ instrument check, run on 27 November. One of five cards leads with a Tier-A publisher: <code>esafety.gov.au</code>, in the duty role. The register layer added nothing dated inside the window. The OECD AI Incidents Monitor's 25 November entries are all media aggregations whose underlying articles are older, and the AI Incident Database's newest entry is 23 November and leads with a 5 November analysis. The evidence layer was quiet: METR's newest post is 24 November and already covered, NIST CAISI has published nothing since 16 October, and the UK AI Security Institute's research listing still carries no machine-readable date, so its freshness is unknown rather than quiet. The ministerial pass read <code>pm.gov.au/media</code>, whose newest items are a 26 November treaty statement and the 24 November PM's Prizes, neither about AI; <code>minister.industry.gov.au/t-ayres/media</code>, newest 24 November; and <code>minister.infrastructure.gov.au</code>. The AUNZ instrument check found eSafety's 25 November release, ASIC's newest item at 23 November, the Protective Security Policy Framework publications library at 29 September, the Australian AI Safety Institute at 5 November and <code>ai.gov.au</code> at 1 May. The OAIC returned a 403 bot challenge on both its site and its search API, so its silence could not be checked. Ruled out: Google Threat Intelligence's AI Threat Tracker post, whose own date is 17 November; the Axios scoop on unreleased models, dated 24 November and outside the window; the Microsoft agent-framework credential-stealer compromise on PyPI, whose two bad releases were uploaded on 17 November; Anthropic's news listing, whose 26 November hero date sits above an article list that stops on 20 November; eSafety's gaming-services release, whose dateline reads 2 October; and the Joint Select Committee report of 24 November, carried in Wednesday's edition.</p></details>
+</section>
+<section id="theme-1" class="section t-reg">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 6 0zM9 20h6"/></svg></span> Regulation &amp; obligation <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-reg num-1" id="story-1"><div class="card-accent"></div><div class="story-number">1</div><h3>Regulators met in Sydney and agreed a joint line on AI-made abuse imagery</h3><p class="summary"><strong>The Global Online Safety Regulators Network</strong> met in Sydney this week and endorsed a position statement on AI-generated child sexual abuse material and non-consensual intimate imagery. eSafety published the outcome on 25 November. Germany's Federal Network Agency joined during the meetings. Brazil's National Data Protection Agency became the network's first South American member. It was elected vice-chair alongside the Dutch regulator ATKM. Ireland's Coimisiún na Meán was re-elected chair for 2027. The statement calls for greater accountability from technology companies and safeguards built into AI systems, so models cannot produce abusive material in the first place. It also commits members to coordinated regulatory action across borders. eSafety cited Internet Watch Foundation research that counted 13 AI-generated child abuse videos in 2024 and 3,443 in 2025, a rise of 26,385 per cent.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">A position statement is not a rule, and the network says as much by noting that members operate under different national law. What changed is coordination: the member regulators now share a written position on the same class of harm, which shortens the distance between a finding in one jurisdiction and an inquiry in another. For anyone running an image or video model, the operative sentence is the one about guardrails at the point of generation rather than at the point of distribution. Australia's own duty of care, enacted on 25 November, is the domestic hook this statement will be cited against.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.esafety.gov.au/newsroom/media-releases/global-regulators-unite-in-sydney-to-tackle-ai-driven-harms-and-expand-international-network" target="_blank" rel="noopener">eSafety — Global regulators unite in Sydney to tackle AI-driven harms and expand international network</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis o-signalled"><span class="lb">Oblig.</span>Signalled</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 1/4 — Primary (regulator&#x27;s own media release, with the statement published alongside it)"><span class="tier-1">&#9679;</span> Tier 1/4 &middot; Primary</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-25</span></div><div class="mrow qualrow"><span class="q">regulator&#x27;s own media release, with the statement published alongside it</span></div></div></article>
+</div></section>
+<section id="theme-2" class="section t-res">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 15h9"/></svg></span> Research &amp; evidence <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-res num-2" id="story-2"><div class="card-accent"></div><div class="story-number">2</div><h3>A rotation and one scale let a model read another model's mind</h3><p class="summary"><strong>Hazy Research at Stanford</strong> published Plato's Key on 25 November, testing whether one language model can use another's internal representations without any retraining. The map is a rotation plus a single global scale, fitted in closed form on fewer than 5,000 shared facts. Across 12 base models from eight families, between 1.5 billion and 27 billion parameters, it reached a median transfer accuracy of 41 per cent. That is 73 per cent of the accuracy from swapping in the recipient model's own state. Chaining rotations across three models kept 99 per cent of a direct map, and a 256-component version kept 74 per cent. A rotated donor state also recovered 18 per cent of a recipient's "dark memories", facts it stores but cannot recall, where no control recovered more than 1.1 per cent.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">The interesting claim is not that models share a geometry, which was already known. It is that the shared structure is simple enough to align with one closed-form step, which makes cross-model weight surgery cheaper than anyone assumed. Two consequences follow. Interpretability work no longer has to stay inside one model, and a model's hidden state becomes a portable artefact that can be moved between systems. Neither is a safety finding on its own, but both change what a deployment boundary protects. The work is a lab blog post, not a reviewed paper, and no independent group has reproduced it.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://hazyresearch.stanford.edu/blog/2026-11-25-platos-key" target="_blank" rel="noopener">Hazy Research — Plato&#x27;s Key</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — Academic lab blog, reporting its own experiments and not peer reviewed"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; Academic lab blog, reporting its own experiments and not peer reviewed</span><span class="verification v-unverified b-u"><span class="vmark" aria-hidden="true">?</span> Unverified</span><span class="date">2026-11-25</span></div></div></article>
+</div></section>
+<section id="theme-3" class="section t-inf">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></span> Infrastructure &amp; compute <span class="count">1 story</span></h2>
+<div class="story-grid">
+<article class="story-card t-inf num-3" id="story-3"><div class="card-accent"></div><div class="story-number">3</div><h3>Cloudflare gave every website a search endpoint that agents can find</h3><p class="summary"><strong>Cloudflare</strong> launched Search for Agents on 25 November, a toggle that builds an index of a domain and advertises a search endpoint to machines. Enabling it creates an AI Search instance that crawls and indexes the zone, then adds metadata to every page head naming the endpoint, the method and the documentation. An agent calls <code>/.well-known/search?q=</code> and receives Markdown results with relevance scores, not a generated answer. The design argument is that the calling agent already has a model, so a second one summarising on its behalf adds nothing it can check. The service is available on the free plan with limits, and it defers to a domain's existing bot management, AI crawler controls and firewall rules.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">Publishing that used to serve readers and crawlers now has to serve callers, and a machine-readable endpoint is a cheaper contract than asking every agent to scrape. The parseable detail is that discovery lives in the page head, so a site can advertise a capability without changing its markup. The commercial reading is consolidation: the index, the endpoint and the crawler policy end up in one place, which is the same leverage play that made the CDN layer sticky. Sites that would rather not answer should check their bot rules before they flip the switch, because the endpoint respects them rather than overriding them.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://blog.cloudflare.com/search-for-agents/" target="_blank" rel="noopener">Cloudflare — Introducing Search for Agents</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — Vendor engineering blog, with the endpoint independently queried and answered during this run"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; Vendor engineering blog, with the endpoint independently queried and answered during this run</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-25</span></div></div></article>
+</div></section>
+<section id="theme-4" class="section t-mkt">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Market &amp; geopolitics <span class="count">2 stories</span></h2>
+<div class="story-grid">
+<article class="story-card t-mkt num-4" id="story-4"><div class="card-accent"></div><div class="story-number">4</div><h3>Nvidia stopped servers leaving for four South-East Asian markets</h3><p class="summary"><strong>Nvidia</strong> has told its manufacturing partners to stop shipping servers built on its chips to Malaysia, Singapore, Thailand and Indonesia, the Financial Times reported on 26 November and Reuters carried the same day. Dell and Supermicro, which package Nvidia processors into servers, told buyers in all four countries that the orders would not ship. The halt follows a US Commerce Department rule that took effect on 19 November. It requires a licence for advanced AI chips going to those four countries and to Brazil, with an exemption for servers used by US-headquartered companies. Server makers said it was unclear whether the pause was temporary. Nvidia booked US$104 billion of revenue through its Singapore subsidiary in 2025, up 72 per cent on the year before.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">These four countries are the region's main data centre markets, and they sit directly upstream of Australian capacity. The rule reaches a company by where its servers land, not by where the buyer is registered, so the licensing queue now sits inside the delivery schedule of nearly every campus in the region. A three-month licence allowance is running down while the guidance on how to apply is still thin, which is how a supply chain stalls without an order stopping it. Australian builders are outside the listed countries, but they buy in the same market and inherit the same lead times.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.reuters.com/world/asia-pacific/nvidia-halts-chip-shipments-southeast-asia-ft-reports-2026-11-26/" target="_blank" rel="noopener">Reuters — Nvidia halts server shipments to four Southeast Asian countries, FT reports</a></div><div class="mrow axisrow"><span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span><span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — Business press (FT original, reported by Reuters; unnamed sources, no company comment)"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; Business press</span><span class="verification v-verified b-v"><span class="vmark" aria-hidden="true">✓</span> Verified</span><span class="date">2026-11-26</span></div><div class="mrow qualrow"><span class="q">FT original, reported by Reuters</span></div></div></article>
+<article class="story-card t-mkt num-5" id="story-5"><div class="card-accent"></div><div class="story-number">5</div><h3>The chip rules and anti-distillation defences are bending Chinese model plans</h3><p class="summary">The Chinese developer <strong>Z.AI</strong>, also known as Zhipu AI, has fallen behind on its next flagship model. Rival Moonshot AI expects the interval between major releases to double, from about six months to a year or more. Reuters reported both on 26 November, citing people familiar with the work. Z.AI had planned to release GLM-5.5, a model designed with roughly three trillion parameters, this month. It has not shipped, and more effective safeguards against distillation were part of the delay. The new US computing restrictions push the launch into the first quarter of 2027 or later. Moonshot's estimate assumes it loses access to overseas computing. Z.AI released GLM-5.4 three days earlier, a 750-billion-parameter design it says matches models two to four times its size.</p><div class="whybox"><span class="whylab">Why it matters</span><p class="why">Distillation is how Chinese labs have closed the gap while paying less, and it is the one cost advantage export controls never touched. If the safeguards bite, the penalty is not a halt but a lengthening cycle, which compounds badly for labs that built their reputation on a release every six months. The vendors' own response is the tell here: Z.AI shipped a smaller model and claimed parity by design rather than scale. The claim is a vendor claim and unconfirmed until independent evaluation, but it is the strategy a constrained lab has to run. Watch whether the next flagship arrives in the first quarter or quietly gains a year.</p></div><div class="meta"><div class="mrow srcrow"><a class="source src" href="https://www.reuters.com/world/china/us-chip-curbs-distillation-crackdown-threaten-chinese-ai-model-development-2026-11-26/" target="_blank" rel="noopener">Reuters — US chip curbs, distillation crackdown threaten Chinese AI model development, sources say</a></div><div class="mrow axisrow"><span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span><span class="axis e-probable"><span class="lb">Evidence</span>Probable</span></div><div class="mrow tierrow"><span class="reliability b-tier" title="Tier 2/4 — Wire exclusive from unnamed sources, with no company response"><span class="tier-2">&#9679;</span> Tier 2/4 &middot; Wire exclusive from unnamed sources, with no company response</span><span class="verification v-unverified b-u"><span class="vmark" aria-hidden="true">?</span> Unverified</span><span class="date">2026-11-26</span></div></div></article>
+</div></section>
+<section id="analytics" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span> Coverage this edition <span class="count">5 stories &middot; 4 themes &middot; 5 sources</span></h2>
+<div class="bar-chart"><h3>Where the window's stories landed</h3>
+<div class="bar-row t-reg"><span class="bar-label">Regulation &amp; obligation</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-res"><span class="bar-label">Research &amp; evidence</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-inf"><span class="bar-label">Infrastructure &amp; compute</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row t-mkt"><span class="bar-label">Market &amp; geopolitics</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+</div>
+<div class="bar-chart"><h3>Evidence class — what kind of claim each story carries</h3>
+<div class="bar-row mono"><span class="bar-label">Confirmed</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">2</span></div>
+<div class="bar-row mono"><span class="bar-label">Unreplicated preprint</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Corroborated</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<div class="bar-row mono"><span class="bar-label">Probable</span><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><span class="bar-val">1</span></div>
+<p class="empty-note">A vendor&rsquo;s claim about its own product is recorded here as a claim, never as a measurement — the axis is orthogonal to verification, so a story can be Verified (they did say it) and a Vendor claim (the capability is unreplicated) at once.</p>
+</div>
+<div class="bar-chart"><h3>Verification gate</h3>
+<div class="bar-row mono"><span class="bar-label">Verified</span><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><span class="bar-val">3</span></div>
+<div class="bar-row mono"><span class="bar-label">Reported</span><div class="bar-track"></div><span class="bar-val">0</span></div>
+<div class="bar-row mono"><span class="bar-label">Unverified</span><div class="bar-track"><div class="bar-fill" style="width:66.7%"></div></div><span class="bar-val">2</span></div>
+</div>
+</section>
+<section id="legend" class="section">
+<h2><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span> Key to this page <span class="count">how to read it</span></h2>
+
+<div class="legend-group">
+<h3>Impact &mdash; the only coloured axis</h3>
+<p>How far the risk, obligation or capability position moves. <strong>Impact is not harm</strong>:
+half of what this digest carries &mdash; a model release, a research result, a funding round &mdash; is
+not a harm at all. The band is driven by precedent, blast radius, reversibility, structural change
+and sector criticality, not by a severity dictionary borrowed from cyber incidents.</p>
+<p><span class="axis i-low"><span class="lb">Impact</span>Low</span>
+<span class="axis i-guarded"><span class="lb">Impact</span>Guarded</span>
+<span class="axis i-elevated"><span class="lb">Impact</span>Elevated</span>
+<span class="axis i-severe"><span class="lb">Impact</span>Severe</span>
+<span class="axis i-critical"><span class="lb">Impact</span>Critical</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Obligation &mdash; does it bind an AUNZ organisation?</h3>
+<p>Rendered only when the band is not <em>None</em>; a pill reading &ldquo;Obligation: None&rdquo; on
+every card is noise. <em>Proposed</em> means text exists; <em>Signalled</em> means a minister or a
+government has said it will &mdash; a two-stage ministerial statement stays Signalled. Where an
+obligation is claimed, the card names the instrument <em>and</em> its operative provision.</p>
+</div>
+
+<div class="legend-group">
+<h3>Evidence &mdash; how established is the claim?</h3>
+<p>Orthogonal to verification, and the reason this product exists separately from the cyber digest:
+an AI capability claim usually cannot be verified at all. A vendor testifying about its own model is
+<strong>Verified</strong> (they did say it) and simultaneously a <strong>Vendor claim</strong> (the
+capability is unreplicated). Both badges render.</p>
+<p><span class="axis e-confirmed"><span class="lb">Evidence</span>Confirmed</span>
+<span class="axis e-corroborated"><span class="lb">Evidence</span>Corroborated</span>
+<span class="axis e-vendor-claim"><span class="lb">Evidence</span>Vendor claim</span>
+<span class="axis e-independently-evaluated"><span class="lb">Evidence</span>Independently evaluated</span>
+<span class="axis e-unreplicated-preprint"><span class="lb">Evidence</span>Unreplicated preprint</span>
+<span class="axis e-rumoured"><span class="lb">Evidence</span>Rumoured</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Capability delta &mdash; frontier themes only</h3>
+<p><span class="axis d-frontier"><span class="lb">Cap.</span>Frontier step-change</span>
+<span class="axis d-material"><span class="lb">Cap.</span>Material</span>
+<span class="axis d-incremental"><span class="lb">Cap.</span>Incremental</span></p>
+</div>
+
+<div class="legend-group">
+<h3>Source reliability and verification</h3>
+<table class="data-table">
+<thead><tr><th>Tier</th><th>Label</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><span class="tier-badge tier-1">1</span></td><td>Very High</td><td>Official, first-party or regulator &mdash; the instrument, the register entry, the vendor&rsquo;s own newsroom or research blog</td></tr>
+<tr><td><span class="tier-badge tier-2">2</span></td><td>High</td><td>Established wire and specialist reporting, and independent evaluators</td></tr>
+<tr><td><span class="tier-badge tier-3">3</span></td><td>Moderate</td><td>General technology and specialist AI media; market coverage relaying a company&rsquo;s own numbers</td></tr>
+<tr><td><span class="tier-badge tier-4">4</span></td><td>Low</td><td>Social, forum and release-tracker sites &mdash; leads only, never cited</td></tr>
+</tbody>
+</table>
+<p><span class="verification v-verified"><span class="dot"></span> Verified</span> established by first-party disclosure, a regulator, or two or more independent sources. <span class="verification v-reported"><span class="dot"></span> Reported</span> a single credible outlet, or a party&rsquo;s own account. <span class="verification v-unverified"><span class="dot"></span> Unverified</span> circulating without a source that meets the bar.</p>
+</div>
+
+<div class="legend-group">
+<h3>Three rules that shape what appears</h3>
+<p><strong>Freshness is a state-change test, not a date test.</strong> An item qualifies when
+something moved &mdash; a model shipped, a rule commenced, a vulnerability was exploited, a subpoena
+was served, a paper published. The window is 48 hours, 72 across a weekend bridge, and it is stated
+on every edition. Anything older appears in the executive summary as context, never as an entry.</p>
+<p><strong>An empty theme stays empty.</strong> Where a theme has no qualifying item it is listed in
+the coverage table with the count it earned and rendered as no section at all &mdash; never as a
+zero bar and never padded with stale material.</p>
+<p><strong>Suppression.</strong> A story that ran in either of the previous two editions is not
+repeated unless the day adds a fact, and the new fact must be what the entry is about.</p>
+</div>
+</section>
+
+<footer class="footer"><nav class="ednav"><a class="edlink prev" href="2026-11-26.html"><span class="dl">← Older</span><span class="dd">26 November 2026</span></a><a class="edlink next dis" aria-hidden="true" tabindex="-1"><span class="dl">Newer →</span><span class="dd">&nbsp;</span></a></nav><div class="source-line">AI Digest generated 2026-11-27. Sources: Reuters (2), eSafety (1), Hazy Research (1), Cloudflare (1). Largest single source: Reuters — 2/5 (40%). Within the 40% threshold.</div><div class="note">Window: 48 hours to 27 November 2026. Stories are grouped by layer of the stack, not by industry sector; a theme with no qualifying item is listed in the coverage table above and rendered as no section at all. Colour on this page means impact severity and nothing else.</div><div class="links"><a href="/daily/">All editions</a><a href="/about/">About the AI Digest</a><a href="https://peterjaycox.com">Hub</a></div></footer>
+
+</main>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+
+function syncScroll(){
+var h=document.documentElement;
+var p=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('progress').style.width=Math.min(p,100)+'%';
+var bt=document.getElementById('back-top');
+bt.classList.toggle('visible',(h.scrollTop||document.body.scrollTop)>300);
+var sections=document.querySelectorAll('section[id]');
+var links=document.querySelectorAll('#toc a');
+/* Default the marker to the first section so the rail is never blank: with
+   cur starting empty, no link carried .active until a section crossed the
+   250px line, so the panel showed no position marker on load. */
+var cur=sections.length?sections[0].id:'';
+sections.forEach(function(s){
+var t=s.getBoundingClientRect().top;
+if(t<250) cur=s.id;
+});
+links.forEach(function(l){
+l.classList.toggle('active',l.dataset.section===cur);
+});
+}
+window.addEventListener('scroll',syncScroll,{passive:true});
+syncScroll();
+/* Mobile rail collapse. Desktop is untouched: every rule lives inside the
+   <=860px media query, so the class is inert above the breakpoint. Without JS
+   the markup stays expanded (aria-expanded="true"), which is the old
+   behaviour, not a broken one. */
+var _tocNav=document.getElementById('toc');
+var _tocBtn=document.getElementById('toc-toggle');
+function tocIsNarrow(){return window.matchMedia('(max-width:860px)').matches;}
+function setToc(open){
+if(!_tocNav||!_tocBtn)return;
+_tocNav.classList.toggle('toc-collapsed',!open);
+_tocBtn.setAttribute('aria-expanded',open?'true':'false');
+}
+if(_tocBtn){
+setToc(!tocIsNarrow());
+_tocBtn.addEventListener('click',function(){setToc(_tocNav.classList.contains('toc-collapsed'));});
+/* Choosing a destination should reveal it, not leave the open rail covering it.
+   The rail sits ABOVE the content, so collapsing it shifts the target up by the
+   rail's height (~412px) — which cancels the browser's own anchor scroll, and
+   would yank the reader if we collapsed after landing. So: close the rail,
+   force the reflow, then navigate. A native fragment change (not
+   scrollIntoView) keeps :target working. Desktop stays on the native path. */
+Array.prototype.forEach.call(_tocNav.querySelectorAll('#toc-list a'),function(a){
+a.addEventListener('click',function(e){
+if(!tocIsNarrow())return;
+var id=(a.getAttribute('href')||'').slice(1);
+var el=id&&document.getElementById(id);
+if(!el)return;
+e.preventDefault();
+setToc(false);
+void _tocNav.offsetHeight;
+if(location.hash==='#'+id){el.scrollIntoView();}else{location.hash='#'+id;}
+});
+});
+}
+function setView(m,remember){
+document.body.classList.toggle('exec-view',m==='exec');
+document.getElementById('btn-full').classList.toggle('active',m==='full');
+document.getElementById('btn-exec').classList.toggle('active',m==='exec');
+document.querySelectorAll('.story-card').forEach(function(c){
+var interactive=m==='exec';
+c.setAttribute('role',interactive?'button':null);
+c.setAttribute('tabindex',interactive?'0':null);
+c.setAttribute('aria-expanded',interactive?(c.classList.contains('expanded')?'true':'false'):null);
+});
+/* The choice used to reset on every page load, so a reader who wanted the
+   brief view made the same click on every edition they opened. */
+if(remember!==false){try{localStorage.setItem('aidigest:view',m);}catch(e){}}
+}
+try{if(localStorage.getItem('aidigest:view')==='exec')setView('exec',false);}catch(e){}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape') setView('full');
+});
+function toggleCard(c){ if(!document.body.classList.contains('exec-view'))return; c.classList.toggle('expanded'); c.setAttribute('aria-expanded',c.classList.contains('expanded')?'true':'false'); }
+document.querySelectorAll('.story-card').forEach(function(c){
+c.addEventListener('click',function(e){
+if(e.target.closest('a')) return;
+toggleCard(this);
+});
+c.addEventListener('keydown',function(e){
+if(e.target.closest('a')) return;
+if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleCard(this); }
+});
+});
+document.querySelectorAll('#toc a').forEach(function(l){
+l.setAttribute('role','navigation');
+});
+var _tocObs=new MutationObserver(function(){
+document.querySelectorAll('#toc a.active').forEach(function(a){a.setAttribute('aria-current','location');});
+document.querySelectorAll('#toc a:not(.active)').forEach(function(a){a.removeAttribute('aria-current');});
+});
+_tocObs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+/* Executive Summary threads: collapse toggle + mini-TOC scrollspy (progressive). */
+document.querySelectorAll('.exec-thread').forEach(function(c){
+var btn=c.querySelector('.exec-toggle');if(!btn)return;
+var body=c.querySelector('.exec-body');var prev=c.querySelector('.exec-preview');
+function setOpen(open){body.hidden=!open;if(prev)prev.hidden=open;btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Collapse':'Expand';}
+btn.addEventListener('click',function(){setOpen(body.hidden);});
+});
+/* mini-TOC scrollspy (progressive enhancement): highlight the thread whose
+   card top has just crossed the top threshold — mirrors the main rail pattern. */
+var _excur=null;
+function execScrollSpy(){var cur=null;document.querySelectorAll('.exec-thread').forEach(function(t){if(t.getBoundingClientRect().top<=150){cur=t.id;}});if(cur!==_excur){_excur=cur;document.querySelectorAll('.exec-toc-link').forEach(function(a){a.classList.toggle('active',a.dataset.threadTarget===cur);});}}
+window.addEventListener('scroll',execScrollSpy,{passive:true});
+execScrollSpy();
+
+</script>
+</body>
+</html>
